@@ -1,0 +1,152 @@
+#!/bin/bash
+
+Uhost="localhost"
+Udata="cms_db"$RANDOM
+Uname="cms_u"$RANDOM
+Upawd="cms_p"$RANDOM
+Uinitpj="no"
+Uinitdb="no"
+Uinitht="no"
+
+while getopts "h:n:u:p:edi" opt
+do
+	case $opt in
+		 h)
+		 	Uhost=$OPTARG;;
+		 n)
+		 	Udata=$OPTARG;;
+		 u)
+		 	Uname=$OPTARG;;
+		 p)
+		 	Upawd=$OPTARG;;
+		 e)
+		 	Uinitpj="yes";;
+		 d)
+		 	Uinitdb="yes";;
+		 i)
+		 	Uinitht="yes";;
+		 ?)
+			echo "unkonw option"
+			exit 1
+			;;
+	esac
+done
+
+Urepstr="s/localost/$Uhost/g;s/cms_db/$Udata/g;s/cms_user/$Uname/g;s/cms_pawd/$Upawd/g"
+
+function getdir(){
+    for element in `ls $1`
+    do  
+        dir_or_file=$1"/"$element
+        if [ -d $dir_or_file ] ; then 
+			create_file=${dir_or_file}"/"${my_file}
+			if [ ! -f "$create_file" ] ; then
+ 				touch "$create_file"
+ 				echo "$create_file"
+			fi
+            getdir $dir_or_file
+        fi  
+    done
+}
+
+# need root to run this script
+if [ ! `whoami` = "root" ] ; then
+	echo "Running the file must be root user"
+	exit;
+fi
+
+if [ ! $1 ]; then
+cat << EOF
+================================================================
+typing the option as what you want.
+  -e, initialling the project environment.
+  -d, initialling the database.
+    -h, hostname
+    -n, database
+    -u, username
+    -p, password
+  -i, increarsing the index.html file for each directory.
+...
+EOF
+fi
+
+
+# create the index.html for each dir
+if [ $Uinitht = "yes" ] ; then
+	echo "initialing index page for each directory."
+	my_path=$(cd `dirname $0`; pwd)
+	my_file="index.html"
+	getdir $my_path
+fi
+
+# initial database
+if [ $Uinitdb = "yes" ] ; then
+	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
+	sed $Urepstr "data/00initDB.sql" > "initdb.t"
+ 	mysql -h localhost -u root < "initdb.t"
+ 	rm -f "initdb.t"
+fi
+
+# initial running environment of server
+if [ $Uinitpj = "yes" ] ; then
+	echo "initialing project environment."
+
+	my_file="/usr/sbin/httpd"
+	if [ ! -f "$my_file" ] ; then
+		yum -y install httpd
+	fi
+
+	my_file="/usr/bin/mysql"
+	if [ ! -f "$my_file" ] ; then
+		yum -y install mysql mysql-server
+# 		yum -y install mysql mysql-server mysql-devel
+	fi
+
+	my_file="/usr/bin/php"
+	if [ ! -f "$my_file" ] ; then
+		yum -y install php php-mysql
+	fi
+
+	# install the php-mbstring
+	my_file="/etc/php.d/mbstring.ini"
+	if [ ! -f "$my_file" ] ; then
+		yum -y install php-mbstring
+	fi
+
+	# install the php-gd
+	my_file="/etc/php.d/gd.ini"
+	if [ ! -f "$my_file" ] ; then
+		yum -y install php-gd
+	fi
+
+	my_file="/etc/php.d/custom.ini"
+	if [ ! -f "$my_file" ] ; then
+		echo 'short_open_tag=On' > $my_file
+		echo "${my_file} is created"
+	fi
+
+	# copy the cfg.php and access.php
+	my_file="cfg.php"
+	if [ ! -f "$my_file" ] ; then
+		sed $Urepstr "data/cfg_template" > $my_file
+		echo "file ${my_file} is created"
+	fi
+
+	my_file="access.php"
+	if [ ! -f "$my_file" ] ; then
+		sed $Urepstr "data/access_template" > $my_file
+		echo "file ${my_file} is created"
+	fi
+
+	my_dir="data/upload"
+	if [ ! -d "$my_dir" ] ; then
+		mkdir $my_dir
+		chmod -R 777 $my_dir
+		echo "dir ${my_dir} is created"
+	fi
+
+fi
+
+
+
+

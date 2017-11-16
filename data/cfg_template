@@ -1,0 +1,61 @@
+<?php  defined('ACCESS') or die('Access denied'); 
+
+
+// global config
+$cfg = array(
+	'sql_server'		=>	'localhost',
+	'sql_user' 			=>	'cms_user',
+	'sql_pawd'			=>	'cms_pawd',
+	'sql_dbname'		=>	'cms_db',
+
+	'def_mode'			=>	'normal',		// test or others like devel, production
+	'def_lang'			=>	'en',
+	'def_pagesize'		=>	20,
+	'version'			=>	'v2.0.0',
+);
+
+
+// template var
+$t = array(
+	'def_r'				=>	'front',		// default route, loaded file
+	'def_v'				=>	'show',			// default view
+	'def_a'				=>	'',				// default act
+	'def_layout'		=>	'front/layout',
+	
+	// default page info
+	'web_title' 		=>	"A new site",
+	'web_header' 		=>	"NEW SITE",
+	'web_name' 			=>	"CMS",
+	'web_des'			=>	'',
+	'web_kw'			=>	'',
+	'web_logo' 			=>	"",
+	'web_footer'		=>	"Copyleft © 2016-",
+);
+
+
+// user log config
+$ucfg = array(
+	'last_post_ip' 		=>	'0.0.0.0',
+	'last_post_time' 	=>	'1',			// 'the i of H:i:s'
+
+	'web_logo' 			=>	$t['web_logo'],
+	'web_header' 		=>	$t['web_header'],
+	'web_title' 		=>	$t['web_title'],
+	'web_des' 			=>	$t['web_des'],
+	
+	'user_login_page'	=>	'?_r=user&_v=login',
+	'user_level'		=>	array(
+								1 => 'front',
+								3 => 'view',
+								6 => 'view, edit',
+								9 => 'view, edit, add user',
+							),
+);
+
+
+if ($t['def_mode'] == 'test') {
+	ini_set("display_errors", "On");
+	error_reporting(E_ALL | E_STRICT);
+}
+
+?>

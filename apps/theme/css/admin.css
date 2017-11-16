@@ -1,0 +1,92 @@
+/* ------------- styles */
+body { text-align:center; }
+#wrap { text-align:left; --width:1200px; margin:0 auto; }
+#header { font-size: 15px; }
+.show-bar a { text-decoration: none; }
+
+
+
+/* ------------- color */
+body, #wrap { background-color: #e8ede0; }
+a { color: #53624a; }
+textarea { background-color: #eee; }
+.bgwt { background-color: white; }
+.show-table thead { background: #769b61; }
+#msg { background-color: #9dc7de; }
+input, select { background-color: #d4ddc2; border: 1px solid #526f40; }
+input[type="submit"] { background-color: white; }
+input:hover, select:hover { background-color: white; }
+a:hover { color: black; }
+tbody tr:hover { background-color: #d4ddc2; }
+#header h1 { color: black; }
+.show-menu, .body { background-color: #e8ede0; }
+.show-menu { --border: 1px solid gray; }
+
+
+
+/* -------------- position */
+#header, #bodyer, #footer { margin: 0 5px; clear: both; }
+#righter { margin-left: 15px; }
+#header { padding-left: 5px; }
+#bodyer { min-height: 400px; }
+#msg { margin-bottom: 20px; }
+#footer { min-height: 30px; padding-top: 20px;}
+.pagination { margin: 10px 0;  float: left; }
+.pagination span { margin-right: 5px; }
+
+.show-menu h4, .show-menu img { margin: 0; padding: 0; }
+.show-menu img { float: left; margin-right: 4px; }
+.show-menu ul li { margin: 6px 0; }
+.show-menu .menu_item  { padding: 10px;  }
+
+.ui-block-a { width: 10%; }
+.ui-block-b { width: 80%; }
+
+@media all and (min-width: 300px){
+	.ui-block-a { width: 0px; }
+	.ui-block-b { width: 99%; }
+	.show-menu { display: none; }
+}
+@media all and (min-width: 800px){
+	.ui-block-a { width: 10%; }
+	.ui-block-b { width: 80%; }
+	.show-menu { display: block; }
+}
+
+
+input, select { width: 200px; height: 23px; }
+textarea { width: 95%; }
+input[type="submit"] { width: 150px; height: 23px; }
+.edit-form-login input[type="submit"] {width: 200px; height: 23px;}
+
+.show-query, .show-bar, .show-table, .pagination_label { margin-bottom: 15px; clear: both;}
+.show-table { text-align: center; }
+.show-table thead { font-weight: normal; }
+.show-table th, .show-table tr{ --border: 1px solid #c5cbce; }
+
+
+.edit-form ul li { margin-bottom: 8px; }
+.edit-form .w50  { width: 70px; }
+.edit-form label, .edit-form select, .edit-form input { margin-right: 5px; }
+.show-query label, .show-query select, .show-query input { margin-right: 5px; }
+.pagination_label { font-size: 13px; float: left; --margin: 10px; }
+.pagination_label label { margin-right: 10px; }
+
+
+
+/* ---------------- common table style */
+.show-table table{ 
+	font-size:12px; 
+	table-layout:fixed;
+	empty-cells:show;
+	border-collapse: collapse;
+	--margin:0 auto;
+}
+.show-table td, .show-table th { height:30px; }
+.show-table table{ border:1px solid #b1bda8; color:#666; }
+.show-table th { background-repeat:repeat-x; }
+.show-table td, .show-table th{
+	border:1px solid #b1bda8;
+	padding:0 1em 0;
+
+}

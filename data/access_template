@@ -1,0 +1,65 @@
+<?php defined('ACCESS') or die('Access denied'); 
+
+
+// filter all of sql injections
+$_GET 		= sql_filter($_GET);
+$_POST		= sql_filter($_POST);
+$_REQUEST	= sql_filter($_REQUEST);
+
+
+// set the default program file, view ,act
+$_r = $t['_r'] = isset($_GET["_r"]) ? $_GET["_r"] : $t["def_r"];
+$_a = $t['_a'] = isset($_GET["_a"]) ? $_GET["_a"] : $t['def_a'];
+$_v = $t['_v'] = isset($_GET["_v"]) ? $_GET["_v"] : $t['def_v'];
+
+
+switch ($_r) {
+	case 'admin':
+	case 'category':
+	case 'file':
+	case 'record':
+		if (user_level() < 3) {
+			out(l("no privilege to access"), $t);
+		}
+		break;
+
+	case 'user':
+		// user login
+		if (($_v == "login") or ($_a == "login") or ($_a == "logout")) {
+			// pass
+
+		} else {
+			if (user_level() < 9) {
+				out(l("no privilege to access"), $t);
+			}
+		}
+		break;
+
+	default:
+}
+
+switch ($_a) {
+	case 'add':
+	case 'edit':
+	case 'del':
+	case 'delall':
+	case 'update':
+		if (user_level() < 6) {
+			out(l("no privilege to access"), $t);
+		}
+		break;
+	default:
+}
+
+switch ($_v) {
+	case 'info':
+	case 'edit':
+		if (user_level() < 6) {
+			out(l("no privilege to access"), $t);
+		}
+		break;
+	default:
+}
+
+
+?>

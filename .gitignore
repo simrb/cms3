@@ -1,0 +1,25 @@
+# common ignored file
+*.apk
+*.bak
+*.log
+*.temp
+*.tmp
+*.*~
+~*.*
+*.swp
+*.db
+tags
+
+# custom file about this project
+index.html
+cfg.php
+access.php
+*/upload
+upload/*
+test/*
+
+# test file
+*.t
+*.tt
+t.tpl
+t.php
