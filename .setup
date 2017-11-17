@@ -82,7 +82,7 @@ fi
 # initial database
 if [ $Uinitdb = "yes" ] ; then
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
-	sed $Urepstr "data/00initDB.sql" > "initdb.t"
+	sed $Urepstr "module/data/00initDB.sql" > "initdb.t"
  	mysql -h localhost -u root < "initdb.t"
  	rm -f "initdb.t"
 fi
@@ -128,7 +128,7 @@ if [ $Uinitpj = "yes" ] ; then
 	# copy the cfg.php
 	my_file="custom.php"
 	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "data/cfg.php" > $my_file
+		sed $Urepstr "module/data/cfg.php" > $my_file
 		echo "file ${my_file} is created"
 	fi
 
