@@ -20,15 +20,14 @@ define("DIR_UPLOAD",	"upload/");
 
 
 // default config
-$custom_file = PATH_MOD."custom.php";
-if (file_exists($custom_file)) {
-	require_once($custom_file); 
-} else {
-	require_once(PATH_MOD	."data/cfg.php");
-}
+require_once(PATH_MOD	."data/cfg.php");
 require_once(PATH_MOD	."admin/common.php");
 require_once(PATH_MOD 	."data/access.php");
 
+$custom_file = PATH_BASE."custom.php";
+if (file_exists($custom_file)) {
+	require_once($custom_file); 
+}
 
 // index file
 require_once(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php');
