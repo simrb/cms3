@@ -12,9 +12,7 @@ tags
 
 # custom file about this project
 index.html
-cfg.php
-access.php
-*/upload
+custom.php
 upload/*
 test/*
 

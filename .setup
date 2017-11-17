@@ -125,20 +125,15 @@ if [ $Uinitpj = "yes" ] ; then
 		echo "${my_file} is created"
 	fi
 
-	# copy the cfg.php and access.php
-	my_file="cfg.php"
+	# copy the cfg.php
+	my_file="custom.php"
 	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "data/cfg_template" > $my_file
+		sed $Urepstr "data/cfg.php" > $my_file
 		echo "file ${my_file} is created"
 	fi
 
-	my_file="access.php"
-	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "data/access_template" > $my_file
-		echo "file ${my_file} is created"
-	fi
-
-	my_dir="data/upload"
+	# create upload dir
+	my_dir="upload"
 	if [ ! -d "$my_dir" ] ; then
 		mkdir $my_dir
 		chmod -R 777 $my_dir

@@ -10,19 +10,23 @@ define("PATH_BASE",		dirname(__FILE__) . "/");
 
 
 // absolute path
-define("PATH_MOD",		PATH_BASE . "apps/");
-define("PATH_RES",		PATH_BASE . "apps/theme/");
-define('PATH_UPLOAD', 	PATH_BASE . 'data/upload/');
+define("PATH_MOD",		PATH_BASE . "module/");
+define("PATH_RES",		PATH_BASE . "module/theme/");
+define('PATH_UPLOAD', 	PATH_BASE . 'upload/');
 
 // relative path
-define("DIR_RES",		"apps/theme/");
-define("DIR_UPLOAD",	"data/upload/");
+define("DIR_RES",		"module/theme/");
+define("DIR_UPLOAD",	"upload/");
 
 
-// config, common func, access file
-require_once(PATH_BASE	."cfg.php");
-require_once(PATH_MOD	."common.php");
-require_once(PATH_BASE 	."access.php");
+// default file
+require_once(PATH_MOD	."data/cfg.php");
+require_once(PATH_MOD	."admin/common.php");
+require_once(PATH_MOD 	."data/access.php");
+
+// custom file
+$custom_file = PATH_MOD."custom.php";
+if (file_exists($custom_file)) { require_once($custom_file); }
 
 // index file
 require_once(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php');
