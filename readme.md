@@ -42,6 +42,8 @@ untar
 
 	# tar -xvf mydoc.tar
 
+Notice, all of generated files will be stored in others dir, such as the upload files, customize config file, access file. e.g.
+just backup the others dir is enough.
 
 
 History
