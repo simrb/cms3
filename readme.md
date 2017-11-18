@@ -32,11 +32,11 @@ Migrating
 
 1 backup your db, such as
 
-	# mysqldump --database cms_db > archive/mydb_bak_201708.sql
+	# mysqldump --database cms_db > others/db_bak_201708.sql
 
 2 backup the dir, such as
 
-	# tar -cvf mydoc.tar mydoc/
+	# tar -cvf mydoc.tar others/
 
 untar
 
@@ -47,11 +47,15 @@ untar
 History
 ============
 
-Ver.r2, by linyu deng, at 10/24,2017
+v3.0.0, by linyu deng, at 11/18,2017
 
-base on the last version, we add new feature that facing to web2.0, it let the user register.
+update the directory structure.
 
-Ver.r1, by linyu deng, at 11/11,2016
+v2.0.0, by linyu deng, at 10/24,2017
+
+base on the last version, we add new feature that facing to web2.0, let the user register.
+
+v1.0.0, by linyu deng, at 11/11,2016
 
 initialing the project, the first version is built.
 

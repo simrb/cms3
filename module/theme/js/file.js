@@ -20,7 +20,7 @@ function file_load(pagecurr) {
     // load the content of file list
     var file_list_html      = "";
     var file_list_url       = "?_m=admin&_f=file&_a=ajaxfilelist";
-    var upload_file_path    = "upload/";
+    var upload_file_path    = "others/upload/";
     var pagecurr            = pagecurr;
 
     $.ajax({

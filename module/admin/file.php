@@ -3,7 +3,7 @@
 $t['layout'] 	= 'admin/tpl/layout';
 $t['tpl_name'] 	= 'admin/tpl/file';
 
-// initail upload folder if it hasn`t existed
+// initialing upload folder if it hasn`t existed
 if(!is_dir(PATH_UPLOAD)) {
     exit('no file '. PATH_UPLOAD);
 }
@@ -116,7 +116,9 @@ if ($t['_a'] == "del") {
 		// remove file
 		$res = sql_query("SELECT path FROM file WHERE fid='". $_GET["fid"] ."' LIMIT 1;");
 		$row = mysql_fetch_row($res);
-		unlink(PATH_UPLOAD.$row[0]);
+		if (file_exists($row[0])) {
+			unlink(PATH_UPLOAD.$row[0]);
+		}
 
 		// delete from db
 		sql_query("DELETE FROM file WHERE fid='". $_GET["fid"] ."';");

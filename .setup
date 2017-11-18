@@ -126,14 +126,23 @@ if [ $Uinitpj = "yes" ] ; then
 	fi
 
 	# copy the cfg.php
-	my_file="custom.php"
+	my_file="others/cfg.php"
 	if [ ! -f "$my_file" ] ; then
 		sed $Urepstr "module/data/cfg.php" > $my_file
+		chmod 777 $my_file
+		echo "file ${my_file} is created"
+	fi
+
+	# copy the access.php
+	my_file="others/access.php"
+	if [ ! -f "$my_file" ] ; then
+		sed $Urepstr "module/data/access.php" > $my_file
+		chmod 777 $my_file
 		echo "file ${my_file} is created"
 	fi
 
 	# create upload dir
-	my_dir="upload"
+	my_dir="others/upload"
 	if [ ! -d "$my_dir" ] ; then
 		mkdir $my_dir
 		chmod -R 777 $my_dir

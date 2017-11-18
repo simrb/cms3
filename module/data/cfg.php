@@ -11,7 +11,7 @@ $cfg = array(
 	'def_mode'			=>	'test',		// test or others like devel, production
 	'def_lang'			=>	'en',
 	'def_pagesize'		=>	20,
-	'version'			=>	'v1.0.0',
+	'version'			=>	'v3.0.0',
 );
 
 
@@ -30,7 +30,7 @@ $t = array(
 	// default page info
 	'web_title' 		=>	"A SITE",
 	'web_header' 		=>	"NEW SITE",
-	'web_name' 			=>	"CMS system",
+	'web_name' 			=>	"CMS",
 	'web_des'			=>	'',
 	'web_kw'			=>	'',
 	'web_logo' 			=>	"",

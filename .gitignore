@@ -12,9 +12,9 @@ tags
 
 # custom file about this project
 index.html
-custom.php
-upload/*
 test/*
+others/*
+!others/index.html
 
 # test file
 *.t

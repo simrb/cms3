@@ -120,7 +120,7 @@ if ($t['_a'] == "addpost") {
 			// add upload
 			$t['_a'] = 'add';
 			$t['_v'] = '';
-			require_once('file.php');
+			require_once(PATH_MOD.'admin/file.php');
 
 			// add upload log for record
 			$rid	= $insert_id;
