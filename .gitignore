@@ -12,12 +12,10 @@ tags
 
 # custom file about this project
 index.html
-test/*
+module/test/*
 others/*
-!others/index.html
+!others/.docs
 
 # test file
 *.t
 *.tt
-t.tpl
-t.php
