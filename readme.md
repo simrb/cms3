@@ -32,18 +32,20 @@ Migrating
 
 1 backup your db, such as
 
-	# mysqldump --database cms_db > others/db_bak_201708.sql
+	# mysqldump --database cms_db > others/db_201708.sql
 
 2 backup the dir, such as
 
-	# tar -cvf mydoc.tar others/
+	# tar -cvf others.tar others/
 
 untar
 
-	# tar -xvf mydoc.tar
+	# tar -xvf others.tar
 
-Notice, all of generated files will be stored in others dir, such as the upload files, customize config file, access file. e.g.
+Notice, all of backup and generated files will be stored in others dir, 
+such as the upload files, customize config file, access file. e.g.
 just backup the others dir is enough.
+
 
 
 History
