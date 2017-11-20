@@ -30,7 +30,7 @@
 
 
 		<div id="footer">
-			<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['cfg']['version'] ?> |
+			<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?> |
 			<span><?= l('menber'); ?>: <?= user_name() ?> </span> |
 			<span><a href="?" ><?= l('front end'); ?></a></span> |
 			<span><a href="<?=$t['def_logout'];?>" ><?= l('logout'); ?></a></span>

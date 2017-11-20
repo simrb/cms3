@@ -121,7 +121,7 @@ if ($t['_v'] == "edit") {
 	$t["password"]		=	isset($t["password"]) ? $t["password"] : "";
 	$t["level"]			=	isset($t["level"]) ? $t["level"] : "";
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
-	$t["user_level"]	=	$ucfg['user_level'];
+	$t["user_level"]	=	$c['user_level'];
 
 	//fetch the data that will be changed later
 	if (isset($_GET["uid"])) {

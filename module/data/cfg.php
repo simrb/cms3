@@ -2,7 +2,7 @@
 
 
 // global config
-$cfg = array(
+$c = array(
 	'sql_server'		=>	'localhost',
 	'sql_user' 			=>	'cms_user',
 	'sql_pawd'			=>	'cms_pawd',
@@ -12,6 +12,9 @@ $cfg = array(
 	'def_lang'			=>	'en',
 	'def_pagesize'		=>	20,
 	'version'			=>	'v3.0.0',
+
+	'last_post_ip' 		=>	'0.0.0.0',
+	'last_post_time' 	=>	'1',			// 'the i of H:i:s'
 );
 
 
@@ -35,29 +38,18 @@ $t = array(
 	'web_kw'			=>	'',
 	'web_logo' 			=>	"",
 	'web_footer'		=>	"Copyleft © 2016-",
-);
 
-
-// user log config
-$ucfg = array(
-	'last_post_ip' 		=>	'0.0.0.0',
-	'last_post_time' 	=>	'1',			// 'the i of H:i:s'
-
-	'web_logo' 			=>	$t['web_logo'],
-	'web_header' 		=>	$t['web_header'],
-	'web_title' 		=>	$t['web_title'],
-	'web_des' 			=>	$t['web_des'],
-	
 	'user_level'		=>	array(
 								1 => 'front',
 								3 => 'view',
 								6 => 'view, edit',
 								9 => 'view, edit, add user',
-							),
+						),
 );
 
 
-if ($cfg['def_mode'] == 'test') {
+
+if ($c['def_mode'] == 'test') {
 	ini_set("display_errors", "On");
 	error_reporting(E_ALL | E_STRICT);
 }

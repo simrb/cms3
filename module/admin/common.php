@@ -65,7 +65,7 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 // change the language from en to what you want
 function l ($str) {
 	$reval 	= $str;
-	$path 	= PATH_MOD . 'data/lang/' . $GLOBALS['cfg']['def_lang'] . '.php';
+	$path 	= PATH_MOD . 'data/lang/' . $GLOBALS['c']['def_lang'] . '.php';
 	if (file_exists($path)) {
 		require $path;
 		if (isset($lang[$str])) {
@@ -143,11 +143,11 @@ function data_fetch_kv($tablename, $key, $val) {
 // fetch a data collection from db
 function sql_query($sql, $returnid = 0) {
 
-	$link 	= mysql_connect($GLOBALS['cfg']['sql_server'], $GLOBALS['cfg']['sql_user'], $GLOBALS['cfg']['sql_pawd']) 
+	$link 	= mysql_connect($GLOBALS['c']['sql_server'], $GLOBALS['c']['sql_user'], $GLOBALS['c']['sql_pawd']) 
 		or die("Could not connect: " . mysql_error());
 	
-	mysql_select_db($GLOBALS['cfg']['sql_dbname'], $link) 
-		or die ("Can't use db ". $GLOBALS['cfg']['sql_dbname'] . mysql_error());
+	mysql_select_db($GLOBALS['c']['sql_dbname'], $link) 
+		or die ("Can't use db ". $GLOBALS['c']['sql_dbname'] . mysql_error());
 
 	$result = mysql_query($sql) 
 		or die("Could not query: " . mysql_error());
@@ -353,9 +353,9 @@ function user_log ($ukey) {
 		$res2 	= mysql_fetch_row($res);
 		$reval 	= $res2[0];
 
-	// no ukey, then fetch it from $ucfg, and write to db
+	// no ukey, then fetch it from $c, and write to db
 	} else {
-		$reval = isset($GLOBALS['ucfg'][$ukey]) ? $GLOBALS['ucfg'][$ukey] : 'null';
+		$reval = isset($GLOBALS['c'][$ukey]) ? $GLOBALS['c'][$ukey] : 'null';
 		sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES (
 			'". $uid ."','". $ukey ."', '". $reval ."')");
 	}

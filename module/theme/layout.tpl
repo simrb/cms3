@@ -24,7 +24,7 @@
 
 			<div id="footer">
 				<i>
-					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['cfg']['version'] ?>
+					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?>
 					<a href="?_v=detail&rid=1" target="_blank"><?= l('about us'); ?></a>
 				</i>
 			</div>
