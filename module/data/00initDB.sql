@@ -116,7 +116,7 @@ INSERT INTO `user_log` (`ulid`, `uid`, `ukey`, `uval`) VALUES
 (2, 1, 'open_register', 'on'),
 (3, 1, 'last_post_ip', '127.0.0.1'),
 (4, 1, 'last_post_time', '1'),
-(5, 1, 'web_logo', '12345.jpg'),
+(5, 1, 'web_logo', 'logo.jpg'),
 (6, 1, 'web_des', 'It is a cms, we devote to simplicity, rudeness.'),
 (7, 1, 'web_header', 'New site'),
 (8, 1, 'web_title', 'New site'),

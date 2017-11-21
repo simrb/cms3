@@ -14,7 +14,7 @@ tags
 index.html
 module/test/*
 others/*
-!others/.docs
+!others/upload/logo.jpg
 
 # test file
 *.t
