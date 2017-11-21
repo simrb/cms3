@@ -50,7 +50,6 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 	if ($layout == 'default') {
 		$layout 		= isset($t['layout']) ? $t['layout'] : $t["def_layout"];
 	}
- 
 
 	// load tpl without layout
 	if ($layout == "" or $layout == NULL or $layout == false) {

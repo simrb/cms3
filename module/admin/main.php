@@ -1,5 +1,5 @@
 <?php access();
-$t['layout'] = 'admin/tpl/layout';
+$t['layout'] 	= 'admin/tpl/layout';
 
 // act: edit
 if ($t['_a'] == 'edit') {
@@ -27,8 +27,8 @@ if ($t['_v'] == "show") {
 // view: info
 if ($t['_v'] == "info") {
 	$t['web_logo']		= user_log('web_logo');
-	$t['web_header']	= user_log('web_header');
 	$t['web_title']		= user_log('web_title');
+	$t['web_header']	= user_log('web_header');
 	$t['web_des']		= user_log('web_des');
 
 	tmp($t, "admin/tpl/info");
