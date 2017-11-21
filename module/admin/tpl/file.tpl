@@ -68,7 +68,7 @@
 
 	<div class="edit-form">
 
-		<form name="upload" action="<?=url_c('_a=add&_v=edit');?>" enctype="multipart/form-data" method="post">
+		<form name="upload" action="<?=url_c('_a=add');?>" enctype="multipart/form-data" method="post">
 			<ul>
 				<li><input type="file" name="files[]"></li>
 				<li><input type="file" name="files[]"></li>

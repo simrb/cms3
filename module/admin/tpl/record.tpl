@@ -103,7 +103,7 @@
 <?php if ($t['_v'] == 'edit') { ?>
 
 	<div class="edit-form">
-		<form action="<?=url_c();?>" method="post" >
+		<form action="<?=url_c('_a=add');?>" method="post" >
 			<ul>
 				<li><label><?= l('content'); ?></label></li>
 				<li><textarea name="content" class="record_text file_input" ><?= $t['content'] ?></textarea></li>

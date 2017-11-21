@@ -66,7 +66,7 @@
 <?php if ($t['_v'] == 'edit') { ?>
 
 	<div class="edit-form">
-		<form action="<?=url_c();?>" method="post">
+		<form action="<?=url_c('_a=add');?>" method="post">
 			<ul>
 
 				<li><label><?= l("category name"); ?></label></li>
