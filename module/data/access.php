@@ -23,7 +23,7 @@ foreach (array('_m', '_f', '_a', '_v') as $val) {
 if ($t['_m'] == 'admin') {
 
 	switch ($t['_f']) {
-		case 'admin':
+		case 'main':
 		case 'category':
 		case 'file':
 		case 'record':
