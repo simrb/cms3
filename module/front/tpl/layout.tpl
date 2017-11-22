@@ -2,7 +2,7 @@
 <html lang="us">
 <head>
 	<?php include_once(path_tmp('theme/head')); ?>
-	<link href="<?= path_res('css/front.css') ?>" rel="stylesheet">
+	<link href="<?= path_theme('css/front.css') ?>" rel="stylesheet">
 </head>
 
 <body>

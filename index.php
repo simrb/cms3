@@ -10,11 +10,11 @@ define("PATH_BASE",		dirname(__FILE__) . "/");
 
 // absolute path
 define("PATH_MOD",		PATH_BASE . "module/");
-define("PATH_RES",		PATH_BASE . "module/theme/");
+define("PATH_THEME",	PATH_BASE . "module/theme/");
 define('PATH_UPLOAD', 	PATH_BASE . 'others/upload/');
 
 // relative path
-define("DIR_RES",		"module/theme/");
+define("DIR_THEME",		"module/theme/");
 define("DIR_UPLOAD",	"others/upload/");
 
 // default config
@@ -23,7 +23,9 @@ require_once(PATH_MOD	."admin/common.php");
 require_once(PATH_BASE 	."others/access.php");
 
 // index file
-require_once(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php');
+if (file_exists(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php')) {
+	require_once(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php');
+}
 
 exit;
 ?>

@@ -18,8 +18,8 @@ function mk_dir($dir, $mode = 0777) {
 
 
 // return the real path for static resource file, like js, css
-function path_res ($path) {
-	$path = DIR_RES . $path;
+function path_theme ($path) {
+	$path = DIR_THEME . $path;
 	if (!file_exists($path)) {
 		$path = "no file $path";
 	}

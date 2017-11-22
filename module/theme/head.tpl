@@ -7,10 +7,10 @@
 
 
 <!-- base js -->
-<link href="<?= path_res('js/jquery/jquery.mobile.min.css') ?>" rel="stylesheet">
-<script src="<?= path_res('js/jquery/jquery.js') ?>"></script>
-<script src="<?= path_res('js/base.js') ?>"></script>
-<script src="<?= path_res('js/jquery/jquery.mobile.min.js') ?>"></script>
+<link href="<?= path_theme('js/jquery/jquery.mobile.min.css') ?>" rel="stylesheet">
+<script src="<?= path_theme('js/jquery/jquery.js') ?>"></script>
+<script src="<?= path_theme('js/base.js') ?>"></script>
+<script src="<?= path_theme('js/jquery/jquery.mobile.min.js') ?>"></script>
 
 <!-- base css -->
-<link href="<?= path_res('css/base.css') ?>" rel="stylesheet">
+<link href="<?= path_theme('css/base.css') ?>" rel="stylesheet">

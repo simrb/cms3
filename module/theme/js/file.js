@@ -5,7 +5,7 @@
 // and then, set the file_list to a div
 //		<div class="file_list"></div>
 // finailly, join the js file
-//		<script type="text/javascript" src="<?= path_res('admin/file.js') ?>"></script>
+//		<script type="text/javascript" src="<?= path_theme('js/file.js') ?>"></script>
 
 // $.getScript("file.js");
 
