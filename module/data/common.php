@@ -120,8 +120,9 @@ function url_referer ($url = '') {
 }
 
 
-function out($str, $t, $layout = "THEMElayout") {
+function out($str, $t, $layout = 'layout') {
 	$t["msg"] = $str;
+	//if ($layout == 'layout') { $layout = THEME. 'layout'; }
 	tmp($t, THEME."blank", $layout);
 	exit;
 }
