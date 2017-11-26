@@ -21,7 +21,7 @@
 	  						echo "<td><a href='". url_c("_a=edit&_v=edit&cid=".$row["cid"]) .
 									"'>". $row["cid"] ." > </a></td>";
 	  						echo "<td><a href='". url_c("_a=edit&_v=edit&cid=".$row["cid"]) .
-									"'>". $row["name"] ." > </a></td>";
+									"'>". $row["name"] ."</a></td>";
 	  						echo "<td>" . $row['follow'] . "</td>";
 	  						echo "<td>" . $row['number'] . "</td>";
 	  						echo "<td><a href='". url_c("_a=del&cid=". $row["cid"]) .
@@ -66,7 +66,7 @@
 <?php if ($t['_v'] == 'edit') { ?>
 
 	<div class="edit-form">
-		<form action="<?=url_c('_a=add');?>" method="post">
+		<form action="<?=url_c('_a='.$t['_a']);?>" method="post">
 			<ul>
 
 				<li><label><?= l("category name"); ?></label></li>

@@ -141,22 +141,24 @@ function data_fetch_kv($tablename, $key, $val) {
 
 
 // fetch a data collection from db
-function sql_query($sql, $returnid = 0) {
+function sql_query($sql, $op = NULL) {
 
-	$link 	= mysql_connect($GLOBALS['c']['sql_server'], $GLOBALS['c']['sql_user'], $GLOBALS['c']['sql_pawd']) 
+	$conn = mysql_connect($GLOBALS['c']['sql_server'], $GLOBALS['c']['sql_user'], $GLOBALS['c']['sql_pawd']) 
 		or die("Could not connect: " . mysql_error());
-	
-	mysql_select_db($GLOBALS['c']['sql_dbname'], $link) 
+
+	mysql_select_db($GLOBALS['c']['sql_dbname'], $conn) 
 		or die ("Can't use db ". $GLOBALS['c']['sql_dbname'] . mysql_error());
 
 	$result = mysql_query($sql) 
-		or die("Could not query: " . mysql_error());
-	
-	if ($returnid != 0) {
+		or die("Could not query: " . mysql_error());	
+
+	if ($op == 'insert_id') {
 		$result = mysql_insert_id();
+	} elseif ($op == 'affect_num') {
+		$result = mysql_affected_rows($result);
 	}
 
-	mysql_close($link);
+	mysql_close($conn);
 
 	return $result;
 }

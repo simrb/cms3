@@ -22,7 +22,7 @@
 			<thead>
 				<tr>
 					<th style="width:40px">id</th>
-					<th style="width:40px"><?= l('user id'); ?></th>
+					<th style="width:40px"><?= l('uid'); ?></th>
 					<th style="width:40px"><?= l('category'); ?></th>
 					<th style="width:40px"><?= l('follow id'); ?></th>
 					<th style="width:40px"><?= l('useful'); ?></th>
@@ -103,7 +103,7 @@
 <?php if ($t['_v'] == 'edit') { ?>
 
 	<div class="edit-form">
-		<form action="<?=url_c('_a=add');?>" method="post" >
+		<form action="<?=url_c('_a='.$t['_a']);?>" method="post" >
 			<ul>
 				<li><label><?= l('content'); ?></label></li>
 				<li><textarea name="content" class="record_text file_input" ><?= $t['content'] ?></textarea></li>

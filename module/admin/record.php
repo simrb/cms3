@@ -33,16 +33,7 @@ if ($t['_a'] == "update") {
 		// fetch data for showing later, and make sure this operating is successful
 		$res = sql_query("SELECT uid,cid,follow,useful,content,created FROM record WHERE rid = '". $_POST["rid"] ."';");
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			$t["uid"]			=	$row[0];
-			$t["cid"]			=	$row[1];
-			$t["follow"]		=	$row[2];
-			$t["useful"]		=	$row[3];
-			$t["content"]		=	$row[4];
-			$t["created"]		=	$row[5];
-
-			$t['_a']			=	"update";
-			$t["msg"] 			= 	l('updated successfully');
+			$t["msg"] = l('updated successfully');
 		}
 	}
 }
@@ -150,17 +141,6 @@ if ($t['_v'] == "show") {
 // view: edit
 if ($t['_v'] == "edit") {
 
-	// fetch the rid
-// 	if ( isset($t['rid']) ) { 
-// 		// pass
-// 	} elseif ( isset($_GET['rid']) ) {
-// 		$t['rid'] = $_GET['rid'];
-// 	} elseif ( isset($_POST['rid']) ) {
-// 		$t['rid'] = $_POST['rid'];
-// 	else {
-// 		$t['rid'] = 0;
-// 	}
-
 	$t["rid"]			=	isset($t["rid"]) ? $t["rid"] : 0;
 	$t["uid"]			=	isset($t["uid"]) ? $t["uid"] : user_id();
 	$t["cid"]			=	isset($t["cid"]) ? $t["cid"] : 1;
@@ -169,25 +149,22 @@ if ($t['_v'] == "edit") {
 	$t["content"]		=	isset($t["content"]) ? $t["content"] : "";
 
 	$t["category_kv"]	=	data_fetch_kv("category", "cid", "name");
-//	$t["status_kv"]		=	data_fetch_kv("status", "sid", "name");
-
 
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
 
 	$t["rid"]			=	isset($_GET["rid"]) ? $_GET["rid"] : (isset($_POST['rid']) ? $_POST['rid'] : $t['rid']);
 
-	//fetch the data that will be changed later
+	// fill data for edit action
 	if ( $t['rid'] != 0 ) {
 		$res = sql_query("SELECT rid,uid,cid,follow,useful,content,created FROM record WHERE rid = '". $t['rid'] ."';");
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			// $t["rid"]			=	$row[0];
-			$t["uid"]			=	$row[1];
-			$t["cid"]			=	$row[2];
-			$t["follow"]		=	$row[3];
-			$t["useful"]		=	$row[4];
-			$t["content"]		=	$row[5];
-			$t["created"]		=	$row[6];
+			$row = mysql_fetch_assoc($res);
+			$t["uid"]			=	$row['uid'];
+			$t["cid"]			=	$row['cid'];
+			$t["follow"]		=	$row['follow'];
+			$t["useful"]		=	$row['useful'];
+			$t["content"]		=	$row['content'];
+			$t["created"]		=	$row['created'];
 
 			$t['_a']			=	"update";
 		}
@@ -196,16 +173,10 @@ if ($t['_v'] == "edit") {
 }
 
 
-
-
 function record_fields_valid ($str) {
 	$reval = "";
 	return $reval;
 }
 
-/*$path_test_file = path_real('record/test', '.php', false);
-if (file_exists($path_test_file)) {
-	include_once($path_test_file);
-}*/
 
 ?>

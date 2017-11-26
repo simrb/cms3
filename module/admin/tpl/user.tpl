@@ -63,7 +63,7 @@
 
 
 	<div class="edit-form">
-		<form action="<?=url_c('_a=add');?>" method="post">
+		<form action="<?=url_c('_a='.$t['_a']);?>" method="post">
 			<ul>
 
 				<li><label><?= l('username'); ?></label></li>

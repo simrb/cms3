@@ -23,13 +23,8 @@ if ($t['_a'] == "update") {
 
 		$res = sql_query("SELECT cid, name, follow, number FROM category WHERE cid = '". $_POST["cid"] ."';");
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			$t["cid"]			=	$row[0];
-			$t["category_name"]	=	$row[1];
-			$t["follow"]		=	$row[2];
-			$t["number"]		=	$row[3];
-			$t['_a']			=	"update";
 			$t["msg"] 			= 	l("updated successfully");
+			//$t['_a']			=	"update";
 		}
 	}
 }
@@ -73,17 +68,17 @@ if ($t['_v'] == "edit") {
 	$t["number"]		=	isset($t["number"]) ? $t["number"] : 0;
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
 
-	//fetch the data that will be changed later
+	// edit data
 	if (isset($_GET["cid"])) {
 		$res = sql_query("SELECT cid, name, follow, number 
 			FROM category WHERE cid = '". $_GET["cid"] ."';");
 
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			$t["cid"]			=	$row[0];
-			$t["category_name"]	=	$row[1];
-			$t["follow"]		=	$row[2];
-			$t["number"]		=	$row[3];
+			$row = mysql_fetch_assoc($res);
+			$t["cid"]			=	$row['cid'];
+			$t["category_name"]	=	$row['name'];
+			$t["follow"]		=	$row['follow'];
+			$t["number"]		=	$row['number'];
 			$t['_a']			=	"update";
 		}
 	}

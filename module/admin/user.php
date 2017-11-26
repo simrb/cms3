@@ -19,12 +19,6 @@ if ($t['_a'] == "update") {
 
 		$res = sql_query("SELECT * FROM user WHERE uid = '". $_POST["uid"] ."';");
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			$t["uid"]			=	$row[0];
-			$t["username"]		=	$row[1];
-			$t["password"]		=	$row[2];
-			$t["level"]			=	$row[3];
-			$t['_a']			=	"update";
 			$t["msg"] 			= 	l('updated successfully');
 		}
 	}
@@ -127,11 +121,11 @@ if ($t['_v'] == "edit") {
 	if (isset($_GET["uid"])) {
 		$res = sql_query("SELECT * FROM user WHERE uid = '". $_GET["uid"] ."';");
 		if ($res) {
-			$row = mysql_fetch_row($res);
-			$t["uid"]			=	$row[0];
-			$t["username"]		=	$row[1];
-			$t["password"]		=	$row[2];
-			$t["level"]			=	$row[3];
+			$row = mysql_fetch_assoc($res);
+			$t["uid"]			=	$row['uid'];
+			$t["username"]		=	$row['username'];
+			$t["password"]		=	$row['password'];
+			$t["level"]			=	$row['level'];
 			$t['_a']			=	"update";
 		}
 	}
