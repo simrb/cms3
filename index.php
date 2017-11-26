@@ -12,14 +12,15 @@ define("PATH_BASE",		dirname(__FILE__) . "/");
 
 // default config
 require_once(PATH_BASE	."others/cfg.php");
+define("THEME",			$c['def_theme'] . '/');
 
 // absolute path
-define("PATH_MOD",		PATH_BASE . "module/");
-define("PATH_THEME",	PATH_BASE . "module/theme/");
-define('PATH_UPLOAD', 	PATH_BASE . 'others/upload/');
+define("PATH_MOD",		PATH_BASE	. "module/");
+define("PATH_THEME",	PATH_MOD	. THEME);
+define('PATH_UPLOAD', 	PATH_BASE 	. 'others/upload/');
 
 // relative path
-define("DIR_THEME",		"module/theme/");
+define("DIR_THEME",		"module/" 	. THEME);
 define("DIR_UPLOAD",	"others/upload/");
 
 // common libs, default access

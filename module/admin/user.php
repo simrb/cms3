@@ -79,11 +79,11 @@ if ($t['_a'] == "login") {
 
 //view: login
 if ($t['_v'] == "login") {
-	$t['layout'] = 'theme/layout';
+	$t['layout'] = THEME.'layout';
 	// has login yet
 	if(user_id() > 0){
 		$t['blank'] = l('you have login yet');
-		tmp($t, 'theme/blank');
+		tmp($t, THEME.'blank');
 	} else {
 		url_referer('?');
 		tmp($t, "admin/tpl/login");

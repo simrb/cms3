@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="us">
 <head>
-	<?php include_once(path_tmp('theme/head')); ?>
+	<?php include_once(path_tmp(THEME.'head')); ?>
 	<link href="<?= path_theme('css/front.css') ?>" rel="stylesheet">
 </head>
 

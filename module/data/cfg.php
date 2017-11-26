@@ -8,13 +8,14 @@ $c = array(
 	'sql_pawd'			=>	'cms_pawd',
 	'sql_dbname'		=>	'cms_db',
 
-	'def_mode'			=>	'test',		// test or others like devel, production
+	'def_mode'			=>	'test',		// test, development, production
 	'def_lang'			=>	'en',
+	'def_theme'			=>	'theme',
 	'def_pagesize'		=>	20,
 	'version'			=>	'v3.0.0',
 
 	'last_post_ip' 		=>	'0.0.0.0',
-	'last_post_time' 	=>	'1',			// 'the i of H:i:s'
+	'last_post_time' 	=>	'1',			// the i of H:i:s
 );
 
 
