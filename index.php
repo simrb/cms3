@@ -6,7 +6,12 @@
 define("ACCESS", "ALLOW");
 function access(){ defined('ACCESS') or die('Access denied'); }
 date_default_timezone_set('Asia/Shanghai');
+
+// base path
 define("PATH_BASE",		dirname(__FILE__) . "/");
+
+// default config
+require_once(PATH_BASE	."others/cfg.php");
 
 // absolute path
 define("PATH_MOD",		PATH_BASE . "module/");
@@ -17,9 +22,8 @@ define('PATH_UPLOAD', 	PATH_BASE . 'others/upload/');
 define("DIR_THEME",		"module/theme/");
 define("DIR_UPLOAD",	"others/upload/");
 
-// default config
-require_once(PATH_BASE	."others/cfg.php");
-require_once(PATH_MOD	."admin/common.php");
+// common libs, default access
+require_once(PATH_MOD	."data/common.php");
 require_once(PATH_BASE 	."others/access.php");
 
 // index file
