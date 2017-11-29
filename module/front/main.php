@@ -4,7 +4,7 @@
 $uid				= user_id();
 $t["category_kv"] 	= data_fetch_kv("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
-$t['web_title'] 	= user_log('web_title');
+$t['web_title'] 	= wption('web_title');
 
 
 // act: settings
@@ -22,17 +22,17 @@ if ($t['_a'] == "settings") {
 	if (isset($_POST['nickname1']) and isset($_POST['nickname1']) 
 	and ($_POST['nickname1'] != $_POST['nickname2'])) {
 		// insert
-		$res = sql_query("SELECT uval FROM user_log WHERE uid = ". $uid ." AND ukey = 'nickname';");
+		$res = sql_query("SELECT wval FROM wption WHERE uid = ". $uid ." AND wkey = 'nickname';");
 		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES (
+			sql_query("INSERT INTO wption (uid, wkey, wval) VALUES (
 				'". $uid ."', 'nickname', '". $_POST["nickname1"] ."'
 			);");
 
 		// update
 		} else {
-			sql_query("UPDATE user_log SET 
-				uval = '". $_POST["nickname1"] ."' 
-				WHERE uid = '".$uid."' AND ukey = 'nickname';"
+			sql_query("UPDATE wption SET 
+				wval = '". $_POST["nickname1"] ."' 
+				WHERE uid = '".$uid."' AND wkey = 'nickname';"
 			);
 		}
 	}
@@ -41,17 +41,17 @@ if ($t['_a'] == "settings") {
 	if (isset($_POST['contact1']) and isset($_POST['contact1']) 
 	and ($_POST['contact1'] != $_POST['contact2'])) {
 		// insert
-		$res = sql_query("SELECT uval FROM user_log WHERE uid = ". $uid ." AND ukey = 'contact';");
+		$res = sql_query("SELECT wval FROM wption WHERE uid = ". $uid ." AND wkey = 'contact';");
 		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES (
+			sql_query("INSERT INTO wption (uid, wkey, wval) VALUES (
 				'". $uid ."', 'contact', '". $_POST["contact1"] ."'
 			);");
 
 		// update
 		} else {
-			sql_query("UPDATE user_log SET 
-				uval = '". $_POST["contact1"] ."' 
-				WHERE uid = '".$uid."' AND ukey = 'contact';"
+			sql_query("UPDATE wption SET 
+				wval = '". $_POST["contact1"] ."' 
+				WHERE uid = '".$uid."' AND wkey = 'contact';"
 			);
 		}
 	}
@@ -60,17 +60,17 @@ if ($t['_a'] == "settings") {
 	if (isset($_POST['intro1']) and isset($_POST['intro1']) 
 	and ($_POST['intro1'] != $_POST['intro2'])) {
 		// insert
-		$res = sql_query("SELECT uval FROM user_log WHERE uid = ". $uid ." AND ukey = 'intro';");
+		$res = sql_query("SELECT wval FROM wption WHERE uid = ". $uid ." AND wkey = 'intro';");
 		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES (
+			sql_query("INSERT INTO wption (uid, wkey, wval) VALUES (
 				'". $uid ."', 'intro', '". $_POST["intro1"] ."'
 			);");
 
 		// update
 		} else {
-			sql_query("UPDATE user_log SET 
-				uval = '". $_POST["intro1"] ."' 
-				WHERE uid = '".$uid."' AND ukey = 'intro';"
+			sql_query("UPDATE wption SET 
+				wval = '". $_POST["intro1"] ."' 
+				WHERE uid = '".$uid."' AND wkey = 'intro';"
 			);
 		}
 	}
@@ -124,7 +124,7 @@ if ($t['_a'] == "addpost") {
 
 			// add upload log for record
 			$rid	= $insert_id;
-			sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES ('". $uid .
+			sql_query("INSERT INTO wption (uid, wkey, wval) VALUES ('". $uid .
 				"', 'img_r" . $rid . "', '". $path ."');");
 
 		}
@@ -173,7 +173,7 @@ if ($t['_v'] == "detail") {
 							WHERE rid = ". $t["rid"] . " LIMIT 1");
 		if ($res = mysql_fetch_row($res)) {
 			// set head
-			$t['web_title'] = utf8_substr($res[0], 0, 30) . ' -- ' . user_log('web_header');
+			$t['web_title'] = utf8_substr($res[0], 0, 30) . ' -- ' . wption('web_header');
 			$t['web_des'] 	= utf8_substr($res[0], 0, 70);
 			$t['cid'] 		= $res[1];
 
@@ -189,7 +189,7 @@ if ($t['_v'] == "detail") {
 			$t['record_cmt'] 	= sql_query($sql_str);
 
 			// set picture
-			$res = sql_query("SELECT uval FROM user_log WHERE ukey = 'img_r". $t["rid"] 
+			$res = sql_query("SELECT wval FROM wption WHERE wkey = 'img_r". $t["rid"] 
 					. "' LIMIT 1");
 			if ($res = mysql_fetch_row($res)) {
 				if (!empty($res[0])) {
@@ -221,7 +221,7 @@ if ($t['_v'] == "settings") {
 
 	$t['nickname1'] 	= $t['contact1'] = $t['intro1'] = '';
 
-	$res = sql_query("SELECT * FROM user_log WHERE uid = ". $uid);
+	$res = sql_query("SELECT * FROM wption WHERE uid = ". $uid);
 
 	if ($res) {
 		while ($row = mysql_fetch_row($res)) {	

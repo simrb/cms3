@@ -43,8 +43,8 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 		$t["tpl_name"]	=	$tpl_name;
 	}
 
-	$t['web_logo']		=	user_log('web_logo');
-	$t['web_header']	=	user_log('web_header');
+	$t['web_logo']		=	wption('web_logo');
+	$t['web_header']	=	wption('web_header');
 
 	// load default layout	
 	if ($layout == 'default') {
@@ -344,46 +344,48 @@ function user_ip () {
 }
 
 
-function user_log ($ukey) {
+// return wval of wption
+function wption ($wkey) {
 
 	$reval	= '';
 	$uid 	= user_id();
 
-	// has ukey in db
-	$res = sql_query("SELECT uval FROM user_log WHERE ukey = '". $ukey ."' LIMIT 1");
+	// has wkey in db
+	$res = sql_query("SELECT wval FROM wption WHERE wkey = '". $wkey ."' LIMIT 1");
 	if (mysql_num_rows($res) > 0) {
 		$res2 	= mysql_fetch_row($res);
 		$reval 	= $res2[0];
 
-	// no ukey, then fetch it from $c, and write to db
+	// no wkey, then fetch it from $c, and write to db
 	} else {
-		$reval = isset($GLOBALS['c'][$ukey]) ? $GLOBALS['c'][$ukey] : 'null';
-		sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES (
-			'". $uid ."','". $ukey ."', '". $reval ."')");
+		$reval = isset($GLOBALS['c'][$wkey]) ? $GLOBALS['c'][$wkey] : 'null';
+		sql_query("INSERT INTO wption (uid, wkey, wval) VALUES (
+			'". $uid ."','". $wkey ."', '". $reval ."')");
 	}
 
 	return $reval;
 }
 
 
-function user_log_set ($ukey, $uval) {
+// set wval by wkey
+function wption_set ($wkey, $wval) {
 	$uid = user_id();
-	sql_query("UPDATE user_log SET uval = '". $uval ."' WHERE ukey = '". $ukey ."'");
+	sql_query("UPDATE wption SET wval = '". $wval ."' WHERE wkey = '". $wkey ."'");
 }
 
 
 function user_allow_submit () {
 	$reval = '';
 
-	if (user_log('last_post_ip') == user_ip()) {
+	if (wption('last_post_ip') == user_ip()) {
 		// time
-		if (abs(intval(date("i")) - intval(user_log('last_post_time'))) < 2) {
+		if (abs(intval(date("i")) - intval(wption('last_post_time'))) < 2) {
 			$reval = l('you cannot post twice in a short time');
 		}
 	} else {
-		user_log_set('last_post_ip', user_ip());
+		wption_set('last_post_ip', user_ip());
 	}
-	user_log_set('last_post_time', date("i"));
+	wption_set('last_post_time', date("i"));
 
 	return $reval;
 }

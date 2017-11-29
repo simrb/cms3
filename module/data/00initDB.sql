@@ -68,6 +68,33 @@ INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `creat
 
 
 --
+-- `wption`, the alias of option
+--
+CREATE TABLE `wption` (
+  `wpid` int(11) NOT NULL auto_increment,
+  `uid` int(11) NOT NULL default '0',
+  `wkey` varchar(50) NOT NULL,
+  `wval` varchar(100) NOT NULL,
+  PRIMARY KEY  (`wpid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+INSERT INTO `wption` (`wpid`, `uid`, `wkey`, `wval`) VALUES
+(1, 1, 'allow_comment', 'on'),
+(2, 1, 'allow_register', 'on'),
+(3, 1, 'last_post_ip', '127.0.0.1'),
+(4, 1, 'last_post_time', '1'),
+(5, 1, 'web_logo', 'logo.jpg'),
+(6, 1, 'web_header', 'New site'),
+(7, 1, 'web_title', 'New site'),
+(8, 1, 'web_des', 'We devote to make a CMS as simplicity, rudeness.'),
+(9, 1, 'web_kw', 'a cms'),
+(10, 1, 'allow_guest_post_num', '50'),
+(11, 1, 'allow_user_post_num', '50'),
+(12, 1, 'allow_register_num', '50');
+
+
+--
 -- `user`
 --
 CREATE TABLE `user` (
@@ -84,33 +111,6 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`) VALUES
 (2, 'zcedit', '8888', 6),
 (3, 'test', '8888', 3),
 (4, 'viewer', '8888', 1);
-
-
---
--- `user_log`
---
-CREATE TABLE `user_log` (
-  `ulid` int(11) NOT NULL auto_increment,
-  `uid` int(11) NOT NULL default '0',
-  `ukey` varchar(50) NOT NULL,
-  `uval` varchar(100) NOT NULL,
-  PRIMARY KEY  (`ulid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
-INSERT INTO `user_log` (`ulid`, `uid`, `ukey`, `uval`) VALUES
-(1, 1, 'open_comment', 'on'),
-(2, 1, 'open_register', 'on'),
-(3, 1, 'last_post_ip', '127.0.0.1'),
-(4, 1, 'last_post_time', '1'),
-(5, 1, 'web_logo', 'logo.jpg'),
-(6, 1, 'web_header', 'New site'),
-(7, 1, 'web_title', 'New site'),
-(8, 1, 'web_des', 'We devote to make a CMS as simplicity, rudeness.'),
-(9, 1, 'web_kw', 'a cms'),
-(10, 1, 'allow_post_by_guest', '50'),
-(11, 1, 'allow_post_by_user', '50'),
-(12, 1, 'allow_register_number', '50');
 
 
 --
