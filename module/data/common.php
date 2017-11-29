@@ -64,7 +64,7 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 // change the language from en to what you want
 function l ($str) {
 	$reval 	= $str;
-	$path 	= PATH_MOD . 'data/lang/' . $GLOBALS['c']['def_lang'] . '.php';
+	$path 	= PATH_THEME . 'lang/' . $GLOBALS['c']['def_lang'] . '.php';
 	if (file_exists($path)) {
 		require $path;
 		if (isset($lang[$str])) {

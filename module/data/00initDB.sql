@@ -68,19 +68,6 @@ INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `creat
 
 
 --
--- `record_log`
---
-CREATE TABLE `record_log` (
-  `rlid` int(11) NOT NULL auto_increment,
-  `uid` int(11) NOT NULL default '0',
-  `rid` int(11) NOT NULL,
-  `ukey` varchar(50) NOT NULL,
-  `uval` varchar(100) NOT NULL,
-  PRIMARY KEY  (`rlid`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-
-
---
 -- `user`
 --
 CREATE TABLE `user` (
@@ -117,12 +104,13 @@ INSERT INTO `user_log` (`ulid`, `uid`, `ukey`, `uval`) VALUES
 (3, 1, 'last_post_ip', '127.0.0.1'),
 (4, 1, 'last_post_time', '1'),
 (5, 1, 'web_logo', 'logo.jpg'),
-(6, 1, 'web_des', 'It is a cms, we devote to simplicity, rudeness.'),
-(7, 1, 'web_header', 'New site'),
-(8, 1, 'web_title', 'New site'),
-(9, 1, 'allow_post_by_guest', '50'),
-(10, 1, 'allow_post_by_user', '50'),
-(11, 1, 'allow_register_number', '50');
+(6, 1, 'web_header', 'New site'),
+(7, 1, 'web_title', 'New site'),
+(8, 1, 'web_des', 'We devote to make a CMS as simplicity, rudeness.'),
+(9, 1, 'web_kw', 'a cms'),
+(10, 1, 'allow_post_by_guest', '50'),
+(11, 1, 'allow_post_by_user', '50'),
+(12, 1, 'allow_register_number', '50');
 
 
 --

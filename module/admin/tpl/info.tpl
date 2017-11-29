@@ -26,7 +26,7 @@
 				<li>
 					<br>
 					<input type="hidden" name="" value="" />
-					<input type="submit" value="<?= l('submit'); ?>" />
+					<input type="submit" value="<?= l('update'); ?>" />
 				</li>
 			</ul>
 

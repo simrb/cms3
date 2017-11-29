@@ -124,8 +124,8 @@ if ($t['_a'] == "addpost") {
 
 			// add upload log for record
 			$rid	= $insert_id;
-			sql_query("INSERT INTO record_log (rid, ukey, uval) VALUES ('". $rid .
-				"', 'img', '". $path ."');");
+			sql_query("INSERT INTO user_log (uid, ukey, uval) VALUES ('". $uid .
+				"', 'img_r" . $rid . "', '". $path ."');");
 
 		}
 
@@ -189,8 +189,8 @@ if ($t['_v'] == "detail") {
 			$t['record_cmt'] 	= sql_query($sql_str);
 
 			// set picture
-			$res = sql_query("SELECT uval FROM record_log WHERE rid = ". $t["rid"] 
-					. " AND ukey = 'img' LIMIT 1");
+			$res = sql_query("SELECT uval FROM user_log WHERE ukey = 'img_r". $t["rid"] 
+					. "' LIMIT 1");
 			if ($res = mysql_fetch_row($res)) {
 				if (!empty($res[0])) {
 					$t['record_img'] = $res[0];
