@@ -24,7 +24,7 @@ define("DIR_THEME",		"module/" 	. THEME);
 define("DIR_UPLOAD",	"others/upload/");
 
 // common libs, default access
-require_once(PATH_MOD	."data/common.php");
+require_once(PATH_MOD	."admin/data/common.php");
 require_once(PATH_BASE 	."others/access.php");
 
 // index file

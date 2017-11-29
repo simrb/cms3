@@ -15,7 +15,6 @@ index.html
 module/*
 !module/admin/*
 !module/front/*
-!module/data/*
 !module/theme/*
 others/*
 !others/upload/logo.jpg
