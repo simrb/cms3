@@ -47,16 +47,6 @@ if ($t['_a'] == "del") {
 	}
 }
 
-// act: keepit
-if ($t['_a'] == "keepit") {
-	if (isset($_GET["rid"])) {
-		sql_query("UPDATE record SET 
-			cid = 0, follow = 0
-			 WHERE rid = '". $_GET["rid"] ."';"
-		);
-		$t["msg"] = l('operated successfully');
-	}
-}
 
 // view: show
 if ($t['_v'] == "show") {

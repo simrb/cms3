@@ -38,7 +38,7 @@
 					if ($t["record_res"]) {
 						while($row = mysql_fetch_array($t["record_res"])) {
 
-							$category = isset($t['category_kv'][$row['cid']]) ? $t['category_kv'][$row['cid']] : "";
+							$category = isset($t['category_kv'][$row['cid']]) ? $t['category_kv'][$row['cid']] : " -- ";
 						//$status = isset($t['status_kv'][$row['sid']]) ? $t['status_kv'][$row['sid']] : "";
 
 
@@ -115,6 +115,7 @@
 							echo '<label>'. l('category') .'</label>';
 
 							echo '<select name="cid">';
+							echo '<option value="0"> -- </option>';
 							foreach ($t['category_kv'] as $key => $val) {
 
 								// $defval = ($key == $t["cid"]) ? 'checked="checked"' : "";
@@ -160,12 +161,11 @@
 						<input type="text" name="useful" class="w50" value="<?= $t['useful'] ?>" />
 					</li>
 					<li>
-	  					<a href="<?= url_c('_a=keepit&rid='. $t['rid']); ?>">
-							<button > <?= l('keepit'); ?> </button>
-						</a>
-	  					<a href="<?= url_c('_a=del&rid='. $t['rid']); ?>">
-							<button > <?= l('delete'); ?> </button>
-						</a>
+						<?php if ($t['rid'] != 0) { ?>
+							<a href="<?= url_c('_a=del&rid='. $t['rid']); ?>">
+								<button > <?= l('delete'); ?> </button>
+							</a>
+						<?php } ?>
 					</li>
 				</ul>
 
