@@ -149,6 +149,13 @@ if [ $Uinitpj = "yes" ] ; then
 		echo "dir ${my_dir} is created"
 	fi
 
+	# create logo file
+	my_file="others/upload/logo.jpg"
+	if [ ! -f "$my_file" ] ; then
+ 		touch $my_file
+		echo "${my_file} is created"
+	fi
+
 fi
 
 
