@@ -85,6 +85,7 @@
 'introduction'	=>  '' ,
 'menber'	=>  '' ,
 'register have to know'	=>  '' ,
+'update'	=>  '' ,
 
 
 );?>

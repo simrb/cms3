@@ -85,6 +85,7 @@
 'introduction'	=>  '个人简述' ,
 'menber'	=>  '会员' ,
 'register have to know'	=>  '如果你是新注册会员，请点这里，查看会员公约' ,
+'update'	=>  '更新' ,
 
 
 );?>
