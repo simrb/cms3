@@ -100,7 +100,7 @@ INSERT INTO `wption` (`wpid`, `uid`, `wkey`, `wval`) VALUES
 CREATE TABLE `user` (
   `uid` int(11) NOT NULL auto_increment,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `password` varchar(50) NOT NULL,
   `level` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
@@ -119,8 +119,8 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`) VALUES
 CREATE TABLE `sess` (
   `sid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL,
-  `created` datetime NOT NULL,
-  `exptime` varchar(20) NOT NULL,
+  `created` varchar(15) NOT NULL,
+  `exptime` varchar(15) NOT NULL,
   `token` varchar(50) NOT NULL,
   PRIMARY KEY  (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;

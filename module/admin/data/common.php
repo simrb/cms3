@@ -257,9 +257,9 @@ function utf8_substr2($str, $from, $len)
 /**************** user func libs ******************/
 // user login, success return true.
 function user_login ($name, $pawd) {
-	$reval 	= true;
-	$res 	= sql_query("SELECT * FROM user WHERE 
-	username = '". $name ."' and password ='". $pawd ."' ;");
+	$reval 		= false;
+	$res 		= sql_query("SELECT * FROM user WHERE 
+					username = '". $name ."' AND password ='". $pawd ."' ;");
 
 	if (mysql_num_rows($res) > 0) {
 		$row 	= mysql_fetch_row($res);
@@ -269,11 +269,11 @@ function user_login ($name, $pawd) {
 		// set the user info for login, expire in 1*72 hour
 		setcookie("token", $token, $time);
 
-		// save to db
+		// save a token
 		sql_query("INSERT INTO sess (uid, token, created, exptime) VALUES (
-			'".$row[0]."', '$token', '".date('Y-m-d H:i:s')."', '".date('YmdHis', $time)."')");
-	} else {
-		$reval = false;
+			'".$row[0]."', '$token', '".date('YmdHis')."', '".date('YmdHis', $time)."')");
+
+		$reval 	= true;
 	}
 
 	return $reval;
@@ -328,9 +328,11 @@ function user_role_need ($role) {
 // retunr an array of user info
 function user_info () {
 	$reval = array();
-	if(isset($_COOKIE["token"]) and ($_COOKIE["token"] != "")){
+	$token = $_COOKIE["token"];
+
+	if(isset($token) and !empty($token)) {
 		$res = sql_query("SELECT * FROM user WHERE uid = 
-			(SELECT uid FROM sess WHERE token = '". $_COOKIE["token"] ."' LIMIT 1)");
+			(SELECT uid FROM sess WHERE token = '". $token ."' LIMIT 1)");
 		if (mysql_num_rows($res) > 0) {
 			$reval = mysql_fetch_row($res);
 		}
