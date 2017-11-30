@@ -36,7 +36,7 @@ if ($t['_a'] == "del") {
 
 //act: delall
 if ($t['_a'] == "delall") {
-	sql_query("TRUNCATE TABLE user_status;");
+	sql_query("TRUNCATE TABLE sess;");
 	$t["msg"] = l('deleted successfully, you will quit soon');
 }
 
@@ -103,8 +103,8 @@ if ($t['_v'] == "show") {
 
 //view: status
 if ($t['_v'] == "status") {
-	$t["user_res"] = sql_query("SELECT * FROM user_status ORDER BY usid DESC LIMIT 20;");
-	tmp($t, "admin/tpl/user_status");
+	$t["user_res"] = sql_query("SELECT * FROM sess ORDER BY sid DESC LIMIT 20;");
+	tmp($t, "admin/tpl/sess");
 }
 
 

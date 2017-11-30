@@ -270,7 +270,7 @@ function user_login ($name, $pawd) {
 		setcookie("token", $token, $time);
 
 		// save to db
-		sql_query("INSERT INTO user_status (uid, token, created, exptime) VALUES (
+		sql_query("INSERT INTO sess (uid, token, created, exptime) VALUES (
 			'".$row[0]."', '$token', '".date('Y-m-d H:i:s')."', '".date('YmdHis', $time)."')");
 	} else {
 		$reval = false;
@@ -285,7 +285,7 @@ function user_logout () {
 	setcookie("token", time()-1);
 
 	// remove from db
-	sql_query("DELETE FROM user_status WHERE token = '$token'");
+	sql_query("DELETE FROM sess WHERE token = '$token'");
 }
 
 // return the user id current he logined
@@ -330,7 +330,7 @@ function user_info () {
 	$reval = array();
 	if(isset($_COOKIE["token"]) and ($_COOKIE["token"] != "")){
 		$res = sql_query("SELECT * FROM user WHERE uid = 
-			(SELECT uid FROM user_status WHERE token = '". $_COOKIE["token"] ."' LIMIT 1)");
+			(SELECT uid FROM sess WHERE token = '". $_COOKIE["token"] ."' LIMIT 1)");
 		if (mysql_num_rows($res) > 0) {
 			$reval = mysql_fetch_row($res);
 		}

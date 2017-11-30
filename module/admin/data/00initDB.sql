@@ -114,15 +114,15 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`) VALUES
 
 
 --
--- `user_status`
+-- `sess`, user session
 --
-CREATE TABLE `user_status` (
-  `usid` int(11) NOT NULL auto_increment,
+CREATE TABLE `sess` (
+  `sid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL,
   `created` datetime NOT NULL,
   `exptime` varchar(20) NOT NULL,
   `token` varchar(50) NOT NULL,
-  PRIMARY KEY  (`usid`)
+  PRIMARY KEY  (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 

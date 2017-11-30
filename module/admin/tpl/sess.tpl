@@ -20,7 +20,7 @@
   						echo "<td>" . $row['token'] . "</td>";
   						echo "<td>" . $row['created'] . "</td>";
   						echo "<td>" . $row['exptime'] . "</td>";
-/*  					echo "<td><a href='?_m=admin&_f=user&_v=edit&_a=edit&uid=".$row["usid"]."'>编辑</a>  ";
+/*  					echo "<td><a href='?_m=admin&_f=user&_v=edit&_a=edit&uid=".$row["sid"]."'>编辑</a>  ";
   						echo "<a href='?_m=admin&_f=user&_a=del&uid=".$row["uid"]."'>删除</a></td>";
 */
   						echo "</tr>";
