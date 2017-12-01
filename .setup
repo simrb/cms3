@@ -94,12 +94,16 @@ if [ $Uinitpj = "yes" ] ; then
 	my_file="/usr/sbin/httpd"
 	if [ ! -f "$my_file" ] ; then
 		yum -y install httpd
+		service httpd start
+		chkconfig httpd on
 	fi
 
 	my_file="/usr/bin/mysql"
 	if [ ! -f "$my_file" ] ; then
 		yum -y install mysql mysql-server
 # 		yum -y install mysql mysql-server mysql-devel
+		service mysqld start
+		chkconfig mysqld on
 	fi
 
 	my_file="/usr/bin/php"
