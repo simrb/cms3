@@ -264,9 +264,9 @@ function user_login ($name, $pawd) {
 	if (mysql_num_rows($res) > 0) {
 		$row 	= mysql_fetch_row($res);
 		$token	= md5($row[0] + date('YmdHis'));
-		$time	= time()+3600*72;
+		$time	= time()+3600*24*7;
 
-		// set the user info for login, expire in 1*72 hour
+		// set the user info for login, expire time in 7 days
 		setcookie("token", $token, $time);
 
 		// save a token

@@ -37,7 +37,7 @@
 'delete'      =>  '' ,
 'user token'      =>  '' ,
 'created time'      =>  '' ,
-'timeout'      =>  '' ,
+'expired time'      =>  '' ,
 'clear all'      =>  '' ,
 'keyword'      =>  '' ,
 'query'      =>  '' ,

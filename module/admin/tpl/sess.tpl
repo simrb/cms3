@@ -5,7 +5,7 @@
 				<th style="width:30px">id</th>
 				<th style="width:200px"><?= l('user token'); ?></th>
 				<th style="width:200px"><?= l('created time'); ?></th>
-				<th style="width:200px"><?= l('timeout'); ?></th>
+				<th style="width:200px"><?= l('expired time'); ?></th>
 <!-- 				<th style="width:80px"></th> -->
 			</tr>
 		</thead>

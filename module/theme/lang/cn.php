@@ -37,7 +37,7 @@
 'delete'      =>  '删除' ,
 'user token'      =>  '用户凭证' ,
 'created time'      =>  '创建时间' ,
-'timeout'      =>  '超时' ,
+'expired time'      =>  '超时时间' ,
 'clear all'      =>  '清空' ,
 'keyword'      =>  '关键字' ,
 'query'      =>  '查询' ,
