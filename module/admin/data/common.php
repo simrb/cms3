@@ -43,18 +43,18 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 		$t["tpl_name"]	=	$tpl_name;
 	}
 
-	$t['web_logo']		=	wption('web_logo');
-	$t['web_header']	=	wption('web_header');
+	$t['web_logo']		=	optionkv('web_logo');
+	$t['web_header']	=	optionkv('web_header');
 
-	// load default layout	
+	// default layout	
 	if ($layout == 'default') {
 		$layout 		= isset($t['layout']) ? $t['layout'] : $t["def_layout"];
 	}
 
-	// load tpl without layout
-	if ($layout == "" or $layout == NULL or $layout == false) {
+	// load template without layout
+	if (empty($layout)) {
 		include_once(path_tmp($t['tpl_name']));
-	// load layout
+	// load layout first
 	} else {
 		include_once(path_tmp($layout));
 	}
@@ -346,48 +346,48 @@ function user_ip () {
 }
 
 
-// return wval of wption
-function wption ($wkey) {
+// return value by key
+function optionkv ($okey) {
 
 	$reval	= '';
 	$uid 	= user_id();
 
-	// has wkey in db
-	$res = sql_query("SELECT wval FROM wption WHERE wkey = '". $wkey ."' LIMIT 1");
+	// has okey in db
+	$res = sql_query("SELECT oval FROM optionkv WHERE okey = '". $okey ."' LIMIT 1");
 	if (mysql_num_rows($res) > 0) {
 		$res2 	= mysql_fetch_row($res);
 		$reval 	= $res2[0];
 
-	// no wkey, then fetch it from $c, and write to db
+	// no okey, then fetch it from $c, and write to db
 	} else {
-		$reval = isset($GLOBALS['c'][$wkey]) ? $GLOBALS['c'][$wkey] : 'null';
-		sql_query("INSERT INTO wption (uid, wkey, wval) VALUES (
-			'". $uid ."','". $wkey ."', '". $reval ."')");
+		$reval = isset($GLOBALS['c'][$okey]) ? $GLOBALS['c'][$okey] : 'null';
+		sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
+			'". $uid ."','". $okey ."', '". $reval ."')");
 	}
 
 	return $reval;
 }
 
 
-// set wval by wkey
-function wption_set ($wkey, $wval) {
+// set oval by okey
+function optionkv_set ($okey, $oval) {
 	$uid = user_id();
-	sql_query("UPDATE wption SET wval = '". $wval ."' WHERE wkey = '". $wkey ."'");
+	sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
 }
 
 
 function user_allow_submit () {
 	$reval = '';
 
-	if (wption('last_post_ip') == user_ip()) {
+	if (optionkv('last_post_ip') == user_ip()) {
 		// time
-		if (abs(intval(date("i")) - intval(wption('last_post_time'))) < 2) {
+		if (abs(intval(date("i")) - intval(optionkv('last_post_time'))) < 2) {
 			$reval = l('you cannot post twice in a short time');
 		}
 	} else {
-		wption_set('last_post_ip', user_ip());
+		optionkv_set('last_post_ip', user_ip());
 	}
-	wption_set('last_post_time', date("i"));
+	optionkv_set('last_post_time', date("i"));
 
 	return $reval;
 }

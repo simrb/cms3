@@ -68,18 +68,18 @@ INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `creat
 
 
 --
--- `wption`, the alias of option
+-- `optionkv`, the alias of option
 --
-CREATE TABLE `wption` (
-  `wpid` int(11) NOT NULL auto_increment,
+CREATE TABLE `optionkv` (
+  `oid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL default '0',
-  `wkey` varchar(50) NOT NULL,
-  `wval` varchar(100) NOT NULL,
-  PRIMARY KEY  (`wpid`)
+  `okey` varchar(50) NOT NULL,
+  `oval` varchar(100) NOT NULL,
+  PRIMARY KEY  (`oid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
-INSERT INTO `wption` (`wpid`, `uid`, `wkey`, `wval`) VALUES
+INSERT INTO `optionkv` (`oid`, `uid`, `okey`, `oval`) VALUES
 (1, 1, 'allow_comment', 'on'),
 (2, 1, 'allow_register', 'on'),
 (3, 1, 'last_post_ip', '127.0.0.1'),
