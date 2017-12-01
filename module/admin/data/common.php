@@ -281,11 +281,13 @@ function user_login ($name, $pawd) {
 
 
 function user_logout () {
-	$token = $_COOKIE["token"];
+	$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : '';
 	setcookie("token", time()-1);
 
 	// remove from db
-	sql_query("DELETE FROM sess WHERE token = '$token'");
+	if(!empty($token)) {
+		sql_query("DELETE FROM sess WHERE token = '$token'");
+	}
 }
 
 // return the user id current he logined
@@ -328,9 +330,9 @@ function user_role_need ($role) {
 // retunr an array of user info
 function user_info () {
 	$reval = array();
-	$token = $_COOKIE["token"];
+	$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : '';
 
-	if(isset($token) and !empty($token)) {
+	if(!empty($token)) {
 		$res = sql_query("SELECT * FROM user WHERE uid = 
 			(SELECT uid FROM sess WHERE token = '". $token ."' LIMIT 1)");
 		if (mysql_num_rows($res) > 0) {
