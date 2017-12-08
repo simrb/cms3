@@ -178,5 +178,5 @@
 <?php } ?>
 
 
-<link rel="stylesheet" type="text/css" href="<?= path_theme('record.css') ?>">
-<script type="text/javascript" src="<?= path_theme('file.js') ?>"></script>
+<link rel="stylesheet" type="text/css" href="<?= path_theme('css/record.css') ?>">
+<script type="text/javascript" src="<?= path_theme('js/file.js') ?>"></script>
