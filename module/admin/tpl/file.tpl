@@ -1,5 +1,11 @@
 <?php if ($t['_v'] == 'show') { ?>
 
+	<div class="show-bar">
+		<form class="edit-form">
+			<a href="<?= url_c('_v=edit'); ?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
+		</form>
+	</div>
+
 	<div class="show-table" >
 		<table>
 			<thead >
@@ -36,30 +42,8 @@
 			</tbody>
 		</table>
 
-		<p class="pagination">
-			<?php
-				if ($t["pagenums"] > 0) {
-					for ($i=0; $i < $t["pagenums"]; $i++) {
-						$j = $i + 1;
-						echo "<span> <a href='". url_c("pagecurr=$j");
-						echo "'>$j</a> </span>";
-					}
-				}
-
-			?>
-		</p>
 	</div>
 
-	<div class="pagination_label">
-		<span><?= l('record count'); ?>：<?=$t["res_num"] ?>, </span>
-		<span><?= l('current page'); ?>：<?=$t["pagecurr"] ?> / <?=$t["pagenums"] ?></span>
-	</div>
-
-	<div class="show-bar">
-		<form class="edit-form">
-			<a href="<?= url_c('_v=edit'); ?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
-		</form>
-	</div>
 
 <?php } ?>
 

@@ -1,3 +1,10 @@
+
+<div class="show-bar">
+	<form class="edit-form">
+		<a href="<?=url_c('_v=status&_a=delall');?>"><input type="button" value="<?= l('clear all'); ?>" class="bgwt" /></a>
+	</form>
+</div>
+
 <div class="show-table">
 	<table>
 		<thead>
@@ -33,9 +40,3 @@
 
 </div>
 
-
-<div class="show-bar">
-	<form class="edit-form">
-		<a href="<?=url_c('_v=status&_a=delall');?>"><input type="button" value="<?= l('clear all'); ?>" class="bgwt" /></a>
-	</form>
-</div>

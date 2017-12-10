@@ -11,6 +11,7 @@
 			</select>
 			<input type="submit" class="" value="<?= l('query'); ?>" />
 
+			<a href="<?=url_c('_v=edit');?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
 		</form>
 	</div>
 
@@ -49,12 +50,6 @@
 		
 	</div>
 
-
-	<div class="show-bar">
-		<form class="edit-form">
-			<a href="<?=url_c('_v=edit');?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
-		</form>
-	</div>
 
 <?php } ?>
 
