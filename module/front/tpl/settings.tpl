@@ -7,6 +7,11 @@
 				<h3><?= l('base info'); ?></h3>
 			</li>
 
+			<li><label><?= l('user id'); ?></label></li>
+			<li>
+				<input type="text" value="#<?= user_id(); ?>" disabled="disabled" />
+			</li>
+
 			<li><label><?= l('username'); ?></label></li>
 			<li>
 				<input type="text" value="<?= user_name(); ?>" disabled="disabled" />
