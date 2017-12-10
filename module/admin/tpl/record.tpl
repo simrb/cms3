@@ -4,15 +4,17 @@
 		<form action="<?=url_c('_a=query');?>" method="post">
 
 			<input type="search" class="search" name="select_kw" placeholder="<?= l('keyword'); ?>" />
-			<input type="submit" class="" value="<?= l('query'); ?>" />
 			<select name="select_field" class="selectmenu">
+				<option value="rid" ><?= l('id'); ?></option>
 				<option value="uid" ><?= l('user id'); ?></option>
 				<option value="cid" ><?= l('category'); ?></option>
+				<option value="useful" ><?= l('useful'); ?></option>
 			</select>
 			<select name="select_type" class="selectmenu">
 				<option value="exact" ><?= l('accurate'); ?></option>
 				<option value="vague" ><?= l('vague'); ?></option>
 			</select>
+			<input type="submit" class="" value="<?= l('query'); ?>" />
 
 		</form>
 	</div>
