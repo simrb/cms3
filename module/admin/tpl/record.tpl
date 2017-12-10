@@ -76,26 +76,16 @@
 			</tbody>
 		</table>
 
-		<p class="pagination">
-			<?php
-				if ($t["pagenums"] > 0) {
-					for ($i=0; $i < $t["pagenums"]; $i++) {
-						$j = $i + 1;
-						echo "<span> <a href='". url_c("pagecurr=$j");
-						echo "'>$j</a> </span>";
-					}
-				}
-
-			?>
-		</p>
-
+		<div class="pagination">
+			<form action="<?=url_c();?>" method="post">
+				<input type="submit" value="<?= l('go to'); ?>" class="goto" />
+				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"] ?>
+				<span><?= l('pages'); ?>,  <?=$t["res_num"] ?> <?= l('records'); ?></span>
+			</form>
+		</div>
 
 	</div>
 
-	<div class="pagination_label">
-		<span><?= l('record count'); ?>：<?=$t["res_num"] ?>, </span>
-		<span><?= l('current page'); ?>：<?=$t["pagecurr"] ?> / <?=$t["pagenums"] ?></span>
-	</div>
 
 
 

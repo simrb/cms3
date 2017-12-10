@@ -48,8 +48,7 @@
 'follow id'      =>  '跟随 id' ,
 'useful'      =>  '有用' ,
 'content'      =>  '内容' ,
-'record count'      =>  '记录 条数' ,
-'current page'      =>  '当前 页面' ,
+'pages'      =>  '页面' ,
 'more options'      =>  '更多 选项' ,
 'picture'      =>  '图片' ,
 'follow'      =>  '跟随' ,
@@ -89,6 +88,7 @@
 'confirm'	=>  '确认' ,
 'return to login'	=>  '返回登录界面' ,
 'user register'      =>  '用户注册' ,
+'go to'      =>  '跳到' ,
 
 
 );?>

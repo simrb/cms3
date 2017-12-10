@@ -31,8 +31,7 @@ tbody tr:hover { background-color: #d4ddc2; }
 #bodyer { min-height: 400px; }
 #msg { margin-bottom: 20px; }
 #footer { min-height: 30px; padding-top: 20px;}
-.pagination { margin: 10px 0;  float: left; }
-.pagination span { margin-right: 5px; }
+.pagination { margin: 15px 0;  float: left; }
 
 .show-menu h4, .show-menu img { margin: 0; padding: 0; }
 .show-menu img { float: left; margin-right: 4px; }
@@ -59,7 +58,7 @@ textarea { width: 95%; }
 input[type="submit"] { width: 150px; height: 23px; }
 .edit-form-login input[type="submit"] {width: 200px; height: 23px;}
 
-.show-query, .show-bar, .show-table, .pagination_label { margin-bottom: 15px; clear: both;}
+.show-query, .show-bar, .show-table { margin-bottom: 15px; clear: both;}
 .show-table { text-align: center; }
 .show-table thead { font-weight: normal; }
 .show-table th, .show-table tr{ --border: 1px solid #c5cbce; }
@@ -69,8 +68,8 @@ input[type="submit"] { width: 150px; height: 23px; }
 .edit-form .w50  { width: 70px; }
 .edit-form label, .edit-form select, .edit-form input { margin-right: 5px; }
 .show-query label, .show-query select, .show-query input { margin-right: 5px; }
-.pagination_label { font-size: 13px; float: left; --margin: 10px; }
-.pagination_label label { margin-right: 10px; }
+.pagination .goto { width: 100px; }
+.pagination .pagecurr { width: 50px; }
 
 
 

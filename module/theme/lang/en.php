@@ -48,8 +48,7 @@
 'follow id'      =>  '' ,
 'useful'      =>  'Useful' ,
 'content'      =>  '' ,
-'record count'      =>  '' ,
-'current page'      =>  '' ,
+'pages'      =>  '' ,
 'more options'      =>  '' ,
 'picture'      =>  '' ,
 'follow'      =>  '' ,
@@ -89,6 +88,7 @@
 'confirm'	=>  '' ,
 'return to login'	=>  '' ,
 'user register'      =>  '' ,
+'go to'      =>  '' ,
 
 
 );?>
