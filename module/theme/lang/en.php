@@ -86,6 +86,9 @@
 'menber'	=>  '' ,
 'register have to know'	=>  '' ,
 'update'	=>  '' ,
+'confirm'	=>  '' ,
+'return to login'	=>  '' ,
+'user register'      =>  '' ,
 
 
 );?>

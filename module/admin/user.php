@@ -55,7 +55,7 @@ if ($t['_a'] == "login") {
 
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
 		// user register
-		if (isset($_POST["firstime"]) and $_POST["firstime"] == 'yes') {
+		if (isset($_POST["firstime"])) {
 			$arr = $_POST;
 			$arr['level'] = 1;
 			$t["msg"] = user_add($arr);
