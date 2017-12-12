@@ -54,13 +54,7 @@ if ($t['_v'] == "show") {
 //	$t["status_kv"]		=	data_fetch_kv("status", "sid", "name");
 
 	// pagination
-	if (isset($_POST["pagecurr"]) and $_POST["pagecurr"]>1) {
-		$pagecurr = $_POST["pagecurr"];
-	} elseif ( isset($_GET["pagecurr"]) and $_GET["pagecurr"]>1) {
-		$pagecurr = $_GET["pagecurr"];
-	} else {
-		$pagecurr = 1;
-	}
+	$pagecurr = (isset($_REQUEST["pagecurr"]) and $_REQUEST["pagecurr"]>1) ? $_REQUEST["pagecurr"] : 1;
 
 	$pagesize			=	$c["def_pagesize"] ;
 	$pagenums			=	0 ;

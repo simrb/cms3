@@ -42,6 +42,14 @@
 			</tbody>
 		</table>
 
+		<div class="pagination">
+			<form action="<?=url_c();?>" method="post">
+				<input type="submit" value="<?=l('go to');?>" class="goto" />
+				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
+				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?=l('records');?></span>
+			</form>
+		</div>
+
 	</div>
 
 

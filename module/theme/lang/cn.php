@@ -49,7 +49,7 @@
 'useful'      =>  '有用' ,
 'content'      =>  '内容' ,
 'pages'      =>  '页面' ,
-'more options'      =>  '更多 选项' ,
+'more'      =>  '更多' ,
 'picture'      =>  '图片' ,
 'follow'      =>  '跟随' ,
 'name'      =>  '名称' ,

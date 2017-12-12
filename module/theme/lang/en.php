@@ -49,7 +49,7 @@
 'useful'      =>  'Useful' ,
 'content'      =>  '' ,
 'pages'      =>  '' ,
-'more options'      =>  '' ,
+'more'      =>  '' ,
 'picture'      =>  '' ,
 'follow'      =>  '' ,
 'name'      =>  '' ,

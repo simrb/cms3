@@ -78,9 +78,9 @@
 
 		<div class="pagination">
 			<form action="<?=url_c();?>" method="post">
-				<input type="submit" value="<?= l('go to'); ?>" class="goto" />
-				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"] ?>
-				<span><?= l('pages'); ?>,  <?=$t["res_num"] ?> <?= l('records'); ?></span>
+				<input type="submit" value="<?= l('go to');?>" class="goto" />
+				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
+				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records');?></span>
 			</form>
 		</div>
 
@@ -89,10 +89,10 @@
 
 
 
-<?php } ?>
+<?php } 
 
 
-<?php if ($t['_v'] == 'edit') { ?>
+if ($t['_v'] == 'edit') { ?>
 
 	<div class="edit-form">
 		<form action="<?=url_c('_a='.$t['_a']);?>" method="post" >
@@ -134,7 +134,7 @@
 			</ul>
 
 			</br>
-			<label class="showorhide"><a href="#"><?= l('more options'); ?> >>> </a></label>
+			<label class="showorhide"><a href="#"><?= l('more'); ?> >>> </a></label>
 			<div>
 				</br>
 				

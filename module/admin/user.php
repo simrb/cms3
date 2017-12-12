@@ -89,7 +89,8 @@ if ($t['_v'] == "login") {
 if ($t['_v'] == "show") {
 	
 	$sql 		= "SELECT * FROM user";
-	$pagesize 	= isset($_GET['pagesize']) ? $_GET['pagesize'] : 10;
+	$pagesize 	= isset($_GET['pagesize']) ? $_GET['pagesize'] : 20;
+
 	if (isset($_POST['select_key']) and isset($_POST['select_val'])) {
 		$sql .= ' WHERE '. $_POST['select_key'] . ' = "'. $_POST['select_val'] .'";';
 	} else {
