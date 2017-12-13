@@ -27,7 +27,8 @@ $t = array(
 	'_a'				=>	'',
 	'_v'				=>	'show',
 
-	'def_layout'		=>	'front/tpl/layout',
+	'tpl_path'			=>	'theme/front/',
+	'tpl_layout'		=>	'front/tpl/layout',
 
 	'link_login'		=>	'?_m=admin&_f=user&_v=login',
 	'link_logout'		=>	'?_m=admin&_f=user&_a=logout',

@@ -34,7 +34,7 @@ function path_tmp ($path) {
 
 
 // load a template by tpl name, or no tpl with null in second argument
-function tmp($t, $tpl_name = '', $layout = 'default') {
+function tmp($t, $tpl_name = '', $layout = '') {
 
 	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." "
 							.$t["msg"] : "";
@@ -43,20 +43,20 @@ function tmp($t, $tpl_name = '', $layout = 'default') {
 		$t["tpl_name"]	=	$tpl_name;
 	}
 
+	if ($layout != '') {
+		$t["tpl_layout"] = 	$layout;
+	}
+
 	$t['web_logo']		=	optionkv('web_logo');
 	$t['web_header']	=	optionkv('web_header');
 
-	// default layout	
-	if ($layout == 'default') {
-		$layout 		= isset($t['layout']) ? $t['layout'] : $t["def_layout"];
-	}
 
-	// load template without layout
-	if (empty($layout)) {
+	// load template 
+	if (empty($t["tpl_layout"])) {
 		include_once(path_tmp($t['tpl_name']));
-	// load layout first
+	// load layout
 	} else {
-		include_once(path_tmp($layout));
+		include_once(path_tmp($t["tpl_layout"]));
 	}
 }
 

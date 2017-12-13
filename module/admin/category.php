@@ -1,7 +1,7 @@
 <?php access();
 
-$t['layout'] 	= 'admin/tpl/layout';
-$t['tpl_name'] 	= 'admin/tpl/category';
+$t['tpl_layout'] 	= 'admin/tpl/layout';
+$t['tpl_name'] 		= 'admin/tpl/category';
 
 // act: add
 if ($t['_a'] == "add") {

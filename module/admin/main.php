@@ -1,5 +1,5 @@
 <?php access();
-$t['layout'] 	= 'admin/tpl/layout';
+$t['tpl_layout'] 	= 'admin/tpl/layout';
 
 // act: edit
 if ($t['_a'] == 'edit') {
