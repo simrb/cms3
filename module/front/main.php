@@ -6,7 +6,6 @@ $t["category_kv"] 	= data_fetch_kv("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
-
 // act: settings
 if ($t['_a'] == "settings") {
 
@@ -158,7 +157,7 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
 	
-	tmp($t, "front/tpl/list");
+	tmp($t, $t['tpl_dir']."list");
 }
 
 
@@ -198,7 +197,7 @@ if ($t['_v'] == "detail") {
 			}
 		}
 
-		tmp($t, "front/tpl/detail");
+		tmp($t, $t['tpl_dir']."detail");
 	}
 }
 
@@ -207,7 +206,7 @@ if ($t['_v'] == "detail") {
 if ($t['_v'] == "addpost") {
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"addpost";
-	tmp($t, "front/tpl/addpost");
+	tmp($t, $t['tpl_dir']."addpost");
 }
 
 
@@ -235,7 +234,7 @@ if ($t['_v'] == "settings") {
 		}
 	}
 
-	tmp($t, "front/tpl/settings");
+	tmp($t, $t['tpl_dir']."settings");
 }
 
 

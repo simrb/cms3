@@ -1,5 +1,7 @@
 <?php access();
-$t['tpl_layout'] = 'admin/tpl/layout';
+
+$t['tpl_dir'] 		= THEME.$t['_m'].'/';
+$t['tpl_name'] 		= $t['_f'];
 
 //act: add
 if ($t['_a'] == "add") {
@@ -50,7 +52,7 @@ if ($t['_a'] == "logout") {
 
 //act: login and register
 if ($t['_a'] == "login") {
-	$t["msg"] = l('failed to login, the username and password is not matched').
+	$t['msg'] = l('failed to login, the username and password is not matched').
 		" <a href='".$GLOBALS["t"]["link_login"]."'>". l('return') ."</a>";
 
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
@@ -58,7 +60,7 @@ if ($t['_a'] == "login") {
 		if (isset($_POST["firstime"])) {
 			$arr = $_POST;
 			$arr['level'] = 1;
-			$t["msg"] = user_add($arr);
+			$t['msg'] = user_add($arr);
 		}
 
 		// user login
@@ -67,20 +69,20 @@ if ($t['_a'] == "login") {
 		}
 	}
 
-	out($t["msg"], $t);
+	$t['tpl_dir'] = THEME;
+	out($t['msg'], $t);
 }
 
 
 //view: login
 if ($t['_v'] == "login") {
-	$t['layout'] = THEME.'layout';
 	// has login yet
 	if(user_id() > 0){
-		$t['blank'] = l('you have login yet');
-		tmp($t, THEME.'blank');
+		$t['tpl_dir'] = THEME;
+		out(l('you have login yet'), $t);
 	} else {
 		url_referer('?');
-		tmp($t, "admin/tpl/login");
+		tmp($t, $t['tpl_dir']."login", THEME.'layout');
 	}
 }
 
@@ -98,14 +100,14 @@ if ($t['_v'] == "show") {
 	}
 
 	$t["user_res"] = sql_query($sql);
-	tmp($t, "admin/tpl/user");
+	tmp($t);
 }
 
 
 //view: status
 if ($t['_v'] == "status") {
 	$t["user_res"] = sql_query("SELECT * FROM sess ORDER BY sid DESC LIMIT 20;");
-	tmp($t, "admin/tpl/sess");
+	tmp($t, $t['tpl_dir']."sess");
 }
 
 
@@ -130,7 +132,7 @@ if ($t['_v'] == "edit") {
 			$t['_a']			=	"update";
 		}
 	}
-	tmp($t, "admin/tpl/user");
+	tmp($t);
 }
 
 

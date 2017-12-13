@@ -12,12 +12,12 @@
 
 
 			<div id="header">
-				<?php include_once(path_tmp('front/tpl/header')); ?>
+				<?php include_once(path_tmp(THEME.'front/header')); ?>
 			</div>
 
 			<div id="bodyer">
 				<p id="msg"><?= $t["msg"] ?></p>
-				<?php include_once(path_tmp($tpl_name)); ?>
+				<?php include_once(path_tmp($t['tpl_name'])); ?>
 			</div>
 
 			<div id="footer">

@@ -18,7 +18,7 @@
 			<div id="bodyer">
 
 				<p id="msg"><?= $t["msg"] ?></p>
-				<?php include_once(path_tmp($tpl_name)); ?>
+				<?php include_once(path_tmp($t['tpl_name'])); ?>
 				
 			</div>
 

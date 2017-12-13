@@ -18,7 +18,7 @@
 		<div id="bodyer"  class="ui-grid-layout" >
 			<div id="lefter" class="ui-block-a">
 				<div class="show-menu">
-					<?php include_once(path_tmp('admin/tpl/menu')); ?>
+					<?php include_once(path_tmp(THEME.'admin/menu')); ?>
 				</div>
 			</div>
 

@@ -1,5 +1,7 @@
 <?php access();
-$t['tpl_layout'] 	= 'admin/tpl/layout';
+
+$t['tpl_dir'] 		= THEME.$t['_m'].'/';
+$t['tpl_name'] 		= $t['_f'];
 
 // act: edit
 if ($t['_a'] == 'edit') {
@@ -20,7 +22,7 @@ if ($t['_a'] == 'edit') {
 // view: show
 if ($t['_v'] == "show") {
 	$t['welcome'] = l('welcome, dear ');
-	tmp($t, "admin/tpl/index");
+	tmp($t, $t['tpl_dir']."index");
 }
 
 
@@ -31,7 +33,7 @@ if ($t['_v'] == "info") {
 	$t['web_header']	= optionkv('web_header');
 	$t['web_des']		= optionkv('web_des');
 
-	tmp($t, "admin/tpl/info");
+	tmp($t, $t['tpl_dir']."info");
 }
 
 ?>

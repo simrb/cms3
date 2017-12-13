@@ -38,6 +38,8 @@ function tmp($t, $tpl_name = '', $layout = '') {
 
 	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." "
 							.$t["msg"] : "";
+	$t["tpl_name"] 		= $t["tpl_dir"].$t["tpl_name"];
+	$t["tpl_layout"] 	= $t["tpl_dir"].$t["tpl_layout"];
 
 	if ($tpl_name != '') {
 		$t["tpl_name"]	=	$tpl_name;
@@ -58,6 +60,16 @@ function tmp($t, $tpl_name = '', $layout = '') {
 	} else {
 		include_once(path_tmp($t["tpl_layout"]));
 	}
+}
+
+
+function out($str, $t, $layout = '') {
+	$t["msg"] = $str;
+	//$t["blank"] = $str;
+	$t['tpl_dir'] = THEME;
+	$t["tpl_layout"] = 	$layout != '' ? $layout : (THEME.'layout');
+	tmp($t, THEME.'blank', $t["tpl_layout"]);
+	exit;
 }
 
 
@@ -117,14 +129,6 @@ function url_referer ($url = '') {
 		return (isset($_COOKIE["http_referer"]) ? $_COOKIE["http_referer"] : '/');
 	}
 
-}
-
-
-function out($str, $t, $layout = 'layout') {
-	$t["msg"] = $str;
-	if ($layout == 'layout') { $layout = THEME. 'layout'; }
-	tmp($t, THEME."blank", $layout);
-	exit;
 }
 
 

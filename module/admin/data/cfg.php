@@ -12,7 +12,7 @@ $c = array(
 	'def_lang'			=>	'en',
 	'def_theme'			=>	'theme',
 	'def_pagesize'		=>	20,
-	'version'			=>	'v3.0.0',
+	'version'			=>	'v1.0.3',
 
 	'last_post_ip' 		=>	'0.0.0.0',
 	'last_post_time' 	=>	'1',			// the i of H:i:s
@@ -27,20 +27,20 @@ $t = array(
 	'_a'				=>	'',
 	'_v'				=>	'show',
 
-	'tpl_path'			=>	'theme/front/',
-	'tpl_layout'		=>	'front/tpl/layout',
+	'tpl_dir'			=>	'theme/front/',
+	'tpl_layout'		=>	'layout',
 
 	'link_login'		=>	'?_m=admin&_f=user&_v=login',
 	'link_logout'		=>	'?_m=admin&_f=user&_a=logout',
 
 	// default page info
-	'web_title' 		=>	"SCMS",
+	'web_title' 		=>	"NEW SITE",
 	'web_header' 		=>	"NEW SITE",
-	'web_name' 			=>	"CMS",
+	'web_name' 			=>	"scms",
 	'web_des'			=>	'',
 	'web_kw'			=>	'',
 	'web_logo' 			=>	"",
-	'web_footer'		=>	"Powered by SCMS, 2016-",
+	'web_footer'		=>	"Powered by linyu, 2016-",
 
 	'user_level'		=>	array(
 								1 => 'front',

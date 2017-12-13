@@ -1,7 +1,7 @@
 <?php access();
 
-$t['tpl_layout'] 	= 'admin/tpl/layout';
-$t['tpl_name'] 		= 'admin/tpl/file';
+$t['tpl_dir'] 		= THEME.$t['_m'].'/';
+$t['tpl_name'] 		= $t['_f'];
 
 // initialing upload folder if it hasn`t existed
 if(!is_dir(PATH_UPLOAD)) {
