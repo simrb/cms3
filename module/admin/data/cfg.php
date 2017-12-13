@@ -28,17 +28,18 @@ $t = array(
 	'_v'				=>	'show',
 
 	'def_layout'		=>	'front/tpl/layout',
-	'def_login'			=>	'?_m=admin&_f=user&_v=login',
-	'def_logout'		=>	'?_m=admin&_f=user&_a=logout',
+
+	'link_login'		=>	'?_m=admin&_f=user&_v=login',
+	'link_logout'		=>	'?_m=admin&_f=user&_a=logout',
 
 	// default page info
-	'web_title' 		=>	"A SITE",
+	'web_title' 		=>	"SCMS",
 	'web_header' 		=>	"NEW SITE",
 	'web_name' 			=>	"CMS",
 	'web_des'			=>	'',
 	'web_kw'			=>	'',
 	'web_logo' 			=>	"",
-	'web_footer'		=>	"Copyleft © 2016-",
+	'web_footer'		=>	"Powered by SCMS, 2016-",
 
 	'user_level'		=>	array(
 								1 => 'front',

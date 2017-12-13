@@ -51,7 +51,7 @@ if ($t['_a'] == "logout") {
 //act: login and register
 if ($t['_a'] == "login") {
 	$t["msg"] = l('failed to login, the username and password is not matched').
-		" <a href='".$GLOBALS["t"]["def_login"]."'>". l('return') ."</a>";
+		" <a href='".$GLOBALS["t"]["link_login"]."'>". l('return') ."</a>";
 
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
 		// user register

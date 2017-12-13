@@ -45,7 +45,7 @@
 
 				<li>
 					<br />
-					<a href="<?=$t['def_login']?>&firstime=yes" >
+					<a href="<?=$t['link_login']?>&firstime=yes" >
 						<?= l('register account, please check here') ?></a>
 				</li>
 

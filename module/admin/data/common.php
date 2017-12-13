@@ -312,7 +312,7 @@ function user_is_login () {
 	if(user_id() > 0){
 		// pass
 	} else {
-		url_to($GLOBALS["t"]["def_login"]);
+		url_to($GLOBALS["t"]["link_login"]);
 	}
 }
 
