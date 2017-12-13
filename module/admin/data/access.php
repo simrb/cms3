@@ -21,8 +21,12 @@ foreach (array('_m', '_f', '_a', '_v') as $val) {
 
 // set auth in access entrance
 if ($t['_m'] == 'admin') {
-	
-	$def_tpl_layout = THEME.'admin/layout';
+
+	if (user_level() > 0) {
+		$def_tpl_layout = THEME.'admin/layout';
+	} else {
+		$def_tpl_layout = THEME.'layout';
+	}
 
 	switch ($t['_f']) {
 		case 'main':
