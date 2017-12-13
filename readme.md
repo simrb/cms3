@@ -51,11 +51,15 @@ just backup the others dir is enough.
 History
 ============
 
-v3.0.0, by linyu deng, at 11/18,2017
+v1.0.3, by linyu deng, at 11/18,2017
+
+adjust the template directory.
+
+v1.0.2, by linyu deng, at 11/18,2017
 
 update the directory structure.
 
-v2.0.0, by linyu deng, at 10/24,2017
+v1.0.1, by linyu deng, at 10/24,2017
 
 base on the last version, we add new feature that facing to web2.0, let the user register.
 
