@@ -27,6 +27,7 @@ $t = array(
 	'_a'				=>	'',
 	'_v'				=>	'show',
 
+	'tpl_name'			=>	'index',
 	'tpl_dir'			=>	'theme/front/',
 	'tpl_layout'		=>	'layout',
 
