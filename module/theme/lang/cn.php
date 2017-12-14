@@ -76,7 +76,7 @@
 'keepit'      =>  '回收站' ,
 'settings'	=>  '设置' ,
 'save'	=>  '保存' ,
-'register account, please check here'	=>  '第一次登录，请勾选这里，会自动为你创建帐号' ,
+'register account, please check here'	=>  '我要注册一个会员帐号。' ,
 'base info'	=>  '基本信息' ,
 'logout'	=>  '退出' ,
 'nickname'	=>  '显示昵称' ,
