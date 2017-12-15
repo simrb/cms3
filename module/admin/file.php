@@ -1,12 +1,11 @@
 <?php access();
 
-$t['tpl_dir'] 		= THEME.$t['_m'].'/';
-$t['tpl_name'] 		= $t['_f'];
 
 // initialing upload folder if it hasn`t existed
 if(!is_dir(PATH_UPLOAD)) {
     exit('no file '. PATH_UPLOAD);
 }
+
 
 // act: ajax, get the search tip
 if ($t['_a'] == 'ajaxfilelist') {
@@ -100,8 +99,6 @@ if ($t['_a'] == "add") {
 			}
 
 		}
-
-
 
 		$t["msg"] = $t["msg"] == "" ? l('added successfully') : $t["msg"];
 	} else {

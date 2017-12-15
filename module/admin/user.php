@@ -1,7 +1,5 @@
 <?php access();
 
-$t['tpl_dir'] 		= THEME.$t['_m'].'/';
-$t['tpl_name'] 		= $t['_f'];
 
 //act: add
 if ($t['_a'] == "add") {
