@@ -17,7 +17,24 @@
 			<input type="submit" class="" value="<?= l('query'); ?>" />
 
 		</form>
+
+		<div class="pagination">
+			<form action="<?=url_c();?>" method="post">
+				<a href="<?=url_c('pagecurr=1');?>"><?=l('first page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] - 1) );?>"><?=l('prev page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] + 1) );?>"><?=l('next page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='.$t['pagenums']);?>"><?=l('last page')?></a>
+				<span>, </span>
+				<input type="submit" value="<?= l('go to');?>" class="goto" />
+				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
+				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records');?></span>
+			</form>
+		</div>
 	</div>
+
 
 	<div class="show-table">
 		<table>
@@ -29,7 +46,6 @@
 					<th style="width:40px"><?= l('follow id'); ?></th>
 					<th style="width:40px"><?= l('useful'); ?></th>
 					<th style="width:180px"><?= l('content'); ?></th>
-				<!--	<th style="width:110px">创建时间</th>	-->
 					<th style="width:80px"></th>
 				</tr>
 			</thead>
@@ -76,13 +92,6 @@
 			</tbody>
 		</table>
 
-		<div class="pagination">
-			<form action="<?=url_c();?>" method="post">
-				<input type="submit" value="<?= l('go to');?>" class="goto" />
-				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
-				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records');?></span>
-			</form>
-		</div>
 
 	</div>
 

@@ -49,6 +49,10 @@
 'useful'      =>  '有用' ,
 'content'      =>  '内容' ,
 'pages'      =>  '页面' ,
+'first page'      =>  '首页' ,
+'last page'      =>  '尾页' ,
+'prev page'      =>  '前一页' ,
+'next page'      =>  '下一页' ,
 'more'      =>  '更多' ,
 'picture'      =>  '图片' ,
 'follow'      =>  '跟随' ,
@@ -89,6 +93,7 @@
 'return to login'	=>  '返回登录界面' ,
 'user register'      =>  '用户注册' ,
 'go to'      =>  '跳到' ,
+'order'      =>  '排序' ,
 
 
 );?>

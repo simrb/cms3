@@ -49,6 +49,10 @@
 'useful'      =>  'Useful' ,
 'content'      =>  '' ,
 'pages'      =>  '' ,
+'first page'      =>  '' ,
+'last page'      =>  '' ,
+'prev page'      =>  '' ,
+'next page'      =>  '' ,
 'more'      =>  '' ,
 'picture'      =>  '' ,
 'follow'      =>  '' ,
@@ -89,6 +93,7 @@
 'return to login'	=>  '' ,
 'user register'      =>  '' ,
 'go to'      =>  '' ,
+'order'      =>  '' ,
 
 
 );?>

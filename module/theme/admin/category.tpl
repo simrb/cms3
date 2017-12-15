@@ -12,7 +12,7 @@
 					<th style="width:80px">id</th>
 					<th style="width:80px"><?= l("category"); ?></th>
 					<th style="width:80px"><?= l("follow"); ?></th>
-					<th style="width:80px"><?= l("number"); ?></th>
+					<th style="width:80px"><?= l("order"); ?></th>
 					<th style="width:80px"></th>
 				</tr>
 			</thead>
