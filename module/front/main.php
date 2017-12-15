@@ -140,7 +140,7 @@ if ($t['_v'] == "show") {
 	// pagination
 	$t["url_after"] 	=	"";
 	$pagecurr			=	(isset($_GET["pagecurr"]) and $_GET["pagecurr"]>1) ? $_GET["pagecurr"] : 1 ;
-	$pagesize			=	9 ;
+	$pagesize			=	$c['def_pagesize'] ;
 	$pagenums			=	0 ;
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
 	$filenums			=	0;
