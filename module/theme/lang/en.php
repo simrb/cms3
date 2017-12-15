@@ -18,6 +18,7 @@
 'welcome, dear '      =>  '' ,
 'dear'      =>  '' ,
 'records'      =>  '' , 
+'records1'      =>  'records' , 
 'record list'      =>  '' ,
 'add'      =>  '' ,
 'options'      =>  '' ,

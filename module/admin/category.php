@@ -45,10 +45,10 @@ if ($t['_v'] == "show") {
 
 	$sql_str			= 	"SELECT * FROM category";
 	$t["category_res"] 	= 	sql_query($sql_str);
-	$t["res_num"] 		= 	mysql_num_rows($t["category_res"]);
-
-	$pagenums		 	= 	ceil($t["res_num"]/$pagesize);
-	$sql_str 			.=	" LIMIT $pagestart, $pagesize";
+// 	$t["res_num"] 		= 	mysql_num_rows($t["category_res"]);
+// 
+// 	$pagenums		 	= 	ceil($t["res_num"]/$pagesize);
+// 	$sql_str 			.=	" LIMIT $pagestart, $pagesize";
 	$t["category_res"] 	=	sql_query($sql_str);
 
 	$t["pagecurr"]		=	$pagecurr;

@@ -18,6 +18,7 @@
 'welcome, dear '      =>  '欢迎 亲爱的' ,
 'dear'      =>  '亲爱的' ,
 'records'      =>  '记录' , 
+'records1'      =>  '条记录' , 
 'record list'      =>  '列表' ,
 'add'      =>  '添加' ,
 'options'      =>  '选项' ,

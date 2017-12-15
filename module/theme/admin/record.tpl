@@ -30,7 +30,7 @@
 				<span>, </span>
 				<input type="submit" value="<?= l('go to');?>" class="goto" />
 				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
-				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records');?></span>
+				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records1');?></span>
 			</form>
 		</div>
 	</div>

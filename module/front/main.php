@@ -2,7 +2,7 @@
 
 // commom
 $uid				= user_id();
-$t["category_kv"] 	= data_fetch_kv("category", "cid", "name");
+$t["category_kv"] 	= data_fetch_category("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
@@ -236,6 +236,18 @@ if ($t['_v'] == "settings") {
 
 	tmp($t, $t['tpl_dir']."settings");
 }
+
+
+function data_fetch_category($tablename, $key, $val) {
+	$rows = array();
+	if ($res = sql_query("SELECT * FROM ". $tablename. " WHERE number > 0 ORDER BY number")) {
+		while ($row = mysql_fetch_assoc($res)) {
+			$rows[$row[$key]]  = $row[$val];
+		}
+	}
+	return $rows;
+}
+
 
 
 ?>
