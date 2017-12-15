@@ -6,7 +6,7 @@
 			while($row = mysql_fetch_array($t["record_res"])) {
 
 				echo "<div class='show-list-body'>";
-				//echo "<label>" . $row['created'] . "</label>";
+				//echo "<label>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 
 				$def_len = 27;
 				$len 	 = mb_strpos($row['content'], "\r",0,'utf-8');

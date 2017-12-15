@@ -9,7 +9,7 @@ if ($t['_a'] == "add") {
 			uid, cid, follow, useful, content, created
 			) VALUES (
 			'". user_id() ."', '". $_POST["cid"] ."', '". $_POST["follow"] ."',
-			'". $_POST["useful"] ."', '". $_POST["content"] ."', '". date("Y-m-d H:i:s") ."')"
+			'". $_POST["useful"] ."', '". $_POST["content"] ."', '". time() ."')"
 		);
 		$t["msg"] = l('added successfully');
 	}

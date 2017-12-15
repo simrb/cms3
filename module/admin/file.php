@@ -94,7 +94,7 @@ if ($t['_a'] == "add") {
 
 				// write to db
 				sql_query("INSERT INTO file (uid, name, path, type, created) VALUES ('". user_id() 
-				."','". $name ."','". $path ."','". $type ."','". date("Y-m-d H:i:s") ."');");
+				."','". $name ."','". $path ."','". $type ."','". time() ."');");
 
 			}
 

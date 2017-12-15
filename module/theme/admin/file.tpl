@@ -31,7 +31,7 @@
 							echo "<td>" . $row['uid'] . "</td>";
 	  						echo "<td>" . $row['name'] . "</td>";
 	  						echo "<td>" . $row['path'] . "</td>";
-	  						echo "<td>" . $row['created'] . "</td>";
+	  						echo "<td>" . date('Y-m-d', $row['created']) . "</td>";
 	  						echo "<td><a href='". url_c("_a=del&fid=".
 	  								$row['fid']). "'>". l('delete') ."</a></td>";
 	  						echo "</tr>";

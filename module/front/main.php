@@ -88,7 +88,7 @@ if ($t['_a'] == "addcomment") {
 				uid, cid, follow, content, created
 				) VALUES (
 				'". $uid ."', '". $_POST["cid"] ."', '". $_POST["rid"] ."',
-				'". $_POST["content"] ."', '". date("Y-m-d H:i:s") ."')"
+				'". $_POST["content"] ."', '". time() ."')"
 			);
 			$t["msg"] = l('submitted successfully');
 		}
@@ -112,7 +112,7 @@ if ($t['_a'] == "addpost") {
 				uid, cid, follow, content, created
 				) VALUES (
 				'". $uid ."', '". $_POST["cid"] ."', 0,
-				'". $_POST["content"] ."', '". date("Y-m-d H:i:s") ."')", 'insert_id'
+				'". $_POST["content"] ."', '". time() ."')", 'insert_id'
 			);
 			$t["msg"] = l('submitted successfully');
 

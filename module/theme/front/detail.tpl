@@ -2,7 +2,7 @@
 	<?php
 		// body
 		if (isset($t['record_res'])) {
-			echo "<label class='left'>" . $t['record_res']['created'] . "</label>";
+			echo "<label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . "</label>";
 			echo "<label class='right'>". l('useful') ." " . $t['record_res']['useful'] . "</label>";
 			echo "<pre class='clear'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
 		} else {
@@ -21,7 +21,7 @@
 		// comments
 		if (isset($t["record_cmt"])) {
 			while($row = mysql_fetch_array($t["record_cmt"])) {
-				echo "<label class='left'>" . $row['created'] . "</label>";
+				echo "<label class='left'>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 				echo "<label class='right'>". l('useful') ." " . $row['useful'] . "</label>";
 				echo "<pre class='clear'>" . show_bbcodes($row['content']) . "</pre>";
 			}

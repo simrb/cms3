@@ -62,7 +62,7 @@ if ($t['_v'] == "edit") {
 	$t["cid"]			=	isset($t["cid"]) ? $t["cid"] : 0;
 	$t["category_name"]	=	isset($t["category_name"]) ? $t["category_name"] : "";
 	$t["follow"]		=	isset($t["follow"]) ? $t["follow"] : 0;
-	$t["number"]		=	isset($t["number"]) ? $t["number"] : 0;
+	$t["number"]		=	isset($t["number"]) ? $t["number"] : 1;
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
 
 	// edit data

@@ -275,7 +275,7 @@ function user_login ($name, $pawd) {
 
 		// save a token
 		sql_query("INSERT INTO sess (uid, token, created, exptime) VALUES (
-			'".$row[0]."', '$token', '".date('YmdHis')."', '".date('YmdHis', $time)."')");
+			'".$row[0]."', '$token', '".time()."', '".$time."')");
 
 		$reval 	= true;
 	}

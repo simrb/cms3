@@ -19,15 +19,15 @@ CREATE TABLE `category` (
   `cid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL default '0',
   `follow` int(11) NOT NULL default '0',
-  `number` tinyint(5) NOT NULL default '0',
+  `number` tinyint(5) NOT NULL default '1',
   `name` varchar(20) NOT NULL,
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 INSERT INTO `category` (`cid`, `uid`, `follow`, `number`, `name`) VALUES
-(1, 1, 0, 0, 'home'),
-(2, 1, 0, 0, 'news'),
-(3, 1, 0, 0, 'show');
+(1, 1, 0, 1, 'home'),
+(2, 1, 0, 1, 'news'),
+(3, 1, 0, 1, 'show');
 
 
 --
@@ -39,7 +39,7 @@ CREATE TABLE `file` (
   `name` varchar(50) NOT NULL,
   `path` varchar(30) NOT NULL,
   `type` varchar(10) NOT NULL,
-  `created` datetime NOT NULL,
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`fid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -54,17 +54,17 @@ CREATE TABLE `record` (
   `follow` int(11) NOT NULL default '0',
   `useful` int(5) NOT NULL default '0',
   `content` text NOT NULL,
-  `created` datetime NOT NULL,
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`rid`),
   KEY `cid` (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC AUTO_INCREMENT=1 ;
 
 
 INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `created`) VALUES
-(1, 1, 1, 0, 0, 'About the cms.\r\r\nThis is a cms created by php, we devote to simplicity, rudeness.', '2017-05-25 16:26:45'),
-(2, 1, 1, 0, 0, 'About the user.', '2017-05-25 16:28:14'),
-(3, 1, 1, 2, 0, 'About the post.\r\n\r\nAllow post 50 records for user everyday.', '2017-05-27 11:24:53'),
-(4, 1, 1, 2, 0, 'About the comment.\r\nAllow post 50 comments for guest everyday.', '2017-05-27 11:24:53');
+(1, 1, 1, 0, 0, 'About the cms.\r\nThis is a cms created by php, we devote to simplicity, rudeness.', '1513346626'),
+(2, 1, 1, 0, 0, 'About the user.', '1513346626'),
+(3, 1, 1, 2, 0, 'About the post.\r\nAllow post 50 records for user everyday.', '1513346626'),
+(4, 1, 1, 2, 0, 'About the comment.\r\nAllow post 50 comments for guest everyday.', '1513346626');
 
 
 --
@@ -119,8 +119,8 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`) VALUES
 CREATE TABLE `sess` (
   `sid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL,
-  `created` varchar(15) NOT NULL,
-  `exptime` varchar(15) NOT NULL,
+  `created` varchar(10) NOT NULL,
+  `exptime` varchar(10) NOT NULL,
   `token` varchar(50) NOT NULL,
   PRIMARY KEY  (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
