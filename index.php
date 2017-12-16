@@ -2,32 +2,37 @@
 
 //error_reporting(0);
 
-// base paths
 define("ACCESS", "ALLOW");
 function access(){ defined('ACCESS') or die('Access denied'); }
-date_default_timezone_set('Asia/Shanghai');
 
-// base path
+// root path and dir
 define("PATH_BASE",		dirname(__FILE__) . "/");
 
-// default config
-require_once(PATH_BASE	."others/cfg.php");
-define("THEME",			$c['def_theme'] . '/');
-
-// absolute path
-define("PATH_MOD",		PATH_BASE	. "module/");
-define("PATH_THEME",	PATH_MOD	. THEME);
-define('PATH_UPLOAD', 	PATH_BASE 	. 'others/upload/');
-
-// relative path
-define("DIR_THEME",		"module/" 	. THEME);
 define("DIR_UPLOAD",	"others/upload/");
+define('PATH_UPLOAD', 	PATH_BASE 	. DIR_UPLOAD);
+define("PATH_MOD",		PATH_BASE	. "module/");
 
-// common libs, default access
+// load config file
+require_once(PATH_MOD	."admin/data/config.php");
+require_once(PATH_BASE	."others/cfg.php");
+
+define("THEME",			$c['def_theme'] . '/');
+define("PATH_THEME",	PATH_MOD	. THEME);
+define("DIR_THEME",		"module/" 	. THEME);
+
+// main programming
+date_default_timezone_set('Asia/Shanghai');
+if ($c['def_mode'] == 'test') {
+	ini_set("display_errors", "On");
+	error_reporting(E_ALL | E_STRICT);
+}
 require_once(PATH_MOD	."admin/data/common.php");
-require_once(PATH_BASE 	."others/access.php");
+require_once(PATH_MOD	."admin/data/access.php");
+if (file_exists(PATH_BASE 	."others/access.php")) {
+	require_once(PATH_BASE 	."others/access.php");
+}
 
-// index file
+// default entrance
 if (file_exists(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php')) {
 	require_once(PATH_MOD . $t['_m'].'/'.$t['_f'].'.php');
 }

@@ -137,14 +137,6 @@ if [ $Uinitpj = "yes" ] ; then
 		echo "file ${my_file} is created"
 	fi
 
-	# copy the access.php
-	my_file="others/access.php"
-	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "module/admin/data/access.php" > $my_file
-		chmod 777 $my_file
-		echo "file ${my_file} is created"
-	fi
-
 	# create upload dir
 	my_dir="others/upload"
 	if [ ! -d "$my_dir" ] ; then

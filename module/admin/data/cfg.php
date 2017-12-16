@@ -53,9 +53,5 @@ $t = array(
 
 
 
-if ($c['def_mode'] == 'test') {
-	ini_set("display_errors", "On");
-	error_reporting(E_ALL | E_STRICT);
-}
 
 ?>

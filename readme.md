@@ -1,7 +1,7 @@
 About
 ============
 
-Just a CMS by php programming language, we dedicate to make it to simplicity and rudeness.
+Just a CMS by php programming language, we dedicate to make it simplicity and rudeness.
 
 	allow add record
 	allow upload picture
