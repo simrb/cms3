@@ -137,9 +137,9 @@ if ($t['_v'] == "edit") {
 function user_add ($arr) {
 	$reval = l('failed to add');
 	if (isset($arr["username"])) {
-		sql_query("INSERT INTO user(username, password, level) 
+		sql_query("INSERT INTO user(username, password, level, created) 
 			VALUES ('". $arr["username"] ."','". $arr["password"] .
-			"','". $arr["level"] ."');"
+			"','". $arr["level"] ."', '". time() ."');"
 		);
 		$reval = l('added successfully');
 	}

@@ -21,6 +21,7 @@ CREATE TABLE `category` (
   `follow` int(11) NOT NULL default '0',
   `number` tinyint(5) NOT NULL default '1',
   `name` varchar(20) NOT NULL,
+  `description` varchar(50) NOT NULL default 'nothing',
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -102,15 +103,16 @@ CREATE TABLE `user` (
   `username` varchar(20) NOT NULL,
   `password` varchar(50) NOT NULL,
   `level` tinyint(1) NOT NULL default '1',
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
-INSERT INTO `user` (`uid`, `username`, `password`, `level`) VALUES
-(1, 'zcadmin', '8888', 9),
-(2, 'zcedit', '8888', 6),
-(3, 'test', '8888', 3),
-(4, 'viewer', '8888', 1);
+INSERT INTO `user` (`uid`, `username`, `password`, `level`, `created`) VALUES
+(1, 'zcadmin', '8888', 9, '1513346626'),
+(2, 'zcedit', '8888', 6, '1513346626'),
+(3, 'zctest', '8888', 3, '1513346626'),
+(4, 'zcview', '8888', 1, '1513346626');
 
 
 --
