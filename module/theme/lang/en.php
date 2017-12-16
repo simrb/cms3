@@ -54,6 +54,7 @@
 'last page'      =>  '' ,
 'prev page'      =>  '' ,
 'next page'      =>  '' ,
+'main page'      =>  '' ,
 'more'      =>  '' ,
 'picture'      =>  '' ,
 'follow'      =>  '' ,
@@ -95,6 +96,5 @@
 'user register'      =>  '' ,
 'go to'      =>  '' ,
 'order'      =>  '' ,
-
 
 );?>

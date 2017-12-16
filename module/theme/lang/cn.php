@@ -54,6 +54,7 @@
 'last page'      =>  '尾页' ,
 'prev page'      =>  '前一页' ,
 'next page'      =>  '下一页' ,
+'main page'      =>  '主页' ,
 'more'      =>  '更多' ,
 'picture'      =>  '图片' ,
 'follow'      =>  '跟随' ,

@@ -32,7 +32,8 @@
 		<div id="footer">
 			<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?> |
 			<span><?= l('menber'); ?>: <?= user_name() ?> </span> |
-			<span><a href="?" ><?= l('front end'); ?></a></span> |
+			<span><a href="?_m=admin" ><?= l('main page'); ?></a></span> |
+			<span><a href="?" target="_blank" ><?= l('front end'); ?></a></span> |
 			<span><a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a></span>
 		</div>
 
