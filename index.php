@@ -21,7 +21,7 @@ define("PATH_THEME",	PATH_MOD	. THEME);
 define("DIR_THEME",		"module/" 	. THEME);
 
 // main programming
-date_default_timezone_set('Asia/Shanghai');
+date_default_timezone_set($c['timezone']);
 if ($c['def_mode'] == 'test') {
 	ini_set("display_errors", "On");
 	error_reporting(E_ALL | E_STRICT);
