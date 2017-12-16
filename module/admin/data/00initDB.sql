@@ -21,7 +21,7 @@ CREATE TABLE `category` (
   `follow` int(11) NOT NULL default '0',
   `number` tinyint(5) NOT NULL default '1',
   `name` varchar(20) NOT NULL,
-  `description` varchar(50) NOT NULL default 'nothing',
+  `description` varchar(50) NOT NULL default 'des',
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
