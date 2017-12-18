@@ -13,7 +13,7 @@ define('PATH_UPLOAD', 	PATH_BASE 	. DIR_UPLOAD);
 define("PATH_MOD",		PATH_BASE	. "module/");
 
 // load config file
-require_once(PATH_MOD	."admin/data/config.php");
+require_once(PATH_MOD	."admin/docs/config.php");
 require_once(PATH_BASE	."others/cfg.php");
 
 define("THEME",			$c['def_theme'] . '/');
@@ -26,8 +26,8 @@ if ($c['def_mode'] == 'test') {
 	ini_set("display_errors", "On");
 	error_reporting(E_ALL | E_STRICT);
 }
-require_once(PATH_MOD	."admin/data/common.php");
-require_once(PATH_MOD	."admin/data/access.php");
+require_once(PATH_MOD	."admin/docs/common.php");
+require_once(PATH_MOD	."admin/docs/access.php");
 if (file_exists(PATH_BASE 	."others/access.php")) {
 	require_once(PATH_BASE 	."others/access.php");
 }
