@@ -33,13 +33,11 @@ if ($t['_a'] == 'ajaxfilelist') {
 	$res 				= 	sql_query($sql_str);
 	$arr['page'] 		= 	array($pagecurr, $pagenums);
 
-
 	if (mysql_num_rows($res) > 0) {
 		while ($row = mysql_fetch_assoc($res)) {
 			array_push($arr['info'], $row['path']);
 		}
 	}
-
 	
 	ajax_json($arr);
 }
@@ -51,14 +49,7 @@ if ($t['_a'] == "add") {
 
 		$t["msg"]			= "";
 		$allow_type 		= array('jpg','jpeg','gif','png');
-		$max_file_size		= 2000000;     	//上传文件大小限制, 单位BYTE  
-		$watermark			= 1;      		//是否附加水印(1为加水印,其他为不加水印);  
-		$watertype			= 1;      		//水印类型(1为文字,2为图片)  
-		$waterposition		= 1;     		//水印位置(1为左下角,2为右下角,3为左上角,4为右上角,5为居中);  
-		$waterstring		= "http://www.111.cn/";  //水印字符串  
-		$waterimg			= "111.gif";    //水印图片  
-		$imgpreview 		= 1;      		//是否生成预览图(1为生成,其他为不生成);  
-		$imgpreviewsize		= 1/2;    		//缩略图比例  
+		$max_file_size		= 2000000;
 
 // 		print_r(get_upload_files());
 // 		exit;
@@ -85,7 +76,7 @@ if ($t['_a'] == "add") {
 					break;
 				}  
 
-				process_file ($file['tmp_name']);
+				process_image ($file['tmp_name']);
 				if(!move_uploaded_file($file['tmp_name'], PATH_UPLOAD.$path)){
 				// if(!save_file($file['tmp_name'], PATH_UPLOAD.$path)){
 					$t["msg"] = l('a error in removing file');
@@ -112,9 +103,9 @@ if ($t['_a'] == "del") {
 	if (isset($_GET["fid"])) {
 		// remove file
 		$res = sql_query("SELECT path FROM file WHERE fid='". $_GET["fid"] ."' LIMIT 1;");
-		$row = mysql_fetch_row($res);
-		if (file_exists($row[0])) {
-			unlink(PATH_UPLOAD.$row[0]);
+		$file = mysql_fetch_assoc($res);
+		if (file_exists(PATH_UPLOAD.$file['path'])) {
+			unlink(PATH_UPLOAD.$file['path']);
 		}
 
 		// delete from db
@@ -183,8 +174,8 @@ function get_upload_files () {
 }
 
 
-// process file
-function process_file ($path) {
+// process image
+function process_image ($path) {
 	$image	= imagecreatefromstring(file_get_contents($path));
 	$exif	= exif_read_data($path);
 
@@ -201,6 +192,13 @@ function process_file ($path) {
 				break;
 		}
 	}
+
+// 	$percent = 0.5;
+// 	list($org_width, $org_height) = getimagesize($path);
+// 	$new_width 	= $org_width * $percent;
+// 	$new_height = $org_height * $percent;
+// 	$image_p 	= imagecreatetruecolor($new_width, $new_height);
+// 	imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $org_width, $org_height);
 
 	return imagejpeg($image, $path);
 }
