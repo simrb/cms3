@@ -106,12 +106,13 @@ CREATE TABLE `user` (
   PRIMARY KEY  (`uid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
+-- the password 8888 that md5 is cf79ae6addba60ad018347359bd144d2
 INSERT INTO `user` (`uid`, `username`, `password`, `level`, `created`) VALUES
-(1, 'zcadmin', '8888', 9, '1513346626'),
+(1, 'zcroot', '8888', 9, '1513346626'),
 (2, 'zcedit', '8888', 6, '1513346626'),
 (3, 'zctest', '8888', 3, '1513346626'),
-(4, 'zcview', '8888', 1, '1513346626');
+(4, 'zcarch', '8888', 3, '1513346626'),
+(5, 'zcview', '8888', 1, '1513346626');
 
 
 --
