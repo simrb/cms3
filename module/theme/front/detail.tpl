@@ -1,6 +1,6 @@
 <div class="show-detail">
 	<?php
-		// body
+		// record
 		if (isset($t['record_res'])) {
 			echo "<label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . "</label>";
 			echo "<label class='right'>". l('useful') ." " . $t['record_res']['useful'] . "</label>";
@@ -14,9 +14,9 @@
 		if (isset($t['record_img'])) {
 			echo "<div class='clear show-detail-img'><img src='" . 
 				DIR_UPLOAD . $t['record_img'] . "'/></div>";
+			echo '<br/>';
 		}
 
-		echo '<br/>';
 
 		// comments
 		if (isset($t["record_cmt"])) {
