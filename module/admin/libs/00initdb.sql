@@ -61,10 +61,10 @@ CREATE TABLE `record` (
 
 
 INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `created`) VALUES
-(1, 1, 1, 0, 0, 'About the cms.\r\nThis is a cms created by php, we devote to simplicity, rudeness.', '1513346626'),
-(2, 1, 1, 0, 0, 'About the user.', '1513346626'),
-(3, 1, 1, 2, 0, 'About the post.\r\nAllow post 50 records for user everyday.', '1513346626'),
-(4, 1, 1, 2, 0, 'About the comment.\r\nAllow post 50 comments for guest everyday.', '1513346626');
+(1, 1, 1, 0, 1, 'About the cms.\r\nThis is a cms created by php, we devote to simplicity, rudeness.', '1513346626'),
+(2, 1, 1, 0, 1, 'About the user.', '1513346626'),
+(3, 1, 1, 2, 1, 'About the post.\r\nAllow post 50 records for user everyday.', '1513346626'),
+(4, 1, 1, 2, 1, 'About the comment.\r\nAllow post 50 comments for guest everyday.', '1513346626');
 
 
 --

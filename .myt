@@ -84,7 +84,7 @@ if [ $Uinitdb = "yes" ] ; then
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
 	sed $Urepstr "module/admin/libs/00initdb.sql" > "others/initdb.sql"
  	mysql -h localhost -u root < "others/initdb.sql"
- 	# rm -f "others/initdb.sql"
+ 	rm -f "others/initdb.sql"
 fi
 
 # initial running environment of server
