@@ -1,12 +1,12 @@
 About
 ============
 
-Just a CMS by php programming language, we dedicate to make it simplicity and rudeness.
+It is a simple cms by php language, the base feature included as the following,
 
-	allow add record
-	allow upload picture
-	allow register user
-	allow manage category
+	allow adding record
+	allow uploading picture
+	allow registering user
+	allow managing category
 
 
 
@@ -26,12 +26,12 @@ if you have an existed database, just configure the file `cfg.php` for connectin
 
 
 
-Migrating
+Backup
 ============
 
 1 backup your db, such as
 
-	# mysqldump --database cms_db > others/db_201708.sql
+	# mysqldump --database cms_db > others/db_xxx.sql
 
 2 backup the dir, such as
 
@@ -41,30 +41,9 @@ untar
 
 	# tar -xvf others.tar
 
-Notice, all of backup and generated files will be stored in others dir, 
-such as the upload files, customize config file, access file. e.g.
+Notice, all of files of the system created that will be stored in directory `others`, 
+such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.
 just backup the others dir is enough.
-
-
-
-History
-============
-
-v1.0.3, by linyu deng, at 11/18,2017
-
-adjust the template directory.
-
-v1.0.2, by linyu deng, at 11/18,2017
-
-update the directory structure.
-
-v1.0.1, by linyu deng, at 10/24,2017
-
-base on the last version, we add new feature that facing to web2.0, let the user register.
-
-v1.0.0, by linyu deng, at 11/11,2016
-
-initialing the project, the first version is built.
 
 
 
