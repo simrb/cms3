@@ -6,15 +6,15 @@
 				<input type="hidden" name="firstime" />
 
 				<li><h3><?= l('user register'); ?></h3></li>
+
 				<li><label><?= l('username'); ?></label></li>
-				<li>
-					<input type="text" name="username" />
-				</li>
+				<li><input type="text" name="username" /></li>
 
 				<li><label><?= l('password'); ?></label></li>
-				<li>
-					<input type="text" name="password" />
-				</li>	
+				<li><input type="text" name="password" /></li>
+
+				<li><label><?= l('invite code'); ?></label></li>
+				<li><input type="text" name="invitecode" /></li>
 
 				<li>
 					<input type="submit" value="<?= l('confirm'); ?>" class="" />

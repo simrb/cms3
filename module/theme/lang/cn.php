@@ -1,8 +1,12 @@
 <?php $lang = array(
 
 
+'invite code'      =>  '邀请码' ,
+'the invite code is wrong'      =>  '邀请码错误' ,
+'the user is existed'      =>  '该用户名已经存在' ,
 'operated successfully'      =>  '操作成功' ,
 'added successfully'      =>  '添加成功' ,
+'created user successfully'      =>  '创建用户成功' ,
 'failed to add'      =>  '添加失败' ,
 'updated successfully'      =>  '更新成功' ,
 'deleted successfully'      =>  '删除成功' ,
@@ -82,7 +86,7 @@
 'keepit'      =>  '回收站' ,
 'settings'	=>  '设置' ,
 'save'	=>  '保存' ,
-'register account, please check here'	=>  '注册一个会员帐号' ,
+'register account, please check here'	=>  '注册会员帐号' ,
 'base info'	=>  '基本信息' ,
 'logout'	=>  '退出' ,
 'nickname'	=>  '显示昵称' ,
@@ -96,6 +100,5 @@
 'user register'      =>  '用户注册' ,
 'go to'      =>  '跳到' ,
 'order'      =>  '排序' ,
-
 
 );?>

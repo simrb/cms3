@@ -50,23 +50,31 @@ if ($t['_a'] == "logout") {
 
 //act: login and register
 if ($t['_a'] == "login") {
-	$t['msg'] = l('failed to login, the username and password is not matched').
-		" <a href='".$GLOBALS["t"]["link_login"]."'>". l('return') ."</a>";
-
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
+
 		// user register
 		if (isset($_POST["firstime"])) {
-			$arr = $_POST;
-			$arr['level'] = 1;
-			$t['msg'] = user_add($arr);
-		}
+			if (isset($_POST["invitecode"]) and ($_POST["invitecode"] == date('mHyd')) ) {
+				$arr = $_POST;
+				$arr['level'] = 1;
+				$t['msg'] = user_add($arr);
+			} else {
+				$t['msg'] = l('the invite code is wrong');
+				$t['msg'].= " <a href='".$GLOBALS["t"]["link_login"].
+							"&firstime=yes'>". l('return') ."</a>";
+			}
 
 		// user login
-		if (user_login($_POST['username'], $_POST['password'])) {
-			url_to(url_referer());
+		} else {
+			if (user_login($_POST['username'], $_POST['password'])) {
+				url_to(url_referer());
+			} else {
+				$t['msg'] = l('failed to login, the username and password is not matched');
+				$t['msg'].= " <a href='".$GLOBALS["t"]["link_login"]."'>". l('return') ."</a>";
+			}
 		}
-	}
 
+	}
 	$t['tpl_dir'] = THEME;
 	out($t['msg'], $t);
 }
@@ -137,11 +145,17 @@ if ($t['_v'] == "edit") {
 function user_add ($arr) {
 	$reval = l('failed to add');
 	if (isset($arr["username"])) {
-		sql_query("INSERT INTO user(username, password, level, created) 
-			VALUES ('". $arr["username"] ."','". $arr["password"] .
-			"','". $arr["level"] ."', '". time() ."');"
-		);
-		$reval = l('added successfully');
+		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
+		if (mysql_num_rows($res) > 0) {
+			$reval = l('the user is existed');
+
+		} else {
+			sql_query("INSERT INTO user(username, password, level, created) 
+				VALUES ('". $arr["username"] ."','". $arr["password"] .
+				"','". $arr["level"] ."', '". time() ."');"
+			);
+			$reval = l('created user successfully');
+		}
 	}
 	return $reval;
 }

@@ -1,8 +1,11 @@
 <?php $lang = array(
 
-
+'invite code'      =>  '' ,
+'the invite code is wrong'      =>  '' ,
+'the user is existed'      =>  '' ,
 'operated successfully'      =>  '' ,
 'added successfully'      =>  '' ,
+'created user successfully'      =>  '' ,
 'failed to add'      =>  '' ,
 'updated successfully'      =>  '' ,
 'deleted successfully'      =>  '' ,
