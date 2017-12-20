@@ -16,35 +16,30 @@
 				<li><label><?= l('invite code'); ?></label></li>
 				<li><input type="text" name="invitecode" /></li>
 
-				<li>
-					<input type="submit" value="<?= l('confirm'); ?>" class="" />
-				</li>
+				<li><input type="submit" value="<?= l('confirm'); ?>" /></li>
 
-				<li>
-					<br />
+				<li><br />
+					<pre><?= $t['aboutuser']; ?>
+					<!--
 					<a href="?_v=detail&rid=2" target="_blank">
-						<?= l('register have to know') ?></a>
+						<?= l('register have to know'); ?></a>
+					</pre>
+					-->
 				</li>
 
 			<?php } else { ?>
 
 				<li><h3><?= l('user login'); ?></h3></li>
+
 				<li><label><?= l('username'); ?></label></li>
-				<li>
-					<input type="text" name="username" />
-				</li>
+				<li><input type="text" name="username" /></li>
 
 				<li><label><?= l('password'); ?></label></li>
-				<li>
-					<input type="text" name="password" />
-				</li>	
+				<li><input type="text" name="password" /></li>	
 
-				<li>
-					<input type="submit" value="<?= l('confirm'); ?>" class="" />
-				</li>
+				<li><input type="submit" value="<?= l('confirm'); ?>" /></li>
 
-				<li>
-					<br />
+				<li><br />
 					<a href="<?=$t['link_login']?>&firstime=yes" >
 						<?= l('register account, please check here') ?></a>
 				</li>

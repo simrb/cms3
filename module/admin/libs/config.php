@@ -38,6 +38,12 @@ $t['tpl_layout'] 		=	'layout';
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
 $t['link_logout'] 		=	'?_m=admin&_f=user&_a=logout';
 
+// record id
+$t['rid_aboutme'] 		=	1;
+$t['rid_aboutuser'] 	=	2;
+$t['rid_aboutpost'] 	=	3;
+$t['rid_comment'] 		=	4;
+
 // default page info
 $t['web_title'] 		=	'NEW SITE';
 $t['web_header'] 		=	'NEW SITE';

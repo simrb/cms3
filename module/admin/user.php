@@ -87,6 +87,7 @@ if ($t['_v'] == "login") {
 		$t['tpl_dir'] = THEME;
 		out(l('you have login yet'), $t);
 	} else {
+		$t['aboutuser'] = record_get_content($t['rid_aboutuser']);
 		url_referer('?');
 		tmp($t, $t['tpl_dir']."login", THEME.'layout');
 	}
@@ -159,5 +160,18 @@ function user_add ($arr) {
 	}
 	return $reval;
 }
+
+
+function record_get_content ($rid = 0) {
+	$reval = l('nothing');
+	if ($rid != 0) {
+		$res = sql_query('SELECT content FROM record WHERE rid = '. $rid);
+		if ($row = mysql_fetch_assoc($res)) {
+			$reval = $row['content'];
+		}
+	}
+	return $reval;
+}
+
 
 ?>

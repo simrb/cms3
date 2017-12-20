@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'nothing'      =>  '没有内容' ,
 'invite code'      =>  '邀请码' ,
 'the invite code is wrong'      =>  '邀请码错误' ,
 'the user is existed'      =>  '该用户名已经存在' ,
@@ -86,7 +87,7 @@
 'keepit'      =>  '回收站' ,
 'settings'	=>  '设置' ,
 'save'	=>  '保存' ,
-'register account, please check here'	=>  '注册会员帐号' ,
+'register account, please check here'	=>  '注册一个新用户帐号' ,
 'base info'	=>  '基本信息' ,
 'logout'	=>  '退出' ,
 'nickname'	=>  '显示昵称' ,

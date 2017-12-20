@@ -1,5 +1,6 @@
 <?php $lang = array(
 
+'nothing'      =>  '' ,
 'invite code'      =>  '' ,
 'the invite code is wrong'      =>  '' ,
 'the user is existed'      =>  '' ,
