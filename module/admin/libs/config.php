@@ -5,6 +5,7 @@ $c = array();	// global config
 $t = array();	// template var
 
 
+$c['version'] 			=	'v1.0.1';
 $c['sql_server']		=	'localhost';
 $c['sql_user'] 			=	'cms_user';
 $c['sql_pawd'] 			=	'cms_pawd';
@@ -15,7 +16,6 @@ $c['def_mode'] 			=	'test';
 $c['def_lang'] 			=	'en';
 $c['def_theme'] 		=	'theme';
 $c['def_pagesize'] 		=	20;
-$c['version'] 			=	'v1.0.1';
 $c['sn'] 				=	'sn_code';
 $c['timezone'] 			=	'Asia/Shanghai';
 

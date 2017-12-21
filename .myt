@@ -27,12 +27,15 @@ do
 		 	Uinitht="yes";;
 		 ?)
 			echo "unkonw option"
+			grep 'version' module/admin/libs/config.php
 			exit 1
 			;;
 	esac
 done
 
+
 Urepstr="s/localost/$Uhost/g;s/cms_db/$Udata/g;s/cms_user/$Uname/g;s/cms_pawd/$Upawd/g"
+
 
 function getdir(){
     for element in `ls $1`
@@ -49,16 +52,20 @@ function getdir(){
     done
 }
 
+
 # need root to run this script
-if [ ! `whoami` = "root" ] ; then
-	echo "Running the file must be root user"
-	exit;
-fi
+function needroot() {
+	if [ ! `whoami` = "root" ] ; then
+		echo "Running the file must be root user"
+		exit;
+	fi
+}
+
 
 if [ ! $1 ]; then
 cat << EOF
 ================================================================
-typing the option as what you want.
+Options
   -e, initialling the project environment.
   -d, initialling the database.
     -h, hostname
@@ -66,7 +73,13 @@ typing the option as what you want.
     -u, username
     -p, password
   -i, increarsing the index.html file for each directory.
-...
+  -v, check the version of current release.
+
+For example
+if you want to initial the project.
+
+   # sh .myt -ed
+
 EOF
 fi
 
@@ -79,16 +92,20 @@ if [ $Uinitht = "yes" ] ; then
 	getdir $my_path
 fi
 
+
 # initial database
 if [ $Uinitdb = "yes" ] ; then
+	needroot
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
 	sed $Urepstr "module/admin/libs/00initdb.sql" > "others/initdb.sql"
  	mysql -h localhost -u root < "others/initdb.sql"
  	rm -f "others/initdb.sql"
 fi
 
+
 # initial running environment of server
 if [ $Uinitpj = "yes" ] ; then
+	needroot
 	echo "initialing project environment."
 
 	my_file="/usr/sbin/httpd"
