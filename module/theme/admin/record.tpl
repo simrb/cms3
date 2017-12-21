@@ -6,7 +6,7 @@
 			<input type="search" class="search" name="select_kw" placeholder="<?= l('keyword'); ?>" />
 			<select name="select_field" class="selectmenu">
 				<option value="rid" ><?= l('id'); ?></option>
-				<option value="uid" ><?= l('user id'); ?></option>
+				<option value="uid" ><?= l('uid'); ?></option>
 				<option value="cid" ><?= l('category'); ?></option>
 				<option value="useful" ><?= l('useful'); ?></option>
 			</select>
