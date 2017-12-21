@@ -1,6 +1,8 @@
 <?php $lang = array(
 
 
+'clear all'      =>  '清除全部' ,
+'clear expired'      =>  '清除超期' ,
 'nothing'      =>  '没有内容' ,
 'invite code'      =>  '邀请码' ,
 'the invite code is wrong'      =>  '邀请码错误' ,
@@ -44,7 +46,6 @@
 'user token'      =>  '用户凭证' ,
 'created time'      =>  '创建时间' ,
 'expired time'      =>  '超时时间' ,
-'clear all'      =>  '清空' ,
 'keyword'      =>  '关键字' ,
 'query'      =>  '查询' ,
 'user id'      =>  '用户 id' ,

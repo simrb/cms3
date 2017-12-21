@@ -1,7 +1,8 @@
 
 <div class="show-bar">
 	<form class="edit-form">
-		<a href="<?=url_c('_v=status&_a=delall');?>"><input type="button" value="<?= l('clear all'); ?>" class="bgwt" /></a>
+		<a href="<?=url_c('_v=status&_a=delsess');?>"><input type="button" value="<?= l('clear all'); ?>" class="bgwt" /></a>
+		<a href="<?=url_c('_v=status&_a=delsess&exp=y');?>"><input type="button" value="<?= l('clear expired'); ?>" class="bgwt" /></a>
 	</form>
 </div>
 

@@ -1,5 +1,7 @@
 <?php $lang = array(
 
+'clear all'      =>  '' ,
+'clear expired'      =>  '' ,
 'nothing'      =>  '' ,
 'invite code'      =>  '' ,
 'the invite code is wrong'      =>  '' ,
@@ -43,7 +45,6 @@
 'user token'      =>  '' ,
 'created time'      =>  '' ,
 'expired time'      =>  '' ,
-'clear all'      =>  '' ,
 'keyword'      =>  '' ,
 'query'      =>  '' ,
 'user id'      =>  '' ,

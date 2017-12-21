@@ -34,10 +34,15 @@ if ($t['_a'] == "del") {
 }
 
 
-//act: delall
-if ($t['_a'] == "delall") {
-	sql_query("TRUNCATE TABLE sess;");
-	$t["msg"] = l('deleted successfully, you will quit soon');
+//act: delsess
+if ($t['_a'] == "delsess") {
+	if (isset($_GET['exp'])) {
+		sql_query("DELETE FROM sess WHERE exptime < ". time());
+		$t["msg"] = l('deleted successfully');
+	} else {
+		sql_query("TRUNCATE TABLE sess;");
+		$t["msg"] = l('deleted successfully, you will quit soon');
+	}
 }
 
 
