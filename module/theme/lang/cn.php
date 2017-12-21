@@ -35,6 +35,7 @@
 'user list'      =>  '列表' ,
 'status'      =>  '状态' ,
 'front end'      =>  '前台' ,
+'back end'      =>  '后台' ,
 'quit'      =>  '退出' ,
 'logo picture'      =>  'logo 图片' ,
 'header or name'      =>  '标头 名称' ,

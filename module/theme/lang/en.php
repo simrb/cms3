@@ -34,6 +34,7 @@
 'user list'      =>  '' ,
 'status'      =>  '' ,
 'front end'      =>  '' ,
+'back end'      =>  '' ,
 'quit'      =>  '' ,
 'logo picture'      =>  '' ,
 'header or name'      =>  '' ,
