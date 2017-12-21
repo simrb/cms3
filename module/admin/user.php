@@ -148,35 +148,5 @@ if ($t['_v'] == "edit") {
 }
 
 
-function user_add ($arr) {
-	$reval = l('failed to add');
-	if (isset($arr["username"])) {
-		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
-		if (mysql_num_rows($res) > 0) {
-			$reval = l('the user is existed');
-
-		} else {
-			sql_query("INSERT INTO user(username, password, level, created) 
-				VALUES ('". $arr["username"] ."','". $arr["password"] .
-				"','". $arr["level"] ."', '". time() ."');"
-			);
-			$reval = l('created user successfully');
-		}
-	}
-	return $reval;
-}
-
-
-function record_get_content ($rid = 0) {
-	$reval = l('nothing');
-	if ($rid != 0) {
-		$res = sql_query('SELECT content FROM record WHERE rid = '. $rid);
-		if ($row = mysql_fetch_assoc($res)) {
-			$reval = $row['content'];
-		}
-	}
-	return $reval;
-}
-
 
 ?>

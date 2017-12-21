@@ -167,16 +167,12 @@ function sql_query($sql, $op = NULL) {
 	return $result;
 }
 
-
-function sql_filter_str($str)
-{
+function sql_filter_str($str) {
     $str = str_replace(array("'", '"'), array("&apos;","&quot;"), $str);
     return $str;
 }
 
-
-function sql_filter($arr)
-{
+function sql_filter($arr) {
     if (is_array($arr)) {
         foreach($arr as $k => $v) {
             $arr[$k] = sql_filter($v);
@@ -186,7 +182,6 @@ function sql_filter($arr)
     }
     return $arr;
 }
-
 
 //a simple bbcode Parser function
 function show_bbcodes($text) {
@@ -219,10 +214,8 @@ function show_bbcodes($text) {
 	return preg_replace($find, $replace, $text);
 }
 
-
 // cut string with utf8
-function utf8_substr($str, $from, $len)
-{
+function utf8_substr($str, $from, $len) {
 	return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.
 	'((?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$len.'}).*#s', '$1' , $str);
 
@@ -239,8 +232,7 @@ function utf8_substr($str, $from, $len)
     return $tmpstr;*/
 }
 
-function utf8_substr2($str, $from, $len)
-{
+function utf8_substr2($str, $from, $len) {
 	$tmpstr = "";
     $strlen = $from + $len;
     for($i = 0; $i < $strlen; $i++) {
@@ -282,7 +274,6 @@ function user_login ($name, $pawd) {
 
 	return $reval;
 }
-
 
 function user_logout () {
 	$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : '';
@@ -351,7 +342,6 @@ function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
 
-
 // return value by key
 function optionkv ($okey) {
 
@@ -374,13 +364,11 @@ function optionkv ($okey) {
 	return $reval;
 }
 
-
 // set oval by okey
 function optionkv_set ($okey, $oval) {
 	$uid = user_id();
 	sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
 }
-
 
 function user_allow_submit () {
 	$reval = '';
@@ -395,6 +383,35 @@ function user_allow_submit () {
 	}
 	optionkv_set('last_post_time', date("i"));
 
+	return $reval;
+}
+
+function user_add ($arr) {
+	$reval = l('failed to add');
+	if (isset($arr["username"])) {
+		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
+		if (mysql_num_rows($res) > 0) {
+			$reval = l('the user is existed');
+
+		} else {
+			sql_query("INSERT INTO user(username, password, level, created) 
+				VALUES ('". $arr["username"] ."','". $arr["password"] .
+				"','". $arr["level"] ."', '". time() ."');"
+			);
+			$reval = l('created user successfully');
+		}
+	}
+	return $reval;
+}
+
+function record_get_content ($rid = 0) {
+	$reval = l('nothing');
+	if ($rid != 0) {
+		$res = sql_query('SELECT content FROM record WHERE rid = '. $rid);
+		if ($row = mysql_fetch_assoc($res)) {
+			$reval = $row['content'];
+		}
+	}
 	return $reval;
 }
 
