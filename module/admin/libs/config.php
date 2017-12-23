@@ -63,5 +63,35 @@ $t['user_level'] 		=	array(
 							);
 
 
+$t['admin_menu'] 		=	array(
+							array(
+								'head'	=>	array('records' =>	'img/6.png'),
+								'body'	=>	array(
+									'record list'	=>	'?_m=admin&_f=record',
+									'add'			=>	'?_m=admin&_f=record&_v=edit',
+								),
+							),
+
+							array(
+								'head'	=>	array('options' =>	'img/1.png'),
+								'body'	=>	array(
+									'category'		=>	'?_m=admin&_f=category',
+									'file'			=>	'?_m=admin&_f=file',
+									'info'			=>	'?_m=admin&_f=main&_v=info',
+								),
+							),
+
+							array(
+								'head'	=>	array('users' =>	'img/8.png'),
+								'body'	=>	array(
+									'user list'		=>	'?_m=admin&_f=user',
+									'status'		=>	'?_m=admin&_f=user&_v=status',
+								),
+							),
+
+);
+
+
+
 
 ?>
