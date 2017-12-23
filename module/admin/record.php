@@ -40,7 +40,7 @@ if ($t['_a'] == "update") {
 // act: delete
 if ($t['_a'] == "del") {
 	if (isset($_GET["rid"])) {
-		sql_query("DELETE FROM record WHERE rid='". $_GET["rid"] ."';");
+		sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
 		$t["msg"] = l('deleted successfully');
 	}
 }
