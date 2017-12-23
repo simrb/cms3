@@ -50,6 +50,8 @@ if ($t['_a'] == "add") {
 		$t["msg"]			= "";
 		$allow_type 		= array('jpg','jpeg','gif','png');
 		$max_file_size		= 2000000;
+		$maxwidth			= '1000';
+		$maxheight			= '1000';
 
 // 		print_r(get_upload_files());
 // 		exit;
@@ -76,9 +78,8 @@ if ($t['_a'] == "add") {
 					break;
 				}  
 
-				process_image ($file['tmp_name']);
+				process_image ($file['tmp_name'], $maxwidth, $maxheight);
 				if(!move_uploaded_file($file['tmp_name'], PATH_UPLOAD.$path)){
-				// if(!save_file($file['tmp_name'], PATH_UPLOAD.$path)){
 					$t["msg"] = l('a error in removing file');
 					break;
 				}
@@ -174,33 +175,80 @@ function get_upload_files () {
 }
 
 
-// process image
-function process_image ($path) {
-	$image	= imagecreatefromstring(file_get_contents($path));
-	$exif	= exif_read_data($path);
+function process_image($im, $maxwidth, $maxheight) {
+	$path = $im;
 
+    $img = getimagesize($im);
+    switch ($img[2]) {
+        case 1:
+            $im = @imagecreatefromgif($im);
+            break;
+        case 2:
+            $im = @imagecreatefromjpeg($im);
+            break;
+        case 3:
+            $im = @imagecreatefrompng($im);
+            break;
+    }
+
+	$exif	= exif_read_data($path);
 	if(!empty($exif['Orientation'])) {
 		switch($exif['Orientation']) {
 			case 8:
-				$image = imagerotate($image,90,0);
+				$im = imagerotate($im,90,0);
 				break;
 			case 3:
-				$image = imagerotate($image,180,0);
+				$im = imagerotate($im,180,0);
 				break;
 			case 6:
-				$image = imagerotate($image,-90,0);
+				$im = imagerotate($im,-90,0);
 				break;
 		}
 	}
 
-// 	$percent = 0.5;
-// 	list($org_width, $org_height) = getimagesize($path);
-// 	$new_width 	= $org_width * $percent;
-// 	$new_height = $org_height * $percent;
-// 	$image_p 	= imagecreatetruecolor($new_width, $new_height);
-// 	imagecopyresampled($image_p, $image, 0, 0, 0, 0, $new_width, $new_height, $org_width, $org_height);
+    $pic_width = imagesx($im);
+    $pic_height = imagesy($im);
+    $resizewidth_tag = false;
+    $resizeheight_tag = false;
+    if (($maxwidth && $pic_width > $maxwidth) || ($maxheight && $pic_height > $maxheight)) {
+        if ($maxwidth && $pic_width > $maxwidth) {
+            $widthratio = $maxwidth / $pic_width;
+            $resizewidth_tag = true;
+        }
 
-	return imagejpeg($image, $path);
+        if ($maxheight && $pic_height > $maxheight) {
+            $heightratio = $maxheight / $pic_height;
+            $resizeheight_tag = true;
+        }
+
+        if ($resizewidth_tag && $resizeheight_tag) {
+            if ($widthratio < $heightratio)
+                $ratio = $widthratio;
+            else
+                $ratio = $heightratio;
+        }
+
+
+        if ($resizewidth_tag && !$resizeheight_tag)
+            $ratio = $widthratio;
+        if ($resizeheight_tag && !$resizewidth_tag)
+            $ratio = $heightratio;
+        $newwidth = $pic_width * $ratio;
+        $newheight = $pic_height * $ratio;
+
+        if (function_exists("imagecopyresampled")) {
+            $newim = imagecreatetruecolor($newwidth, $newheight);
+            imagecopyresampled($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $pic_width, $pic_height);
+        } else {
+            $newim = imagecreate($newwidth, $newheight);
+            imagecopyresized($newim, $im, 0, 0, 0, 0, $newwidth, $newheight, $pic_width, $pic_height);
+        }
+
+        imagejpeg($newim, $path);
+        imagedestroy($newim);
+    } else {
+        imagejpeg($im, $path);
+    }
 }
 
 
