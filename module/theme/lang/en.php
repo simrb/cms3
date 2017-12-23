@@ -1,5 +1,7 @@
 <?php $lang = array(
 
+'clear trash'      =>  '' ,
+'trash'      =>  '' ,
 'clear all'      =>  '' ,
 'clear expired'      =>  '' ,
 'nothing'      =>  '' ,
@@ -85,7 +87,6 @@
 'add post'      =>  '' ,
 'no content in here'      =>  '' ,
 'see'		=>  '' ,
-'keepit'	=>  'trash' ,
 'settings'	=>  '' ,
 'save'	=>  '' ,
 'register account, please check here'	=>  '' ,

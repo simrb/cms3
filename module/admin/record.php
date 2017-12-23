@@ -46,6 +46,13 @@ if ($t['_a'] == "del") {
 }
 
 
+// act: deltrash
+if ($t['_a'] == "deltrash") {
+	sql_query("DELETE FROM record WHERE cid=0;");
+	$t["msg"] = l('deleted successfully');
+}
+
+
 // view: show
 if ($t['_v'] == "show") {
 	$t["category_kv"]	=	data_fetch_kv("category", "cid", "name");

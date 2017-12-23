@@ -26,11 +26,14 @@ if ($t['_a'] == "delpost") {
 	if (user_level() > 2 and isset($_GET['rid'])) {
 		if (isset($_GET['cmt'])) {
 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
+			$t['_v'] = 'detail';
 		} else {
 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
+			$t['_v'] = 'show';
+			$t['msg'] = l('deleted successfully');
+			// $t['cid'] = ;
 		}
 	}
-	$t['_v'] = 'detail';
 }
 
 

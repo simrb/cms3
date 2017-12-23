@@ -14,7 +14,7 @@
 				<option value="exact" ><?= l('accurate'); ?></option>
 				<option value="vague" ><?= l('vague'); ?></option>
 			</select>
-			<input type="submit" class="" value="<?= l('query'); ?>" />
+			<input type="submit" value="<?= l('query'); ?>" />
 
 		</form>
 
@@ -31,6 +31,10 @@
 				<input type="submit" value="<?= l('go to');?>" class="goto" />
 				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
 				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records1');?></span>
+				<span>,   </span>
+				<a href="<?= url_c('_a=deltrash'); ?>">
+					<button > <?= l('clear trash'); ?> </button>
+				</a>
 			</form>
 		</div>
 	</div>
@@ -77,12 +81,12 @@
 	  						echo "<td><a title='".l('edit')."' href='". url_c("_v=edit&rid=".
 	  							$row["rid"]). "'>". utf8_substr($row['content'],0,20) . "</a></td>";
 
-	  					//	echo "<td>" .date('Y-m-d', $row['created']). "</td>";
-
-	  						// echo "<td><a href='?_v=detail&rid=". $row["rid"]. 
+	  						//	echo "<td>" .date('Y-m-d', $row['created']). "</td>";
+	  						//	echo "<td><a href='?_v=detail&rid=". $row["rid"]. 
 							//	"' target='_blank'>". l('see') ."</a>";
+
 	  						echo "<td><a href='". url_c("_a=del&rid=".
-	  							$row["rid"]). "'>". l('delete') ."</a></td>";
+	  							$row["rid"]). "'>". l('trash') ."</a></td>";
 
 	  						echo "</tr>";
 	  					}
@@ -164,7 +168,7 @@ if ($t['_v'] == 'edit') { ?>
 					<li>
 						<?php if ($t['rid'] != 0) { ?>
 							<a href="<?= url_c('_a=del&rid='. $t['rid']); ?>">
-								<button > <?= l('delete'); ?> </button>
+								<button > <?= l('trash'); ?> </button>
 							</a>
 						<?php } ?>
 					</li>

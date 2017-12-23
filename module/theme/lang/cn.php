@@ -1,6 +1,8 @@
 <?php $lang = array(
 
 
+'clear trash'      =>  '清空回收站' ,
+'trash'      =>  '回收站' ,
 'clear all'      =>  '清除全部' ,
 'clear expired'      =>  '清除超期' ,
 'nothing'      =>  '没有内容' ,
@@ -85,8 +87,6 @@
 'add post'      =>  '发帖' ,
 'register'      =>  '注册' ,
 'see'      =>  '查看' ,
-//'keepit'      =>  '暂存' ,
-'keepit'      =>  '回收站' ,
 'settings'	=>  '设置' ,
 'save'	=>  '保存' ,
 'register account, please check here'	=>  '注册一个新用户帐号' ,
