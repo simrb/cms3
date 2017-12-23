@@ -38,6 +38,8 @@ body { background-color: #e8ede0; }
 
 .show-detail img { width: 70%;  }
 .show-detail .show-detail-img { margin-bottom: 10px; text-align: left; }
+.show-detail label.right { margin-left: 10px;  }
+.show-detail a:hover { cursor: underline;}
 
 .show-pagination span { margin-right: 5px; }
 

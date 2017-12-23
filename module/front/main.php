@@ -6,6 +6,34 @@ $t["category_kv"] 	= data_fetch_category("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
+
+// act: useful
+if ($t['_a'] == "useful") {
+	if (user_level() > 2 and isset($_GET['rid'])) {
+		if (isset($_GET['cmt'])) {
+			sql_query("UPDATE record SET useful = 1 WHERE rid = '".$_GET['cmt']."';");
+		} else {
+			sql_query("UPDATE record SET useful = 1 WHERE rid = '".$_GET['rid']."';");
+		}
+	}
+	$t['_v'] = 'detail';
+}
+
+
+// act: delpost
+// just modify the category id as 0, don`t delete it really
+if ($t['_a'] == "delpost") {
+	if (user_level() > 2 and isset($_GET['rid'])) {
+		if (isset($_GET['cmt'])) {
+			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
+		} else {
+			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
+		}
+	}
+	$t['_v'] = 'detail';
+}
+
+
 // act: settings
 if ($t['_a'] == "settings") {
 

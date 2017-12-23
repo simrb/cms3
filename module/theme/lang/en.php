@@ -53,7 +53,7 @@
 'accurate'      =>  '' ,
 'vague'      =>  '' ,
 'follow id'      =>  '' ,
-'useful'      =>  'Useful' ,
+'useful'      =>  'useful' ,
 'content'      =>  '' ,
 'pages'      =>  '' ,
 'first page'      =>  '' ,
