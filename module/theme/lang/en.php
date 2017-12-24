@@ -1,6 +1,13 @@
 <?php $lang = array(
 
+
+'clear guest records three months ago'      =>  '' ,
+'clear useless records three months ago'      =>  '' ,
+'clear guest and useless three months ago'      =>  '' ,
+'condition'      =>  '' ,
+'utility'      =>  '' ,
 'clear trash'      =>  '' ,
+'clear up'      =>  '' ,
 'trash'      =>  '' ,
 'clear all'      =>  '' ,
 'clear expired'      =>  '' ,

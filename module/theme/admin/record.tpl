@@ -3,6 +3,9 @@
 	<div class="show-query">
 		<form action="<?=url_c('_a=query');?>" method="post">
 
+			<a href="<?= url_c('_v=edit'); ?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
+			<input type="submit" value="<?= l('query'); ?>" />
+
 			<input type="search" class="search" name="select_kw" placeholder="<?= l('keyword'); ?>" />
 			<select name="select_field" class="selectmenu">
 				<option value="rid" ><?= l('id'); ?></option>
@@ -14,7 +17,6 @@
 				<option value="exact" ><?= l('accurate'); ?></option>
 				<option value="vague" ><?= l('vague'); ?></option>
 			</select>
-			<input type="submit" value="<?= l('query'); ?>" />
 
 		</form>
 
@@ -31,10 +33,6 @@
 				<input type="submit" value="<?= l('go to');?>" class="goto" />
 				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
 				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records1');?></span>
-				<span>,   </span>
-				<a href="<?= url_c('_a=deltrash'); ?>">
-					<button > <?= l('clear trash'); ?> </button>
-				</a>
 			</form>
 		</div>
 	</div>
@@ -179,6 +177,29 @@ if ($t['_v'] == 'edit') { ?>
 			
 		</form>
 	</div>
+
+
+<?php } 
+
+
+if ($t['_v'] == 'utility') { ?>
+
+		<form action="<?=url_c('_a=cleartrash');?>" method="post">
+
+			<input type="submit" value="<?= l('clear up'); ?>" />
+
+			<select name="clear_condition" class="selectmenu">
+				<option selected> <?= l('condition'); ?> </option>
+				<option value="clear_trash" ><?= l('clear trash'); ?></option>
+				<option value="clear_guest" ><?= l('clear guest records three months ago'); ?></option>
+				<option value="clear_useless" ><?= l('clear useless records three months ago'); ?></option>
+				<option value="clear_guest_and_useless" ><?= l('clear guest and useless three months ago'); ?></option>
+			</select>
+
+
+		</form>
+
+
 
 <?php } ?>
 

@@ -19,12 +19,7 @@
 				<li><input type="submit" value="<?= l('confirm'); ?>" /></li>
 
 				<li><br />
-					<pre><?= $t['aboutuser']; ?>
-					<!--
-					<a href="?_v=detail&rid=2" target="_blank">
-						<?= l('register have to know'); ?></a>
-					</pre>
-					-->
+					<pre><?= $t['aboutuser']; ?></pre>
 				</li>
 
 			<?php } else { ?>

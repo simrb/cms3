@@ -46,8 +46,10 @@ if ($t['_a'] == "del") {
 }
 
 
-// act: deltrash
-if ($t['_a'] == "deltrash") {
+// act: cleartrash
+if ($t['_a'] == "cleartrash") {
+
+	// clear all
 	sql_query("DELETE FROM record WHERE cid=0;");
 	$t["msg"] = l('deleted successfully');
 }
@@ -165,6 +167,12 @@ if ($t['_v'] == "edit") {
 			$t['_a']			=	"update";
 		}
 	}
+	tmp($t);
+}
+
+
+//view: improving
+if ($t['_v'] == "utility") {
 	tmp($t);
 }
 

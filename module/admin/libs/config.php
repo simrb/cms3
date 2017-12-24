@@ -75,7 +75,8 @@ $t['admin_menu'] 		=	array(
 								'head'	=>	array('records' =>	'img/6.png'),
 								'body'	=>	array(
 									'record list'	=>	'?_m=admin&_f=record',
-									'add'			=>	'?_m=admin&_f=record&_v=edit',
+// 									'add'			=>	'?_m=admin&_f=record&_v=edit',
+									'utility'		=>	'?_m=admin&_f=record&_v=utility',
 								),
 							),
 
