@@ -237,6 +237,8 @@ if ($t['_v'] == "detail") {
 if ($t['_v'] == "addpost") {
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"addpost";
+	$t['aboutpost'] = record_get_content($t['rid_aboutpost']);
+
 	tmp($t, $t['tpl_dir']."addpost");
 }
 

@@ -7,6 +7,9 @@
 				<input type="hidden" name="cid" value="<?=$t['cid']?>" />
 			</li>
 			<li><input type="submit" value="<?= l('submit'); ?>"></li>
+			<li><br />
+					<pre><?= $t['aboutpost']; ?></pre>
+			</li>
 		</ul>
 	</form>
 
