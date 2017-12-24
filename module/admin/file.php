@@ -46,12 +46,7 @@ if ($t['_a'] == 'ajaxfilelist') {
 // act: add
 if ($t['_a'] == "add") {
 	if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-
 		$t["msg"]			= "";
-		$allow_type 		= array('jpg','jpeg','gif','png');
-		$max_file_size		= 2000000;
-		$maxwidth			= '1000';
-		$maxheight			= '1000';
 
 // 		print_r(get_upload_files());
 // 		exit;
@@ -68,17 +63,17 @@ if ($t['_a'] == "add") {
 				 	break;
 				}
 
-				if(!in_array($type, $allow_type)) {
+				if(!in_array($type, $c['img_allow_types'])) {
 					$t["msg"] = l('wrong type');
 					break;
 				}
 
-				if($max_file_size < $file["size"]) {  
+				if($c['img_max_size'] < $file["size"]) {  
 					$t["msg"] = l('file too big');
 					break;
 				}  
 
-				process_image ($file['tmp_name'], $maxwidth, $maxheight);
+				process_image ($file['tmp_name'], $c['img_max_width'], $c['img_max_height']);
 				if(!move_uploaded_file($file['tmp_name'], PATH_UPLOAD.$path)){
 					$t["msg"] = l('a error in removing file');
 					break;
