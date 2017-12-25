@@ -25,7 +25,7 @@ $c['last_post_ip'] 		=	'0.0.0.0';
 
 // image format
 $c['img_allow_types'] 	=	array('jpg','jpeg','gif','png');
-$c['img_max_size'] 		=	2000000;		// 2 MB
+$c['img_max_size'] 		=	3000000;		// 3 MB
 $c['img_max_width'] 	=	'1000';
 $c['img_max_height'] 	=	'1000';
 
