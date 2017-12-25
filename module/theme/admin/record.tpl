@@ -182,11 +182,9 @@ if ($t['_v'] == 'edit') { ?>
 <?php } 
 
 
-if ($t['_v'] == 'utility') { ?>
+if ($t['_v'] == 'optimize') { ?>
 
-		<form action="<?=url_c('_a=cleartrash');?>" method="post">
-
-			<input type="submit" value="<?= l('clear up'); ?>" />
+		<form action="<?=url_c('_a=optimize');?>" method="post">
 
 			<select name="clear_condition" class="selectmenu">
 				<option selected> <?= l('condition'); ?> </option>
@@ -196,6 +194,7 @@ if ($t['_v'] == 'utility') { ?>
 				<option value="clear_guest_and_useless" ><?= l('clear guest and useless three months ago'); ?></option>
 			</select>
 
+			<input type="submit" value="<?= l('execute'); ?>" />
 
 		</form>
 

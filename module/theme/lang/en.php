@@ -1,6 +1,8 @@
 <?php $lang = array(
 
 
+'optimize' => '',
+'execute' => '',
 'clear guest records three months ago'      =>  '' ,
 'clear useless records three months ago'      =>  '' ,
 'clear guest and useless three months ago'      =>  '' ,

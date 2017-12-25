@@ -1,6 +1,8 @@
 <?php $lang = array(
 
 
+'optimize' => '优化',
+'execute' => '执行',
 'clear guest records three months ago'      =>  '清空三个月前的匿名记录' ,
 'clear useless records three months ago'      =>  '清空三个月前的无用记录' ,
 'clear guest and useless three months ago'      =>  '清空三个月前的匿名且无用的记录' ,

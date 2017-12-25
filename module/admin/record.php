@@ -46,12 +46,28 @@ if ($t['_a'] == "del") {
 }
 
 
-// act: cleartrash
-if ($t['_a'] == "cleartrash") {
+// act: optimize
+if ($t['_a'] == "optimize") {
+	$cdt = isset($_POST['clear_condition']) ? $_POST['clear_condition'] : '';
+	switch ($cdt) {
 
-	// clear all
-	sql_query("DELETE FROM record WHERE cid=0;");
-	$t["msg"] = l('deleted successfully');
+		case 'clear_trash' :
+			sql_query("DELETE FROM record WHERE cid=0;");
+			$t["msg"] = l('deleted successfully');
+		break;
+
+		case 'clear_guest' :
+		break;
+
+		case 'clear_useless' :
+		break;
+
+		case 'clear_guest_and_useless' :
+		break;
+
+	}
+
+	$t['_v'] = "optimize";
 }
 
 
@@ -172,7 +188,7 @@ if ($t['_v'] == "edit") {
 
 
 //view: improving
-if ($t['_v'] == "utility") {
+if ($t['_v'] == "optimize") {
 	tmp($t);
 }
 

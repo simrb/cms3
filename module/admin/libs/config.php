@@ -76,7 +76,7 @@ $t['admin_menu'] 		=	array(
 								'body'	=>	array(
 									'record list'	=>	'?_m=admin&_f=record',
 // 									'add'			=>	'?_m=admin&_f=record&_v=edit',
-									'utility'		=>	'?_m=admin&_f=record&_v=utility',
+									'clear up'		=>	'?_m=admin&_f=record&_v=optimize',
 								),
 							),
 
