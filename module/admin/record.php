@@ -48,25 +48,43 @@ if ($t['_a'] == "del") {
 
 // act: optimize
 if ($t['_a'] == "optimize") {
-	$cdt = isset($_POST['clear_condition']) ? $_POST['clear_condition'] : '';
+	$cdt 			= isset($_POST['select_condition']) ? $_POST['select_condition'] : '';
+	$three_month 	= time() - 60*60*24*30*3;
+	$three_day 		= time() - 60*60*24*3;
+	$num			= 0;
+
 	switch ($cdt) {
 
-		case 'clear_trash' :
-			sql_query("DELETE FROM record WHERE cid=0;");
-			$t["msg"] = l('deleted successfully');
+		// delete records in trash
+		case 'clean_trash' :
+			$num = sql_query("DELETE FROM record WHERE cid=0;", 'affect_num');
+			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
-		case 'clear_guest' :
+		// delete guest records three months ago
+		case 'clean_guest' :
+			$num = sql_query("DELETE FROM record WHERE uid=0 AND created < $three_month;", 'affect_num');
+			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
-		case 'clear_useless' :
+		// delete uesless records three months ago
+		case 'clean_useless' :
+			$num = sql_query("DELETE FROM record WHERE useful=0 AND created < $three_month;", 'affect_num');
+			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
-		case 'clear_guest_and_useless' :
+		// delete guest and useless three months ago
+		case 'clean_guest_and_useless' :
+			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created < $three_month;", 'affect_num');
 		break;
 
+		// delete guest and useless in three days
+		case 'clean_guest_and_useless_days' :
+			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
+		break;
 	}
 
+	$t["msg"] = l('deleted successfully') . ' for '. $num;
 	$t['_v'] = "optimize";
 }
 

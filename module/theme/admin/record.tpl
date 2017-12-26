@@ -186,12 +186,13 @@ if ($t['_v'] == 'optimize') { ?>
 
 		<form action="<?=url_c('_a=optimize');?>" method="post">
 
-			<select name="clear_condition" class="selectmenu">
+			<select name="select_condition" class="selectmenu">
 				<option selected> <?= l('condition'); ?> </option>
-				<option value="clear_trash" ><?= l('clear trash'); ?></option>
-				<option value="clear_guest" ><?= l('clear guest records three months ago'); ?></option>
-				<option value="clear_useless" ><?= l('clear useless records three months ago'); ?></option>
-				<option value="clear_guest_and_useless" ><?= l('clear guest and useless three months ago'); ?></option>
+				<option value="clean_trash" ><?= l('clean trash'); ?></option>
+				<option value="clean_guest" ><?= l('clean guest records three months ago'); ?></option>
+				<option value="clean_useless" ><?= l('clean useless records three months ago'); ?></option>
+				<option value="clean_guest_and_useless" ><?= l('clean guest and useless three months ago'); ?></option>
+				<option value="clean_guest_and_useless_days" ><?= l('clean guest and useless in three days'); ?></option>
 			</select>
 
 			<input type="submit" value="<?= l('execute'); ?>" />
