@@ -159,7 +159,7 @@ function sql_query($sql, $op = NULL) {
 	if ($op == 'insert_id') {
 		$result = mysql_insert_id();
 	} elseif ($op == 'affect_num') {
-		$result = mysql_affected_rows($result);
+		$result = mysql_affected_rows();
 	}
 
 	mysql_close($conn);
