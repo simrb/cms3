@@ -24,8 +24,6 @@ or, set your custom by options `-h, -n, -u, -p`
 
 if you have an existed database, just configure the file `cfg.php` for connecting.
 
-and finally, set the `upload_max_filesize = 3M` in `/etc/php.ini`
-
 
 
 Backup

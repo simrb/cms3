@@ -143,6 +143,7 @@ if [ $Uinitpj = "yes" ] ; then
 	my_file="/etc/php.d/custom.ini"
 	if [ ! -f "$my_file" ] ; then
 		echo 'short_open_tag=On' > $my_file
+		echo 'upload_max_filesize=3M' >> $my_file
 		echo "${my_file} is created"
 	fi
 
