@@ -23,12 +23,14 @@
 		}
 
 
+		/*
 		// picture
 		if (isset($t['record_img'])) {
 			echo "<div class='clear show-detail-img'><img src='" . 
 				DIR_UPLOAD . $t['record_img'] . "'/></div>";
 			echo '<br/>';
 		}
+		*/
 
 
 		// comments

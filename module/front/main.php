@@ -147,6 +147,7 @@ if ($t['_a'] == "addpost") {
 			);
 			$t["msg"] = l('submitted successfully');
 
+			/*
 			// add upload
 			$t['_a'] = 'add';
 			$t['_v'] = '';
@@ -156,6 +157,7 @@ if ($t['_a'] == "addpost") {
 			$rid	= $insert_id;
 			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES ('". $uid .
 				"', 'img_r" . $rid . "', '". $path ."');");
+			*/
 
 		}
 
@@ -202,6 +204,7 @@ if ($t['_v'] == "detail") {
 		$res = sql_query("SELECT content, cid, created, useful FROM record 
 							WHERE rid = ". $t["rid"] . " LIMIT 1");
 		if ($res = mysql_fetch_row($res)) {
+
 			// set head
 			$t['web_title'] = utf8_substr($res[0], 0, 30) . ' -- ' . optionkv('web_header');
 			$t['web_des'] 	= utf8_substr($res[0], 0, 70);
@@ -218,6 +221,7 @@ if ($t['_v'] == "detail") {
 									WHERE follow = ". $t["rid"];
 			$t['record_cmt'] 	= sql_query($sql_str);
 
+			/*
 			// set picture
 			$res = sql_query("SELECT oval FROM optionkv WHERE okey = 'img_r". $t["rid"] 
 					. "' LIMIT 1");
@@ -226,6 +230,7 @@ if ($t['_v'] == "detail") {
 					$t['record_img'] = $res[0];
 				}
 			}
+			*/
 		}
 
 		tmp($t, $t['tpl_dir']."detail");
@@ -237,7 +242,7 @@ if ($t['_v'] == "detail") {
 if ($t['_v'] == "addpost") {
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"addpost";
-	$t['aboutpost'] = record_get_content($t['rid_aboutpost']);
+	$t['aboutpost'] 	= record_get_content($t['rid_aboutpost']);
 
 	tmp($t, $t['tpl_dir']."addpost");
 }
