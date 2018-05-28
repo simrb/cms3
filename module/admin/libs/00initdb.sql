@@ -13,7 +13,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 --
--- `category`
+-- `category`, for record
 --
 CREATE TABLE `category` (
   `cid` int(11) NOT NULL auto_increment,
@@ -31,7 +31,7 @@ INSERT INTO `category` (`cid`, `uid`, `follow`, `number`, `name`) VALUES
 
 
 --
--- `file`
+-- `file`, allow upload image
 --
 CREATE TABLE `file` (
   `fid` int(11) NOT NULL auto_increment,
@@ -45,7 +45,7 @@ CREATE TABLE `file` (
 
 
 --
--- `record`
+-- `record`, main contents
 --
 CREATE TABLE `record` (
   `rid` int(11) NOT NULL auto_increment,
@@ -125,5 +125,27 @@ CREATE TABLE `sess` (
   `token` varchar(50) NOT NULL,
   PRIMARY KEY  (`sid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+--
+-- `tag`, for record
+--
+CREATE TABLE `tag` (
+  `tid` int(11) NOT NULL auto_increment,
+  `name` varchar(20) NOT NULL,
+  PRIMARY KEY  (`tid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+--
+-- `tag_assoc`, for associating record and tag
+--
+CREATE TABLE `tag_assoc` (
+  `taid` int(11) NOT NULL auto_increment,
+  `rid` int(11) NOT NULL,
+  `tid` int(11) NOT NULL,
+  PRIMARY KEY  (`taid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
 
 
