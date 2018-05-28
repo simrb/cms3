@@ -113,5 +113,6 @@
 'user register'      =>  '' ,
 'go to'      =>  '' ,
 'order'      =>  '' ,
+'tag'      =>  '' ,
 
 );?>

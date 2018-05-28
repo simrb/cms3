@@ -186,6 +186,9 @@ if ($t['_v'] == "edit") {
 
 	$t["rid"]			=	isset($_GET["rid"]) ? $_GET["rid"] : (isset($_POST['rid']) ? $_POST['rid'] : $t['rid']);
 
+	$t["tag"]			=	isset($t["tag"]) ? $t["tag"] : '';
+
+
 	// fill data for edit action
 	if ( $t['rid'] != 0 ) {
 		$res = sql_query("SELECT rid,uid,cid,follow,useful,content,created FROM record WHERE rid = '". $t['rid'] ."';");

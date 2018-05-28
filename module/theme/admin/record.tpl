@@ -22,8 +22,6 @@
 			-->
 
 		</form>
-
-
 	</div>
 
 
@@ -154,6 +152,11 @@ if ($t['_v'] == 'edit') { ?>
 				</br>
 				
 				<ul>
+					<li>
+						<label><?= l('tag'); ?></label>
+						<input type="text" name="tag" class="w100" value="<?= $t['tag'] ?>" />
+					</li>
+
 					<li>
 						<label><?= l('picture'); ?></label>
 						<div class="file_list"></div>
