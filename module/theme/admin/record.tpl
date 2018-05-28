@@ -13,28 +13,17 @@
 				<option value="cid" ><?= l('category'); ?></option>
 				<option value="useful" ><?= l('useful'); ?></option>
 			</select>
+
+			<!--
 			<select name="select_type" class="selectmenu">
 				<option value="exact" ><?= l('accurate'); ?></option>
 				<option value="vague" ><?= l('vague'); ?></option>
 			</select>
+			-->
 
 		</form>
 
-		<div class="pagination">
-			<form action="<?=url_c();?>" method="post">
-				<a href="<?=url_c('pagecurr=1');?>"><?=l('first page')?></a>
-				<span>, </span>
-				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] - 1) );?>"><?=l('prev page')?></a>
-				<span>, </span>
-				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] + 1) );?>"><?=l('next page')?></a>
-				<span>, </span>
-				<a href="<?=url_c('pagecurr='.$t['pagenums']);?>"><?=l('last page')?></a>
-				<span>, </span>
-				<input type="submit" value="<?= l('go to');?>" class="goto" />
-				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
-				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records1');?></span>
-			</form>
-		</div>
+
 	</div>
 
 
@@ -94,6 +83,21 @@
 			</tbody>
 		</table>
 
+		<div class="pagination">
+			<form action="<?=url_c();?>" method="post">
+				<a href="<?=url_c('pagecurr=1');?>"><?=l('first page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] - 1) );?>"><?=l('prev page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='. ($t['pagecurr'] + 1) );?>"><?=l('next page')?></a>
+				<span>, </span>
+				<a href="<?=url_c('pagecurr='.$t['pagenums']);?>"><?=l('last page')?></a>
+				<span>, </span>
+				<input type="submit" value="<?= l('go to');?>" class="goto" />
+				<input type="text" name="pagecurr" class="pagecurr" value="<?=$t['pagecurr']?>" /> / <?=$t["pagenums"]?>
+				<span><?=l('pages');?>,  <?=$t["res_num"]?> <?= l('records1');?></span>
+			</form>
+		</div>
 
 	</div>
 
