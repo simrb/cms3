@@ -4,13 +4,14 @@
 // act: add
 if ($t['_a'] == "add") {
 	if (($t["msg"] = record_fields_valid("add")) == "") {
-		sql_query(
+		$insert_id = sql_query(
 			"INSERT INTO record (
 			uid, cid, follow, useful, content, created
 			) VALUES (
 			'". user_id() ."', '". $_POST["cid"] ."', '". $_POST["follow"] ."',
-			'". $_POST["useful"] ."', '". $_POST["content"] ."', '". time() ."')"
+			'". $_POST["useful"] ."', '". $_POST["content"] ."', '". time() ."')", 'insert_id'
 		);
+		tag_add_by($insert_id, $_POST['tag']);
 		$t["msg"] = l('added successfully');
 	}
 }
@@ -31,6 +32,7 @@ if ($t['_a'] == "update") {
 		// fetch data for showing later, and make sure this operating is successful
 		$res = sql_query("SELECT uid,cid,follow,useful,content,created FROM record WHERE rid = '". $_POST["rid"] ."';");
 		if ($res) {
+			tag_update_by($_POST["rid"], $_POST['tag']);
 			$t["msg"] = l('updated successfully');
 		}
 	}
@@ -41,6 +43,7 @@ if ($t['_a'] == "update") {
 if ($t['_a'] == "del") {
 	if (isset($_GET["rid"])) {
 		sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
+		tag_delete_by($_GET["rid"]);
 		$t["msg"] = l('deleted successfully');
 	}
 }
@@ -201,6 +204,8 @@ if ($t['_v'] == "edit") {
 			$t["content"]		=	$row['content'];
 			$t["created"]		=	$row['created'];
 
+			$t["tag"]			=	tag_view_by($t['rid']);
+
 			$t['_a']			=	"update";
 		}
 	}
@@ -218,6 +223,31 @@ function record_fields_valid ($str) {
 	$reval = "";
 	return $reval;
 }
+
+
+/*
+ get the tag names by rid,
+ return a string by joinning the names with blank,
+ others is also blank.
+*/
+function tag_view_by($rid) {
+	$reval = "";
+
+	return $reval;
+}
+
+
+function tag_add_by($rid, $tag) {
+}
+
+
+function tag_update_by($rid, $tag) {
+}
+
+
+function tag_delete_by($rid) {
+}
+
 
 
 ?>
