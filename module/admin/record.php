@@ -228,24 +228,70 @@ function record_fields_valid ($str) {
 /*
  get the tag names by rid,
  return a string by joinning the names with blank,
- others is also blank.
+ otherwise is blank.
 */
 function tag_view_by($rid) {
 	$reval = "";
+
+	$sql_str = "SELECT name FROM tag WHERE rid = '$rid';";
+
+	$res	=	sql_query($sql_str);
+	if (mysql_num_rows($res) > 0) {
+		while( $row = mysql_fetch_array($res, MYSQL_ASSOC) ) {
+			$reval .= $row['name'].' ';
+		}
+	}
 
 	return $reval;
 }
 
 
 function tag_add_by($rid, $tag) {
+	// add tag
+	$tag	= trim($tag);
+	$tids	= [];
+	if (!empty($tag)) {
+		$tag = explode(' ', $tag);
+
+		// fetch tid from tag table, otherwise creating a new tag and return id
+		foreach( $val as $tag ) {
+			$res = sql_query("SELECT tid FROM tag WHERE name = '". $val ."', LIMIT 1;");
+
+			// has exist tag
+			if (mysql_num_rows($res) > 0) {
+				$row = mysql_fetch_row($res);
+				$tids[] = $row[0];
+
+			// no tag
+			} else {
+				$tids[] = sql_query(
+					"INSERT INTO tag (name) VALUES ('". $val ."');", 'insert_id'
+				);
+			}
+		}
+	}
+
+	// add tag_assoc
+	if (!empty($tids)) {
+		foreach($val as $tids) {
+			sql_query(
+				"INSERT INTO tag_assoc (rid, tid) VALUES ('$rid', '$val');"
+			);
+		}
+	}
 }
 
 
 function tag_update_by($rid, $tag) {
+	// compare tag
+
+	// if different
 }
 
 
+// delete the associations of tag and record by rid
 function tag_delete_by($rid) {
+	$num = sql_query("DELETE FROM tag_assoc WHERE rid='$rid';", 'affect_num');
 }
 
 
