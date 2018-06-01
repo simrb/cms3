@@ -249,7 +249,7 @@ function tag_view_by($rid) {
 function tag_add_by($rid, $tag) {
 	// add tag
 	$tag	= trim($tag);
-	$tids	= [];
+	$tids	= array();
 	if (!empty($tag)) {
 		$tag = explode(' ', $tag);
 
@@ -284,13 +284,26 @@ function tag_add_by($rid, $tag) {
 
 function tag_update_by($rid, $tag) {
 	// compare tag
+	$old_tag = explode(' ', tag_view_by($rid));
+	$new_tag = explode(' ', $tag);
 
-	// if different
+	$add_tag = array_diff($new_tag, $old_tag);
+	$del_tag = array_diff($old_tag, $new_tag);
+
+	// if it has new tags
+	if(!empty($add_tag)) {
+		tag_add_by($rid, $add_tag);
+	}
+
+	// if it has removed tags
+	if(!empty($del_tag)) {
+		$tag_delete_by($rid, $del_tag);
+	}
 }
 
 
 // delete the associations of tag and record by rid
-function tag_delete_by($rid) {
+function tag_delete_by($rid, $tag = '') {
 	$num = sql_query("DELETE FROM tag_assoc WHERE rid='$rid';", 'affect_num');
 }
 
