@@ -299,7 +299,7 @@ function tag_update_by($rid, $tag) {
 
 	// if it has removed tags
 	if(!empty($del_tag)) {
-		$tag_delete_by($rid, $del_tag);
+		tag_delete_by($rid, $del_tag);
 	}
 }
 
