@@ -248,13 +248,15 @@ function tag_view_by($rid) {
 
 function tag_add_by($rid, $tag) {
 	// add tag
-	$tag	= trim($tag);
-	$tids	= array();
+	$tids = array();
 	if (!empty($tag)) {
-		$tag = explode(' ', $tag);
+		if (is_string($tag)) {
+			$tag	= trim($tag);
+			$tag	= explode(' ', $tag);
+		}
 
 		// fetch tid from tag table, otherwise creating a new tag and return id
-		foreach( $val as $tag ) {
+		foreach( $tag as $val ) {
 			$res = sql_query("SELECT tid FROM tag WHERE name = '". $val ."', LIMIT 1;");
 
 			// has exist tag
@@ -273,7 +275,7 @@ function tag_add_by($rid, $tag) {
 
 	// add tag_assoc
 	if (!empty($tids)) {
-		foreach($val as $tids) {
+		foreach($tids as $val) {
 			sql_query(
 				"INSERT INTO tag_assoc (rid, tid) VALUES ('$rid', '$val');"
 			);
