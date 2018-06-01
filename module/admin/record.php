@@ -313,9 +313,21 @@ function tag_delete_by($rid, $tag = '') {
 	// delete by rid
 	if (empty($tag)) {
 		sql_query("DELETE FROM tag_assoc WHERE rid='$rid';");
-	
+
 	// delete by rid and tag
 	} else {
+		// fetch the tid
+		$tag_str = '';
+		foreach($tag as $val) {
+			$tag_str .= "'" . $val . "',";
+		}
+
+		sql_query("
+			DELETE FROM tag_assoc WHERE rid='$rid' AND tid IN (
+				( SELECT tid FROM tag WHERE name IN ( $val ) ) AS tids
+			)
+		");
+
 	}
 }
 
