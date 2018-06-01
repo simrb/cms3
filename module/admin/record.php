@@ -226,9 +226,9 @@ function record_fields_valid ($str) {
 
 
 /*
- get the tag names by rid,
- return a string by joinning the names with blank,
- otherwise is blank.
+	get the tag names by rid,
+	return a string by joinning the names with blank,
+	otherwise is blank.
 */
 function tag_view_by($rid) {
 	$reval = "";
@@ -246,6 +246,10 @@ function tag_view_by($rid) {
 }
 
 
+/*
+	Parameters
+	$tag are some tag names those could be the array or string.
+*/
 function tag_add_by($rid, $tag) {
 	// add tag
 	$tids = array();
@@ -306,7 +310,13 @@ function tag_update_by($rid, $tag) {
 
 // delete the associations of tag and record by rid
 function tag_delete_by($rid, $tag = '') {
-	$num = sql_query("DELETE FROM tag_assoc WHERE rid='$rid';", 'affect_num');
+	// delete by rid
+	if (empty($tag)) {
+		sql_query("DELETE FROM tag_assoc WHERE rid='$rid';");
+	
+	// delete by rid and tag
+	} else {
+	}
 }
 
 
