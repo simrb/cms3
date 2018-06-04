@@ -233,7 +233,11 @@ function record_fields_valid ($str) {
 function tag_view_by($rid) {
 	$reval = "";
 
-	$sql_str = "SELECT name FROM tag WHERE rid = '$rid';";
+	$sql_str = "
+		SELECT name FROM tag WHERE tid IN (
+			SELECT tid FROM tag_assoc WHERE rid = '$rid'
+		);
+	";
 
 	$res	=	sql_query($sql_str);
 	if (mysql_num_rows($res) > 0) {
@@ -261,7 +265,7 @@ function tag_add_by($rid, $tag) {
 
 		// fetch tid from tag table, otherwise creating a new tag and return id
 		foreach( $tag as $val ) {
-			$res = sql_query("SELECT tid FROM tag WHERE name = '". $val ."', LIMIT 1;");
+			$res = sql_query("SELECT tid FROM tag WHERE name = '". $val ."' LIMIT 1;");
 
 			// has exist tag
 			if (mysql_num_rows($res) > 0) {
@@ -324,7 +328,7 @@ function tag_delete_by($rid, $tag = '') {
 
 		sql_query("
 			DELETE FROM tag_assoc WHERE rid='$rid' AND tid IN (
-				( SELECT tid FROM tag WHERE name IN ( $val ) ) AS tids
+				SELECT tid FROM tag WHERE name IN ( $val )
 			)
 		");
 
