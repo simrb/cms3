@@ -272,10 +272,10 @@ function tag_add_by($rid, $tag) {
 				$row = mysql_fetch_row($res);
 				$tids[] = $row[0];
 
-			// no tag
+			// when no tag, add new tag, and return tid
 			} else {
 				$tids[] = sql_query(
-					"INSERT INTO tag (name) VALUES ('". $val ."');", 'insert_id'
+					"INSERT INTO tag (name) VALUES ('$val');", 'insert_id'
 				);
 			}
 		}
@@ -320,18 +320,20 @@ function tag_delete_by($rid, $tag = '') {
 
 	// delete by rid and tag
 	} else {
-		// fetch the tid
+		// change to string
 		$tag_str = '';
-		foreach($tag as $val) {
-			$tag_str .= "'" . $val . "',";
+		if (is_string($tag)) {
+			$tag	= trim($tag);
+			$tag	= explode(' ', $tag);
 		}
 
-		sql_query("
-			DELETE FROM tag_assoc WHERE rid='$rid' AND tid IN (
-				SELECT tid FROM tag WHERE name IN ( $val )
-			)
-		");
-
+		// delete tag one by one
+		foreach($tag as $val) {
+			sql_query("
+	 			DELETE FROM tag_assoc WHERE rid = '$rid' AND tid = 
+					(SELECT tid FROM tag WHERE name = '$val' LIMIT 1)
+			");
+		}
 	}
 }
 
