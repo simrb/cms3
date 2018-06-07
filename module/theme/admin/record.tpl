@@ -31,11 +31,11 @@
 			<thead>
 				<tr>
 					<th style="width:40px">id</th>
-					<th style="width:40px"><?= l('uid'); ?></th>
+					<th style="width:180px"><?= l('content'); ?></th>
 					<th style="width:40px"><?= l('category'); ?></th>
+					<th style="width:40px"><?= l('uid'); ?></th>
 					<th style="width:40px"><?= l('follow id'); ?></th>
 					<th style="width:40px"><?= l('useful'); ?></th>
-					<th style="width:180px"><?= l('content'); ?></th>
 					<th style="width:80px"></th>
 				</tr>
 			</thead>
@@ -53,19 +53,19 @@
 							echo "<tr>";
 
 	  						echo "<td><a href='?_v=detail&rid=". $row["rid"]. 
-								"' target='_blank'> > </a>";
+								"' target='_blank'>";
 	  						echo "<span>". $row["rid"] ."</span>";
-	  						echo "<a href='". url_c("_v=edit&rid=".
-	  							$row["rid"]). "'> > </a></td>";
+	  						echo " > </a></td>";
 
-							echo "<td>" . $row['uid'] . "</td>";
+	  						echo "<td><a title='".l('edit')."' href='". url_c("_v=edit&rid=".
+	  							$row["rid"]). "'>". utf8_substr($row['content'],0,20) . "</a></td>";
+
 							echo "<td>" . $category . "</td>";
+							echo "<td>" . $row['uid'] . "</td>";
 							//echo "<td>" . $level . "</td>";
 	  						echo "<td>" . $row['follow'] . "</td>";
 	  						echo "<td>" . $row['useful'] . "</td>";
 
-	  						echo "<td><a title='".l('edit')."' href='". url_c("_v=edit&rid=".
-	  							$row["rid"]). "'>". utf8_substr($row['content'],0,20) . "</a></td>";
 
 	  						//	echo "<td>" .date('Y-m-d', $row['created']). "</td>";
 	  						//	echo "<td><a href='?_v=detail&rid=". $row["rid"]. 

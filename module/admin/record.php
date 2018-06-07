@@ -99,8 +99,8 @@ if ($t['_v'] == "show") {
 
 	// pagination
 	$pagecurr = (isset($_REQUEST["pagecurr"]) and $_REQUEST["pagecurr"]>1) ? $_REQUEST["pagecurr"] : 1;
-// 	$pagesize			=	$c["def_pagesize"] ;
-	$pagesize			=	3 ;
+	$pagesize			=	$c["def_pagesize"] ;
+// 	$pagesize			=	3 ;
 	$pagenums			=	0 ;
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
 	$t["record_res"] 	= '';

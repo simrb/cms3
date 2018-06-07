@@ -23,8 +23,12 @@
 					if ($t["category_res"]) {
 						while($row = mysql_fetch_array($t["category_res"])) {
 							echo "<tr>";
-	  						echo "<td><a href='". url_c("_a=edit&_v=edit&cid=".$row["cid"]) .
-									"'>". $row["cid"] ." > </a></td>";
+	  						echo "<td>";
+	  						//echo "<a href='". url_c("_a=edit&_v=edit&cid=".$row["cid"]) . "'>";
+							echo $row["cid"];
+	  						//echo "</a></td>";
+	  						echo "</td>";
+
 	  						echo "<td><a href='". url_c("_a=edit&_v=edit&cid=".$row["cid"]) .
 									"'>". $row["name"] ."</a></td>";
 	  						echo "<td>" . $row['follow'] . "</td>";
