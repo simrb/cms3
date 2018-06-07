@@ -99,23 +99,26 @@ if ($t['_v'] == "show") {
 
 	// pagination
 	$pagecurr = (isset($_REQUEST["pagecurr"]) and $_REQUEST["pagecurr"]>1) ? $_REQUEST["pagecurr"] : 1;
-
-	$pagesize			=	$c["def_pagesize"] ;
+// 	$pagesize			=	$c["def_pagesize"] ;
+	$pagesize			=	3 ;
 	$pagenums			=	0 ;
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
-	$t["res_num"]	=	0;
+	$t["record_res"] 	= '';
+	$t["res_num"]		=	0;
 
 	// act: query
 	if ($t['_a'] == "query") {
-								// $_REQUEST
-		$select_type		=	isset($_GET["select_type"]) ? $_GET["select_type"] : 
-								(isset($_POST["select_type"]) ? $_POST["select_type"] : "exact");
+		// select type, exact or vague
+		$select_type		=	isset($_POST["select_type"]) ? $_POST["select_type"] : 
+								(isset($_GET["select_type"]) ? $_GET["select_type"] : "exact");
 		
-		$select_kw_name = $select_kw =	isset($_GET["select_kw"]) ? $_GET["select_kw"] : 
-								(isset($_POST["select_kw"]) ? $_POST["select_kw"] : "");
+		// select keyword of html input
+		$select_kw_name = $select_kw =	isset($_POST["select_kw"]) ? $_POST["select_kw"] : 
+								(isset($_GET["select_kw"]) ? $_GET["select_kw"] : "");
 
-		$select_field		=	isset($_GET["select_field"]) ? $_GET["select_field"] : 
-								(isset($_POST["select_field"]) ? $_POST["select_field"] : "");
+		// select field, such as id, category, tag
+		$select_field		=	isset($_POST["select_field"]) ? $_POST["select_field"] : 
+								(isset($_GET["select_field"]) ? $_GET["select_field"] : "");
 
 		// process the sepcial fields cid, sid..
 		$cid_vk				=	array_flip($t["category_kv"]);
@@ -126,6 +129,8 @@ if ($t['_v'] == "show") {
 			$select_kw = array_key_exists($select_kw, $cid_vk) ? $cid_vk[$select_kw] : "" ;
 		}
 
+		// quering by conditions
+		$t["msg"] 	= l('no result in quering');
 		if (($select_kw != "") and ($select_field != "")) {
 			if ($select_type == "exact") {
 				$sql_str = "SELECT * FROM record WHERE $select_field = '$select_kw' ";
@@ -133,30 +138,20 @@ if ($t['_v'] == "show") {
 				$sql_str = "SELECT * FROM record WHERE $select_field like '%$select_kw%' ";
 			}
 
-			//echo $sql_str;
-			$t["record_res"] =	sql_query($sql_str);
-			$t["res_num"] =	mysql_num_rows($t["record_res"]);
+			$t["record_res"]	= sql_query($sql_str);
+			$t["res_num"] 		= mysql_num_rows($t["record_res"]);
 
-			$pagenums		 =	ceil($t["res_num"]/$pagesize);
-			$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
-			$t["record_res"] =	sql_query($sql_str);
-
-
-			if ($t["res_num"] < 1) {
-				$t["msg"] 	= l('no result in quering');
-			} else {
+			if ($t["res_num"] > 0) {
+				$pagenums		 =	ceil($t["res_num"]/$pagesize);
+				$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
+				$t["record_res"] =	sql_query($sql_str);
 				$t["url"] 	= "_a=query&select_kw=$select_kw_name&select_field=$select_field&select_type=$select_type";
+				unset($t["msg"]);
 			}
-		} else {
-			// no content in db for the sepcail field
-			$t["record_res"] = '';
-			$t["msg"] = l('no result in quering');
 		}
-	}
 
-
-	// if no query act
-	if (!isset($t["record_res"])) {
+	// default view if no quering
+	} else {
 		$sql_str			= "SELECT * FROM record";
 		$t["record_res"] 	= sql_query($sql_str);
 		$t["res_num"] 		= mysql_num_rows($t["record_res"]);

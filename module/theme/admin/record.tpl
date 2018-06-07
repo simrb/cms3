@@ -12,6 +12,7 @@
 				<option value="uid" ><?= l('uid'); ?></option>
 				<option value="cid" ><?= l('category'); ?></option>
 				<option value="useful" ><?= l('useful'); ?></option>
+				<option value="tag" ><?= l('tag'); ?></option>
 			</select>
 
 			<!--
