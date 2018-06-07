@@ -104,7 +104,8 @@ function url ($arr) {
 
 // complete the url for option _m, _f
 function url_c ($str = '') {
-	$str = '?_m='. $GLOBALS["t"]['_m']. '&_f='. $GLOBALS["t"]['_f'] . '&' . $str;
+	$url = isset($GLOBALS["t"]['url']) ? $GLOBALS["t"]['url'] : '';
+	$str = '?_m='. $GLOBALS["t"]['_m']. '&_f='. $GLOBALS["t"]['_f'] . '&' . $str . '&' . $url ;
 	return $str;
 }
 
