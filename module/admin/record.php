@@ -120,34 +120,42 @@ if ($t['_v'] == "show") {
 		$select_field		=	isset($_POST["select_field"]) ? $_POST["select_field"] : 
 								(isset($_GET["select_field"]) ? $_GET["select_field"] : "");
 
-		// process the sepcial fields cid, sid..
-		$cid_vk				=	array_flip($t["category_kv"]);
-//		$sid_vk				=	array_flip($t["status_kv"]);
-
-		// replace the cid field name by its id, and ...
+		// process the sepcial fields, replace its name to id
 		if ($select_field == "cid") {
+			$cid_vk				=	array_flip($t["category_kv"]);
+	//		$sid_vk				=	array_flip($t["status_kv"]);
+
 			$select_kw = array_key_exists($select_kw, $cid_vk) ? $cid_vk[$select_kw] : "" ;
 		}
 
 		// quering by conditions
 		$t["msg"] 	= l('no result in quering');
 		if (($select_kw != "") and ($select_field != "")) {
-			if ($select_type == "exact") {
-				$sql_str = "SELECT * FROM record WHERE $select_field = '$select_kw' ";
+
+			// if query by tag
+			if ($select_field == 'tag') {
+
+			// other field quering
 			} else {
-				$sql_str = "SELECT * FROM record WHERE $select_field like '%$select_kw%' ";
+				if ($select_type == "exact") {
+					$sql_str = "SELECT * FROM record WHERE $select_field = '$select_kw' ";
+				} else {
+					$sql_str = "SELECT * FROM record WHERE $select_field like '%$select_kw%' ";
+				}
+
+				$t["record_res"]	= sql_query($sql_str);
+				$t["res_num"] 		= mysql_num_rows($t["record_res"]);
+
+				if ($t["res_num"] > 0) {
+					$pagenums		 =	ceil($t["res_num"]/$pagesize);
+					$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
+					$t["record_res"] =	sql_query($sql_str);
+					unset($t["msg"]);
+				}
 			}
 
-			$t["record_res"]	= sql_query($sql_str);
-			$t["res_num"] 		= mysql_num_rows($t["record_res"]);
-
-			if ($t["res_num"] > 0) {
-				$pagenums		 =	ceil($t["res_num"]/$pagesize);
-				$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
-				$t["record_res"] =	sql_query($sql_str);
-				$t["url"] 	= "_a=query&select_kw=$select_kw_name&select_field=$select_field&select_type=$select_type";
-				unset($t["msg"]);
-			}
+			// reset the url parameters
+			$t["url"] 	= "_a=query&select_kw=$select_kw_name&select_field=$select_field&select_type=$select_type";
 		}
 
 	// default view if no quering
