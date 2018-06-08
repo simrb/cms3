@@ -35,8 +35,7 @@
 					if ($t["user_res"]) {
 						while($row = mysql_fetch_array($t["user_res"])) {
 							echo "<tr>";
-	  						echo "<td><a href='". url_c("_v=edit&_a=edit&uid=".
-	  							$row["uid"]). "'>". $row["uid"] ." > </a></td>";
+	  						echo "<td>". $row["uid"] ."</td>";
 	  						echo "<td><a href='". url_c("_v=edit&_a=edit&uid=".
 	  							$row["uid"]). "'>". $row["username"] ."</a></td>";
 	  						echo "<td>" . $row['level'] . "</td>";
