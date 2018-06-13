@@ -132,8 +132,27 @@ if ($t['_v'] == "show") {
 		$t["msg"] 	= l('no result in quering');
 		if (($select_kw != "") and ($select_field != "")) {
 
-			// if query by tag
+			// query by tag
 			if ($select_field == 'tag') {
+
+				// fetch the tid
+				$res = sql_query("SELECT tid FROM tag WHERE name = '$select_kw' LIMIT 1");
+				if (mysql_num_rows($res) > 0) {
+					$row = mysql_fetch_row($res);
+					$tid = $row[0];
+
+					// search by tid
+					$sql_str = "SELECT * FROM record WHERE rid IN (SELECT rid FROM tag_assoc WHERE tid = '$tid');";
+					$t["record_res"]	= sql_query($sql_str);
+					$t["res_num"] 		= mysql_num_rows($t["record_res"]);
+
+					if ($t["res_num"] > 0) {
+// 						$pagenums		 =	ceil($t["res_num"]/$pagesize);
+// 						$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
+// 						$t["record_res"] =	sql_query($sql_str);
+						unset($t["msg"]);
+					}
+				}
 
 			// other field quering
 			} else {
