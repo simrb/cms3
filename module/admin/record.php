@@ -103,8 +103,9 @@ if ($t['_v'] == "show") {
 // 	$pagesize			=	3 ;
 	$pagenums			=	0 ;
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
-	$t["record_res"] 	= '';
+	$t["record_res"] 	=	'';
 	$t["res_num"]		=	0;
+	$sql_str			=	'';
 
 	// act: query
 	if ($t['_a'] == "query") {
@@ -142,16 +143,7 @@ if ($t['_v'] == "show") {
 					$tid = $row[0];
 
 					// search by tid
-					$sql_str = "SELECT * FROM record WHERE rid IN (SELECT rid FROM tag_assoc WHERE tid = '$tid');";
-					$t["record_res"]	= sql_query($sql_str);
-					$t["res_num"] 		= mysql_num_rows($t["record_res"]);
-
-					if ($t["res_num"] > 0) {
-// 						$pagenums		 =	ceil($t["res_num"]/$pagesize);
-// 						$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
-// 						$t["record_res"] =	sql_query($sql_str);
-						unset($t["msg"]);
-					}
+					$sql_str = "SELECT * FROM record WHERE rid IN (SELECT rid FROM tag_assoc WHERE tid = '$tid')";
 				}
 
 			// other field quering
@@ -161,31 +153,30 @@ if ($t['_v'] == "show") {
 				} else {
 					$sql_str = "SELECT * FROM record WHERE $select_field like '%$select_kw%' ";
 				}
-
-				$t["record_res"]	= sql_query($sql_str);
-				$t["res_num"] 		= mysql_num_rows($t["record_res"]);
-
-				if ($t["res_num"] > 0) {
-					$pagenums		 =	ceil($t["res_num"]/$pagesize);
-					$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
-					$t["record_res"] =	sql_query($sql_str);
-					unset($t["msg"]);
-				}
 			}
+
+
 
 			// reset the url parameters
 			$t["url"] 	= "_a=query&select_kw=$select_kw_name&select_field=$select_field&select_type=$select_type";
 		}
 
-	// default view if no quering
+	// default view
 	} else {
 		$sql_str			= "SELECT * FROM record";
-		$t["record_res"] 	= sql_query($sql_str);
+	}
+
+	// search result
+	if ($sql_str != '') {
+		$t["record_res"]	= sql_query($sql_str);
 		$t["res_num"] 		= mysql_num_rows($t["record_res"]);
 
-		$pagenums		 	= ceil($t["res_num"]/$pagesize);
-		$sql_str 			.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
-		$t["record_res"] 	=	sql_query($sql_str);
+		if ($t["res_num"] > 0) {
+			$pagenums		 =	ceil($t["res_num"]/$pagesize);
+			$sql_str 		.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
+			$t["record_res"] =	sql_query($sql_str);
+			unset($t["msg"]);
+		}
 	}
 
 	$t["pagecurr"]			=	$pagecurr;
