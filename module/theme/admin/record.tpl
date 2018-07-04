@@ -58,7 +58,7 @@
 	  						echo " > </a></td>";
 
 	  						echo "<td><a title='".l('edit')."' href='". url_c("_v=edit&rid=".
-	  							$row["rid"]). "'>". utf8_substr($row['content'],0,20) . "</a></td>";
+	  							$row["rid"]). "'>". htmlspecialchars(utf8_substr($row['content'],0,20)) . "</a></td>";
 
 							echo "<td>" . $category . "</td>";
 							echo "<td>" . $row['uid'] . "</td>";

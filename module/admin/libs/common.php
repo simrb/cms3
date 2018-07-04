@@ -187,6 +187,8 @@ function sql_filter($arr) {
 //a simple bbcode Parser function
 function show_bbcodes($text) {
 
+	$text = htmlspecialchars($text);
+
 	// BBcode array
 	$find = array(
 		'~\[b\](.*?)\[/b\]~s',
@@ -196,7 +198,8 @@ function show_bbcodes($text) {
 		'~\[size=(.*?)\](.*?)\[/size\]~s',
 		'~\[color=(.*?)\](.*?)\[/color\]~s',
 		'~\[url\]((?:ftp|https?)://.*?)\[/url\]~s',
-		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s'
+		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s',
+		'~\[video\]((?:ftp|https?)://.*?)\[/video\]~s',
 	);
 
 	// HTML tags to replace BBcode
@@ -208,7 +211,8 @@ function show_bbcodes($text) {
 		'<span style="font-size:$1px;">$2</span>',
 		'<span style="color:$1;">$2</span>',
 		'<a href="$1">$1</a>',
-		'<img src="$1" />'
+		'<img src="$1" />',
+		'<iframe height=498 width=510 src="$1" frameborder=0 "allowfullscreen"></iframe>',
 	);
 
 	// Replacing the BBcodes with corresponding HTML tags

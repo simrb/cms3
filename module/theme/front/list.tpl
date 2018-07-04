@@ -30,7 +30,7 @@
 
 				echo "<h3><a href='?_v=detail&rid=" . $row['rid'];
 				echo "' target='_self'>" . utf8_substr($row['content'], 0 , $len) . "</a></h3>";
-				echo "<p>" . utf8_substr($row['content'], $len, 102) . "</p>";
+				echo "<p>" . htmlspecialchars(utf8_substr($row['content'], $len, 102)) . "</p>";
 				//echo "<p>" . mb_strstr($row['content'], '\r') . "</p>";
 				echo "</div>";
 			}
