@@ -55,6 +55,7 @@ if ($t['_a'] == "logout") {
 
 //act: login and register
 if ($t['_a'] == "login") {
+	$t['msg'] = '';
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
 
 		// user register
@@ -80,6 +81,7 @@ if ($t['_a'] == "login") {
 		}
 
 	}
+
 	$t['tpl_dir'] = THEME;
 	out($t['msg'], $t);
 }
