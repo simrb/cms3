@@ -55,7 +55,7 @@ if ($t['_a'] == "logout") {
 
 //act: login and register
 if ($t['_a'] == "login") {
-	$t['msg'] = '';
+	$t['msg'] = l('sucessful login');
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
 
 		// user register
