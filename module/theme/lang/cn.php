@@ -23,6 +23,7 @@
 'created user successfully'      =>  '创建用户成功' ,
 'failed to add'      =>  '添加失败' ,
 'updated successfully'      =>  '更新成功' ,
+'login successfully'      =>  '登录成功' ,
 'deleted successfully'      =>  '删除成功' ,
 'deleted successfully, you will quit soon'      =>  '删除成功 正在退出' ,
 'failed to login, the username and password is not matched'      =>  '登录失败 用户和密码不匹配' ,

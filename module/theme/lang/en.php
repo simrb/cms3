@@ -23,6 +23,7 @@
 'created user successfully'      =>  '' ,
 'failed to add'      =>  '' ,
 'updated successfully'      =>  '' ,
+'login successfully'      =>  '' ,
 'deleted successfully'      =>  '' ,
 'deleted successfully, you will quit soon'      =>  '' ,
 'failed to login, the username and password is not matched'      =>  '' ,
