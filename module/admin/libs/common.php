@@ -217,8 +217,8 @@ function show_bbcodes($text) {
 		'<a href="$1">$1</a>',
 		'<img src="$1" />',
 		'<embed src="$1" autoplay="false" />',
-		'<embed height=500 width=500 src="$1" autoplay="false" />',
-		'<embed height=100% width=100% src="$1" autoplay="false" />',
+		'<embed height=300 width=300 src="$1" autoplay="false" />',
+		'<embed height=700 width=700 src="$1" autoplay="false" />',
 // 		'<object height=498 width=510 src="$1"></object>',
 // 		'<audio height=498 width=510 src="$1"></audio>',
 	);
