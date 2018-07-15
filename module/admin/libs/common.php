@@ -199,7 +199,9 @@ function show_bbcodes($text) {
 		'~\[color=(.*?)\](.*?)\[/color\]~s',
 		'~\[url\]((?:ftp|https?)://.*?)\[/url\]~s',
 		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s',
-		'~\[video\]((?:ftp|https?)://.*?)\[/video\]~s',
+		'~\[embed\]((?:ftp|https?)://.*?)\[/embed\]~s',
+		'~\[object\]((?:ftp|https?)://.*?)\[/object\]~s',
+		'~\[audio\]((?:ftp|https?)://.*?)\[/audio\]~s',
 	);
 
 	// HTML tags to replace BBcode
@@ -212,7 +214,9 @@ function show_bbcodes($text) {
 		'<span style="color:$1;">$2</span>',
 		'<a href="$1">$1</a>',
 		'<img src="$1" />',
-		'<iframe height=498 width=510 src="$1" frameborder=0 "allowfullscreen"></iframe>',
+		'<embed src="$1" autoplay="false" />',
+		'<object height=498 width=510 src="$1"></object>',
+		'<audio height=498 width=510 src="$1"></audio>',
 	);
 
 	// Replacing the BBcodes with corresponding HTML tags
