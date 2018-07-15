@@ -200,8 +200,10 @@ function show_bbcodes($text) {
 		'~\[url\]((?:ftp|https?)://.*?)\[/url\]~s',
 		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s',
 		'~\[embed\]((?:ftp|https?)://.*?)\[/embed\]~s',
-		'~\[object\]((?:ftp|https?)://.*?)\[/object\]~s',
-		'~\[audio\]((?:ftp|https?)://.*?)\[/audio\]~s',
+		'~\[embed1\]((?:ftp|https?)://.*?)\[/embed1\]~s',
+		'~\[embed2\]((?:ftp|https?)://.*?)\[/embed2\]~s',
+// 		'~\[object\]((?:ftp|https?)://.*?)\[/object\]~s',
+// 		'~\[audio\]((?:ftp|https?)://.*?)\[/audio\]~s',
 	);
 
 	// HTML tags to replace BBcode
@@ -215,8 +217,10 @@ function show_bbcodes($text) {
 		'<a href="$1">$1</a>',
 		'<img src="$1" />',
 		'<embed src="$1" autoplay="false" />',
-		'<object height=498 width=510 src="$1"></object>',
-		'<audio height=498 width=510 src="$1"></audio>',
+		'<embed height=500 width=500 src="$1" autoplay="false" />',
+		'<embed height=100% width=100% src="$1" autoplay="false" />',
+// 		'<object height=498 width=510 src="$1"></object>',
+// 		'<audio height=498 width=510 src="$1"></audio>',
 	);
 
 	// Replacing the BBcodes with corresponding HTML tags
