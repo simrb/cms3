@@ -5,19 +5,21 @@ textarea { width: 98%; }
 .ui-block-a, .ui-block-c { width: 10%; }
 .ui-block-b { width: 80%; }
 
+video, embed { height: 230px; width: 230px; }
+
 /* First breakpoint at 500px */
 @media all and (min-width: 400px){
 	.ui-block-a, .ui-block-c { width: 2%; }
 	.ui-block-b { width: 95%; }
 	.show-detail img { width: 80%;  }
-	embed { height: 300px; width: 300px; }
+	video, embed { height: 400px; width: 400px; }
 }
 
 /* Second breakpoint at 800px */
 @media all and (min-width: 800px){
 	.ui-block-a, .ui-block-c { width: 15%; }
 	.ui-block-b { width: 70%; }
-	embed { height: 700px; width: 700px; }
+	video, embed { height: 700px; width: 700px; }
 }
 
 

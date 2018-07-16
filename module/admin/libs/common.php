@@ -219,7 +219,7 @@ function show_bbcodes($text) {
 		'<a href="$1">$1</a>',
 		'<a href="$1" target="_blank" >$1</a>',
 		'<img src="$1" />',
-		'<embed autoplay="false" src="$1" />',
+		'<embed src="$1" />',
 		'<video controls="" src="$1" ></video>',
 // 		'<embed height=300 width=300 src="$1" autoplay="false" />',
 // 		'<embed height=700 width=700 src="$1" autoplay="false" />',
