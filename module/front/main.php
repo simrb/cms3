@@ -9,7 +9,7 @@ $t['web_title'] 	= optionkv('web_title');
 
 // act: useful
 if ($t['_a'] == "useful") {
-	if (user_level() > 2 and isset($_GET['rid'])) {
+	if (user_level() > 5 and isset($_GET['rid'])) {
 		if (isset($_GET['cmt'])) {
 			sql_query("UPDATE record SET useful = 1 WHERE rid = '".$_GET['cmt']."';");
 		} else {
