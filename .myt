@@ -97,7 +97,7 @@ fi
 if [ $Uinitdb = "yes" ] ; then
 	needroot
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
-	sed $Urepstr "module/libs/00initdb.sql" > "others/initdb.sql"
+	sed $Urepstr "module/libs/initdb.sql" > "others/initdb.sql"
  	mysql -h localhost -u root < "others/initdb.sql"
  	rm -f "others/initdb.sql"
 fi
