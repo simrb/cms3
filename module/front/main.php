@@ -131,9 +131,13 @@ if ($t['_a'] == "addcomment") {
 // act: addpost
 if ($t['_a'] == "addpost") {
 	if (isset($_POST['cid']) and isset($_POST['content'])) {
-		
- 		$t["msg"] = user_allow_submit();
+
 		$t['msg'] = '';
+ 		$t["msg"] = user_allow_submit();
+
+		if (user_level() <= 1 ) {
+			$t['msg'] = l('no level to post');
+		}
 
 		if ($t["msg"] == '') {
 
