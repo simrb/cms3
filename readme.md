@@ -1,12 +1,13 @@
 About
 ============
 
-It is a simple cms by php language, the base feature included as the following,
+It is a simple cms by creating with php language, the base feature included as the following,
 
-	allow adding record
-	allow uploading picture
-	allow registering user
-	allow managing category
+	record module, allow user to post
+	category module, for record module
+	tag module, for record module
+	file module, allow uploading the pictures
+	user module, allow adding, modifing, deleting user, allow user to do or not do anything
 
 
 
