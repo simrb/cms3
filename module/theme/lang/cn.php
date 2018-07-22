@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'background management' => '后台管理',
 'optimize' => '优化',
 'execute' => '执行',
 'clean guest records three months ago'      =>  '清空三个月前游客的记录' ,

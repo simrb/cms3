@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'background management' => '',
 'optimize' => '',
 'execute' => '',
 'clean guest records three months ago'      =>  '' ,

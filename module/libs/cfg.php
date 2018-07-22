@@ -14,5 +14,14 @@ $c['def_theme'] 		=	'theme';
 $c['def_pagesize'] 		=	20;
 
 
+// default page info
+$t['web_title'] 		=	'NEW SITE';
+$t['web_header'] 		=	'NEW SITE';
+$t['web_name'] 			=	'scms';
+$t['web_des'] 			=	'NEW SITE';
+$t['web_kw'] 			=	'NEW SITE';
+$t['web_logo'] 			=	'';
+$t['web_footer'] 		=	'Powered by linyu, 2016-';
+
 
 ?>

@@ -11,7 +11,7 @@
 
 
 		<div id="header">
-			<a href="#"><h1><?= $t['web_name'] ?></h1></a>
+			<a href="#"><h1><?= l('background management'); ?></h1></a>
 		</div>
 
 
