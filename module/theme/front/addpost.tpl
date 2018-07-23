@@ -21,12 +21,10 @@
 			</li>
 		</ul>
 	</form>
-
-
+</div>
 
 
 <script>
-
 
 $("#upfile").click(function(event){
 	event.preventDefault();
@@ -39,7 +37,7 @@ $("#upfile").click(function(event){
         	contentType: false,
         	processData: false,
         	success: function(data) {
-			//console.log(data);
+			console.log(data);
 			if (data.code == "success") {
 				$("#upload_res").append("[img]" + data.data['url'] + "[/img]</br>");
 			} else {
@@ -51,6 +49,4 @@ $("#upfile").click(function(event){
 
 });
 
-
 </script>
-</div>
