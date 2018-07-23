@@ -238,6 +238,14 @@ if ($t['_v'] == "addpost") {
 }
 
 
+// view: upload
+if ($t['_v'] == "upload") {
+	$t['_a'] 			=	"upload";
+
+	tmp($t, $t['tpl_dir']."upload");
+}
+
+
 // view: settings
 if ($t['_v'] == "settings") {
 	user_is_login ();
