@@ -140,7 +140,6 @@ if ($t['_a'] == "addpost") {
 		}
 
 		if ($t["msg"] == '') {
-
 			// add record
 			$insert_id = sql_query(
 				"INSERT INTO record (
@@ -150,19 +149,6 @@ if ($t['_a'] == "addpost") {
 				'". $_POST["content"] ."', '". time() ."')", 'insert_id'
 			);
 			$t["msg"] = l('submitted successfully');
-
-			/*
-			// add upload
-			$t['_a'] = 'add';
-			$t['_v'] = '';
-			require_once(PATH_MOD.'admin/file.php');
-
-			// add upload log for record
-			$rid	= $insert_id;
-			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES ('". $uid .
-				"', 'img_r" . $rid . "', '". $path ."');");
-			*/
-
 		}
 
 	}
