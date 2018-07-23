@@ -242,7 +242,7 @@ if ($t['_v'] == "addpost") {
 if ($t['_v'] == "upload") {
 	$t['_a'] 			=	"upload";
 
-	tmp($t, $t['tpl_dir']."upload");
+	tmp($t, $t['tpl_dir']."upload", false);
 }
 
 

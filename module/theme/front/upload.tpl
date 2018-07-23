@@ -1,16 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
 <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
-<div>
+</head>
+<body>
 
-		<form id="form1" >
-			<input type="file" id="file" name="smfile" ></input>
-			<input type="submit" id="upfile" value="upload" ></input>
-		</form>
-		<div id="upload_res"></div>
-
-</div>
+<form id="form1" >
+	<input type="file" id="file" name="smfile"  ></input>
+	<input type="submit" id="upfile" value="upload"  ></input>
+</form>
+<div id="upload_res"></div>
 
 <script>
+
 
 $("#upfile").click(function(event){
 	event.preventDefault();
@@ -23,7 +26,7 @@ $("#upfile").click(function(event){
         	contentType: false,
         	processData: false,
         	success: function(data) {
-			console.log(data);
+			//console.log(data);
 			if (data.code == "success") {
 				$("#upload_res").append("[img]" + data.data['url'] + "[/img]</br>");
 			} else {
@@ -35,4 +38,7 @@ $("#upfile").click(function(event){
 
 });
 
+
 </script>
+</html>
+
