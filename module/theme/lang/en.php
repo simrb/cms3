@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'upload file' => '',
 'background management' => '',
 'optimize' => '',
 'execute' => '',

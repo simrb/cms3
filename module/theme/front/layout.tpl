@@ -24,13 +24,20 @@
 				<i>
 					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?>
 				</i>
-	
+
+				<?php if (user_level() > 5) { ?>
+					<i class="right" >
+						<a href="?_m=admin" target="_blank">,  <?= l('back end') ?> </a>	
+					</i>
+				<?php } ?>
+
 				<?php if (user_level() > 1) { ?>
 					<i class="right" >
-
 						<a href="?_v=upload" target="_blank"> <?= l('upload file') ?> </a>	
 					</i>
 				<?php } ?>
+
+	
 			</div>
 
 
