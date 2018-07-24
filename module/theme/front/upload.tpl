@@ -1,11 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-</head>
-<body>
-
 <form id="form1" >
 	<input type="file" id="file" name="smfile"  ></input>
 	<input type="submit" id="upfile" value="upload"  ></input>
@@ -40,5 +32,5 @@ $("#upfile").click(function(event){
 
 
 </script>
-</html>
+
 
