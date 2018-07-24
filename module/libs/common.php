@@ -33,25 +33,27 @@ function path_tmp ($path) {
 }
 
 
-// load a template by tpl name, or no tpl with null in second argument
-function tmp($t, $tpl_name = '', $layout = true) {
+// load a template by tpl name, or no layout with $layout = 'unlayout'
+function tmp($t, $tpl_name = '', $layout = '') {
 
-	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." "
-							.$t["msg"] : "";
-	$t["tpl_name"] 		= $t["tpl_dir"].$t["tpl_name"];
-	$t["tpl_layout"] 	= $t["tpl_dir"].$t["tpl_layout"];
+	$t['web_logo']		=	optionkv('web_logo');
+	$t['web_header']	=	optionkv('web_header');
+
+	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." ".$t["msg"] : "";
+	$t["tpl_name"] 		=	$t["tpl_dir"].$t["tpl_name"];
+	$t["tpl_layout"] 	=	$t["tpl_dir"].$t["tpl_layout"];
 
 	if ($tpl_name != '') {
 		$t["tpl_name"]	=	$tpl_name;
 	}
 
-	$t['web_logo']		=	optionkv('web_logo');
-	$t['web_header']	=	optionkv('web_header');
-
+	if ($layout != '') {
+		$t["tpl_layout"]	=	$layout;
+	}
 
 	// load template 
 // 	if (empty($t["tpl_layout"])) {
-	if ($layout == false) {
+	if ($layout == 'unlayout') {
 		include_once(path_tmp($t['tpl_name']));
 	// load layout
 	} else {
