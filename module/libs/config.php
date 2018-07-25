@@ -85,7 +85,7 @@ $t['admin_menu'] 		=	array(
 								'body'	=>	array(
 									'category'		=>	'?_m=admin&_f=category',
 									'file'			=>	'?_m=admin&_f=file',
-									'info'			=>	'?_m=admin&_f=main&_v=info',
+									'settings'		=>	'?_m=admin&_f=main&_v=info',
 								),
 							),
 
