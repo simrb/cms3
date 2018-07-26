@@ -197,14 +197,11 @@ function show_bbcodes($text) {
 		'~\[size=(.*?)\](.*?)\[/size\]~s',
 		'~\[color=(.*?)\](.*?)\[/color\]~s',
 		'~\[url\]((?:ftp|https?)://.*?)\[/url\]~s',
-		'~\[url1\]((?:ftp|https?)://.*?)\[/url1\]~s',
+		'/\[url\=(.*?)\](.*?)\[\/url\]/is',
+		'/\[img\=(\d*?)x(\d*?)\](.*?)\[\/img\]/is',
 		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s',
 		'~\[embed\]((?:ftp|https?)://.*?)\[/embed\]~s',
 		'~\[video\]((?:ftp|https?)://.*?)\[/video\]~s',
-// 		'~\[embed1\]((?:ftp|https?)://.*?)\[/embed1\]~s',
-// 		'~\[embed2\]((?:ftp|https?)://.*?)\[/embed2\]~s',
-// 		'~\[object\]((?:ftp|https?)://.*?)\[/object\]~s',
-// 		'~\[audio\]((?:ftp|https?)://.*?)\[/audio\]~s',
 	);
 
 	// HTML tags to replace BBcode
@@ -215,15 +212,12 @@ function show_bbcodes($text) {
 		'<pre>$1</'.'pre>',
 		'<span style="font-size:$1px;">$2</span>',
 		'<span style="color:$1;">$2</span>',
-		'<a href="$1">$1</a>',
 		'<a href="$1" target="_blank" >$1</a>',
+		'<a href="$2" target="_blank" >$1</a>',
+		'<img height="$2" width="$1" src="$3" />',
 		'<img src="$1" />',
 		'<embed src="$1" autostart="false" />',
 		'<video controls="" src="$1" ></video>',
-// 		'<embed height=300 width=300 src="$1" autoplay="false" />',
-// 		'<embed height=700 width=700 src="$1" autoplay="false" />',
-// 		'<object height=498 width=510 src="$1"></object>',
-// 		'<audio height=498 width=510 src="$1"></audio>',
 	);
 
 	// Replacing the BBcodes with corresponding HTML tags
