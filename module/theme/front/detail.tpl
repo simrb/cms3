@@ -6,13 +6,15 @@
 		if (isset($t['record_res'])) {
 			echo "<label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . "</label>";
 
-			if ($user_level > 1) {
+			if ($user_level > 5) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
 						"'><label class='right'>". l('useful') ." " . 
 						$t['record_res']['useful'] . "</label></a>";
 
 				echo "<a href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
+				echo "<a href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
+						"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 			} else {
 				echo "<label class='right'>". l('useful') ." " . $t['record_res']['useful'] . "</label>";
 			}
@@ -38,13 +40,15 @@
 			while($row = mysql_fetch_array($t["record_cmt"])) {
 				echo "<label class='left'>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 
-				if ($user_level > 1) {
+				if ($user_level > 5) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('useful') ." " . 
 							$row['useful'] . "</label></a>";
 
 					echo "<a href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";
+					echo "<a href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
+							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				} else {
 					echo "<label class='right'>". l('useful') ." " . $row['useful'] . "</label>";
 				}
