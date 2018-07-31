@@ -3,6 +3,7 @@
 <head>
 	<?php include_once(path_tmp(THEME.'head')); ?>
 	<link href="<?= path_theme('css/front.css') ?>" rel="stylesheet">
+	<script src="<?= path_theme('js/front.js') ?>"></script>
 </head>
 
 <body>

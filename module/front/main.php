@@ -210,17 +210,6 @@ if ($t['_v'] == "detail") {
 			$sql_str			= "SELECT rid, uid, content, useful, created FROM record 
 									WHERE cid != 0 AND follow = ". $t["rid"];
 			$t['record_cmt'] 	= sql_query($sql_str);
-
-			/*
-			// set picture
-			$res = sql_query("SELECT oval FROM optionkv WHERE okey = 'img_r". $t["rid"] 
-					. "' LIMIT 1");
-			if ($res = mysql_fetch_row($res)) {
-				if (!empty($res[0])) {
-					$t['record_img'] = $res[0];
-				}
-			}
-			*/
 		}
 
 		tmp($t, $t['tpl_dir']."detail");

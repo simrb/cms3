@@ -13,26 +13,16 @@
 
 				echo "<a href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
-				echo "<a href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
+				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
 						"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 			} else {
 				echo "<label class='right'>". l('useful') ." " . $t['record_res']['useful'] . "</label>";
 			}
 
-			echo "<pre class='clear'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
+			echo "<pre class='clear' rid='". $t['rid'] ."'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
 		} else {
 			echo "<pre class='clear'>" . l('no content in here') . "</pre>";
 		}
-
-
-		/*
-		// picture
-		if (isset($t['record_img'])) {
-			echo "<div class='clear show-detail-img'><img src='" . 
-				DIR_UPLOAD . $t['record_img'] . "'/></div>";
-			echo '<br/>';
-		}
-		*/
 
 
 		// comments
@@ -47,13 +37,13 @@
 
 					echo "<a href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";
-					echo "<a href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
+					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				} else {
 					echo "<label class='right'>". l('useful') ." " . $row['useful'] . "</label>";
 				}
 
-				echo "<pre class='clear'>" . show_bbcodes($row['content']) . "</pre>";
+				echo "<pre class='clear' rid='". $row['rid'] ."'>" . show_bbcodes($row['content']) . "</pre>";
 			}
 		}
 
