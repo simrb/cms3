@@ -207,8 +207,6 @@ if ($t['_v'] == 'optimize') { ?>
 
 		</form>
 
-
-
 <?php } ?>
 
 

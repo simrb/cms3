@@ -13,7 +13,6 @@
 					<th style="width:80px"><?= l("category"); ?></th>
 					<th style="width:80px"><?= l("follow"); ?></th>
 					<th style="width:80px"><?= l("order"); ?></th>
-					<th style="width:80px"></th>
 				</tr>
 			</thead>
 
@@ -33,8 +32,6 @@
 									"'>". $row["name"] ."</a></td>";
 	  						echo "<td>" . $row['follow'] . "</td>";
 	  						echo "<td>" . $row['number'] . "</td>";
-	  						echo "<td><a href='". url_c("_a=del&cid=". $row["cid"]) .
-									"'>". l('delete') ."</a></td>";
 	  						echo "</tr>";
 	  					}
 					}
@@ -75,6 +72,8 @@
 					<br>
 					<input type="hidden" name="cid" value="<?= $t["cid"] ?>" />
 					<input type="submit" value="<?= l("submit"); ?>" class="" />
+
+	  				<a href='<?= url_c("_a=del&cid=". $t["cid"])?>'><?=l('delete')?></a>
 				</li>
 			</ul>
 

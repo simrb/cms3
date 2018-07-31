@@ -25,7 +25,6 @@
 					<th style="width:80px"><?= l('name'); ?></th>
 					<th style="width:80px"><?= l('level'); ?></th>
 					<th style="width:80px"><?= l('created'); ?></th>
-					<th style="width:80px"></th>
 				</tr>
 			</thead>
 
@@ -40,8 +39,6 @@
 	  							$row["uid"]). "'>". $row["username"] ."</a></td>";
 	  						echo "<td>" . $row['level'] . "</td>";
 	  						echo "<td>" .  date('Y-m-d', $row['created']) . "</td>";
-	  						echo "<td><a href='". url_c('_a=del&uid='.$row["uid"]).
-	  							"'>". l('delete') ."</a></td>";
 	  						echo "</tr>";
 	  					}
 					}
@@ -97,6 +94,8 @@
 				<li>
 					<br>
 					<input type="submit" value="<?= l('submit'); ?>" class="" />
+
+	  				<a href='<?= url_c("_a=del&uid=". $t["uid"])?>'><?=l('delete')?></a>
 				</li>
 			</ul>
 
