@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'rate' => '评级',
 'upload file' => '上传文件',
 'background management' => '后台管理',
 'optimize' => '优化',

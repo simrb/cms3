@@ -8,7 +8,7 @@
 
 			if ($user_level > 5) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
-						"'><label class='right'>". l('useful') ." " . 
+						"'><label class='right'>". l('rate') ." " . 
 						$t['record_res']['useful'] . "</label></a>";
 
 				echo "<a href='?_a=delpost&rid=".$t['rid'].
@@ -16,7 +16,7 @@
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
 						"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 			} else {
-				echo "<label class='right'>". l('useful') ." " . $t['record_res']['useful'] . "</label>";
+				echo "<label class='right'>". l('rate') ." " . $t['record_res']['useful'] . "</label>";
 			}
 
 			echo "<pre class='clear' rid='". $t['rid'] ."'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
@@ -32,7 +32,7 @@
 
 				if ($user_level > 5) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
-							"'><label class='right'>". l('useful') ." " . 
+							"'><label class='right'>". l('rate') ." " . 
 							$row['useful'] . "</label></a>";
 
 					echo "<a href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
@@ -40,7 +40,7 @@
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				} else {
-					echo "<label class='right'>". l('useful') ." " . $row['useful'] . "</label>";
+					echo "<label class='right'>". l('rate') ." " . $row['useful'] . "</label>";
 				}
 
 				echo "<pre class='clear' rid='". $row['rid'] ."'>" . show_bbcodes($row['content']) . "</pre>";
