@@ -19,6 +19,13 @@ $(document).ready( function() {
 		$(this).after(display_txt);
 		var display_btn = edit_btn.next('.display_btn');
 
+		// set height of editor
+		var display_height = pre_btn.height();
+		if (parseInt(display_height) < 60) {
+			display_height = 100;
+		}
+		display_btn.find('textarea').css({'height': display_height});
+
 		// cancel event
 		$(".cancel_btn").click(function() {
 			edit_btn.show();
