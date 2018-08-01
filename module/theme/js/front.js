@@ -35,7 +35,22 @@ $(document).ready( function() {
 
 		// update event
 		$(".update_btn").click(function() {
+			var rid = pre_btn.attr('rid');
+			pre_txt = display_btn.find('textarea').val();
+			pre_btn.html(pre_txt);
+			edit_btn.show();
+			pre_btn.show();
+			display_btn.remove();
+
+			// send pre_txt to server
+			$.ajax({
+				url: "?_a=ajax_addpost&rid=" + rid,
+				data: {'pre_txt': pre_txt},
+			}).done(function(msg) {
+				//console.log(msg);
+			});
 		});
+		// end
 
 	});
 

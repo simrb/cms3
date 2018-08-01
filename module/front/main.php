@@ -7,6 +7,18 @@ $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
 
+// act: ajax_addpost
+if ($t['_a'] == "ajax_addpost") {
+	if (user_level() > 5 and isset($_GET['pre_txt']) and isset($_GET['rid'])) {
+		sql_query("UPDATE record SET content = '".$_GET['pre_txt']."' WHERE rid = '".$_GET['rid']."';");
+		//exit('success -- '. $_GET['rid'] . ' '. $_GET['pre_txt']);
+		exit(l('success'));
+	} else {
+		exit(l('failure'));
+	}
+}
+
+
 // act: useful
 if ($t['_a'] == "useful") {
 	if (user_level() > 5 and isset($_GET['rid'])) {
