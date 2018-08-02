@@ -12,17 +12,8 @@ $(document).ready( function() {
 		pre_btn.hide();
 		edit_btn.hide();
 
-		// get text value from server
-		var pre_txt = $(this).next().text();
-		$.ajax({
-			url: "?_a=ajax_getpost&rid=" + rid,
-		}).done(function(msg) {
-			pre_txt = msg;
-			//console.log(msg);
-		});
-
 		// set the editor
-		var display_txt = "<div class='clear display_btn'><textarea>" + pre_txt + "</textarea>";
+		var display_txt = "<div class='clear display_btn'><textarea></textarea>";
 		display_txt += "<input type='button' value='update' class='update_btn' />";
 		display_txt += "<input type='button' value='cancel' class='right cancel_btn' /></div>";
 
@@ -35,6 +26,16 @@ $(document).ready( function() {
 			display_height = 100;
 		}
 		display_btn.find('textarea').css({'height': display_height});
+
+		// set editor value
+		var pre_txt = $(this).next().text();
+		$.ajax({
+			url: "?_a=ajax_getpost&rid=" + rid,
+		}).done(function(msg) {
+			pre_txt = msg;
+			display_btn.find('textarea').val(pre_txt);
+			//console.log(msg);
+		});
 
 		// cancel event
 		$(".cancel_btn").click(function() {
@@ -51,7 +52,7 @@ $(document).ready( function() {
 			pre_btn.show();
 			display_btn.remove();
 
-			// send pre_txt to server
+			// send data to server
 			if (pre_txt != pre_txt_new) {
 				$.ajax({
 					url: "?_a=ajax_addpost&rid=" + rid,
