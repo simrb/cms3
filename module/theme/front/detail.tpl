@@ -11,7 +11,7 @@
 						"'><label class='right'>". l('rate') ." " . 
 						$t['record_res']['useful'] . "</label></a>";
 
-				echo "<a href='?_a=delpost&rid=".$t['rid'].
+				echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
 						"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
@@ -35,7 +35,7 @@
 							"'><label class='right'>". l('rate') ." " . 
 							$row['useful'] . "</label></a>";
 
-					echo "<a href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
+					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";

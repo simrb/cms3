@@ -1,6 +1,7 @@
 
 $(document).ready( function() {
 
+	// edit link
 	$(".edit_btn").click(function(e) {
 		
 		// default vars
@@ -60,8 +61,16 @@ $(document).ready( function() {
 				});
 			}
 		});
-		// end
 
+	});
+
+
+	// deleted link
+	$(".del_btn").click(function(e) {
+		var reval = confirm('Are you sure ?')
+		if (!reval) {
+			e.preventDefault();
+		}
 	});
 
 
