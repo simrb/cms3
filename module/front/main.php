@@ -19,6 +19,18 @@ if ($t['_a'] == "ajax_addpost") {
 }
 
 
+// act: ajax_getpost
+if ($t['_a'] == "ajax_getpost") {
+	if (user_level() > 5 and isset($_GET['rid'])) {
+		$res = sql_query("SELECT content FROM record WHERE rid = '".$_GET['rid']."';");
+		if ($row = mysql_fetch_row($res)) {
+			exit($row[0]);
+		}
+	}
+	exit(l('failure'));
+}
+
+
 // act: useful
 if ($t['_a'] == "useful") {
 	if (user_level() > 5 and isset($_GET['rid'])) {
