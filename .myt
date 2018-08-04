@@ -170,6 +170,7 @@ if [ $Uinitpj = "yes" ] ; then
 		echo "${my_file} is created"
 	fi
 
+	echo "Notice: you need to restart those servers if this is first time to install, such as '/etc/init.d/httpd restart'..."
 fi
 
 
