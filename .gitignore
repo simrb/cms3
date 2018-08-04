@@ -12,10 +12,6 @@ tags
 
 # custom file about this project
 index.html
-module/*
-!module/admin/*
-!module/front/*
-!module/theme/*
 others/*
 !others/upload/logo.jpg
 

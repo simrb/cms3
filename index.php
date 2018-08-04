@@ -9,16 +9,16 @@ function access(){ defined('ACCESS') or die('Access denied'); }
 define("PATH_BASE",		dirname(__FILE__) . "/");
 
 define("DIR_UPLOAD",	"others/upload/");
-define('PATH_UPLOAD', 	PATH_BASE 	. DIR_UPLOAD);
-define("PATH_MOD",		PATH_BASE	. "module/");
+define('PATH_UPLOAD', 	PATH_BASE . DIR_UPLOAD);
+define("PATH_MOD",		PATH_BASE );
 
 // load config file
 require_once(PATH_MOD	."libs/config.php");
 require_once(PATH_BASE	."others/cfg.php");
 
 define("THEME",			$c['def_theme'] . '/');
-define("PATH_THEME",	PATH_MOD	. THEME);
-define("DIR_THEME",		"module/" 	. THEME);
+define("PATH_THEME",	PATH_MOD . THEME);
+define("DIR_THEME",		THEME);
 
 // main programming
 date_default_timezone_set($c['timezone']);
