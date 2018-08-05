@@ -7,9 +7,9 @@ $(document).ready( function() {
 		// default vars
 		e.preventDefault();
 		var edit_btn = $(this);
-		var pre_btn = edit_btn.next('pre');
+		var pre_btn = edit_btn.parent().next('pre');
 		var rid = pre_btn.attr('rid');
-		pre_btn.hide();
+		//pre_btn.hide();
 		edit_btn.hide();
 
 		// set the editor

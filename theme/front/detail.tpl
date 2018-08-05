@@ -4,7 +4,8 @@
 
 		// record
 		if (isset($t['record_res'])) {
-			echo "<label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . "</label>";
+			echo '<div class="show-detail-body">';
+			echo "<div class='show-detail-title'><label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . "</label>";
 
 			if ($user_level > 5) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
@@ -19,7 +20,8 @@
 				echo "<label class='right'>". l('rate') ." " . $t['record_res']['useful'] . "</label>";
 			}
 
-			echo "<pre class='clear' rid='". $t['rid'] ."'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
+			echo "</div><pre class='clear' rid='". $t['rid'] ."'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
+			echo '</div>';
 		} else {
 			echo "<pre class='clear'>" . l('no content in here') . "</pre>";
 		}
@@ -28,7 +30,9 @@
 		// comments
 		if (isset($t["record_cmt"])) {
 			while($row = mysql_fetch_array($t["record_cmt"])) {
-				echo "<label class='left'>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
+
+				echo '<div class="show-detail-body">';
+				echo "<div class='show-detail-title'><label class='left'>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 
 				if ($user_level > 5) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
@@ -43,7 +47,8 @@
 					echo "<label class='right'>". l('rate') ." " . $row['useful'] . "</label>";
 				}
 
-				echo "<pre class='clear' rid='". $row['rid'] ."'>" . show_bbcodes($row['content']) . "</pre>";
+				echo "</div><pre class='clear' rid='". $row['rid'] ."'>" . show_bbcodes($row['content']) . "</pre>";
+				echo '</div>';
 			}
 		}
 
