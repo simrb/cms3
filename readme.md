@@ -1,13 +1,13 @@
 About
 ============
 
-It is a simple cms by creating with php language, the base feature included as the following,
+It is a simple cms by creating with php language, the base functions as follows,
 
-	record module, allow user to post
-	category module, for record module
-	tag module, for record module
-	file module, allow uploading the pictures
-	user module, allow adding, modifing, deleting user, allow user to do or not do anything
+	admin module	- record management, category, tag, upload file, user system
+	front module	- the base front-end page for normal user
+	common module	- database scheme, function library, config, access file
+	theme module	- all of module templates, css, js file
+	others module	- upload files, custom files, all of backup files will be stored here.
 
 
 
@@ -23,7 +23,9 @@ or, set your custom by options `-h, -n, -u, -p`
 
 	# sh .myt -ed -n db_name -u username -p password
 
-if you have an existed database, just configure the file `cfg.php` for connecting.
+if you have an existed database, just configure the file `cfg.php` for connecting
+
+btw, you better to reboot server agint.
 
 
 
@@ -42,7 +44,7 @@ untar
 
 	# tar -xvf others.tar
 
-Notice, all of files of the system created that will be stored in directory `others`, 
+Notice, all of files of the system created that will be stored in directory `others`
 such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.
 just backup the others dir is enough.
 

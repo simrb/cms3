@@ -27,7 +27,7 @@ do
 		 	Uinitht="yes";;
 		 ?)
 			echo "unkonw option"
-			grep 'version' libs/config.php
+			grep 'version' common/config.php
 			exit 1
 			;;
 	esac
@@ -97,7 +97,7 @@ fi
 if [ $Uinitdb = "yes" ] ; then
 	needroot
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
-	sed $Urepstr "libs/initdb.sql" > "others/initdb.sql"
+	sed $Urepstr "common/initdb.sql" > "others/initdb.sql"
  	mysql -h localhost -u root < "others/initdb.sql"
  	rm -f "others/initdb.sql"
 fi
@@ -150,7 +150,7 @@ if [ $Uinitpj = "yes" ] ; then
 	# copy the cfg.php
 	my_file="others/cfg.php"
 	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "libs/cfg.php" > $my_file
+		sed $Urepstr "common/cfg.php" > $my_file
 		chmod 777 $my_file
 		echo "file ${my_file} is created"
 	fi
