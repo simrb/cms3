@@ -39,11 +39,13 @@ body { background-color: #e8ede0; }
 .show-list h3 a:hover { text-decoration: underline; }
 
 .show-list-body { margin-bottom: 11px; }
+.show-list-body p a { text-decoration: underline; }
 
 .show-detail img { width: 70%;  }
 .show-detail .show-detail-img { margin-bottom: 10px; text-align: left; }
 .show-detail label.right { margin-left: 10px;  }
-.show-detail a:hover, .show-detail a label:hover { cursor: pointer; }
+.show-detail pre a { text-decoration: underline; }
+.show-detail a, .show-detail a label { cursor: pointer; }
 
 .show-pagination span { margin-right: 5px; }
 
