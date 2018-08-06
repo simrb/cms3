@@ -61,3 +61,5 @@ a:hover { text-decoration: underline; }
 .show-menu { height: 33px; }
 .show-menu .left { margin-right: 10px; }
 .show-menu .right { margin-left: 10px; }
+
+.upload_form { margin-top: 10px; }
