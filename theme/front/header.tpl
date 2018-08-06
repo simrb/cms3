@@ -3,7 +3,10 @@
 	<a href="?_v=settings" ><?= l('menber'); ?></a>
 </div>
 
-<a href="?"><h1><?= $t['web_header'] ?></h1></a>
+<div class='header_title' >
+	<a href="?" ><h1><?= $t['web_header'] ?></h1></a>
+</div>
+
 
 <div class="show-menu"> <?php if (isset($t["category_kv"])) {
 		echo '<div class="menu_item" _v="'. $t['_v'] .'"><ul>';
