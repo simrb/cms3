@@ -58,7 +58,7 @@ $(document).ready( function() {
 					url: "?_a=ajax_addpost&rid=" + rid,
 					data: {'pre_txt': pre_txt_new},
 				}).done(function(msg) {
-					console.log(msg);
+					//console.log(msg);
 				});
 			}
 		});
@@ -89,11 +89,22 @@ $(document).ready( function() {
 				data: {'rate_val': reval},
 			}).done(function(msg) {
 				rate_btn.find('span').text(reval);
-				console.log(msg);
+				//console.log(msg);
 			});
 		}
 	});
 
+
+	// menu event
+	var v_val = $(".menu_item").attr('_v');
+	if (v_val == 'detail') {
+		$(".menu_item").find('.menu_no').hide();
+		var menu_title = $(".show-detail-body").first().find('pre').text();
+		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,30) + '... </span>';
+		$(".menu_hl").after(menu_title);
+
+		// console.log(menu_title);
+	}
 
 });
 
