@@ -9,7 +9,7 @@
 			<li><input type="submit" value="<?= l('submit'); ?>"></li>
 
 			<li><br />
-					<pre><?= $t['aboutpost']; ?></pre>
+					<pre><?=show_bbcodes($t['aboutpost']); ?></pre>
 			</li>
 		</ul>
 	</form>
