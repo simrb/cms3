@@ -9,8 +9,8 @@
 
 			if ($user_level > 5) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
-						"'><label class='right'>". l('rate') ." " . 
-						$t['record_res']['useful'] . "</label></a>";
+						"'><label class='right rate_btn' rid=".$t['rid']." >". l('rate'),
+						" <span>" . $t['record_res']['useful'] . "</span></label></a>";
 
 				echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
@@ -36,8 +36,8 @@
 
 				if ($user_level > 5) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
-							"'><label class='right'>". l('rate') ." " . 
-							$row['useful'] . "</label></a>";
+							"'><label class='right rate_btn' rid=".$row['rid'].">". l('rate').
+							" <span>" . $row['useful'] . "</span></label></a>";
 
 					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";

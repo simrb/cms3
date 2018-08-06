@@ -31,6 +31,16 @@ if ($t['_a'] == "ajax_getpost") {
 }
 
 
+// act: ajax_rateto
+if ($t['_a'] == "ajax_rateto") {
+	if (user_level() > 5 and isset($_GET['rid']) and isset($_GET['rate_val'])) {
+		sql_query("UPDATE record SET useful = ".$_GET['rate_val']." WHERE rid = '".$_GET['rid']."';");
+		exit(l('success'));
+	}
+	exit(l('failure'));
+}
+
+
 // act: useful
 if ($t['_a'] == "useful") {
 	if (user_level() > 5 and isset($_GET['rid'])) {

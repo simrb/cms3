@@ -1,7 +1,7 @@
 
 $(document).ready( function() {
 
-	// edit link
+	// edit event
 	$(".edit_btn").click(function(e) {
 		
 		// default vars
@@ -66,11 +66,31 @@ $(document).ready( function() {
 	});
 
 
-	// deleted link
+	// deleted event
 	$(".del_btn").click(function(e) {
-		var reval = confirm('Are you sure ?')
+		var reval = confirm('Are you sure ?');
 		if (!reval) {
 			e.preventDefault();
+		}
+	});
+
+
+	// rate event
+	$(".rate_btn").click(function(e) {
+		e.preventDefault();
+		var rate_btn = $(this);
+		var reval = prompt('rate to ..');
+		var rid	= rate_btn.attr('rid');
+
+		// post to server
+		if (reval != null && reval != '') {
+			$.ajax({
+				url: "?_a=ajax_rateto&rid=" + rid,
+				data: {'rate_val': reval},
+			}).done(function(msg) {
+				rate_btn.find('span').text(reval);
+				console.log(msg);
+			});
 		}
 	});
 
