@@ -225,7 +225,7 @@ if ($t['_v'] == "detail") {
 		$t["rid"]			= $_GET['rid'];
 		$t['url']			= '?_v=detail&rid=' . $t['rid'] . '&_a=addcomment';
 
-		$res = sql_query("SELECT content, cid, created, useful FROM record 
+		$res = sql_query("SELECT content, cid, created, useful, uid FROM record 
 							WHERE rid = ". $t["rid"] . " LIMIT 1");
 		if ($res = mysql_fetch_row($res)) {
 
@@ -239,6 +239,7 @@ if ($t['_v'] == "detail") {
 			$t['record_res']['content'] = $res[0];
 			$t['record_res']['created'] = $res[2];
 			$t['record_res']['useful'] 	= $res[3];
+			$t['record_res']['uid'] 	= $res[4];
 
 			// set comment
 			$sql_str			= "SELECT rid, uid, content, useful, created FROM record 
