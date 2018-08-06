@@ -1,3 +1,5 @@
+<h3><?=l('upload file');?></h3>
+
 <form id="form1" class="upload_form">
 	<input type="file" id="file" name="smfile"  ></input>
 	<input type="submit" id="upfile" value="upload"  ></input>
