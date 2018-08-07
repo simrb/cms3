@@ -9,7 +9,7 @@ video, embed { height: 230px; width: 100%; }
 /* *************** style, color, height, width ************ */
 body { background-color: #e8ede0; }
 #header a, #bodyer a, #footer a { color: #374b37; }
-#header { margin-bottom: 6px;}
+#header { margin-bottom: 3px;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 
@@ -34,11 +34,11 @@ a:hover { text-decoration: underline; }
 
 
 .show-list h3 { margin: 0; padding: 0; }
-.show-list p { margin: 5px 0 5px 0; }
+.show-list p { margin: 2px 0 5px 0; }
 .show-list h3 a { color: black; }
 
 .show-list-body p a { text-decoration: underline; }
-.show-list-body { margin-bottom: 15px; }
+.show-list-body { margin-bottom: 12px; }
 .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
@@ -49,13 +49,14 @@ a:hover { text-decoration: underline; }
 .show-detail a, .show-detail a label { cursor: pointer; }
 .show-detail pre { margin: 0;}
 
+.show-detail-body { margin-bottom: 10px; }
 
 
-	.show-list-body h3 { background: #bbc8bb; height: 100%;}
-	.show-list-body { border: 1px solid gray; }
+// 	.show-list-body h3 { background: #bbc8bb; height: 100%;}
+// 	.show-list-body { border: 1px solid gray; }
 
-	.show-detail-title { background: #bbc8bb; height: 20px; }
-	.show-detail-body { margin-bottom: 10px; border: 1px solid gray; }
+// 	.show-detail-title { background: #bbc8bb; height: 20px; }
+// 	.show-detail-body { border: 1px solid gray; }
 
 
 /* First breakpoint at 500px */
