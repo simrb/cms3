@@ -6,7 +6,6 @@
 			while($row = mysql_fetch_array($t["record_res"])) {
 
 				echo "<div class='show-list-body'>";
-				//echo "<label>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 
 				$def_len = 27;
 				$len 	 = mb_strpos($row['content'], "\r",0,'utf-8');
@@ -28,10 +27,11 @@
 				
 				//var_dump($len);
 
+				//echo "<label>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
 				echo "<h3><a href='?_v=detail&rid=" . $row['rid'];
 				echo "' target='_self'>" . utf8_substr($row['content'], 0 , $len) . "</a></h3>";
+
 				echo "<p class='list-body'>" . show_bbcodes(htmlspecialchars(utf8_substr($row['content'], $len, 102)))  . "</p>";
-				//echo "<p>" . mb_strstr($row['content'], '\r') . "</p>";
 				echo "</div>";
 			}
 		}
