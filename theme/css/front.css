@@ -9,7 +9,7 @@ video, embed { height: 230px; width: 100%; }
 /* *************** style, color, height, width ************ */
 body { background-color: #e8ede0; }
 #header a, #bodyer a, #footer a { color: #374b37; }
-#header { margin-bottom: 3px;}
+// #header { margin-bottom: 3px;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 
@@ -40,7 +40,7 @@ a:hover { text-decoration: underline; }
 
 .show-list-body p a { text-decoration: underline; }
 .show-list-body { margin-bottom: 12px; }
-.show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
+// .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
 .show-detail img { width: 70%;  }

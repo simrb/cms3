@@ -79,7 +79,7 @@ $(document).ready( function() {
 	$(".rate_btn").click(function(e) {
 		e.preventDefault();
 		var rate_btn = $(this);
-		var reval = prompt('rate to ..');
+		var reval = prompt('rate to : ');
 		var rid	= rate_btn.attr('rid');
 
 		// post to server
@@ -102,6 +102,7 @@ $(document).ready( function() {
 		var menu_title = $(".show-detail-body").first().find('pre').text();
 		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,30) + '... </span>';
 		$(".menu_hl").after(menu_title);
+
 
 		// console.log(menu_title);
 	}
