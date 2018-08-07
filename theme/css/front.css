@@ -14,7 +14,8 @@ a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 
 #msg { background-color: #9dc7de; }
-.menu_item .menu_hl { background-color: #b4bdb4; border: 1px solid gray; padding: 0 2px; }
+.menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }
+// .menu_item .menu_hl { border: 1px solid gray; }
 .edit-form .addfile { width: 98%; }
 
 .top-bar a { margin-left: 5px; }
