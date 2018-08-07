@@ -34,7 +34,11 @@ Backup
 
 1 backup your db, such as
 
-	# mysqldump --database cms_db > others/db_xxx.sql
+	# output data
+	# mysqldump --database cms_db > others/db_xx.sql
+
+	# input data later in somewhere
+	# mysql -uname -ppawd -Ddbname < db_xx.sql
 
 2 backup the dir, such as
 
