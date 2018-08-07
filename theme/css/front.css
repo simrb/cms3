@@ -35,11 +35,11 @@ a:hover { text-decoration: underline; }
 
 
 .show-list h3 { margin: 0; padding: 0; }
-.show-list p { margin: 2px 0 5px 0; }
+.show-list p { margin-top: 5px; }
 .show-list h3 a { color: black; }
 
 .show-list-body p a { text-decoration: underline; }
-.show-list-body { margin-bottom: 12px; }
+.show-list-body { margin-bottom: 15px; }
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
