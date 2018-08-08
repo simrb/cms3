@@ -15,7 +15,7 @@ $(document).ready( function() {
 	$("select").attr("data-role", "none");
 
 	// submit event
-	$(".edit-form").submit(function(e) {
+	$(".vaild-form").submit(function(e) {
 		var arrText= new Array();
 		var txt_btn = $(this).find('textarea');
 
@@ -36,8 +36,6 @@ $(document).ready( function() {
 				//console.log(text_val);
 			}
 		});
-
-
 	});
 
 });

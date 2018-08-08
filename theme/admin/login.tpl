@@ -1,4 +1,4 @@
-<div class="edit-form edit-form-login">
+<div class="edit-form edit-form-login vaild-form">
 	<form action="<?=url_c('_a=login');?>" method="post">
 		<ul>
 

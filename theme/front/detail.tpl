@@ -57,7 +57,7 @@
 
 
 <?php if (isset($t['record_res'])) { ?>
-<div class="edit-form">
+<div class="edit-form vaild-form">
 	<form action="<?= $t['url'] ?>" method="post" >
 		<ul>
 			<li><textarea name="content" class="" placeholder="<?= l('say someing ...'); ?>" ></textarea></li>

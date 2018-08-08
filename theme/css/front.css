@@ -1,7 +1,6 @@
 
 /* *************** layout *************** */
 #footer { margin: 40px 0; }
-textarea { width: 98%; }
 .ui-block-a, .ui-block-c { width: 5%; }
 .ui-block-b { width: 90%; }
 video, embed { height: 230px; width: 100%; }
@@ -12,8 +11,8 @@ body { background-color: #e8ede0; }
 // #header { margin-bottom: 3px;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
-textarea { background-color: #eee; }
-textarea.ui-input-text { min-height: 150px; }
+textarea { width: 98%; background-color: #eee; }
+textarea.ui-input-text { min-height: 60px; }
 
 #msg { background-color: #9dc7de; }
 .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }

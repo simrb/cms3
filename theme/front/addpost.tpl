@@ -1,4 +1,4 @@
-<div class="edit-form">
+<div class="edit-form vaild-form">
 	<form action="?_a=<?= $t['_a'] ?>" method="post" name="upload" >
 		<ul>
 			<li>
