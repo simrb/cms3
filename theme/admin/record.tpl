@@ -210,5 +210,4 @@ if ($t['_v'] == 'optimize') { ?>
 <?php } ?>
 
 
-<link rel="stylesheet" type="text/css" href="<?= path_theme('css/record.css') ?>">
 <script type="text/javascript" src="<?= path_theme('js/file.js') ?>"></script>

@@ -90,3 +90,25 @@ input[type="button"] { width: 150px; height: 23px; }
 	padding:0 1em 0;
 
 }
+
+
+
+// record page
+.record_print { text-decoration: none; }
+.record_print input:hover { ---cursor: pointer; }
+.edit-form input[type="radio"] { width: 0; height: 0; }
+.edit-form .radio { float: left; }
+.edit-form ul li { clear: both; }
+
+.autodropmenu {
+    position: absolute;
+    z-index: 999;
+    ----left: 0px;
+    ----top: 33px;
+    width: 468px;
+    border: 1px solid gray;
+    display: none;
+    background: #FFF;
+}
+
+textarea.ui-input-text { min-height:150px; }
