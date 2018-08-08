@@ -35,7 +35,7 @@ textarea { background-color: #eee; }
 	white-space : normal ; /* Internet Explorer 5.5+ */ 
 }
 
-
+.show-list, .show-detail { clear: both; }
 .show-list h3 { margin: 0; padding: 0; }
 .show-list p { margin-top: 5px; }
 .show-list h3 a { color: black; }
