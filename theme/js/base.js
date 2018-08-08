@@ -16,12 +16,28 @@ $(document).ready( function() {
 
 	// submit event
 	$(".edit-form").submit(function(e) {
-		var text_val = $.trim($(this).find('textarea').val());
-		if (!text_val) {
-			e.preventDefault();
-			alert('Do not allow null values.');
-			//console.log(text_val);
+		var arrText= new Array();
+		var txt_btn = $(this).find('textarea');
+
+		if (txt_btn.length > 0) {
+			arrText.push(txt_btn.val());
 		}
+
+		$('input[type=text]').each(function(){
+			arrText.push($(this).val());
+		});
+
+		$.each(arrText, function( index, value ) {
+			var text_val = $.trim(value);
+			if (!text_val) {
+				e.preventDefault();
+				alert('Do not allow null values.');
+				return false;
+				//console.log(text_val);
+			}
+		});
+
+
 	});
 
 });
