@@ -14,6 +14,16 @@ $(document).ready( function() {
 	$("input").attr("data-role", "none");
 	$("select").attr("data-role", "none");
 
+	// submit event
+	$(".edit-form").submit(function(e) {
+		var text_val = $.trim($(this).find('textarea').val());
+		if (!text_val) {
+			e.preventDefault();
+			alert('Do not allow null values.');
+			//console.log(text_val);
+		}
+	});
+
 });
 
 
