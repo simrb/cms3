@@ -12,6 +12,7 @@ body { background-color: #e8ede0; }
 // #header { margin-bottom: 3px;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
+textarea { background-color: #eee; }
 
 #msg { background-color: #9dc7de; }
 .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }
