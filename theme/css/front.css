@@ -13,6 +13,7 @@ body { background-color: #e8ede0; }
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 textarea { background-color: #eee; }
+.edit-form .record_text { height: 150px; }
 
 #msg { background-color: #9dc7de; }
 .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }

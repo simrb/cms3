@@ -99,8 +99,9 @@ $(document).ready( function() {
 	var v_val = $(".menu_item").attr('_v');
 	if (v_val == 'detail') {
 		$(".menu_item").find('.menu_no').hide();
-		var menu_title = $(".show-detail-body").first().find('pre').text();
-		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,30) + '... </span>';
+		var menu_title 	= $(".show-detail-body").first().find('pre').text();
+		var menu_leng	= ($(window).width() < 400) ? 12 : 30;
+		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,menu_leng) + '...</span>';
 		$(".menu_hl").after(menu_title);
 		// console.log(menu_title);
 	}
