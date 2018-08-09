@@ -14,8 +14,8 @@ $(document).ready( function() {
 
 		// set the editor
 		var display_txt = "<div class='clear display_btn'><textarea></textarea>";
-		display_txt += "<input type='button' value='update' class='update_btn' />";
-		display_txt += "<input type='button' value='cancel' class='right cancel_btn' /></div>";
+		display_txt += "<input type='button' value='update' class='update_btn right' />";
+		display_txt += "<input type='button' value='cancel' class='cancel_btn' /></div>";
 
 		$(this).after(display_txt);
 		var display_btn = edit_btn.next('.display_btn');
@@ -26,6 +26,7 @@ $(document).ready( function() {
 			display_height = 100;
 		}
 		display_btn.find('textarea').css({'height': display_height});
+		display_btn.css({'margin-bottom': '20px'});
 
 		// set editor value
 		var pre_txt = $(this).next().text();
