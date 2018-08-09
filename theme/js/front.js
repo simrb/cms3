@@ -26,6 +26,7 @@ $(document).ready( function() {
 			display_height = 100;
 		}
 		display_btn.find('textarea').css({'height': display_height});
+		display_btn.find('textarea').css({'margin-bottom': '10px'});
 		display_btn.css({'margin-bottom': '20px'});
 
 		// set editor value
