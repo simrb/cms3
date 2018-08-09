@@ -32,15 +32,14 @@ btw, you better to reboot server agint.
 Backup
 ============
 
-1 backup your db, such as
+1 backup your db, output data with the `first command`, and then, 
+copy your data file to your new path like `/others` , and execute the `second command`
 
-	# output data
-	# mysqldump -uroot -p cms_db > others/db_xx.sql
+	# mysqldump -uroot -p cms_db > others/db.sql.1
 
-	# input data later in somewhere
-	# mysql -ucms_name -pcms_pawd dbname < db_xx.sql
+	# mysql -ucms_uxxx -pcms_pxxx cms_dbname < others/db.sql.1
 
-2 backup the dir, such as
+2 backup upload file, such as
 
 	# tar -cvf others.tar others/
 
