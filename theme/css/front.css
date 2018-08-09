@@ -44,7 +44,8 @@ textarea.ui-input-text { min-height: 60px; }
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
-.show-detail img { width: 70%;  }
+.show-list img { width: 200px; height: 150px;  }
+.show-detail img { width: 90%;  }
 .show-detail .show-detail-img { margin-bottom: 10px; text-align: left; }
 .show-detail label.right { margin-left: 10px;  }
 .show-detail pre a { text-decoration: underline; }
@@ -63,7 +64,7 @@ textarea.ui-input-text { min-height: 60px; }
 
 /* First breakpoint at 500px */
 @media all and (min-width: 400px){
-	.show-detail img { width: 95%;  }
+// 	.show-detail img { width: 95%;  }
 	video, embed { height: 400px; }
 }
 
