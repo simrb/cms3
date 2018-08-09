@@ -26,15 +26,17 @@ $("#upfile").click(function(event){
 
 				//console.log(data);
 				if (data.code == "success") {
-					var insert_txt = "<div class='upload_path'><p>[img]" + data.data['url'] + "[/img]</p>";
-					insert_txt += "<button class='btn btn-primary copy' data-clipboard-text='[img]" + data.data['url'] + "[/img]' >copy</button></div>"
+					var path_txt = "[img]" + data.data['url'] + "[/img]";
+					var insert_txt = "<p><input type='text' class='upload_path' data-clipboard-text='";
+					insert_txt += path_txt + "' value='" + path_txt + "' /></p>";
 					$("#upload_res").append(insert_txt);
 
 					// style
 					$('.upload_path').css('margin', '5px 0');
+					$('.upload_path').css('width', '250px');
 
 					// copy event
-					$('button').click(function(){
+					$('.upload_path').click(function(){
 						var upload_path_txt = $(this).prev().text();
 						// window.clipboardData.setData('Text',upload_path_txt);
 						// console.log(upload_path_txt);
