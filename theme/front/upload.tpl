@@ -4,10 +4,13 @@
 	<input type="file" id="file" name="smfile"  ></input>
 	<input type="submit" id="upfile" value="upload"  ></input>
 </form>
-<div id="upload_res"></div>
+<div id="upload_res" />
+
+
+<script src='https://www.jqueryscript.net/demo/jQuery-Plugin-To-Copy-Any-Text-Into-Your-Clipboard-Copy-to-Clipboard/jquery.copy-to-clipboard.js' ></script>
+
 
 <script>
-
 
 $("#upfile").click(function(event){
 	event.preventDefault();
@@ -20,12 +23,27 @@ $("#upfile").click(function(event){
         	contentType: false,
         	processData: false,
         	success: function(data) {
-			//console.log(data);
-			if (data.code == "success") {
-				$("#upload_res").append("[img]" + data.data['url'] + "[/img]</br>");
-			} else {
-				$("#upload_res").append(data.msg + "</br>");
-			}
+
+				//console.log(data);
+				if (data.code == "success") {
+					var insert_txt = "<div class='upload_path'><p>[img]" + data.data['url'] + "[/img]</p>";
+					insert_txt += "<button class='btn btn-primary copy' data-clipboard-text='[img]" + data.data['url'] + "[/img]' >copy</button></div>"
+					$("#upload_res").append(insert_txt);
+
+					// style
+					$('.upload_path').css('margin', '5px 0');
+
+					// copy event
+					$('button').click(function(){
+						var upload_path_txt = $(this).prev().text();
+						// window.clipboardData.setData('Text',upload_path_txt);
+						// console.log(upload_path_txt);
+						$(this).CopyToClipboard();
+					});
+
+				} else {
+					$("#upload_res").append(data.msg + "</br>");
+				}
 			
         	}
 	});
