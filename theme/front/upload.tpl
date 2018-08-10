@@ -1,8 +1,8 @@
 <h3><?=l('upload file');?></h3>
 
 <form id="form1" class="upload_form">
-	<input type="file" id="file" name="smfile"  ></input>
-	<input type="submit" id="upfile" value="upload"  ></input>
+	<input type="file" id="file" name="smfile" />
+	<input type="submit" id="upfile" value="upload" class="right" />
 </form>
 <div id="upload_res" />
 
@@ -29,6 +29,7 @@ $("#upfile").click(function(event){
 					var path_txt = "[img]" + data.data['url'] + "[/img]";
 					var insert_txt = "<p><input type='text' class='upload_path' data-clipboard-text='";
 					insert_txt += path_txt + "' value='" + path_txt + "' /></p>";
+
 					$("#upload_res").append(insert_txt);
 
 					// style

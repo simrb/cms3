@@ -6,6 +6,7 @@ body { font-family: "Trebuchet MS", sans-serif; font-size:15px; }
 .w100 { width: 100%; }
 body, div, p, form, ul  { margin: 0; padding: 0; }
 .mr10 { margin: 10px; }
+.mb10 { margin-bottom: 10px; }
 .hide { display: none; }
 
 /* ------------- styles */
@@ -29,3 +30,4 @@ pre {
 	word-wrap: break-word; /* Internet Explorer 5.5+ */ 
 	white-space : normal ; /* Internet Explorer 5.5+ */ 
 }
+

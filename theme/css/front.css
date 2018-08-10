@@ -13,6 +13,7 @@ a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 textarea { width: 98%; background-color: #eee; }
 textarea.ui-input-text { min-height: 60px; }
+input { background-color: #eee; }
 
 #msg { background-color: #9dc7de; }
 .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }
