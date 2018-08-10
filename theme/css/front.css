@@ -35,6 +35,7 @@ input { background-color: #eee; }
 	white-space : normal ; /* Internet Explorer 5.5+ */ 
 }
 
+.show-list img, .show-list embed, .show-list video { width: 200px; height: 150px; }
 .show-list, .show-detail { clear: both; margin-bottom: 15px; }
 .show-list h3 { margin: 0; padding: 0; }
 .show-list p { margin-top: 5px; }
@@ -45,7 +46,6 @@ input { background-color: #eee; }
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
-.show-list img { width: 200px; height: 150px;  }
 .show-detail img { width: 90%;  }
 .show-detail .show-detail-img { margin-bottom: 10px; text-align: left; }
 .show-detail label.right { margin-left: 10px;  }
