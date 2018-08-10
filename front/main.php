@@ -57,7 +57,7 @@ if ($t['_a'] == "useful") {
 // act: delpost
 // just modify the category id as 0, don`t delete it really
 if ($t['_a'] == "delpost") {
-	if (user_level() > 2 and isset($_GET['rid'])) {
+	if (user_level() > 5 and isset($_GET['rid'])) {
 		if (isset($_GET['cmt'])) {
 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
 			$t['_v'] = 'detail';
@@ -169,7 +169,7 @@ if ($t['_a'] == "addpost") {
 		$t['msg'] = '';
  		$t["msg"] = user_allow_submit();
 
-		if (user_level() <= 1 ) {
+		if (user_level() < 1 ) {
 			$t['msg'] = l('no level to post');
 		}
 

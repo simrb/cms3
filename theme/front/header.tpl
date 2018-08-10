@@ -19,7 +19,7 @@
 			}
 	//	} 
 
-		if (user_level() > 1) {
+		if (user_level() > 0) {
 			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
 			echo '<li class="right '. $hl .'"><a href="?_v=addpost&cid='.
 				$t['cid'] .'">'.l('add post').'</a></li>';
