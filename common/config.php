@@ -62,11 +62,9 @@ $t['web_footer'] 		=	'Powered by linyu, 2016-';
 
 
 $t['user_level'] 		=	array(
-								1 => 'front',
-								2 => 'front edit',
-								3 => 'view',
-								6 => 'view, edit',
-								9 => 'view, edit, add user',
+								1 => 'front add',
+								6 => 'front edit, admin',
+								9 => 'front edit, admin, user',
 							);
 
 
