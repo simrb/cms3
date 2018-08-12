@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'return login' => '',
 'website style' => '',
 'rate' => '',
 'upload file' => '',

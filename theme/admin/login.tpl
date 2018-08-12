@@ -19,7 +19,8 @@
 				<li><input type="submit" value="<?= l('confirm'); ?>" /></li>
 
 				<li><br />
-					<pre><?= $t['aboutuser']; ?></pre>
+					<a href="<?=$t['link_login']?>" >
+						<?= l('return login') ?></a>
 				</li>
 
 			<?php } else { ?>
@@ -40,6 +41,10 @@
 				</li>
 
 			<?php } ?>
+
+				<li>
+					<pre><?= $t['aboutuser']; ?></pre>
+				</li>
 
 		</ul>
 	</form>

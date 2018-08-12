@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'return login' => '返回登录',
 'website style' => '网站 风格',
 'rate' => '评级',
 'upload file' => '上传文件',
