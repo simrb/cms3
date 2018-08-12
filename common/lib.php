@@ -352,32 +352,31 @@ function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
 
-// return value by key
-function optionkv ($okey) {
-
+// set first parameter for returning value by key
+// set two parameters for setting the option value
+function optionkv ($okey, $oval = '') {
 	$reval	= '';
 	$uid 	= user_id();
 
-	// has okey in db
+	// set value
+	// if has okey in db
 	$res = sql_query("SELECT oval FROM optionkv WHERE okey = '". $okey ."' LIMIT 1");
 	if (mysql_num_rows($res) > 0) {
 		$res2 	= mysql_fetch_row($res);
 		$reval 	= $res2[0];
 
-	// no okey, then fetch it from $c, and write to db
+	// no okey, then try to fetch it from $c, or return null, then write to db
 	} else {
 		$reval = isset($GLOBALS['c'][$okey]) ? $GLOBALS['c'][$okey] : 'null';
 		sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
 			'". $uid ."','". $okey ."', '". $reval ."')");
 	}
 
-	return $reval;
-}
+	if ($oval != '') {
+		sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
+	}
 
-// set oval by okey
-function optionkv_set ($okey, $oval) {
-	$uid = user_id();
-	sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
+	return $reval;
 }
 
 function user_allow_submit () {
@@ -389,9 +388,9 @@ function user_allow_submit () {
 			$reval = l('you cannot post twice in a short time');
 		}
 	} else {
-		optionkv_set('last_post_ip', user_ip());
+		optionkv('last_post_ip', user_ip());
 	}
-	optionkv_set('last_post_time', date("i"));
+	optionkv('last_post_time', date("i"));
 
 	return $reval;
 }
