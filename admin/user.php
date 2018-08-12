@@ -60,8 +60,9 @@ if ($t['_a'] == "login") {
 
 		// user register
 		if (isset($_POST["firstime"])) {
+
 			// the invited code is month, day, hour, like 071509
-			if (isset($_POST["invitecode"]) and ($_POST["invitecode"] == date('mdH')) ) {
+			if (isset($_POST["invitecode"]) and ($_POST["invitecode"] == invitecode()) ) {
 				$arr = $_POST;
 				$arr['level'] = 1;
 				$t['msg'] = user_add($arr);

@@ -425,6 +425,10 @@ function record_get_content ($rid = 0) {
 	return $reval;
 }
 
+// return a invited code
+function invitecode () {
+	return substr(md5(date('mHd')), -6);
+}
 
 
 /*
