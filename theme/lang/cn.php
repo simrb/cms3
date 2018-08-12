@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'website style' => '网站 风格',
 'rate' => '评级',
 'upload file' => '上传文件',
 'background management' => '后台管理',

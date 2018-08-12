@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'website style' => '',
 'rate' => '',
 'upload file' => '',
 'background management' => '',

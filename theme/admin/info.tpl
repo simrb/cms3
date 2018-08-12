@@ -8,6 +8,11 @@
 					<input type="text" name="web_logo" value="<?= $t["web_logo"] ?>" />
 				</li>
 
+				<li><label><?= l('website style'); ?></label></li>
+				<li>
+					<input type="text" name="web_style" value="<?= $t["web_style"] ?>" placeholder='front' />
+				</li>
+
 				<li><label><?= l('header or name'); ?></label></li>
 				<li>
 					<input type="text" name="web_header" value="<?= $t["web_header"] ?>" />

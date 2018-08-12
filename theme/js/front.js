@@ -109,6 +109,15 @@ $(document).ready( function() {
 	}
 
 
+	// show and hide event for editor button
+	$('.edit_btn').hide();
+	$('.del_btn').hide();
+	$('.show-detail-title').mouseover(function(){
+		$('.edit_btn').show();
+		$('.del_btn').show();
+	});
+
+
 
 
 
