@@ -7,7 +7,7 @@
 			echo '<div class="show-detail-body clear">';
 			echo "<div class='show-detail-title'><label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . " #".$t['record_res']['uid']."</label>";
 
-			if ($user_level > 5) {
+			if ($user_level > 4) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
 						"'><label class='right rate_btn' rid=".$t['rid']." >". l('rate'),
 						" <span>" . $t['record_res']['useful'] . "</span></label></a>";
@@ -34,7 +34,7 @@
 				echo '<div class="show-detail-body">';
 				echo "<div class='show-detail-title'><label class='left'>" . date('Y-m-d H:i:s', $row['created']) . " #".$row['uid']."</label>";
 
-				if ($user_level > 5) {
+				if ($user_level > 4) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right rate_btn' rid=".$row['rid'].">". l('rate').
 							" <span>" . $row['useful'] . "</span></label></a>";
