@@ -26,18 +26,27 @@
 					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?>
 				</i>
 
+				<div class="right" >
 				<?php if (user_level() > 5) { ?>
-					<i class="right" >
-						<a href="?_m=admin" target="_blank">,  <?= l('back end') ?> </a>	
+					<i >
+						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
 					</i>
 				<?php } ?>
+
+				<span> | </span>
 
 				<?php if (user_level() > 0) { ?>
-					<i class="right" >
-						<a href="?_v=upload" target="_blank"> <?= l('upload file') ?> </a>	
+					<i >
+						<a href="?_v=upload" target="_blank"><?= l('upload file') ?></a>	
+					</i>
+
+				<span> | </span>
+
+					<i >
+						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
 					</i>
 				<?php } ?>
-
+				</div>
 	
 			</div>
 

@@ -3,7 +3,6 @@
 
 		<ul>
 			<li>
-				<a href="<?=$t['link_logout'];?>" class="right"><?= l('logout'); ?></a>
 				<h3><?= l('base info'); ?></h3>
 			</li>
 
