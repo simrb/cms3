@@ -19,8 +19,8 @@
 --
 -- `tag`, for record
 --
-DROP TABLE IF EXISTS `tag`;
-CREATE TABLE `tag` (
+-- DROP TABLE IF EXISTS `tag`;
+CREATE TABLE IF NOT EXISTS  `tag` (
   `tid` int(11) NOT NULL auto_increment,
   `name` varchar(20) NOT NULL,
   PRIMARY KEY  (`tid`)
@@ -30,12 +30,24 @@ CREATE TABLE `tag` (
 --
 -- `tag_assoc`, for associating record and tag
 --
-DROP TABLE IF EXISTS `tag_assoc`;
-CREATE TABLE `tag_assoc` (
+-- DROP TABLE IF EXISTS `tag_assoc`;
+CREATE TABLE IF NOT EXISTS  `tag_assoc` (
   `taid` int(11) NOT NULL auto_increment,
   `rid` int(11) NOT NULL,
   `tid` int(11) NOT NULL,
   PRIMARY KEY  (`taid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+--
+-- `userkv`, for user, a key-val piece 
+--
+-- DROP TABLE IF EXISTS `userkv`;
+CREATE TABLE IF NOT EXISTS `userkv` (
+  `ukid` int(11) NOT NULL auto_increment,
+  `uid` int(11) NOT NULL default '0',
+  `ukey` varchar(50) NOT NULL,
+  `uval` varchar(100) NOT NULL,
+  PRIMARY KEY  (`ukid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

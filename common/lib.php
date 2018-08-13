@@ -352,6 +352,8 @@ function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
 
+// a copy of global config vars in config.php file, 
+// an alisa name of config vars call optionkv
 // set first parameter for returning value by key
 // set two parameters for setting the option value
 function optionkv ($okey, $oval = '') {
@@ -378,6 +380,35 @@ function optionkv ($okey, $oval = '') {
 		} else {
 			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
 				'". $uid ."','". $okey ."', '". $reval ."')");
+		}
+	}
+
+	return $reval;
+}
+
+// like the optionkv, but it is for user
+// get value with $uid, $ukey
+// set value with all of parameters
+function userkv ($uid, $ukey, $uval = '') {
+	$reval	= '';
+// 	$uid 	= user_id();
+
+	// get value
+	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = '". $ukey ."' LIMIT 1");
+	$num = mysql_num_rows($res);
+	if ($num > 0) {
+		$res 	= mysql_fetch_row($res);
+		$reval 	= $res[0];
+	}
+
+	// set value
+	if ($uval != '') {
+		$reval = $uval;
+		if ($num > 0) {
+			sql_query("UPDATE userkv SET uval = '". $uval ."' WHERE uid = '". $uid ."' AND ukey = '". $ukey ."'");
+		} else {
+			sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES (
+				'". $uid ."','". $ukey ."', '". $reval ."')");
 		}
 	}
 
