@@ -23,20 +23,20 @@
 
 			<li><label><?= l('nickname'); ?></label></li>
 			<li>
-				<input type="text" name="nickname1" value="<?= $t['nickname1']; ?>" />
-				<input type="hidden" name="nickname2" value="<?= $t['nickname1']; ?>" />
+				<input type="text" name="nickname" value="<?= $t['nickname']; ?>" />
+				<input type="hidden" name="nickname_old" value="<?= $t['nickname']; ?>" />
 			</li>
 
 			<li><label><?= l('contact'); ?></label></li>
 			<li>
-				<input type="text" name="contact1" value="<?= $t['contact1']; ?>" />
-				<input type="hidden" name="contact2" value="<?= $t['contact1']; ?>" />
+				<input type="text" name="contact" value="<?= $t['contact']; ?>" />
+				<input type="hidden" name="contact_old" value="<?= $t['contact']; ?>" />
 			</li>
 
 			<li><label><?= l('introduction'); ?></label></li>
 			<li>
-				<textarea name="intro1" ><?= $t['intro1']; ?></textarea>
-				<textarea name="intro2" class="hide" style="display:none;"><?= $t['intro1']; ?></textarea>
+				<textarea name="intro" ><?= $t['intro']; ?></textarea>
+				<textarea name="intro_old" class="hide" style="display:none;"><?= $t['intro']; ?></textarea>
 			</li>
 
 			<li>

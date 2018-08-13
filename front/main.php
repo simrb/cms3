@@ -6,6 +6,7 @@ $t["category_kv"] 	= data_fetch_category("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
+$user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
 // act: ajax_addpost
 if ($t['_a'] == "ajax_addpost") {
@@ -82,60 +83,10 @@ if ($t['_a'] == "settings") {
 		);
 	}
 
-	// change nickname
-	if (isset($_POST['nickname1']) and isset($_POST['nickname1']) 
-	and ($_POST['nickname1'] != $_POST['nickname2'])) {
-		// insert
-		$res = sql_query("SELECT oval FROM optionkv WHERE uid = ". $uid ." AND okey = 'nickname';");
-		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
-				'". $uid ."', 'nickname', '". $_POST["nickname1"] ."'
-			);");
-
-		// update
-		} else {
-			sql_query("UPDATE optionkv SET 
-				oval = '". $_POST["nickname1"] ."' 
-				WHERE uid = '".$uid."' AND okey = 'nickname';"
-			);
-		}
-	}
-
-	// change contact
-	if (isset($_POST['contact1']) and isset($_POST['contact1']) 
-	and ($_POST['contact1'] != $_POST['contact2'])) {
-		// insert
-		$res = sql_query("SELECT oval FROM optionkv WHERE uid = ". $uid ." AND okey = 'contact';");
-		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
-				'". $uid ."', 'contact', '". $_POST["contact1"] ."'
-			);");
-
-		// update
-		} else {
-			sql_query("UPDATE optionkv SET 
-				oval = '". $_POST["contact1"] ."' 
-				WHERE uid = '".$uid."' AND okey = 'contact';"
-			);
-		}
-	}
-
-	// change introduction
-	if (isset($_POST['intro1']) and isset($_POST['intro1']) 
-	and ($_POST['intro1'] != $_POST['intro2'])) {
-		// insert
-		$res = sql_query("SELECT oval FROM optionkv WHERE uid = ". $uid ." AND okey = 'intro';");
-		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
-				'". $uid ."', 'intro', '". $_POST["intro1"] ."'
-			);");
-
-		// update
-		} else {
-			sql_query("UPDATE optionkv SET 
-				oval = '". $_POST["intro1"] ."' 
-				WHERE uid = '".$uid."' AND okey = 'intro';"
-			);
+	foreach($user_setting as $key => $val) {
+		if (isset($_POST[$key]) and isset($_POST[$key."_old"]) 
+		and ($_POST[$key] != $_POST[$key."_old"])) {
+			userkv($uid, $key, $_POST[$key]);
 		}
 	}
 
@@ -278,18 +229,19 @@ if ($t['_v'] == "settings") {
 	$t['_a'] 			=	"settings";
 	$t["cid"]			=	0 ;
 
-	$t['nickname1'] 	= $t['contact1'] = $t['intro1'] = '';
+// 	$t['nickname'] 	= $t['contact'] = $t['intro'] = '';
+	foreach($user_setting as $key => $val) {
+		$t[$key] = '';
+	}
 
-	$res = sql_query("SELECT * FROM optionkv WHERE uid = ". $uid);
+	$res = sql_query("SELECT * FROM userkv WHERE uid = ". $uid);
 
 	if ($res) {
 		while ($row = mysql_fetch_row($res)) {	
-			if ($row[2] == 'nickname') {
-				$t['nickname1'] = $row[3];
-			} elseif ($row[2] == 'contact') {
-				$t['contact1'] = $row[3];
-			} elseif ($row[2] == 'intro') {
-				$t['intro1'] = $row[3];
+			foreach($user_setting as $key => $val) {
+				if ($row[2] == $key) {
+					$t[$key] = $row[3];
+				}
 			}
 		}
 	}
