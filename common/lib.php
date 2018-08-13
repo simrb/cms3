@@ -358,22 +358,27 @@ function optionkv ($okey, $oval = '') {
 	$reval	= '';
 	$uid 	= user_id();
 
-	// set value
-	// if has okey in db
+	// get value
 	$res = sql_query("SELECT oval FROM optionkv WHERE okey = '". $okey ."' LIMIT 1");
-	if (mysql_num_rows($res) > 0) {
-		$res2 	= mysql_fetch_row($res);
-		$reval 	= $res2[0];
+	$num = mysql_num_rows($res);
+	if ($num > 0) {
+		$res 	= mysql_fetch_row($res);
+		$reval 	= $res[0];
 
-	// no okey, then try to fetch it from $c, or return null, then write to db
+	// default value
 	} else {
-		$reval = isset($GLOBALS['c'][$okey]) ? $GLOBALS['c'][$okey] : 'null';
-		sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
-			'". $uid ."','". $okey ."', '". $reval ."')");
+		$reval = isset($GLOBALS['c'][$okey]) ? $GLOBALS['c'][$okey] : '';
 	}
 
+	// set value to db
 	if ($oval != '') {
-		sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
+		$reval = $oval;
+		if ($num > 0) {
+			sql_query("UPDATE optionkv SET oval = '". $oval ."' WHERE okey = '". $okey ."'");
+		} else {
+			sql_query("INSERT INTO optionkv (uid, okey, oval) VALUES (
+				'". $uid ."','". $okey ."', '". $reval ."')");
+		}
 	}
 
 	return $reval;
