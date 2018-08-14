@@ -51,3 +51,12 @@ CREATE TABLE IF NOT EXISTS `userkv` (
   PRIMARY KEY  (`ukid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+CREATE TABLE IF NOT EXISTS `recordkv` (
+  `rkid` int(11) NOT NULL auto_increment,
+  `rid` int(11) NOT NULL default '0',
+  `rval` varchar(50) NOT NULL,
+  PRIMARY KEY  (`rkid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+

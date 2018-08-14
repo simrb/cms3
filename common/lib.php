@@ -352,6 +352,70 @@ function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
 
+function user_allow_submit () {
+	$reval = '';
+
+	if (optionkv('last_post_ip') == user_ip()) {
+		// time
+		if (abs(intval(date("i")) - intval(optionkv('last_post_time'))) < 2) {
+			$reval = l('you cannot post twice in a short time');
+		}
+	} else {
+		optionkv('last_post_ip', user_ip());
+	}
+	optionkv('last_post_time', date("i"));
+
+	return $reval;
+}
+
+function user_add ($arr) {
+	$reval = l('failed to add');
+	if (isset($arr["username"])) {
+		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
+		if (mysql_num_rows($res) > 0) {
+			$reval = l('the user is existed');
+
+		} else {
+			sql_query("INSERT INTO user(username, password, level, created) 
+				VALUES ('". $arr["username"] ."','". $arr["password"] .
+				"','". $arr["level"] ."', '". time() ."');"
+			);
+			$reval = l('created user successfully');
+		}
+	}
+	return $reval;
+}
+
+
+// like the optionkv, but it is for user
+// get value with $uid, $ukey
+// set value with all of parameters
+function userkv ($uid, $ukey, $uval = '') {
+	$reval	= '';
+// 	$uid 	= user_id();
+
+	// get value
+	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = '". $ukey ."' LIMIT 1");
+	$num = mysql_num_rows($res);
+	if ($num > 0) {
+		$res 	= mysql_fetch_row($res);
+		$reval 	= $res[0];
+	}
+
+	// set value
+	if ($uval != '') {
+		$reval = $uval;
+		if ($num > 0) {
+			sql_query("UPDATE userkv SET uval = '". $uval ."' WHERE uid = '". $uid ."' AND ukey = '". $ukey ."'");
+		} else {
+			sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES (
+				'". $uid ."','". $ukey ."', '". $reval ."')");
+		}
+	}
+
+	return $reval;
+}
+
 // a copy of global config vars in config.php file, 
 // an alisa name of config vars call optionkv
 // set first parameter for returning value by key
@@ -386,66 +450,34 @@ function optionkv ($okey, $oval = '') {
 	return $reval;
 }
 
-// like the optionkv, but it is for user
-// get value with $uid, $ukey
-// set value with all of parameters
-function userkv ($uid, $ukey, $uval = '') {
-	$reval	= '';
-// 	$uid 	= user_id();
+// like the optionkv
+// get rval, recordkv(1), return array('hot') or array('hot', 'top')
+// set rval, recordkv(1, 'hot') 
+// rm rval, recordkv(1, 'hot', 'rm') 
+function recordkv ($rid, $rval = '', $rm = '') {
+	$reval	= array();
 
 	// get value
-	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = '". $ukey ."' LIMIT 1");
-	$num = mysql_num_rows($res);
-	if ($num > 0) {
-		$res 	= mysql_fetch_row($res);
-		$reval 	= $res[0];
+	if ($rval == '') {
+		$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid'");
+		$num = mysql_num_rows($res);
+		if ($num > 0) {
+			while($row = mysql_fetch_row($res)) {
+				$reval[] = $row[0];
+			}
+		}
 	}
 
 	// set value
-	if ($uval != '') {
-		$reval = $uval;
-		if ($num > 0) {
-			sql_query("UPDATE userkv SET uval = '". $uval ."' WHERE uid = '". $uid ."' AND ukey = '". $ukey ."'");
-		} else {
-			sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES (
-				'". $uid ."','". $ukey ."', '". $reval ."')");
-		}
+	if ($rval != '' && $rm == '') {
+		sql_query("INSERT INTO recordkv (rid, rval) VALUES ('$rid','$rval')");
 	}
 
-	return $reval;
-}
-
-function user_allow_submit () {
-	$reval = '';
-
-	if (optionkv('last_post_ip') == user_ip()) {
-		// time
-		if (abs(intval(date("i")) - intval(optionkv('last_post_time'))) < 2) {
-			$reval = l('you cannot post twice in a short time');
-		}
-	} else {
-		optionkv('last_post_ip', user_ip());
+	// remove
+	if ($rval != '' && $rm != '') {
+		sql_query("DELETE FROM recordkv WHERE rid = '$rid' AND rval = '$rval'");
 	}
-	optionkv('last_post_time', date("i"));
 
-	return $reval;
-}
-
-function user_add ($arr) {
-	$reval = l('failed to add');
-	if (isset($arr["username"])) {
-		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
-		if (mysql_num_rows($res) > 0) {
-			$reval = l('the user is existed');
-
-		} else {
-			sql_query("INSERT INTO user(username, password, level, created) 
-				VALUES ('". $arr["username"] ."','". $arr["password"] .
-				"','". $arr["level"] ."', '". time() ."');"
-			);
-			$reval = l('created user successfully');
-		}
-	}
 	return $reval;
 }
 
