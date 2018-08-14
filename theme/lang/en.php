@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'parent' => '',
 'return login' => '',
 'website style' => '',
 'rate' => '',

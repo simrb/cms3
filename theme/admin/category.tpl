@@ -11,7 +11,7 @@
 				<tr>
 					<th style="width:80px">id</th>
 					<th style="width:80px"><?= l("category"); ?></th>
-					<th style="width:80px"><?= l("follow"); ?></th>
+					<th style="width:80px"><?= l("parent"); ?></th>
 					<th style="width:80px"><?= l("order"); ?></th>
 				</tr>
 			</thead>
@@ -58,12 +58,12 @@
 					<input type="text" name="category_name" value="<?= $t["category_name"] ?>" />
 				</li>
 
-				<li><label><?= l("follow"); ?></label></li>
+				<li><label><?= l("parent"); ?></label></li>
 				<li>
 					<input type="text" name="follow" value="<?= $t["follow"] ?>" />
 				</li>
 
-				<li><label><?= l("number"); ?></label></li>
+				<li><label><?= l("order"); ?></label></li>
 				<li>
 					<input type="text" name="number" value="<?= $t["number"] ?>" />
 				</li>

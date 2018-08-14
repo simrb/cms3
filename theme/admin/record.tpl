@@ -11,7 +11,7 @@
 				<option value="rid" ><?= l('id'); ?></option>
 				<option value="uid" ><?= l('uid'); ?></option>
 				<option value="cid" ><?= l('category'); ?></option>
-				<option value="useful" ><?= l('useful'); ?></option>
+				<option value="useful" ><?= l('rate'); ?></option>
 				<option value="tag" ><?= l('tag'); ?></option>
 			</select>
 
@@ -34,8 +34,8 @@
 					<th style="width:180px"><?= l('content'); ?></th>
 					<th style="width:40px"><?= l('category'); ?></th>
 					<th style="width:40px"><?= l('uid'); ?></th>
-					<th style="width:40px"><?= l('follow id'); ?></th>
-					<th style="width:40px"><?= l('useful'); ?></th>
+					<th style="width:40px"><?= l('parent'); ?></th>
+					<th style="width:40px"><?= l('rate'); ?></th>
 					<th style="width:80px"></th>
 				</tr>
 			</thead>
@@ -164,11 +164,11 @@ if ($t['_v'] == 'edit') { ?>
 					</li>
 
 					<li>
-						<label><?= l('follow'); ?></label>
+						<label><?= l('parent'); ?></label>
 						<input type="text" name="follow" class="w50" value="<?= $t['follow'] ?>" />
 					</li>
 					<li>
-						<label><?= l('useful'); ?></label>
+						<label><?= l('rate'); ?></label>
 						<input type="text" name="useful" class="w50" value="<?= $t['useful'] ?>" />
 					</li>
 					<li>

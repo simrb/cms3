@@ -9,7 +9,7 @@
 
 			<input type="search" class="search" name="select_val" />
 			<select name="select_key" class="selectmenu">
-				<option value="uid" ><?= l('user id'); ?></option>
+				<option value="uid" ><?= l('uid'); ?></option>
 				<option value="username" ><?= l('username'); ?></option>
 				<option value="level" ><?= l('level'); ?></option>
 			</select>
@@ -21,10 +21,10 @@
 		<table>
 			<thead>
 				<tr>
-					<th style="width:80px">id</th>
+					<th style="width:80px">uid</th>
 					<th style="width:80px"><?= l('name'); ?></th>
 					<th style="width:80px"><?= l('level'); ?></th>
-					<th style="width:80px"><?= l('created'); ?></th>
+					<th style="width:80px"><?= l('created time'); ?></th>
 				</tr>
 			</thead>
 
