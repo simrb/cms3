@@ -80,8 +80,8 @@ Options
     -p, password
   -i, increarsing the index.html file for each directory.
   -v, check the version of current release.
-  -m, update db scheme from commom/update.sql
-  -b, backup db to others/db.xx
+  -m, modify db scheme with commom/update.sql
+  -b, backup db to others/db.xxx
 
 For example
 if you want to initial the project.
@@ -94,15 +94,22 @@ fi
 
 # backup db
 my_cfg="others/cfg.php"
+my_dd=$(date +"%y%m%d")
 if [ $Ubackup = "yes" ] ; then
-	 grep -oP cms_.+[0-9]+ $my_cfg
+	grep -oP cms_.+[0-9]+ $my_cfg >> tt.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > others/db.'$my_dd'";' > t.t
+	sh t.t
+	rm t.t tt.t 
 fi
 
 
 # update db
 my_file="common/update.sql"
 if [ $Uupdate = "yes" ] ; then
-	 grep -oP cms_.+[0-9]+ $my_cfg 
+	grep -oP cms_.+[0-9]+ $my_cfg >> tt.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysql -u$a[0] -p$a[1] $a[2] < common/update.sql";' > t.t
+	sh t.t
+	rm t.t tt.t 
 fi
 
 
@@ -167,6 +174,7 @@ if [ $Uinitpj = "yes" ] ; then
 		echo 'short_open_tag=On' > $my_file
 		echo 'upload_max_filesize=3M' >> $my_file
 		echo "${my_file} is created"
+		echo "Notice: you need to restart server for adding new config, such as /etc/init.d/httpd restart "
 	fi
 
 	# copy the cfg.php
@@ -192,7 +200,6 @@ if [ $Uinitpj = "yes" ] ; then
 		echo "${my_file} is created"
 	fi
 
-	echo "Notice: you need to restart those servers if this is first time to install, such as '/etc/init.d/httpd restart'..."
 fi
 
 
