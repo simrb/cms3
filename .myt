@@ -7,10 +7,16 @@ Upawd="cms_p"$RANDOM
 Uinitpj="no"
 Uinitdb="no"
 Uinitht="no"
+Ubackup="no"
+Uupdate="no"
 
-while getopts "h:n:u:p:edi" opt
+while getopts "bmh:n:u:p:edi" opt
 do
 	case $opt in
+		 b)
+		 	Ubackup="yes";;
+		 m)
+		 	Uupdate="yes";;
 		 h)
 		 	Uhost=$OPTARG;;
 		 n)
@@ -74,6 +80,8 @@ Options
     -p, password
   -i, increarsing the index.html file for each directory.
   -v, check the version of current release.
+  -m, update db scheme from commom/update.sql
+  -b, backup db to others/db.xx
 
 For example
 if you want to initial the project.
@@ -81,6 +89,20 @@ if you want to initial the project.
    # sh .myt -ed
 
 EOF
+fi
+
+
+# backup db
+my_cfg="others/cfg.php"
+if [ $Ubackup = "yes" ] ; then
+	 grep -oP cms_.+[0-9]+ $my_cfg
+fi
+
+
+# update db
+my_file="common/update.sql"
+if [ $Uupdate = "yes" ] ; then
+	 grep -oP cms_.+[0-9]+ $my_cfg 
 fi
 
 
