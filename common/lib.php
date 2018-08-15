@@ -387,9 +387,15 @@ function user_add ($arr) {
 }
 
 
-// like the optionkv, but it is for user
-// get value with $uid, $ukey
-// set value with all of parameters
+/*
+	user key-val
+
+	set value
+	userkv(1, 'nickname', 'linyu')
+
+	get value
+	userkv(1, 'nickname')	#=> 'linyu'
+*/
 function userkv ($uid, $ukey, $uval = '') {
 	$reval	= '';
 // 	$uid 	= user_id();
@@ -416,10 +422,16 @@ function userkv ($uid, $ukey, $uval = '') {
 	return $reval;
 }
 
-// a copy of global config vars in config.php file, 
-// an alisa name of config vars call optionkv
-// set first parameter for returning value by key
-// set two parameters for setting the option value
+
+/*
+	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
+
+	set value
+	optionkv('last_login', '2018-01-01');
+
+	get value
+	optionkv('last_login');		#=> '2018-01-01'
+*/
 function optionkv ($okey, $oval = '') {
 	$reval	= '';
 	$uid 	= user_id();
@@ -454,8 +466,6 @@ function optionkv ($okey, $oval = '') {
 /*	
 	a key-val for storing the record increased fields
 
-	for example, 
-
 	get value, 
 	recordkv(1);	#=> array('mobile number' => '212-2221993', 'address' => '32, A zone')
 
@@ -465,10 +475,10 @@ function optionkv ($okey, $oval = '') {
 	set value, 
 	recordkv(1, 'mobile number', '331-233234');
 
-	remove value by key
+	remove value by a key
 	recordkv(1, 'mobile number', null);
 
-	remove all values
+	remove all values by no key
 	recordkv(1, '', null);
 */
 function recordkv ($rid, $rkey = '', $rval = '') {
