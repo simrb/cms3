@@ -27,41 +27,57 @@ function path_theme ($path) {
 }
 
 
-// return complete template path
+/* 	return absolute path
+	
+	for example
+	path_tmp('theme/front/mytpl');		#=> /var/www/html/demo/theme/front/mytpl.tpl
+
+*/
+
 function path_tmp ($path) {
 	return PATH_MOD.$path.'.tpl';
 }
 
 
-// load a template by tpl name, or no layout with $layout = 'unlayout'
-function tmp($t, $tpl_name = '', $layout = '') {
+/*	load the template
 
+	for example, load with default tpl_name, default tpl_layout
+	tmp($t);
+
+	for example, specified tpl_name, default layout
+	tmp($t, 'theme/front/mytpl');
+
+	for example, specified tpl_name, specified layout
+	tmp($t, 'theme/front/mytpl', 'theme/front/mylayout');
+
+	for example, no layout
+	tmp($t, 'theme/front/mytpl', 'unlayout');
+
+*/
+function tmp($t, $tpl_name = '', $layout = '') {
 	$t['web_logo']		=	optionkv('web_logo');
 	$t['web_header']	=	optionkv('web_header');
 
 	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." ".$t["msg"] : "";
-	$t["tpl_name"] 		=	$t["tpl_dir"].$t["tpl_name"];
-	$t["tpl_layout"] 	=	$t["tpl_dir"].$t["tpl_layout"];
 
-	if ($tpl_name != '') {
-		$t["tpl_name"]	=	$tpl_name;
-	}
+	$t["tpl_name"]		=	$tpl_name != '' ? $tpl_name : $t["tpl_dir"].$t["tpl_name"];
+	$t["tpl_layout"]	=	$layout != '' ? $layout : $t["tpl_dir"].$t["tpl_layout"];
 
-	if ($layout != '') {
-		$t["tpl_layout"]	=	$layout;
-	}
-
-	// load template 
-// 	if (empty($t["tpl_layout"])) {
 	if ($layout == 'unlayout') {
 		include_once(path_tmp($t['tpl_name']));
-	// load layout
 	} else {
 		include_once(path_tmp($t["tpl_layout"]));
 	}
 }
 
+/*	show error page, and exit current proccessing
 
+	for example,
+	out('occured an error', $t);
+
+	for example, with specified layout
+	out('occured an error', $t, 'theme/front/layout');
+*/
 function out($str, $t, $layout = '') {
 	$t["msg"] = $str;
 	//$t["blank"] = $str;
@@ -72,7 +88,11 @@ function out($str, $t, $layout = '') {
 }
 
 
-// change the language from en to what you want
+/*	change the language from en to what you want
+
+	for example,
+	l('myname');		#=>	'myname'
+*/
 function l ($str) {
 	$reval 	= $str;
 	$path 	= PATH_THEME . 'lang/' . $GLOBALS['c']['def_lang'] . '.php';
@@ -101,7 +121,13 @@ function url ($arr) {
 }
 
 
-// complete the url for option _m, _f
+/*	complete the url with _m, _f
+
+	for example, when your default module is front and file is main.php
+	url_c('_x=sss');		#=>	'?_m=front&_f=main&_x=sss&'
+	url_c('_x=sss&_v=vv');	#=>	'?_m=front&_f=main&_x=sss&_v=vv&'
+
+*/
 function url_c ($str = '') {
 	$url = isset($GLOBALS["t"]['url']) ? $GLOBALS["t"]['url'] : '';
 	$str = '?_m='. $GLOBALS["t"]['_m']. '&_f='. $GLOBALS["t"]['_f'] . '&' . $str . '&' . $url ;
@@ -109,7 +135,7 @@ function url_c ($str = '') {
 }
 
 
-// jump to somewhere
+// jump to certain page
 function url_to ($url = "index.php") {
 	Header("HTTP/1.1 303 See Other");
 	Header("Location: $url");
@@ -132,7 +158,12 @@ function url_referer ($url = '') {
 }
 
 
-// return a key-val result that getting from database by a table and two fields given
+/*	return a key-val result that getting from database by a table and two fields given
+	
+	for example,
+	data_fetch_kv('user', 'username', 'password');	#=> array('linyu' => '8888', 'viewer' => '8888')
+
+*/
 function data_fetch_kv($tablename, $key, $val) {
 	$rows = array();
 	if ($res = sql_query("SELECT * FROM ". $tablename)) {
@@ -332,7 +363,7 @@ function user_role_need ($role) {
 	return ($info[3] == $role ? true : false);
 }
 
-// retunr an array of user info
+// return an array of user info
 function user_info () {
 	$reval = array();
 	$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : '';
@@ -347,7 +378,7 @@ function user_info () {
 	return $reval;
 }
 
-// get current user ip
+// return current user ip
 function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
@@ -387,13 +418,12 @@ function user_add ($arr) {
 }
 
 
-/*
-	user key-val
+/*	user key-val
 
-	set value
+	for example, set value
 	userkv(1, 'nickname', 'linyu')
 
-	get value
+	for example, get value
 	userkv(1, 'nickname')	#=> 'linyu'
 */
 function userkv ($uid, $ukey, $uval = '') {
@@ -423,13 +453,12 @@ function userkv ($uid, $ukey, $uval = '') {
 }
 
 
-/*
-	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
+/*	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
 
-	set value
+	for example, set value
 	optionkv('last_login', '2018-01-01');
 
-	get value
+	for example, get value
 	optionkv('last_login');		#=> '2018-01-01'
 */
 function optionkv ($okey, $oval = '') {
@@ -463,22 +492,21 @@ function optionkv ($okey, $oval = '') {
 }
 
 
-/*	
-	a key-val for storing the record increased fields
+/*	a key-val for storing the record increased fields
 
-	get value, 
+	for example, get value, 
 	recordkv(1);	#=> array('mobile number' => '212-2221993', 'address' => '32, A zone')
 
-	get value,
+	for example, get value,
 	recordkv(1, 'mobile number'); 	#=> array('212-2221993'), or maybe array('212-2221993', '333-322233')
 
-	set value, 
+	for example, set value, 
 	recordkv(1, 'mobile number', '331-233234');
 
-	remove value by a key
+	for example, remove value by a key
 	recordkv(1, 'mobile number', null);
 
-	remove all values by no key
+	for example, remove all values by no key
 	recordkv(1, '', null);
 */
 function recordkv ($rid, $rkey = '', $rval = '') {

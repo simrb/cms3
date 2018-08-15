@@ -22,7 +22,7 @@ foreach (array('_m', '_f', '_a', '_v') as $val) {
 // set auth in access entrance
 if ($t['_m'] == 'admin') {
 
-	$def_tpl_layout 	= (user_level() > 0) ? THEME.'admin/layout' : THEME.'layout';
+	$def_layout 	= (user_level() > 0) ? THEME.'admin/layout' : THEME.'layout';
 
 	$t['tpl_dir'] 		= THEME.$t['_m'].'/';
 	$t['tpl_name'] 		= $t['_f'];
@@ -33,7 +33,7 @@ if ($t['_m'] == 'admin') {
 		case 'file':
 		case 'record':
 			if (user_level() < 6) {
-				out(l("no privilege to access"), $t, $def_tpl_layout);
+				out(l("no privilege to access"), $t, $def_layout);
 			}
 			break;
 
@@ -44,7 +44,7 @@ if ($t['_m'] == 'admin') {
 
 			} else {
 				if (user_level() < 9) {
-					out(l("no privilege to access"), $t, $def_tpl_layout);
+					out(l("no privilege to access"), $t, $def_layout);
 				}
 			}
 			break;
@@ -59,7 +59,7 @@ if ($t['_m'] == 'admin') {
 		case 'delall':
 		case 'update':
 			if (user_level() < 6) {
-				out(l("no privilege to access"), $t, $def_tpl_layout);
+				out(l("no privilege to access"), $t, $def_layout);
 			}
 			break;
 		default:
@@ -69,7 +69,7 @@ if ($t['_m'] == 'admin') {
 		case 'info':
 		case 'edit':
 			if (user_level() < 6) {
-				out(l("no privilege to access"), $t, $def_tpl_layout);
+				out(l("no privilege to access"), $t, $def_layout);
 			}
 			break;
 		default:
