@@ -32,7 +32,7 @@ if ($t['_m'] == 'admin') {
 		case 'category':
 		case 'file':
 		case 'record':
-			if (user_level() < 3) {
+			if (user_level() < 6) {
 				out(l("no privilege to access"), $t, $def_tpl_layout);
 			}
 			break;
