@@ -450,32 +450,61 @@ function optionkv ($okey, $oval = '') {
 	return $reval;
 }
 
-// like the optionkv
-// get rval, recordkv(1), return array('hot') or array('hot', 'top')
-// set rval, recordkv(1, 'hot') 
-// rm rval, recordkv(1, 'hot', 'rm') 
-function recordkv ($rid, $rval = '', $rm = '') {
+
+/*	
+	a key-val for storing the record increased fields
+
+	for example, 
+
+	get value, 
+	recordkv(1);	#=> array('mobile number' => '212-2221993', 'address' => '32, A zone')
+
+	get value,
+	recordkv(1, 'mobile number'); 	#=> array('212-2221993'), or maybe array('212-2221993', '333-322233')
+
+	set value, 
+	recordkv(1, 'mobile number', '331-233234');
+
+	remove value by key
+	recordkv(1, 'mobile number', null);
+
+	remove all values
+	recordkv(1, '', null);
+*/
+function recordkv ($rid, $rkey = '', $rval = '') {
 	$reval	= array();
 
 	// get value
 	if ($rval == '') {
-		$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid'");
-		$num = mysql_num_rows($res);
-		if ($num > 0) {
-			while($row = mysql_fetch_row($res)) {
-				$reval[] = $row[0];
+		if ($rkey == '') {
+			$res = sql_query("SELECT rkey, rval FROM recordkv WHERE rid = '$rid'");
+			if ($res) {
+				while($row = mysql_fetch_row($res)) {
+					$reval[$row[0]] = $row[1];
+				}
+			}
+		} else {
+			$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid' AND rkey = '$rkey'");
+			if ($res) {
+				while($row = mysql_fetch_row($res)) {
+					$reval[] = $row[0];
+				}
 			}
 		}
 	}
 
 	// set value
-	if ($rval != '' && $rm == '') {
-		sql_query("INSERT INTO recordkv (rid, rval) VALUES ('$rid','$rval')");
+	if ($rkey != '' AND $rval != '') {
+		sql_query("INSERT INTO recordkv (rid, rkey, rval) VALUES ('$rid','$rkey','$rval')");
 	}
 
 	// remove
-	if ($rval != '' && $rm != '') {
-		sql_query("DELETE FROM recordkv WHERE rid = '$rid' AND rval = '$rval'");
+	if ($rval === null) {
+		if ($rkey != '') {
+			sql_query("DELETE FROM recordkv WHERE rid = '$rid' AND rkey = '$rkey'");
+		} else {
+			sql_query("DELETE FROM recordkv WHERE rid = '$rid'");
+		}
 	}
 
 	return $reval;
