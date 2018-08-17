@@ -25,7 +25,7 @@ input { background-color: #eee; }
 
 .show-pagination span { margin-right: 5px; }
 
-.show-menu { height: 33px; }
+.menu_item li {  padding-bottom: 9px; }
 .show-menu .left { margin-right: 10px; }
 .show-menu .right { margin-left: 10px; }
 
