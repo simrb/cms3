@@ -39,6 +39,7 @@ CREATE TABLE IF NOT EXISTS  `tag_assoc` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+-- version v1.0.3 --> v1.0.3.1
 --
 -- `userkv`, for user, a key-val piece 
 --
@@ -61,4 +62,6 @@ CREATE TABLE IF NOT EXISTS `recordkv` (
   PRIMARY KEY  (`rkid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+ALTER TABLE `category` CHANGE `uid` `descript` VARCHAR(60);
 

@@ -52,16 +52,16 @@ CREATE TABLE `recordkv` (
 --
 CREATE TABLE `category` (
   `cid` int(11) NOT NULL auto_increment,
-  `uid` int(11) NOT NULL default '0',
   `follow` int(11) NOT NULL default '0',
   `number` tinyint(5) NOT NULL default '1',
   `name` varchar(20) NOT NULL,
+  `descript` varchar(60),
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
-INSERT INTO `category` (`cid`, `uid`, `follow`, `number`, `name`) VALUES
-(1, 1, 0, 1, 'home'),
-(2, 1, 0, 1, 'news'),
-(3, 1, 0, 1, 'show');
+INSERT INTO `category` (`cid`, `follow`, `number`, `name`, `descript`) VALUES
+(1, 1, 1, 'home'),
+(2, 1, 1, 'news'),
+(3, 1, 1, 'show');
 
 
 --

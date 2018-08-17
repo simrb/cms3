@@ -3,8 +3,8 @@
 // act: add
 if ($t['_a'] == "add") {
 	if (isset($_POST["category_name"])) {
-		sql_query("INSERT INTO category (name,follow,number) VALUES ('". $_POST["category_name"] ."',
-			'". $_POST["follow"] ."', '". $_POST["number"] ."');");
+		sql_query("INSERT INTO category (name,follow,number,descript) VALUES ('". $_POST["category_name"] ."',
+			'". $_POST["follow"] ."', '". $_POST["number"] ."', '". $_POST["descript"] ."');");
 		$t["msg"] = l("added successfully");
 	} else {
 		$t["msg"] = l("failed to add");
@@ -16,9 +16,9 @@ if ($t['_a'] == "update") {
 	if (isset($_POST["cid"])) {
 		sql_query("UPDATE category SET name = '". $_POST["category_name"] ."',
 					follow = '". $_POST["follow"] ."', number = '". $_POST["number"] .
-					"' WHERE cid = '".$_POST["cid"]."';");
+					"', descript = '". $_POST["descript"] . "' WHERE cid = '".$_POST["cid"]."';");
 
-		$res = sql_query("SELECT cid, name, follow, number FROM category WHERE cid = '". $_POST["cid"] ."';");
+		$res = sql_query("SELECT cid, name, follow, number, descript FROM category WHERE cid = '". $_POST["cid"] ."';");
 		if ($res) {
 			$t["msg"] 			= 	l("updated successfully");
 			//$t['_a']			=	"update";
@@ -63,11 +63,12 @@ if ($t['_v'] == "edit") {
 	$t["category_name"]	=	isset($t["category_name"]) ? $t["category_name"] : "";
 	$t["follow"]		=	isset($t["follow"]) ? $t["follow"] : 0;
 	$t["number"]		=	isset($t["number"]) ? $t["number"] : 1;
+	$t["descript"]		=	isset($t["descript"]) ? $t["descript"] : '';
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
 
 	// edit data
 	if (isset($_GET["cid"])) {
-		$res = sql_query("SELECT cid, name, follow, number 
+		$res = sql_query("SELECT cid, name, follow, number, descript
 			FROM category WHERE cid = '". $_GET["cid"] ."';");
 
 		if ($res) {
@@ -76,6 +77,7 @@ if ($t['_v'] == "edit") {
 			$t["category_name"]	=	$row['name'];
 			$t["follow"]		=	$row['follow'];
 			$t["number"]		=	$row['number'];
+			$t["descript"]		=	$row['descript'];
 			$t['_a']			=	"update";
 		}
 	}

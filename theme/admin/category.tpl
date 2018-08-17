@@ -58,6 +58,11 @@
 					<input type="text" name="category_name" value="<?= $t["category_name"] ?>" />
 				</li>
 
+				<li><label><?= l("description"); ?></label></li>
+				<li>
+					<input type="text" name="descript" value="<?= $t["descript"] ?>" />
+				</li>
+
 				<li><label><?= l("parent"); ?></label></li>
 				<li>
 					<input type="text" name="follow" value="<?= $t["follow"] ?>" />

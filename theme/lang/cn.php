@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'description' => '描述',
 'parent' => '父级',
 'return login' => '返回登录',
 'website style' => '网站 风格',
