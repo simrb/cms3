@@ -31,9 +31,10 @@
 					<i >
 						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
 					</i>
+
+					<span> | </span>
 				<?php } ?>
 
-				<span> | </span>
 
 				<?php if (user_level() > 0) { ?>
 					<i >
