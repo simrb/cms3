@@ -22,6 +22,8 @@ input { background-color: #eee; }
 
 .top-bar a { margin-left: 5px; }
 #header h1 { margin: 10px 0; }
+#header { min-height: 33px; }
+#header, #bodyer, #footer { clear: both; }
 
 .show-pagination span { margin-right: 5px; }
 
