@@ -5,7 +5,8 @@
 		// record
 		if (isset($t['record_res'])) {
 			echo '<div class="show-detail-body clear">';
-			echo "<div class='show-detail-title'><label class='left'>" .date('Y-m-d H:i:s', $t['record_res']['created']) . " #".$t['record_res']['uid']."</label>";
+			echo "<div class='show-detail-title'><label class='left'>" .
+				date('y/m/d H:i', $t['record_res']['created']) . ", by #".$t['record_res']['uid']."</label>";
 
 			if ($user_level > 4) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
@@ -32,7 +33,8 @@
 			while($row = mysql_fetch_array($t["record_cmt"])) {
 
 				echo '<div class="show-detail-body">';
-				echo "<div class='show-detail-title'><label class='left'>" . date('Y-m-d H:i:s', $row['created']) . " #".$row['uid']."</label>";
+				echo "<div class='show-detail-title'><label class='left'>" . 
+					date('y/m/d H:i', $row['created']) . ", by #".$row['uid']."</label>";
 
 				if ($user_level > 4) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].

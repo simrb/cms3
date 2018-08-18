@@ -1,6 +1,13 @@
 <?php $lang = array(
 
 
+'ago' => '之前',
+'second' => '秒',
+'minute' => '分钟',
+'hour' => '小时',
+'day' => '日',
+'month' => '月',
+'year' => '年',
 'description' => '描述',
 'parent' => '父级',
 'return login' => '返回登录',

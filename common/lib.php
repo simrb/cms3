@@ -565,10 +565,4 @@ function invitecode () {
 }
 
 
-/*
-$_REQUEST	= sql_filter($_REQUEST);
-$_GET 		= sql_filter($_GET);
-$_POST		= sql_filter($_POST);
-*/
-
 ?>

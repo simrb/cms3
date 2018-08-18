@@ -1,6 +1,13 @@
 <?php $lang = array(
 
 
+'ago' => '',
+'second' => '',
+'minute' => '',
+'hour' => '',
+'day' => '',
+'month' => '',
+'year' => '',
 'description' => '',
 'parent' => '',
 'return login' => '',
