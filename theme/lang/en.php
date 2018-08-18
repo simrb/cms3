@@ -13,7 +13,7 @@
 'return login' => '',
 'website style' => '',
 'rate' => '',
-'upload file' => '',
+'upload' => '',
 'background management' => '',
 'optimize' => '',
 'execute' => '',

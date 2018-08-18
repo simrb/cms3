@@ -38,7 +38,7 @@
 
 				<?php if (user_level() > 0) { ?>
 					<i >
-						<a href="?_v=upload" target="_blank"><?= l('upload file') ?></a>	
+						<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
 					</i>
 
 				<span> | </span>
