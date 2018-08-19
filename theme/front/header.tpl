@@ -1,5 +1,6 @@
 <div class="top-bar right">
 	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
+	<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
 	<a href="?_v=settings" ><?= l('menber'); ?></a>
 </div>
 
@@ -11,12 +12,6 @@
 <div class="show-menu"> <?php if (isset($t["category_kv"])) {
 		echo '<div class="menu_item" _v="'. $t['_v'] .'"><ul>';
 
-		if (user_level() > 0) {
-			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
-			echo '<li class="right '. $hl .'"><a href="?_v=addpost&cid='.
-				$t['cid'] .'">'.l('add post').'</a></li>';
-		}
-
 	//	if ($t['_v'] == 'list' or $t['_v'] == 'show' or $t['_v'] == 'addpost' or $t['_v'] == 'detail') {
 			foreach ($t["category_kv"] as $cid => $name) {
 				$hl = ($cid == $t['cid']) ? 'menu_hl' : 'menu_no';
@@ -24,6 +19,12 @@
 					$cid .'" >'. $name .'</a></li>';
 			}
 	//	} 
+
+		if (user_level() > 0) {
+			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : 'menu_no';
+			echo '<li class="left '. $hl .'"><a href="?_v=addpost&cid='.
+				$t['cid'] .'">'.l('add post').'</a></li>';
+		}
 
 		echo '</ul></div>';
 } ?> </div>

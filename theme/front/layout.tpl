@@ -28,7 +28,7 @@
 
 				<div class="right" >
 				<?php if (user_level() > 5) { ?>
-					<i >
+					<i>
 						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
 					</i>
 
@@ -37,13 +37,7 @@
 
 
 				<?php if (user_level() > 0) { ?>
-					<i >
-						<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
-					</i>
-
-				<span> | </span>
-
-					<i >
+					<i>
 						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
 					</i>
 				<?php } ?>
