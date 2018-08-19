@@ -110,7 +110,7 @@ $(document).ready( function() {
 	if (v_val == 'detail') {
 		$(".menu_item").find('.menu_no').hide();
 		$(".menu_item").css('padding-bottom', '15px');
-		$(".addpost").css('float', 'right');
+		//$(".addpost").css('float', 'right');
 		//$(".addpost").hide();
 		var menu_title 	= $(".show-detail-body").first().find('pre').text();
 		var menu_leng	= ($(window).width() < 400) ? 12 : 30;
