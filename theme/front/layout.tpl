@@ -11,7 +11,6 @@
 		<div class="ui-block-a"></div>
 		<div class="ui-block-b">
 
-
 			<div id="header">
 				<?php include_once(path_tmp(THEME.'front/header')); ?>
 			</div>
@@ -22,33 +21,19 @@
 			</div>
 
 			<div id="footer">
-				<i>
-					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?>
-				</i>
+				<i><?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?></i>
 
 				<div class="right" >
-				<?php if (user_level() > 5) { ?>
-					<i>
+					<?php if (user_level() > 5) { ?>
 						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
-					</i>
 
-					<span> | </span>
-
-					<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
-					
-					<span> | </span>
-				<?php } ?>
-
-
-				<?php if (user_level() > 0) { ?>
-					<i>
+						<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
+						
+					<?php }  if (user_level() > 0) { ?>
 						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
-					</i>
-				<?php } ?>
+					<?php } ?>
 				</div>
-	
 			</div>
-
 
 		</div>
 		<div class="ui-block-c"></div>
