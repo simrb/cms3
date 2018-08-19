@@ -33,6 +33,10 @@
 					</i>
 
 					<span> | </span>
+
+					<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
+					
+					<span> | </span>
 				<?php } ?>
 
 

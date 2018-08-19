@@ -110,6 +110,8 @@ $(document).ready( function() {
 	if (v_val == 'detail') {
 		$(".menu_item").find('.menu_no').hide();
 		$(".menu_item").css('padding-bottom', '15px');
+		$(".addpost").css('float', 'right');
+		//$(".addpost").hide();
 		var menu_title 	= $(".show-detail-body").first().find('pre').text();
 		var menu_leng	= ($(window).width() < 400) ? 12 : 30;
 		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,menu_leng) + '...</span>';

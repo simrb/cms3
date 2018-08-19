@@ -16,7 +16,8 @@ textarea.ui-input-text { min-height: 60px; }
 input { background-color: #eee; }
 
 #msg { background-color: #9dc7de; }
-.menu_item .menu_hl { background-color: #b4bdb4; padding: 0 2px; }
+.menu_item .menu_hl { padding: 0 3px;}
+.menu_item .menu_hl { background-color: #b4bdb4; }
 // .menu_item .menu_hl { border: 1px solid gray; }
 .edit-form .addfile { width: 98%; }
 
@@ -27,9 +28,7 @@ input { background-color: #eee; }
 
 .show-pagination span { margin-right: 5px; }
 
-.menu_item li {  padding-bottom: 9px; }
-.show-menu .left { margin-right: 10px; }
-.show-menu .right { margin-left: 10px; }
+.menu_item li {  margin: 0 10px 10px 0; }
 
 .upload_form { margin-top: 10px; }
 .show-list-body p.list-body {
