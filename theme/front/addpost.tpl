@@ -2,6 +2,13 @@
 	<form action="?_a=<?= $t['_a'] ?>" method="post" name="upload" >
 		<ul>
 			<li>
+				<?php
+					if (isset($t['category_kv'][$t['cid']])) {
+						echo '<p class="title_des">'. $t['category_kv'][$t['cid']]['descript'] .'</p>';
+					}
+				?>
+			</li>
+			<li>
 				<textarea name="content" class="record_text file_input"></textarea>
 				<input type="hidden" name="cid" value="<?=$t['cid']?>" />
 			</li>
