@@ -1,5 +1,9 @@
 #!/bin/bash
 
+my_bk_dir="others"
+my_cfg_dir="others/cfg.php"
+my_dd=$(date +"%y%m%d")
+
 Uhost="localhost"
 Udata="cms_db"$RANDOM
 Uname="cms_u"$RANDOM
@@ -93,13 +97,9 @@ fi
 
 
 # backup db
-my_bg_dir="others"
-my_pj_dir="others"
-my_cfg_dir="$my_pj_dir/cfg.php"
-my_dd=$(date +"%y%m%d")
 if [ $Ubackup = "yes" ] ; then
 	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
-	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > '$my_bg_dir'/db.'$my_dd'";' > t.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > '$my_bk_dir'/db.'$my_dd'";' > t.t
 	sh t.t
 	rm t.t tt.t 
 fi

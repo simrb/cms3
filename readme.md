@@ -51,11 +51,21 @@ untar
 
 enter your project root dir and typing the under command, that will be created a file called like `others/db.xxxxxx`
 
-	sh .myt -b
+	# sh .myt -b
 
-or use the `crontab`,
+or use the `crontab`, 
 
-	crontab -e
+	# cp .myt .myti
+	# vi .myti
+
+and, set the `my_bk_dir` for backup dir, set the `my_cfg_dir` for project `cfg.php` file dir, maybe like under,
+
+	my_bk_dir=/home/db
+	my_cfg_dir=/var/www/html/others/cfg.php
+
+then, edit crontab text
+
+	# crontab -e
 
 and add command like the last line,
 	
