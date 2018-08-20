@@ -35,9 +35,9 @@ Backup
 1 backup your db, output data with the `first command`, and then, 
 copy your data file to your new path like `/others` , and execute the `second command`
 
-	# mysqldump -uroot -p cms_db > others/db.sql.1
+	# mysqldump -uroot -p cms_db > others/db.xxx
 
-	# mysql -ucms_uxxx -pcms_pxxx cms_dbname < others/db.sql.1
+	# mysql -ucms_uxxx -pcms_pxxx cms_dbname < others/db.xxx
 
 2 backup upload file, such as
 
@@ -46,6 +46,24 @@ copy your data file to your new path like `/others` , and execute the `second co
 untar
 
 	# tar -xvf others.tar
+
+3 backup the database with `.myt` file
+
+enter your project root dir and typing the under command, that will be created a file called like `others/db.xxxxxx`
+
+	sh .myt -b
+
+or use the `crontab`,
+
+	crontab -e
+
+and add command like the last line,
+	
+	SHELL=/bin/bash
+	PATH=/sbin:/bin:/usr/sbin:/usr/bin
+	MAILTO=""HOME=/
+
+	10 2 * * * /var/www/html/.myt -b
 
 Notice, all of files of the system created that will be stored in directory `others`
 such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.
