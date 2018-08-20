@@ -20,10 +20,10 @@
 		echo '<div class="menu_item" _v="'. $t['_v'] .'"><ul>';
 
 	//	if ($t['_v'] == 'list' or $t['_v'] == 'show' or $t['_v'] == 'addpost' or $t['_v'] == 'detail') {
-			foreach ($t["category_kv"] as $cid => $name) {
+			foreach ($t["category_kv"] as $cid => $row) {
 				$hl = ($cid == $t['cid']) ? 'menu_hl' : 'menu_no';
 				echo '<li class="left '. $hl .'"><a href="?cid='. 
-					$cid .'" >'. $name .'</a></li>';
+					$cid .'" title="' .  $row['descript']. '" >'. $row['name'] .'</a></li>';
 			}
 	//	} 
 

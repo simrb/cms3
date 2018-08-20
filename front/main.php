@@ -252,9 +252,9 @@ if ($t['_v'] == "settings") {
 
 function data_fetch_category($tablename, $key, $val) {
 	$rows = array();
-	if ($res = sql_query("SELECT * FROM ". $tablename. " WHERE number > 0 ORDER BY number")) {
+	if ($res = sql_query("SELECT * FROM ". $tablename . " WHERE number > 0 ORDER BY number")) {
 		while ($row = mysql_fetch_assoc($res)) {
-			$rows[$row[$key]]  = $row[$val];
+			$rows[$row[$key]]  = $row;
 		}
 	}
 	return $rows;
