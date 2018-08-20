@@ -27,7 +27,6 @@
 					<?php if (user_level() > 5) { ?>
 						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
 
-						<a href="?_v=upload" target="_blank"><?= l('upload') ?></a>	
 						
 					<?php }  if (user_level() > 0) { ?>
 						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
