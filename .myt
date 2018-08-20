@@ -93,11 +93,13 @@ fi
 
 
 # backup db
-my_cfg="others/cfg.php"
+my_bg_dir="others"
+my_pj_dir="others"
+my_cfg_dir="$my_pj_dir/cfg.php"
 my_dd=$(date +"%y%m%d")
 if [ $Ubackup = "yes" ] ; then
-	grep -oP cms_.+[0-9]+ $my_cfg >> tt.t
-	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > others/db.'$my_dd'";' > t.t
+	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > '$my_bg_dir'/db.'$my_dd'";' > t.t
 	sh t.t
 	rm t.t tt.t 
 fi
@@ -106,7 +108,7 @@ fi
 # update db
 my_file="common/update.sql"
 if [ $Uupdate = "yes" ] ; then
-	grep -oP cms_.+[0-9]+ $my_cfg >> tt.t
+	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
 	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysql -u$a[0] -p$a[1] $a[2] < common/update.sql";' > t.t
 	sh t.t
 	rm t.t tt.t 
