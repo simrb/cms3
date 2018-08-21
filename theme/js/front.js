@@ -4,9 +4,11 @@ $(document).ready( function() {
 	// show and hide event for editor button
 	$('.edit_btn').hide();
 	$('.del_btn').hide();
-	$('.show-detail-title').mouseover(function(){
-		$('.edit_btn').show();
-		$('.del_btn').show();
+	$('.mv_btn').hide();
+	$('.adm_btn').click(function(){
+		$(this).parent().find('.edit_btn').toggle();
+		$(this).parent().find('.del_btn').toggle();
+		$(this).parent().find('.mv_btn').toggle();
 	});
 
 	// edit event

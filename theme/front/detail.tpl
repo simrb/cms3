@@ -12,6 +12,8 @@
 				echo "<a href='?_a=useful&rid=".$t['rid'].
 						"'><label class='right rate_btn' rid=".$t['rid']." >". l('rate'),
 						" <span>" . $t['record_res']['useful'] . "</span></label></a>";
+				echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
+				echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 				echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
@@ -39,6 +41,8 @@
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right rate_btn' rid=".$row['rid'].">". l('rate').
 							" <span>" . $row['useful'] . "</span></label></a>";
+					echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
+					echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].

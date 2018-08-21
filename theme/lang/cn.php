@@ -1,6 +1,8 @@
 <?php $lang = array(
 
 
+'move' => '移动',
+'admin' => '管理',
 'ago' => '之前',
 'second' => '秒',
 'minute' => '分钟',
