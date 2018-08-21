@@ -5,14 +5,13 @@
 		// record
 		if (isset($t['record_res'])) {
 			echo '<div class="show-detail-body clear">';
-			echo "<div class='show-detail-title'><label class='left'>" .
+			echo "<div class='show-detail-title'><label class='left' id='r" .$t['rid']. "'>" .
 				date('y/m/d H:i', $t['record_res']['created']) . ", by #".$t['record_res']['uid']."</label>";
 
 			if ($user_level > 4) {
 				echo "<a href='?_a=useful&rid=".$t['rid'].
 						"'><label class='right rate_btn' rid=".$t['rid']." >". l('rate'),
 						" <span>" . $t['record_res']['useful'] . "</span></label></a>";
-
 				echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
 						"'><label class='right'>". l('delete') . "</label></a>";
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
@@ -33,14 +32,13 @@
 			while($row = mysql_fetch_array($t["record_cmt"])) {
 
 				echo '<div class="show-detail-body">';
-				echo "<div class='show-detail-title'><label class='left'>" . 
+				echo "<div class='show-detail-title'><label class='left' id='r" .$row['rid']. "'>" .
 					date('y/m/d H:i', $row['created']) . ", by #".$row['uid']."</label>";
 
 				if ($user_level > 4) {
 					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right rate_btn' rid=".$row['rid'].">". l('rate').
 							" <span>" . $row['useful'] . "</span></label></a>";
-
 					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
 							"'><label class='right'>". l('delete') . "</label></a>";
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].

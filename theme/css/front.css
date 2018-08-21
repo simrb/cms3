@@ -39,7 +39,7 @@ input { background-color: #eee; }
 .show-list img, .show-list embed, .show-list video { width: 200px; height: 150px; }
 .show-list, .show-detail { clear: both; margin-bottom: 15px; }
 .show-list h3 { margin: 0; padding: 0; }
-.show-list p { margin-top: 5px; }
+.show-list p { margin-top: 7px; }
 .show-list h3 a { color: black; }
 
 .show-list-body p a { text-decoration: underline; }
@@ -48,13 +48,14 @@ input { background-color: #eee; }
 
 
 .show-detail img { width: 90%;  }
-.show-detail .show-detail-img { margin-bottom: 10px; text-align: left; }
+.show-detail .show-detail-img { margin-bottom: 15px; text-align: left; }
 .show-detail label.right { margin-left: 10px;  }
 .show-detail pre a { text-decoration: underline; }
 .show-detail a, .show-detail a label { cursor: pointer; }
 .show-detail pre { margin: 0;}
 
 .show-detail-title { color: gray; }
+.show-detail-title label { margin-bottom: 15px; }
 .show-detail-body { margin-bottom: 15px; }
 
 
