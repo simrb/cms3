@@ -59,9 +59,9 @@ CREATE TABLE `category` (
   PRIMARY KEY  (`cid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 INSERT INTO `category` (`cid`, `follow`, `number`, `name`, `descript`) VALUES
-(1, 1, 1, 'home'),
-(2, 1, 1, 'news'),
-(3, 1, 1, 'show');
+(1, 1, 1, 'home', ''),
+(2, 1, 1, 'news', ''),
+(3, 1, 1, 'show', '');
 
 
 --
