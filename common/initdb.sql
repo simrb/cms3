@@ -141,10 +141,10 @@ CREATE TABLE `user` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 -- the password 8888 that md5 is cf79ae6addba60ad018347359bd144d2
 INSERT INTO `user` (`uid`, `username`, `password`, `level`, `created`) VALUES
-(1, 'zcroot', '8888', 9, '1513346626'),
-(2, 'zcedit', '8888', 6, '1513346626'),
-(3, 'zcarch', '8888', 3, '1513346626'),
-(4, 'zcview', '8888', 1, '1513346626');
+(1, 'simrbroot', '8888go', 9, '1513346626'),
+(2, 'adminedit', '8888rb', 6, '1513346626'),
+(3, 'frontedit', '8888py', 5, '1513346626'),
+(4, 'frontuser', '8888js', 1, '1513346626');
 
 
 --

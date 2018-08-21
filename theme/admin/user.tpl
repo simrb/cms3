@@ -1,11 +1,8 @@
 <?php if ($t['_v'] == 'show') { ?>
 
 	<div class="show-query">
-
 		<form action="<?=url_c();?>" method="post">
-
 			<a href="<?=url_c('_v=edit');?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
-			<input type="submit" class="" value="<?= l('query'); ?>" />
 
 			<input type="search" class="search" name="select_val" />
 			<select name="select_key" class="selectmenu">
@@ -14,6 +11,7 @@
 				<option value="level" ><?= l('level'); ?></option>
 			</select>
 
+			<input type="submit" class="" value="<?= l('query'); ?>" />
 		</form>
 	</div>
 

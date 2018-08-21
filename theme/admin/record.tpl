@@ -2,9 +2,7 @@
 
 	<div class="show-query">
 		<form action="<?=url_c('_a=query');?>" method="post">
-
 			<a href="<?= url_c('_v=edit'); ?>"><input type="button" value="<?= l('add'); ?>" class="bgwt" /></a>
-			<input type="submit" value="<?= l('query'); ?>" />
 
 			<input type="search" class="search" name="select_kw" placeholder="<?= l('keyword'); ?>" />
 			<select name="select_field" class="selectmenu">
@@ -15,6 +13,7 @@
 				<option value="tag" ><?= l('tag'); ?></option>
 			</select>
 
+			<input type="submit" value="<?= l('query'); ?>" />
 			<!--
 			<select name="select_type" class="selectmenu">
 				<option value="exact" ><?= l('accurate'); ?></option>
