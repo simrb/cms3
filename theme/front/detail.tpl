@@ -72,7 +72,7 @@
 							"'><label class='right useful_btn' rid=".$row['rid'].">". l('useful'). "</label></a>";
 
 					// move btn
-					echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
+					//echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 
 					// rm btn
 					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].

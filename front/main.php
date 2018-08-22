@@ -8,6 +8,17 @@ $t['web_title'] 	= optionkv('web_title');
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
+// act: ajax_movepost
+if ($t['_a'] == "ajax_movepost") {
+	if (user_level() > 4 and isset($_GET['cid']) and isset($_GET['rid'])) {
+		sql_query("UPDATE record SET cid = '".$_GET['cid']."' WHERE rid = '".$_GET['rid']."';");
+		exit(l('success'));
+	} else {
+		exit(l('failure'));
+	}
+}
+
+
 // act: ajax_addpost
 if ($t['_a'] == "ajax_addpost") {
 	if (user_level() > 4 and isset($_GET['pre_txt']) and isset($_GET['rid'])) {

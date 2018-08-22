@@ -80,6 +80,57 @@ $(document).ready( function() {
 	});
 
 
+	// move event
+	$(".mv_btn").click(function(e) {
+		e.preventDefault();
+		var mv_btn = $(this);
+		var pre_btn = mv_btn.parent().next('pre');
+		var rid = pre_btn.attr('rid');
+		var hl_val = $('.menu_hl').find('a').attr('href');
+
+		var menu_txt = '<option value=""> -- </option>';
+		$('.menu_item').find('a').each(function(i) {
+			var c_val = $(this).attr('href');
+			if (c_val == hl_val) {
+				menu_txt +=  '<option selected=selected value="' + c_val + '">' + $(this).text() + '</option>';
+			} else {
+				menu_txt +=  '<option value="' + c_val + '">' + $(this).text() + '</option>';
+			}
+		});
+		menu_txt += '<option value=""> -- </option>';
+
+		var display_txt = '<div class="right mv_txt"><select>' + menu_txt + '</select>';
+		display_txt += "</div>";
+
+		// insert text
+		mv_btn.parent().before(display_txt);
+		$('.mv_txt').css('padding', '0 5px');
+
+		// option change
+		$('.mv_txt').find('select').change(function () {
+			var optionSelected = $(this).find("option:selected");
+     		var valueSelected  = optionSelected.val();
+     		var textSelected   = optionSelected.text();
+			console.log(valueSelected + ' ' + textSelected);
+
+			// move record
+			$(this).parent().remove();
+
+			// send change to server
+			if (valueSelected != '' && valueSelected != hl_val) {
+				$.ajax({
+					url: valueSelected + "&_a=ajax_movepost",
+					data: {'rid': rid},
+				}).done(function(msg) {
+					console.log(msg);
+
+					// remove record
+				});
+			}
+		});
+	});
+
+
 	// deleted event
 	$(".del_btn").click(function(e) {
 		var reval = confirm('Are you sure ?');
