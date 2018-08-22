@@ -27,6 +27,11 @@ if ($t['_m'] == 'admin') {
 	$t['tpl_dir'] 		= THEME.$t['_m'].'/';
 	$t['tpl_name'] 		= $t['_f'];
 
+	// remove user menu
+	if (user_level() < 9) {
+		array_pop($t['admin_menu']);
+	}
+
 	switch ($t['_f']) {
 		case 'main':
 		case 'category':
