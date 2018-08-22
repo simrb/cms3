@@ -1,11 +1,16 @@
 
 $(document).ready( function() {
 
+	/*
 	// show and hide event for editor button
 	$('.edit_btn').hide();
 	$('.del_btn').hide();
 	$('.mv_btn').hide();
 	$('.useful_btn').hide();
+	*/
+
+	hide_btn();
+
 	$('.adm_btn').click(function(){
 		$(this).parent().find('.edit_btn').toggle();
 		$(this).parent().find('.del_btn').toggle();
@@ -73,6 +78,7 @@ $(document).ready( function() {
 					data: {'pre_txt': pre_txt_new},
 				}).done(function(msg) {
 					//console.log(msg);
+					show_msg(msg, edit_btn);
 				});
 			}
 		});
@@ -111,7 +117,7 @@ $(document).ready( function() {
 			var optionSelected = $(this).find("option:selected");
      		var valueSelected  = optionSelected.val();
      		var textSelected   = optionSelected.text();
-			console.log(valueSelected + ' ' + textSelected);
+			//console.log(valueSelected + ' ' + textSelected);
 
 			// move record
 			$(this).parent().remove();
@@ -123,8 +129,7 @@ $(document).ready( function() {
 					data: {'rid': rid},
 				}).done(function(msg) {
 					console.log(msg);
-
-					// remove record
+					show_msg(msg, mv_btn);
 				});
 			}
 		});
@@ -155,6 +160,7 @@ $(document).ready( function() {
 			}).done(function(msg) {
 				//useful_btn.find('span').text(reval);
 				//console.log(msg);
+				show_msg(msg, useful_btn);
 			});
 		}
 	});
@@ -174,7 +180,23 @@ $(document).ready( function() {
 		// console.log(menu_title);
 	}
 
+	function show_msg (msg, oj) {
+		oj.parent().after('<div class="msg clear right">' + msg + '</div>');
+		$('.msg').css('background-color', '#d2e8ed');
+		$('.msg').css('color', '#ef1818');
+		$('.msg').css('padding', '2px 5px');
+		setTimeout(function () {
+			$(".msg").remove();
+		}, 2000);
+		hide_btn();
+	}
 
+	function hide_btn () {
+		$('.edit_btn').hide();
+		$('.del_btn').hide();
+		$('.mv_btn').hide();
+		$('.useful_btn').hide();
+	}
 
 });
 

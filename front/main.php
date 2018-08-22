@@ -12,7 +12,7 @@ $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 if ($t['_a'] == "ajax_movepost") {
 	if (user_level() > 4 and isset($_GET['cid']) and isset($_GET['rid'])) {
 		sql_query("UPDATE record SET cid = '".$_GET['cid']."' WHERE rid = '".$_GET['rid']."';");
-		exit(l('success'));
+		exit(l('operated successfully'));
 	} else {
 		exit(l('failure'));
 	}
@@ -24,7 +24,7 @@ if ($t['_a'] == "ajax_addpost") {
 	if (user_level() > 4 and isset($_GET['pre_txt']) and isset($_GET['rid'])) {
 		sql_query("UPDATE record SET content = '".$_GET['pre_txt']."' WHERE rid = '".$_GET['rid']."';");
 		//exit('success -- '. $_GET['rid'] . ' '. $_GET['pre_txt']);
-		exit(l('success'));
+		exit(l('operated successfully'));
 	} else {
 		exit(l('failure'));
 	}
@@ -47,7 +47,7 @@ if ($t['_a'] == "ajax_getpost") {
 if ($t['_a'] == "ajax_useful") {
 	if (user_level() > 4 and isset($_GET['rid']) and isset($_GET['useful_val'])) {
 		sql_query("UPDATE record SET useful = ".$_GET['useful_val']." WHERE rid = '".$_GET['rid']."';");
-		exit(l('success'));
+		exit(l('operated successfully'));
 	}
 	exit(l('failure'));
 }

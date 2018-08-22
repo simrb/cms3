@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'failure' => '操作失败',
 'reply' => '回复',
 'move' => '移动',
 'admin' => '管理',
