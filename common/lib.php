@@ -565,4 +565,30 @@ function invitecode () {
 }
 
 
+/* change date to timeago
+
+	for example
+
+	$ptime = time();
+	timeago($ptime)		#=> 0.01 hour ago 
+*/
+function timeago($mytime) {
+	$reval		= '';
+// 	$strTime	= array("second", "minute", "hour", "day", "month", "year");
+// 	$length		= array("60","60","24","30","12","10");
+
+	$ctime = time();
+	if($ctime >= $mytime) {
+		$diff	= $ctime - $mytime;
+// 		for($i = 0; $diff >= $length[$i] && $i < count($length)-1; $i++) {
+			$reval = $diff / (60*60*24);
+// 		}
+		$reval = $reval > 1 ? round($reval).l(' day') : round($diff/60/60, 1).l(' hour');
+
+// 		return $diff . " " . $strTime[$i] . "(s) ago ";
+	}
+	return $reval. l(' ago');
+}
+
+
 ?>
