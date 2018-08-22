@@ -5,10 +5,12 @@ $(document).ready( function() {
 	$('.edit_btn').hide();
 	$('.del_btn').hide();
 	$('.mv_btn').hide();
+	$('.useful_btn').hide();
 	$('.adm_btn').click(function(){
 		$(this).parent().find('.edit_btn').toggle();
 		$(this).parent().find('.del_btn').toggle();
 		$(this).parent().find('.mv_btn').toggle();
+		$(this).parent().find('.useful_btn').toggle();
 	});
 
 	// edit event
@@ -87,20 +89,20 @@ $(document).ready( function() {
 	});
 
 
-	// rate event
-	$(".rate_btn").click(function(e) {
+	// useful event
+	$(".useful_btn").click(function(e) {
 		e.preventDefault();
-		var rate_btn = $(this);
-		var reval = prompt('rate to : ');
-		var rid	= rate_btn.attr('rid');
+		var useful_btn = $(this);
+		var reval = prompt('set to : ');
+		var rid	= useful_btn.attr('rid');
 
 		// post to server
 		if (reval != null && reval != '') {
 			$.ajax({
-				url: "?_a=ajax_rateto&rid=" + rid,
-				data: {'rate_val': reval},
+				url: "?_a=ajax_useful&rid=" + rid,
+				data: {'useful_val': reval},
 			}).done(function(msg) {
-				rate_btn.find('span').text(reval);
+				//useful_btn.find('span').text(reval);
 				//console.log(msg);
 			});
 		}

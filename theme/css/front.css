@@ -56,6 +56,8 @@ input { background-color: #eee; }
 
 .show-detail-title { color: gray; }
 .show-detail-title label { margin-bottom: 15px; }
+.show-detail-title label.useful_hl { color: #f24e48; margin-left:5px; }
+.show-detail-title label.useful_no { color: #b5bdae; margin-left:5px;}
 .show-detail-body { margin-bottom: 15px; }
 
 

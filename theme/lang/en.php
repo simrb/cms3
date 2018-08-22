@@ -13,7 +13,6 @@
 'parent' => '',
 'return login' => '',
 'website style' => '',
-'rate' => '',
 'upload' => '',
 'background management' => '',
 'optimize' => '',
