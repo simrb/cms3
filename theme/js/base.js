@@ -39,8 +39,12 @@ $(document).ready( function() {
 	});
 
 	// msg event
+	var msg_txt = $('#msg').text();
+	if (msg_txt != '') {
+		$('#msg').css('margin-bottom', '15px');
+	}
 	setTimeout(function () {
-		$("#msg").css('margin', '15px 0');
+		//$("#msg").css('margin', '15px 0');
 		$("#msg").remove();
 	}, 5000);
 
