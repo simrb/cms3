@@ -11,6 +11,17 @@ $(document).ready( function() {
 
 	hide_btn();
 
+	$('.show-detail-body').mouseleave(function(){
+		hide_btn();
+	});
+
+	$('.adm_btn').mouseover(function(){
+		$(this).parent().find('.edit_btn').show();
+		$(this).parent().find('.del_btn').show();
+		$(this).parent().find('.mv_btn').show();
+		$(this).parent().find('.useful_btn').show();
+	});
+
 	$('.adm_btn').click(function(){
 		$(this).parent().find('.edit_btn').toggle();
 		$(this).parent().find('.del_btn').toggle();
@@ -181,10 +192,13 @@ $(document).ready( function() {
 	}
 
 	function show_msg (msg, oj) {
-		oj.parent().after('<div class="msg clear right">' + msg + '</div>');
+		oj.parent().after('<div class="msg clear"><span>' + msg + '</span></div>');
 		$('.msg').css('background-color', '#d2e8ed');
 		$('.msg').css('color', '#ef1818');
+		$('.msg span').css('float', 'right');
 		$('.msg').css('padding', '2px 5px');
+		$('.msg').css('width', '100%');
+		$('.msg').css('height', '20px');
 		setTimeout(function () {
 			$(".msg").remove();
 		}, 2000);

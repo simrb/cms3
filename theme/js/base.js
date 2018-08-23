@@ -38,6 +38,13 @@ $(document).ready( function() {
 		});
 	});
 
+	// msg event
+	setTimeout(function () {
+		$("#msg").css('margin', '15px 0');
+		$("#msg").remove();
+	}, 5000);
+
+
 });
 
 
