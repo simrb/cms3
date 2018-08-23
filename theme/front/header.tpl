@@ -23,6 +23,9 @@
 	//	if ($t['_v'] == 'list' or $t['_v'] == 'show' or $t['_v'] == 'addpost' or $t['_v'] == 'detail') {
 			foreach ($t["category_kv"] as $cid => $row) {
 				$hl = ($cid == $t['cid']) ? 'menu_hl' : 'menu_no';
+				if ($row['number'] == 0) {
+					$hl .= ' hide';
+				}
 				echo '<li class="left '. $hl .'"><a href="?cid='. 
 					$cid .'" title="' .  $row['descript']. '" >'. $row['name'] .'</a></li>';
 			}
