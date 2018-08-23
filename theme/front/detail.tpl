@@ -16,7 +16,7 @@
 			echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
 
 			// reply
-			echo "<label class='right' title='#".$t['rid']."'>". l('reply') . "</label>";
+			echo "<label class='right re_btn' title='#".$t['record_res']['uid']."@".$t['rid']."#'>". l('reply') . "</label>";
 
 			if ($user_level > 4) {
 				// admin btn
@@ -61,7 +61,7 @@
 				echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
 
 				// reply
-				echo "<label class='right' title='#".$row['rid']."'>". l('reply') . "</label>";
+				echo "<label class='right re_btn' title='#".$row['uid']."@".$row['rid']."#'>". l('reply') . "</label>";
 
 				if ($user_level > 4) {
 					// admin btn
@@ -96,7 +96,7 @@
 <div class="edit-form vaild-form">
 	<form action="<?= $t['url'] ?>" method="post" >
 		<ul>
-			<li><textarea name="content" class="" placeholder="<?= l('say someing ...'); ?>" ></textarea></li>
+			<li><textarea name="content" class="reply_txt" placeholder="<?= l('say someing ...'); ?>" ></textarea></li>
 			<li>
 				<input type="submit" value="<?= l('submit'); ?>" class="" />
 				<input type="hidden" name="rid" value="<?= $t["rid"] ?>" />
