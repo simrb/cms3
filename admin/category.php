@@ -43,7 +43,7 @@ if ($t['_v'] == "show") {
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
 	$t["res_num"]		=	0;
 
-	$sql_str			= 	"SELECT * FROM category";
+	$sql_str			= 	"SELECT * FROM category ORDER BY number";
 	$t["category_res"] 	= 	sql_query($sql_str);
 // 	$t["res_num"] 		= 	mysql_num_rows($t["category_res"]);
 // 
