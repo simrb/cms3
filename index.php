@@ -13,7 +13,7 @@ define("UPLOAD_DIR",	"others/upload/");
 define('UPLOAD_PATH', 	PROJECT_PATH . UPLOAD_DIR);
 
 // load config file
-require_once(MODULE_PATH	."common/config.php");
+require_once(MODULE_PATH	."lib/config.php");
 require_once(PROJECT_PATH	."others/cfg.php");
 
 define("VIEW_DIR",		$c['def_view'] . '/');
@@ -24,8 +24,8 @@ if ($c['def_mode'] == 'test') {
 	ini_set("display_errors", "On");
 	error_reporting(E_ALL | E_STRICT);
 }
-require_once(MODULE_PATH	."common/lib.php");
-require_once(MODULE_PATH	."common/access.php");
+require_once(MODULE_PATH	."lib/func.php");
+require_once(MODULE_PATH	."lib/access.php");
 if (file_exists(PROJECT_PATH 	."others/access.php")) {
 	require_once(PROJECT_PATH 	."others/access.php");
 }

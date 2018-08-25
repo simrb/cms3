@@ -37,7 +37,7 @@ do
 		 	Uinitht="yes";;
 		 ?)
 			echo "unkonw option"
-			grep 'version' common/config.php
+			grep 'version' lib/config.php
 			exit 1
 			;;
 	esac
@@ -106,10 +106,10 @@ fi
 
 
 # update db
-my_file="common/update.sql"
+my_file="lib/update.sql"
 if [ $Uupdate = "yes" ] ; then
 	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
-	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysql -u$a[0] -p$a[1] $a[2] < common/update.sql";' > t.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysql -u$a[0] -p$a[1] $a[2] < lib/update.sql";' > t.t
 	sh t.t
 	rm t.t tt.t 
 fi
@@ -128,7 +128,7 @@ fi
 if [ $Uinitdb = "yes" ] ; then
 	needroot
 	echo "initialing database with -h$Uhost, -n$Udata, -u$Uname, -p$Upawd."
-	sed $Urepstr "common/initdb.sql" > "others/initdb.sql"
+	sed $Urepstr "lib/initdb.sql" > "others/initdb.sql"
  	mysql -h localhost -u root < "others/initdb.sql"
  	rm -f "others/initdb.sql"
 fi
@@ -182,7 +182,7 @@ if [ $Uinitpj = "yes" ] ; then
 	# copy the cfg.php
 	my_file="others/cfg.php"
 	if [ ! -f "$my_file" ] ; then
-		sed $Urepstr "common/cfg.php" > $my_file
+		sed $Urepstr "lib/cfg.php" > $my_file
 		chmod 777 $my_file
 		echo "file ${my_file} is created"
 	fi
