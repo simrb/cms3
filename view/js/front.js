@@ -88,6 +88,7 @@ $(document).ready( function() {
 				// update local
 				pre_btn.html(show_bbcode(pre_txt_new));
 				pre_btn.attr('org_val', pre_txt_new);
+				show_tip();
 
 				// update remote
 				$.ajax({
@@ -218,13 +219,53 @@ $(document).ready( function() {
 	});
 
 
-	// redisplay pre-txt event
+	// interpret pre-txt event
 	$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
 		$(this).html(show_bbcode(pre_txt));
 	});
+	show_tip();
 
+	function show_tip() {
+		$('.show-pre').on('click mouseover', function(){
+			draw_tip($(this));
+		});
+
+		$('.show-pre').mouseleave(function(){
+			if ($('.tip_box')) {
+				$('.tip_box').remove();
+			}
+		});
+	}
+
+	function draw_tip (oj) {
+			// remove if it exists
+			if ($('.tip_box').length) {
+				$('.tip_box').remove();
+
+			// create if not exists
+			} else {
+				var rid_sign = oj.attr('href');
+				var rid_txt = $(rid_sign).parent().next('pre').text();
+				var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
+
+				oj.parent().before(tip_box);
+
+				// style
+				var tip_pos = oj.position();
+				//var tip_off = $(this).offset();
+				$('.tip_box').css({
+					'position'	:	'absolute',
+					'top'		:	tip_pos.top + 15,
+					'left'		:	tip_pos.left,
+					'index-z'	:	99,
+					'background':	'rgb(198, 228, 212)',
+					'padding'	:	'5px',
+					'border'	:	'1px solid gray',
+				});
+			}
+	}
 
 	function show_bbcode (txt) {
 		var regs = [
@@ -241,14 +282,15 @@ $(document).ready( function() {
 		$.each(regs, function(i, val){
 			rev = rev.replace(val.reg, val.rep);
 		});
+
 		return rev;
 	}
 
 	function show_msg (msg, oj) {
 		oj.parent().after('<div class="msg clear"><span>' + msg + '</span></div>');
+		$('.msg span').css('float', 'right');
 		$('.msg').css('background-color', '#d2e8ed');
 		$('.msg').css('color', '#ef1818');
-		$('.msg span').css('float', 'right');
 		$('.msg').css('padding', '2px 5px');
 		$('.msg').css('width', '100%');
 		$('.msg').css('height', '20px');

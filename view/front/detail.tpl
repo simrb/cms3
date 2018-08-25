@@ -7,7 +7,7 @@
 			echo '<div class="show-detail-body clear">';
 
 			// created time
-			echo "<div class='show-detail-title'><label class='left' id='r" .$t['record_res']['uid']. "' title='".
+			echo "<div class='show-detail-title'><label class='left' id='r" .$t['rid']. "' title='".
 				date('Y/m/d H:i:s', $t['record_res']['created']) .", r#". $t['rid'] .", u#". $t['record_res']['uid'] ."'>". 
 				timeago($t['record_res']['created']) .", by ". $t['record_res']['uid']. ",</label>";
 
