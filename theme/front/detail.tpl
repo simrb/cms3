@@ -8,15 +8,15 @@
 
 			// created time
 			echo "<div class='show-detail-title'><label class='left' id='r" .$t['record_res']['uid']. "' title='".
-				date('Y/m/d H:i:s', $t['record_res']['created']) ."'>" . timeago($t['record_res']['created']) .
-				", by ".$t['record_res']['uid'].",</label>";
-			
+				date('Y/m/d H:i:s', $t['record_res']['created']) .", r#". $t['rid'] .", u#". $t['record_res']['uid'] ."'>". 
+				timeago($t['record_res']['created']) .", by ". $t['record_res']['uid']. ",</label>";
+
 			// usefule
 			$useful_class = $t['record_res']['useful'] > 0 ? 'useful_hl' : 'useful_no';
 			echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
 
 			// reply
-			echo "<label class='right re_btn' title='#".$t['record_res']['uid']."@".$t['rid']."#'>". l('reply') . "</label>";
+			echo "<label class='right re_btn' reply_sign='r#".$t['rid']." u#".$t['record_res']['uid']."'>". l('reply') . "</label>";
 
 			if ($user_level > 4) {
 				// admin btn
@@ -53,15 +53,15 @@
 
 				// created time
 				echo "<div class='show-detail-title'><label class='left' id='r" .$row['rid']. "' title='".
-					date('Y/m/d H:i:s', $row['created']) ."'>" . timeago($row['created']) .
-					", by ".$row['uid'].",</label>";
+					date('Y/m/d H:i:s', $row['created']) .", r#". $row['rid'] .", u#". $row['uid'] ."'>". 
+					timeago($row['created']) .", by ". $row['uid']. ",</label>";
 
 				// useful
 				$useful_class = $row['useful'] > 0 ? 'useful_hl' : 'useful_no';
 				echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
 
 				// reply
-				echo "<label class='right re_btn' title='#".$row['uid']."@".$row['rid']."#'>". l('reply') . "</label>";
+				echo "<label class='right re_btn' reply_sign='r#".$row['rid']." u#".$row['uid']."'>". l('reply') . "</label>";
 
 				if ($user_level > 4) {
 					// admin btn

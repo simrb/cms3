@@ -29,6 +29,7 @@ $(document).ready( function() {
 		$(this).parent().find('.useful_btn').toggle();
 	});
 
+
 	// edit event
 	$(".edit_btn").click(function(e) {
 		
@@ -195,11 +196,11 @@ $(document).ready( function() {
 	// reply event
 	$('.re_btn').css('cursor', 'pointer');
 	$('.re_btn').click(function () {
-		var re_val = $(this).attr('title');
+		var re_val = $(this).attr('reply_sign');
 		var re_txt = $('.reply_txt');
-		if (re_txt.val() != '') {
-			re_val = ' ' + re_val;
-		}
+		//if (re_txt.val() != '') {
+		//	re_val = ' ' + re_val;
+		//}
 		re_txt.val(re_txt.val() + re_val + ' ');
 		re_txt.focus();
 		//console.log(re_val);
@@ -209,7 +210,31 @@ $(document).ready( function() {
 	}, function(){
 		$(this).parent().next('pre').css('background', '');
 	});
-	
+
+
+	// interpret pre text
+	$('pre').each(function(i){
+		var pre_txt = $(this).text();
+		$(this).attr('org_val', pre_txt);
+		$(this).html(show_bbcode(pre_txt));
+	});
+
+
+	function show_bbcode (txt) {
+		var regs = [
+			{ reg : /r#([0-9]+)/g, rep : "<a href='#r$1' class='show-pre' >r#$1</a>"},
+			{ reg : /u#([0-9]+)/g, rep : "<a href='#u$1' class='show-user' >u#$1</a>"},
+			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<img src='$1' />"},
+			{ reg : /a#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
+			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1'></embed>"},
+		];
+
+		var rev = txt;
+		$.each(regs, function(i, val){
+			rev = rev.replace(val.reg, val.rep);
+		});
+		return rev;
+	}
 
 	function show_msg (msg, oj) {
 		oj.parent().after('<div class="msg clear"><span>' + msg + '</span></div>');
@@ -231,6 +256,7 @@ $(document).ready( function() {
 		$('.mv_btn').hide();
 		$('.useful_btn').hide();
 	}
+
 
 });
 
