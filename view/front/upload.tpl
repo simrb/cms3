@@ -3,6 +3,8 @@
 	<input type="file" id="file" name="smfile" />
 	<input type="submit" id="upfile" value="<?=l('upload')?>" class="right" />
 </form>
+<br/>
+<div><?= l('upload detail') ?></div>
 <div id="upload_res" />
 
 
@@ -25,7 +27,7 @@ $("#upfile").click(function(event){
 
 				//console.log(data);
 				if (data.code == "success") {
-					var path_txt = "[img]" + data.data['url'] + "[/img]";
+					var path_txt = "img#" + data.data['url'];
 					var insert_txt = "<p><input type='text' class='upload_path' data-clipboard-text='";
 					insert_txt += path_txt + "' value='" + path_txt + "' /><span>  " + data.data['filename'] + "</span></p>";
 

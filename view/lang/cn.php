@@ -1,6 +1,6 @@
 <?php $lang = array(
 
-
+'upload detail' => '只上传图片，单击文本框可以自动复制到剪贴板, 或者ctrl+c复制',
 'failure' => '操作失败',
 'reply' => '回复',
 'move' => '移动',

@@ -1,8 +1,5 @@
 <div class="top-bar right">
 	<?php if (user_level() > 0) {
-			echo '<a href="?_v=upload" target="_blank">'. l('upload') .'</a>';
-	} ?>
-	<?php if (user_level() > 0) {
 			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
 			echo '<a class=" '. $hl .' " href="?_v=addpost&cid='.
 				$t['cid'] .'">'.l('add post').'</a>';
