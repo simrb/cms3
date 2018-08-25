@@ -215,7 +215,7 @@ function sql_filter($arr) {
 }
 
 //a simple bbcode Parser function
-function show_bbcodes($text) {
+function show_bbcode($text) {
 
 	$text = htmlspecialchars($text);
 
@@ -240,7 +240,7 @@ function show_bbcodes($text) {
 		'<b>$1</b>',
 		'<i>$1</i>',
 		'<span style="text-decoration:underline;">$1</span>',
-		'<pre>$1</'.'pre>',
+		'<pre>$1</pre>',
 		'<span style="font-size:$1px;">$2</span>',
 		'<span style="color:$1;">$2</span>',
 		'<a href="$1" target="_blank" >$1</a>',
@@ -252,7 +252,8 @@ function show_bbcodes($text) {
 	);
 
 	// Replacing the BBcodes with corresponding HTML tags
-	return preg_replace($find, $replace, $text);
+// 	return preg_replace($find, $replace, $text);
+	return $text;
 }
 
 // cut string with utf8

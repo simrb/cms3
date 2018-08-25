@@ -59,11 +59,12 @@ $(document).ready( function() {
 		display_btn.css({'margin-bottom': '20px'});
 
 		// set editor value
-		var pre_txt = $(this).next().text();
+		//var pre_txt = $(this).next().text();
+		var pre_txt = pre_btn.attr('org_val');
 		$.ajax({
 			url: "?_a=ajax_getpost&rid=" + rid,
 		}).done(function(msg) {
-			pre_txt = msg;
+			//pre_txt = msg;
 			display_btn.find('textarea').val(pre_txt);
 			//console.log(msg);
 		});
@@ -78,7 +79,7 @@ $(document).ready( function() {
 		// update event
 		$(".update_btn").click(function() {
 			var pre_txt_new = display_btn.find('textarea').val();
-			pre_btn.html(pre_txt_new);
+			pre_btn.html(show_bbcode(pre_txt_new));
 			edit_btn.show();
 			pre_btn.show();
 			display_btn.remove();
@@ -213,7 +214,7 @@ $(document).ready( function() {
 
 
 	// interpret pre text
-	$('pre').each(function(i){
+	$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
 		$(this).html(show_bbcode(pre_txt));
@@ -222,11 +223,13 @@ $(document).ready( function() {
 
 	function show_bbcode (txt) {
 		var regs = [
+		//	{ reg : /b#(.*)#/g, rep : "<b>$1</b>"},
 			{ reg : /r#([0-9]+)/g, rep : "<a href='#r$1' class='show-pre' >r#$1</a>"},
 			{ reg : /u#([0-9]+)/g, rep : "<a href='#u$1' class='show-user' >u#$1</a>"},
 			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<img src='$1' />"},
-			{ reg : /a#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
-			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1'></embed>"},
+			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
+			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
+			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
 		];
 
 		var rev = txt;

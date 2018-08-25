@@ -39,7 +39,7 @@
 			}
 
 			// body pre
-			echo "</div><pre class='clear' rid='". $t['rid'] ."'>" . show_bbcodes($t['record_res']['content']) . "</pre>";
+			echo "</div><pre class='clear' rid='". $t['rid'] ."'>" . show_bbcode($t['record_res']['content']) . "</pre>";
 			echo '</div>';
 		} else {
 			echo "<pre class='clear'>" . l('no content in here') . "</pre>";
@@ -83,7 +83,7 @@
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				}
 
-				echo "</div><pre class='clear' rid='". $row['rid'] ."'>" . show_bbcodes($row['content']) . "</pre>";
+				echo "</div><pre class='clear' rid='". $row['rid'] ."'>" . show_bbcode($row['content']) . "</pre>";
 				echo '</div>';
 			}
 		}
