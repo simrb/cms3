@@ -79,13 +79,17 @@ $(document).ready( function() {
 		// update event
 		$(".update_btn").click(function() {
 			var pre_txt_new = display_btn.find('textarea').val();
-			pre_btn.html(show_bbcode(pre_txt_new));
 			edit_btn.show();
 			pre_btn.show();
 			display_btn.remove();
 
-			// send data to server
+			// update value
 			if (pre_txt != pre_txt_new) {
+				// update local
+				pre_btn.html(show_bbcode(pre_txt_new));
+				pre_btn.attr('org_val', pre_txt_new);
+
+				// update remote
 				$.ajax({
 					url: "?_a=ajax_addpost&rid=" + rid,
 					data: {'pre_txt': pre_txt_new},
@@ -94,6 +98,7 @@ $(document).ready( function() {
 					show_msg(msg, edit_btn);
 				});
 			}
+
 		});
 
 	});
@@ -213,7 +218,7 @@ $(document).ready( function() {
 	});
 
 
-	// interpret pre text
+	// redisplay pre-txt event
 	$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
