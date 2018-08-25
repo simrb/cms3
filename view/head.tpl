@@ -6,12 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- base js -->
-<link href="<?= path_theme('js/jquery/jquery.mobile.min.css') ?>" rel="stylesheet">
-<!-- <script src="<?= path_theme('js/jquery/jquery.js') ?>"></script> -->
+<link href="<?= view_path('js/jquery/jquery.mobile.min.css') ?>" rel="stylesheet">
+<!-- <script src="<?= view_path('js/jquery/jquery.js') ?>"></script> -->
 <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 
-<script src="<?= path_theme('js/base.js') ?>"></script>
-<script src="<?= path_theme('js/jquery/jquery.mobile.min.js') ?>"></script>
+<script src="<?= view_path('js/base.js') ?>"></script>
+<script src="<?= view_path('js/jquery/jquery.mobile.min.js') ?>"></script>
 
 <!-- base css -->
-<link href="<?= path_theme('css/base.css') ?>" rel="stylesheet">
+<link href="<?= view_path('css/base.css') ?>" rel="stylesheet">

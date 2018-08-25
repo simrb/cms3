@@ -6,7 +6,7 @@ It is a simple cms by creating with php language, the base functions as follows,
 	admin module	- record management, category, tag, upload file, user system
 	front module	- the base front-end page for normal user
 	common module	- database scheme, function library, config, access file
-	theme module	- all of module templates, css, js file
+	view module		- all of module templates, css, js file
 	others module	- upload files, custom files, all of backup files will be stored here.
 
 

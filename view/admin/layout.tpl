@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="us">
 <head>
-	<?php include_once(path_tmp(THEME.'head')); ?>
-	<link href="<?= path_theme('css/admin.css') ?>" rel="stylesheet">
-	<script src="<?= path_theme('js/admin.js') ?>"></script>
+	<?php include_once(tpl_path(VIEW_DIR.'head')); ?>
+	<link href="<?= view_path('css/admin.css') ?>" rel="stylesheet">
+	<script src="<?= view_path('js/admin.js') ?>"></script>
 </head>
 
 <body>
@@ -18,13 +18,13 @@
 		<div id="bodyer"  class="ui-grid-layout" >
 			<div id="lefter" class="ui-block-a">
 				<div class="show-menu">
-					<?php include_once(path_tmp(THEME.'admin/menu')); ?>
+					<?php include_once(tpl_path(VIEW_DIR.'admin/menu')); ?>
 				</div>
 			</div>
 
 			<div id="righter" class="ui-block-b">
 				<p id="msg"><?= $t["msg"] ?></p>
-				<?php include_once(path_tmp($t['tpl_name'])); ?>
+				<?php include_once(tpl_path($t['tpl_name'])); ?>
 			</div>
 		</div>
 

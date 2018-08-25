@@ -4,7 +4,7 @@
 
 // return the dir path, if it is`t existed, just creates it
 function path_dir ($path) {
-	$path = PATH_MOD.$path.'/';
+	$path = MODULE_PATH.$path.'/';
 	mk_dir($path);
 	return $path;
 }
@@ -18,8 +18,8 @@ function mk_dir($dir, $mode = 0777) {
 
 
 // return the real path for static resource file, like js, css
-function path_theme ($path) {
-	$path = DIR_THEME . $path;
+function view_path ($path) {
+	$path = VIEW_DIR . $path;
 	if (!file_exists($path)) {
 		$path = "no file $path";
 	}
@@ -30,31 +30,31 @@ function path_theme ($path) {
 /* 	return absolute path
 	
 	for example
-	path_tmp('theme/front/mytpl');		#=> /var/www/html/demo/theme/front/mytpl.tpl
+	tpl_path('view/front/mytpl');		#=> /var/www/html/demo/view/front/mytpl.tpl
 
 */
 
-function path_tmp ($path) {
-	return PATH_MOD.$path.'.tpl';
+function tpl_path ($path) {
+	return MODULE_PATH.$path.'.tpl';
 }
 
 
 /*	load the template
 
 	for example, load with default tpl_name, default tpl_layout
-	tmp($t);
+	tpl($t);
 
 	for example, specified tpl_name, default layout
-	tmp($t, 'theme/front/mytpl');
+	tpl($t, 'view/front/mytpl');
 
 	for example, specified tpl_name, specified layout
-	tmp($t, 'theme/front/mytpl', 'theme/front/mylayout');
+	tpl($t, 'view/front/mytpl', 'view/front/mylayout');
 
 	for example, no layout
-	tmp($t, 'theme/front/mytpl', 'unlayout');
+	tpl($t, 'view/front/mytpl', 'unlayout');
 
 */
-function tmp($t, $tpl_name = '', $layout = '') {
+function tpl($t, $tpl_name = '', $layout = '') {
 	$t['web_logo']		=	optionkv('web_logo');
 	$t['web_header']	=	optionkv('web_header');
 
@@ -64,9 +64,9 @@ function tmp($t, $tpl_name = '', $layout = '') {
 	$t["tpl_layout"]	=	$layout != '' ? $layout : $t["tpl_dir"].$t["tpl_layout"];
 
 	if ($layout == 'unlayout') {
-		include_once(path_tmp($t['tpl_name']));
+		include_once(tpl_path($t['tpl_name']));
 	} else {
-		include_once(path_tmp($t["tpl_layout"]));
+		include_once(tpl_path($t["tpl_layout"]));
 	}
 }
 
@@ -76,14 +76,14 @@ function tmp($t, $tpl_name = '', $layout = '') {
 	out('occured an error', $t);
 
 	for example, with specified layout
-	out('occured an error', $t, 'theme/front/layout');
+	out('occured an error', $t, 'view/front/layout');
 */
 function out($str, $t, $layout = '') {
 	$t["msg"] = $str;
 	//$t["blank"] = $str;
-	$t['tpl_dir'] = THEME;
-	$t["tpl_layout"] = 	$layout != '' ? $layout : (THEME.'layout');
-	tmp($t, THEME.'blank', $t["tpl_layout"]);
+	$t['tpl_dir'] = VIEW_DIR;
+	$t["tpl_layout"] = 	$layout != '' ? $layout : (VIEW_DIR.'layout');
+	tpl($t, $t['tpl_dir'].'blank', $t["tpl_layout"]);
 	exit;
 }
 
@@ -95,7 +95,7 @@ function out($str, $t, $layout = '') {
 */
 function l ($str) {
 	$reval 	= $str;
-	$path 	= PATH_THEME . 'lang/' . $GLOBALS['c']['def_lang'] . '.php';
+	$path 	= VIEW_DIR . 'lang/' . $GLOBALS['c']['def_lang'] . '.php';
 	if (file_exists($path)) {
 		require $path;
 		if (isset($lang[$str])) {

@@ -2,8 +2,8 @@
 
 
 // initialing upload folder if it hasn`t existed
-if(!is_dir(PATH_UPLOAD)) {
-    exit('no file '. PATH_UPLOAD);
+if(!is_dir(UPLOAD_PATH)) {
+    exit('no file '. UPLOAD_PATH);
 }
 
 
@@ -74,7 +74,7 @@ if ($t['_a'] == "add") {
 				}  
 
 				process_image ($file['tmp_name'], $c['img_max_width'], $c['img_max_height']);
-				if(!move_uploaded_file($file['tmp_name'], PATH_UPLOAD.$path)){
+				if(!move_uploaded_file($file['tmp_name'], UPLOAD_PATH.$path)){
 					$t["msg"] = l('a error in removing file');
 					break;
 				}
@@ -100,8 +100,8 @@ if ($t['_a'] == "del") {
 		// remove file
 		$res = sql_query("SELECT path FROM file WHERE fid='". $_GET["fid"] ."' LIMIT 1;");
 		$file = mysql_fetch_assoc($res);
-		if (file_exists(PATH_UPLOAD.$file['path'])) {
-			unlink(PATH_UPLOAD.$file['path']);
+		if (file_exists(UPLOAD_PATH.$file['path'])) {
+			unlink(UPLOAD_PATH.$file['path']);
 		}
 
 		// delete from db
@@ -133,13 +133,13 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
 
-	tmp($t);
+	tpl($t);
 }
 
 
 // view: edit
 if ($t['_v'] == "edit") {
-	tmp($t);
+	tpl($t);
 }
 
 

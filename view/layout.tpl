@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="us">
 <head>
-	<?php include_once(path_tmp(THEME.'head')); ?>
-	<link href="<?= path_theme('css/front.css') ?>" rel="stylesheet">
+	<?php include_once(tpl_path(VIEW_DIR.'head')); ?>
+	<link href="<?= view_path('css/front.css') ?>" rel="stylesheet">
 </head>
 
 <body>
@@ -18,7 +18,7 @@
 			<div id="bodyer">
 
 				<p id="msg"><?= $t["msg"] ?></p>
-				<?php include_once(path_tmp($t['tpl_name'])); ?>
+				<?php include_once(tpl_path($t['tpl_name'])); ?>
 				
 			</div>
 

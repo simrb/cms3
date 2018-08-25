@@ -54,7 +54,7 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
 
-	tmp($t);
+	tpl($t);
 }
 
 // view: edit
@@ -81,7 +81,7 @@ if ($t['_v'] == "edit") {
 			$t['_a']			=	"update";
 		}
 	}
-	tmp($t);
+	tpl($t);
 }
 
 

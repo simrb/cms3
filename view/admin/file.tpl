@@ -25,9 +25,9 @@
 					if ($t["file_res"]) {
 						while($row = mysql_fetch_array($t["file_res"])) {
 							echo "<tr>";
-							echo "<td><a target='_blank' href='". DIR_UPLOAD .
+							echo "<td><a target='_blank' href='". UPLOAD_DIR .
 									$row['path'] ."'><img height=20 width=20 src='".
-									DIR_UPLOAD . $row['path'] ."' /></a></td>";
+									UPLOAD_DIR . $row['path'] ."' /></a></td>";
 							echo "<td>" . $row['uid'] . "</td>";
 	  						echo "<td>" . $row['name'] . "</td>";
 	  						echo "<td>" . $row['path'] . "</td>";

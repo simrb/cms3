@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="us">
 <head>
-	<?php include_once(path_tmp(THEME.'head')); ?>
-	<link href="<?= path_theme('css/front.css') ?>" rel="stylesheet">
-	<script src="<?= path_theme('js/front.js') ?>"></script>
+	<?php include_once(tpl_path(VIEW_DIR.'head')); ?>
+	<link href="<?= view_path('css/front.css') ?>" rel="stylesheet">
+	<script src="<?= view_path('js/front.js') ?>"></script>
 </head>
 
 <body>
@@ -12,12 +12,12 @@
 		<div class="ui-block-b">
 
 			<div id="header">
-				<?php include_once(path_tmp(THEME.'front/header')); ?>
+				<?php include_once(tpl_path(VIEW_DIR.'front/header')); ?>
 			</div>
 
 			<div id="bodyer">
 				<p id="msg"><?= $t["msg"] ?></p>
-				<?php include_once(path_tmp($t['tpl_name'])); ?>
+				<?php include_once(tpl_path($t['tpl_name'])); ?>
 			</div>
 
 			<div id="footer">

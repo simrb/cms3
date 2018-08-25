@@ -182,7 +182,7 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]			=	$pagecurr;
 	$t["pagenums"]			=	$pagenums;
 
-	tmp($t);
+	tpl($t);
 }
 
 
@@ -222,13 +222,13 @@ if ($t['_v'] == "edit") {
 			$t['_a']			=	"update";
 		}
 	}
-	tmp($t);
+	tpl($t);
 }
 
 
 //view: improving
 if ($t['_v'] == "optimize") {
-	tmp($t);
+	tpl($t);
 }
 
 

@@ -176,7 +176,7 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
 	
-	tmp($t, $t['tpl_dir']."list");
+	tpl($t, $t['tpl_dir']."list");
 }
 
 
@@ -209,7 +209,7 @@ if ($t['_v'] == "detail") {
 			$t['record_cmt'] 	= sql_query($sql_str);
 		}
 
-		tmp($t, $t['tpl_dir']."detail");
+		tpl($t, $t['tpl_dir']."detail");
 	}
 }
 
@@ -220,7 +220,7 @@ if ($t['_v'] == "addpost") {
 	$t['_a'] 			=	"addpost";
 	$t['aboutpost'] 	= record_get_content($t['rid_aboutpost']);
 
-	tmp($t, $t['tpl_dir']."addpost");
+	tpl($t, $t['tpl_dir']."addpost");
 }
 
 
@@ -228,7 +228,7 @@ if ($t['_v'] == "addpost") {
 if ($t['_v'] == "upload") {
 	$t['_a'] 			=	"upload";
 
-	tmp($t, $t['tpl_dir']."upload");
+	tpl($t, $t['tpl_dir']."upload");
 }
 
 
@@ -257,7 +257,7 @@ if ($t['_v'] == "settings") {
 		}
 	}
 
-	tmp($t, $t['tpl_dir']."settings");
+	tpl($t, $t['tpl_dir']."settings");
 }
 
 

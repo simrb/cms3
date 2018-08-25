@@ -84,7 +84,7 @@ if ($t['_a'] == "login") {
 
 	}
 
-	$t['tpl_dir'] = THEME;
+	$t['tpl_dir'] = VIEW_DIR;
 	out($t['msg'], $t);
 }
 
@@ -93,12 +93,12 @@ if ($t['_a'] == "login") {
 if ($t['_v'] == "login") {
 	// has login yet
 	if(user_id() > 0){
-		$t['tpl_dir'] = THEME;
+		$t['tpl_dir'] = VIEW_DIR;
 		out(l('you have login yet'), $t);
 	} else {
 		$t['aboutuser'] = record_get_content($t['rid_aboutuser']);
 		url_referer('?');
-		tmp($t, $t['tpl_dir']."login", THEME.'layout');
+		tpl($t, $t['tpl_dir']."login", VIEW_DIR.'layout');
 	}
 }
 
@@ -116,14 +116,14 @@ if ($t['_v'] == "show") {
 	}
 
 	$t["user_res"] = sql_query($sql);
-	tmp($t);
+	tpl($t);
 }
 
 
 //view: status
 if ($t['_v'] == "status") {
 	$t["user_res"] = sql_query("SELECT * FROM sess ORDER BY sid DESC LIMIT 20;");
-	tmp($t, $t['tpl_dir']."sess");
+	tpl($t, $t['tpl_dir']."sess");
 }
 
 
@@ -148,7 +148,7 @@ if ($t['_v'] == "edit") {
 			$t['_a']			=	"update";
 		}
 	}
-	tmp($t);
+	tpl($t);
 }
 
 

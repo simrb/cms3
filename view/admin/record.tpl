@@ -209,4 +209,4 @@ if ($t['_v'] == 'optimize') { ?>
 <?php } ?>
 
 
-<script type="text/javascript" src="<?= path_theme('js/file.js') ?>"></script>
+<script type="text/javascript" src="<?= view_path('js/file.js') ?>"></script>

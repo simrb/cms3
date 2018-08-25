@@ -10,7 +10,7 @@ $c['sql_dbname'] 		=	'cms_db';
 $c['sn'] 				=	'sn_code';
 $c['def_mode'] 			=	'test';	 	// test, development, production
 $c['def_lang'] 			=	'en'; 		// en, cn
-$c['def_theme'] 		=	'theme';
+$c['def_view'] 			=	'view';
 $c['def_pagesize'] 		=	20;
 
 

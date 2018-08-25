@@ -26,14 +26,14 @@ if ($t['_v'] == "info") {
 	$t['web_des']		= optionkv('web_des');
 	$t['web_style']		= optionkv('web_style');
 
-	tmp($t, $t['tpl_dir']."info");
+	tpl($t, $t['tpl_dir']."info");
 }
 
 
 // view: show
 if ($t['_v'] == "show") {
 	$t['welcome'] = l('welcome, dear ');
-	tmp($t, $t['tpl_dir']."index");
+	tpl($t, $t['tpl_dir']."index");
 }
 
 

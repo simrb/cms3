@@ -14,7 +14,7 @@ $c['sql_dbname'] 		=	'cms_db';
 // test, development, production
 $c['def_mode'] 			=	'test';
 $c['def_lang'] 			=	'en';
-$c['def_theme'] 		=	'theme';
+$c['def_view'] 			=	'view';
 $c['def_pagesize'] 		=	20;
 $c['sn'] 				=	'sn_code';
 $c['timezone'] 			=	'Asia/Shanghai';
@@ -39,7 +39,7 @@ $t['_a'] 				=	'';
 $t['_v'] 				=	'show';
 
 $t['tpl_name'] 			=	'index';
-$t['tpl_dir'] 			=	'theme/front/';
+$t['tpl_dir'] 			=	'view/front/';
 $t['tpl_layout'] 		=	'layout';
 
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
