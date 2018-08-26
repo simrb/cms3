@@ -1,6 +1,20 @@
 <?php access();
 
 
+// act: clean_bak
+if ($t['_a'] == "clean_bak") {
+	
+	foreach (glob("others/db.*") as $filename) {
+		$filename = realpath($filename);
+// 		unlink($filename);
+		exec("rm ".$filename." -f");
+	}
+
+ 	$t['msg'] = l('operated successfully');
+
+}
+
+
 // act: edit
 if ($t['_a'] == 'edit') {
 	if (isset($_POST['web_logo']) 
@@ -34,6 +48,18 @@ if ($t['_v'] == "info") {
 if ($t['_v'] == "show") {
 	$t['welcome'] = l('welcome, dear ');
 	tpl($t, $t['tpl_dir']."index");
+}
+
+
+// view: backup
+if ($t['_v'] == "backup") {
+	$t['bak_res'] = array();
+
+	foreach (glob("./others/db.*") as $filename) {
+		$t['bak_res'][] = $filename;
+	}
+
+	tpl($t, $t['tpl_dir']."backup");
 }
 
 

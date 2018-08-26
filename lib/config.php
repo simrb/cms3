@@ -93,6 +93,7 @@ $t['admin_menu'] 		=	array(
 								'body'	=>	array(
 									'user list'		=>	'?_m=admin&_f=user',
 									'status'		=>	'?_m=admin&_f=user&_v=status',
+									'backup'		=>	'?_m=admin&_f=main&_v=backup',
 								),
 							),
 
