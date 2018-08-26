@@ -29,13 +29,16 @@ $("#upfile").click(function(event){
 				if (data.code == "success") {
 					var path_txt = "img#" + data.data['url'];
 					var insert_txt = "<p><input type='text' class='upload_path' data-clipboard-text='";
-					insert_txt += path_txt + "' value='" + path_txt + "' /><span>  " + data.data['filename'] + "</span></p>";
+					insert_txt += path_txt + "' value='" + path_txt + "' />";
+					insert_txt += "<img class='upload_img' src='" + data.data['url'] + "' />";
+					insert_txt += "<span>  " + data.data['filename'] + "</span></p>";
 
 					$("#upload_res").append(insert_txt);
 
 					// style
 					$('.upload_path').css('margin', '5px 0');
 					$('.upload_path').css('width', '250px');
+					$('.upload_img').css('width', '30px');
 
 					// copy event
 					$('.upload_path').click(function(){
