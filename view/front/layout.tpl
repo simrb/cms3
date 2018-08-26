@@ -24,13 +24,8 @@
 				<i><?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?></i>
 
 				<div class="right" >
-					<?php if (user_level() > 0) {
-						echo '<a href="?_v=upload" target="_blank">'. l('upload') .'</a>';
-					} ?>
 					<?php if (user_level() > 5) { ?>
 						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
-
-						
 					<?php }  if (user_level() > 0) { ?>
 						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
 					<?php } ?>

@@ -6,14 +6,14 @@
 		if (isset($t['record_res'])) {
 			echo '<div class="show-detail-body clear">';
 
-			// created time
-			echo "<div class='show-detail-title'><label class='left' id='r" .$t['rid']. "' title='".
+			// created time, rid, uid
+			echo "<div class='show-detail-title'><label class='left created' id='r" .$t['rid']. "' title='".
 				date('Y/m/d H:i:s', $t['record_res']['created']) .", r#". $t['rid'] .", u#". $t['record_res']['uid'] ."'>". 
 				timeago($t['record_res']['created']) .", by ". $t['record_res']['uid']. ",</label>";
 
-			// usefule
+			// useful
 			$useful_class = $t['record_res']['useful'] > 0 ? 'useful_hl' : 'useful_no';
-			echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
+			echo "<label class='left useful_view ".$useful_class."'>". l('useful') ."</label>";
 
 			// reply
 			echo "<label class='right re_btn' reply_sign='r#".$t['rid']." u#".$t['record_res']['uid']."'>". l('reply') . "</label>";
@@ -51,14 +51,14 @@
 			while($row = mysql_fetch_array($t["record_cmt"])) {
 				echo '<div class="show-detail-body clear">';
 
-				// created time
-				echo "<div class='show-detail-title'><label class='left' id='r" .$row['rid']. "' title='".
+				// created time, rid, uid
+				echo "<div class='show-detail-title'><label class='left created' id='r" .$row['rid']. "' title='".
 					date('Y/m/d H:i:s', $row['created']) .", r#". $row['rid'] .", u#". $row['uid'] ."'>". 
 					timeago($row['created']) .", by ". $row['uid']. ",</label>";
 
 				// useful
 				$useful_class = $row['useful'] > 0 ? 'useful_hl' : 'useful_no';
-				echo "<label class='left ".$useful_class."'>". l('useful') ."</label>";
+				echo "<label class='left useful_view ".$useful_class."'>". l('useful') ."</label>";
 
 				// reply
 				echo "<label class='right re_btn' reply_sign='r#".$row['rid']." u#".$row['uid']."'>". l('reply') . "</label>";
@@ -101,6 +101,7 @@
 				<input type="submit" value="<?= l('submit'); ?>" class="" />
 				<input type="hidden" name="rid" value="<?= $t["rid"] ?>" />
 				<input type="hidden" name="cid" value="<?= $t["cid"] ?>" />
+				<a class="right upload_img" href="?_v=upload" target="_blank"><?= l('upload') ?></a>
 			</li>
 		</ul>
 	</form>

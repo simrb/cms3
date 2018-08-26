@@ -1,14 +1,7 @@
 
 $(document).ready( function() {
 
-	/*
-	// show and hide event for editor button
-	$('.edit_btn').hide();
-	$('.del_btn').hide();
-	$('.mv_btn').hide();
-	$('.useful_btn').hide();
-	*/
-
+	// detail image
 	hide_btn();
 
 	$('.show-detail-body').mouseleave(function(){
@@ -89,6 +82,7 @@ $(document).ready( function() {
 				pre_btn.html(show_bbcode(pre_txt_new));
 				pre_btn.attr('org_val', pre_txt_new);
 				show_tip();
+				show_img();
 
 				// update remote
 				$.ajax({
@@ -184,6 +178,21 @@ $(document).ready( function() {
 		}
 	});
 
+	// useful view
+	$(".show-detail-body ").hover(function () {
+		$(this).find(".useful_view").css('color', 'gray');
+		$(this).find(".re_btn").css('color', 'gray');
+		$(this).find(".adm_btn label").css('color', 'gray');
+	}, function () {
+		$(this).find(".useful_view").css('color', '');
+		$(this).find(".re_btn").css('color', '');
+		$(this).find(".adm_btn label").css('color', '');
+	});
+
+	// useful plus one
+	$(".useful_view").click(function () {
+	});
+
 
 	// menu event
 	var v_val = $(".menu_item").attr('_v');
@@ -226,6 +235,7 @@ $(document).ready( function() {
 		$(this).html(show_bbcode(pre_txt));
 	});
 	show_tip();
+	show_img();
 
 	function show_tip() {
 		$('.show-pre').on('click mouseover', function(){
@@ -289,14 +299,18 @@ $(document).ready( function() {
 	function show_msg (msg, oj) {
 		oj.parent().after('<div class="msg clear"><span>' + msg + '</span></div>');
 		$('.msg span').css('float', 'right');
-		$('.msg').css('background-color', '#d2e8ed');
-		$('.msg').css('color', '#ef1818');
-		$('.msg').css('padding', '2px 5px');
-		$('.msg').css('width', '100%');
-		$('.msg').css('height', '20px');
+		$('.msg').css({
+					'background':	'rgb(198, 228, 212)',
+					'padding'	:	'5px',
+					'border'	:	'1px solid gray',
+					'height'	:	'20px',
+					'width'		:	'100%',
+					'color'		:	'#ef1818',
+		});
+
 		setTimeout(function () {
 			$(".msg").remove();
-		}, 2000);
+		}, 2300);
 		hide_btn();
 	}
 
@@ -305,6 +319,18 @@ $(document).ready( function() {
 		$('.del_btn').hide();
 		$('.mv_btn').hide();
 		$('.useful_btn').hide();
+	}
+	
+	function show_img () {
+		$('.show-detail img').css('cursor', 'pointer');
+		$('.show-detail img').click(function () {
+			if ($(this).css('width') == '100%') {
+				$(this).css('width', '50%');
+			} else {
+				$(this).css('width', '100%');
+			}
+			//console.log($(this).css('width'));
+		});
 	}
 
 

@@ -41,7 +41,11 @@ $(document).ready( function() {
 	// msg event
 	var msg_txt = $('#msg').text();
 	if (msg_txt != '') {
-		$('#msg').css('margin-bottom', '15px');
+		$('#msg').css({
+					'background':	'rgb(198, 228, 212)',
+					'padding'	:	'5px',
+					'border'	:	'1px solid gray',
+		});
 	}
 	setTimeout(function () {
 		//$("#msg").css('margin', '15px 0');

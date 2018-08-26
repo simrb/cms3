@@ -19,7 +19,7 @@ input { background-color: #eee; }
 #header h1 { margin: 10px 0; }
 #header { min-height: 33px; }
 #header, #bodyer, #footer { clear: both; }
-#msg { background-color: #9dc7de; }
+#msg { --background-color: #9dc7de; }
 
 .menu_item li {  margin: 0 10px 15px 0; }
 .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 3px; }
@@ -47,8 +47,7 @@ input { background-color: #eee; }
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
-.show-detail img { width: 90%;  }
-.show-detail .show-detail-img { margin-bottom: 15px; text-align: left; }
+.show-detail img { width: 50%; }
 .show-detail label.right { margin-left: 10px;  }
 .show-detail pre a { text-decoration: underline; }
 .show-detail a, .show-detail a label { cursor: pointer; }
@@ -57,7 +56,9 @@ input { background-color: #eee; }
 .show-detail-title { color: gray; height: 100%; }
 .show-detail-title label { margin-bottom: 15px; }
 .show-detail-title label.useful_hl { color: #f24e48; margin-left:5px; }
-.show-detail-title label.useful_no { color: #b5bdae; margin-left:5px;}
+.show-detail-title label.useful_no { color: #ced5c8; margin-left:5px; cursor: pointer; }
+.adm_btn label, .re_btn { color: #ced5c8; }
+// .show-detail-title label.useful_no:hover { color: #b5bdae; }
 .show-detail-body { margin-bottom: 15px; }
 
 
