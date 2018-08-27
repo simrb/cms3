@@ -81,7 +81,7 @@ $(document).ready( function() {
 				// update local
 				pre_btn.html(show_bbcode(pre_txt_new));
 				pre_btn.attr('org_val', pre_txt_new);
-				show_tip();
+				show_tip(pre_btn.find('.show-pre'));
 				show_img();
 
 				// update remote
@@ -234,15 +234,15 @@ $(document).ready( function() {
 		$(this).attr('org_val', pre_txt);
 		$(this).html(show_bbcode(pre_txt));
 	});
-	show_tip();
+	show_tip($('.show-pre'));
 	show_img();
 
-	function show_tip() {
-		$('.show-pre').on('click mouseover', function(){
+	function show_tip(oj) {
+		$(oj).on('click mouseover', function(){
 			draw_tip($(this));
 		});
 
-		$('.show-pre').mouseleave(function(){
+		$(oj).mouseleave(function(){
 			if ($('.tip_box')) {
 				$('.tip_box').remove();
 			}
@@ -257,23 +257,28 @@ $(document).ready( function() {
 			// create if not exists
 			} else {
 				var rid_sign = oj.attr('href');
-				var rid_txt = $(rid_sign).parent().next('pre').text();
-				var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
+				console.log($(rid_sign).length);
 
-				oj.parent().before(tip_box);
+				if ($(rid_sign).length) {
+					var rid_txt = $(rid_sign).parent().next('pre').text();
+					var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
 
-				// style
-				var tip_pos = oj.position();
-				//var tip_off = $(this).offset();
-				$('.tip_box').css({
-					'position'	:	'absolute',
-					'top'		:	tip_pos.top + 15,
-					'left'		:	tip_pos.left,
-					'index-z'	:	99,
-					'background':	'rgb(198, 228, 212)',
-					'padding'	:	'5px',
-					'border'	:	'1px solid gray',
-				});
+					oj.parent().before(tip_box);
+
+					// style
+					var tip_pos = oj.position();
+					//var tip_off = $(this).offset();
+					$('.tip_box').css({
+						'position'	:	'absolute',
+						'top'		:	tip_pos.top + 15,
+						'left'		:	tip_pos.left,
+						'index-z'	:	99,
+						'background':	'rgb(198, 228, 212)',
+						'padding'	:	'5px',
+						'border'	:	'1px solid gray',
+					});
+				}
+
 			}
 	}
 
