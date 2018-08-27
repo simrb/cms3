@@ -52,15 +52,8 @@ $(document).ready( function() {
 		display_btn.css({'margin-bottom': '20px'});
 
 		// set editor value
-		//var pre_txt = $(this).next().text();
 		var pre_txt = pre_btn.attr('org_val');
-		$.ajax({
-			url: "?_a=ajax_getpost&rid=" + rid,
-		}).done(function(msg) {
-			//pre_txt = msg;
-			display_btn.find('textarea').val(pre_txt);
-			//console.log(msg);
-		});
+		display_btn.find('textarea').val(pre_txt);
 
 		// cancel event
 		$(".cancel_btn").click(function() {
@@ -81,7 +74,7 @@ $(document).ready( function() {
 				// update local
 				pre_btn.html(show_bbcode(pre_txt_new));
 				pre_btn.attr('org_val', pre_txt_new);
-				show_tip(pre_btn.find('.show-pre'));
+				show_tip(pre_btn.find('.show-pre'), pre_btn.find('.show-user'));
 				show_img();
 
 				// update remote
@@ -141,7 +134,7 @@ $(document).ready( function() {
 					url: valueSelected + "&_a=ajax_movepost",
 					data: {'rid': rid},
 				}).done(function(msg) {
-					console.log(msg);
+					//console.log(msg);
 					show_msg(msg, mv_btn);
 				});
 			}
@@ -234,52 +227,83 @@ $(document).ready( function() {
 		$(this).attr('org_val', pre_txt);
 		$(this).html(show_bbcode(pre_txt));
 	});
-	show_tip($('.show-pre'));
+	show_tip($('.show-pre'), $('.show-user'));
 	show_img();
 
-	function show_tip(oj) {
+	function show_tip(oj, uj) {
 		$(oj).on('click mouseover', function(){
-			draw_tip($(this));
+			if ($('.tip_box').length) {
+				$('.tip_box').remove();
+			} else {
+				draw_pre($(this));
+			}
 		});
 
-		$(oj).mouseleave(function(){
+		//console.log(uj.selector); // .show-user
+		$(uj).on('click', function(){
+			if ($('.tip_box').length) {
+				$('.tip_box').remove();
+			} else {
+				draw_user($(this));
+			}
+		});
+
+		$(oj).on('mouseleave mouseout', function(){
 			if ($('.tip_box')) {
 				$('.tip_box').remove();
 			}
 		});
 	}
 
-	function draw_tip (oj) {
-			// remove if it exists
-			if ($('.tip_box').length) {
-				$('.tip_box').remove();
+	function draw_pre (oj) {
+		var rid_sign = oj.attr('href');
+		// get value in local
+		var rid_txt = '';
+		if ($(rid_sign).length) {
+			rid_txt = $(rid_sign).parent().next('pre').text();
+			draw_box(rid_txt, oj);
 
-			// create if not exists
-			} else {
-				var rid_sign = oj.attr('href');
-				console.log($(rid_sign).length);
+		// if not, from remote
+		} else {
+			$.ajax({
+				url: "?_a=ajax_getpost&rid=" + rid_sign.substr(2),
+			}).done(function(msg) {
+				rid_txt = msg;
+				draw_box(msg, oj);
+			});
+		}
+	}
 
-				if ($(rid_sign).length) {
-					var rid_txt = $(rid_sign).parent().next('pre').text();
-					var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
+	function draw_user (oj) {
+		var uid_sign = oj.attr('href');
+		$.ajax({
+			url: "?_a=ajax_getuser&uid=" + uid_sign.substr(2),
+		}).done(function(msg) {
+			draw_box(msg, oj);
+		});
+	}
 
-					oj.parent().before(tip_box);
+	function draw_box(rid_txt, oj) {
+		// set value
+		if (rid_txt != '') {
+			var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
+			oj.parent().before(tip_box);
 
-					// style
-					var tip_pos = oj.position();
-					//var tip_off = $(this).offset();
-					$('.tip_box').css({
-						'position'	:	'absolute',
-						'top'		:	tip_pos.top + 15,
-						'left'		:	tip_pos.left,
-						'index-z'	:	99,
-						'background':	'rgb(198, 228, 212)',
-						'padding'	:	'5px',
-						'border'	:	'1px solid gray',
-					});
-				}
-
-			}
+			// style
+			//var tip_pos = oj.position();
+			var tip_pos = oj.offset();
+			var box_top = tip_pos.top + 15
+			var box_left = tip_pos.left
+			$('.tip_box').css({
+				'position'	:	'absolute',
+				'top'		:	box_top,
+				'left'		:	box_left,
+				'index-z'	:	99,
+				'background':	'rgb(198, 228, 212)',
+				'padding'	:	'5px',
+				'border'	:	'1px solid gray',
+			});
+		}
 	}
 
 	function show_bbcode (txt) {

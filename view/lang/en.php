@@ -1,5 +1,6 @@
 <?php $lang = array(
 
+'guest' => '',
 'backup' => '',
 'upload detail' => 'just upload picture, and you can click the text-box for coping automatically to clipboard',
 'admin' => '',

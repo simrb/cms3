@@ -1,9 +1,10 @@
 v1.0.3.3, updated by linyu deng
 
-	add the user message mechanism
 	modify site style
+	add the user message mechanism
 	add backup download in back-end
-	add show_tip for pre sign
+	add show_tip for record sign
+	add show_tip for user sign
 
 v1.0.3.2, updated by linyu deng
 

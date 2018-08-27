@@ -33,13 +33,26 @@ if ($t['_a'] == "ajax_addpost") {
 
 // act: ajax_getpost
 if ($t['_a'] == "ajax_getpost") {
-	if (user_level() > 4 and isset($_GET['rid'])) {
+	if (isset($_GET['rid'])) {
 		$res = sql_query("SELECT content FROM record WHERE rid = '".$_GET['rid']."';");
 		if ($row = mysql_fetch_row($res)) {
 			exit($row[0]);
 		}
 	}
-	exit(l('failure'));
+	exit('');
+}
+
+
+// act: ajax_getuser
+if ($t['_a'] == "ajax_getuser") {
+	// return user nickname
+	if (isset($_GET['uid'])) {
+		$res = sql_query("SELECT username FROM user WHERE uid = '".$_GET['uid']."';");
+		if ($row = mysql_fetch_row($res)) {
+			exit($row[0]);
+		}
+	}
+	exit(l('guest'));
 }
 
 
