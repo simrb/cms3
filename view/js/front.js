@@ -279,12 +279,14 @@ $(document).ready( function() {
 		$.ajax({
 			url: "?_a=ajax_getuser&uid=" + uid_sign.substr(2),
 		}).done(function(msg) {
+			//console.log(msg);
 			draw_box(msg, oj);
 		});
 	}
 
 	function draw_box(rid_txt, oj) {
 		// set value
+		rid_txt = $.trim(rid_txt);
 		if (rid_txt != '') {
 			var tip_box = '<div class="tip_box">' + rid_txt.substring(0, 60) + '</div>';
 			oj.parent().before(tip_box);

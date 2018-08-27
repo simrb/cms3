@@ -45,13 +45,25 @@ if ($t['_a'] == "ajax_getpost") {
 
 // act: ajax_getuser
 if ($t['_a'] == "ajax_getuser") {
-	// return user nickname
-	if (isset($_GET['uid'])) {
-		$res = sql_query("SELECT username FROM user WHERE uid = '".$_GET['uid']."';");
-		if ($row = mysql_fetch_row($res)) {
-			exit($row[0]);
+	$reval = '';
+	// return user nickname and intro
+	if (isset($_GET['uid']) AND $_GET['uid'] > 0) {
+		$reval 		= userkv($_GET['uid'], 'nickname');
+		$intro 		= userkv($_GET['uid'], 'intro');
+// 		$res = sql_query("SELECT username FROM user WHERE uid = '".$_GET['uid']."';");
+// 		if ($row = mysql_fetch_row($res)) {
+// 			exit($row[0]);
+// 		}
+		if ($reval != '' AND $intro != '') {
+			$reval .= ' - ';
 		}
+		$reval .= $intro;
+		if (empty($reval)) {
+			$reval = l('nothing');
+		}
+		exit($reval);
 	}
+
 	exit(l('guest'));
 }
 
