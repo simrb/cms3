@@ -22,10 +22,10 @@ textarea.reply_txt { margin-top: 20px;}
 #header, #bodyer, #footer { clear: both; }
 #msg { --background-color: #9dc7de; }
 
-.menu_item li {  margin: 0 10px 15px 0; }
+.menu_item li { margin: 0 7px 15px 0; }
 // .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 3px;  }
-.menu_item .menu_hl { background-color: #d7e1c3; padding: 0 3px;  }
-.menu_item .menu_hl { border: 1px solid gray;  border-radius:5px;}
+.menu_item .menu_no { border: 1px solid #e8ede0;  border-radius:5px; }
+.menu_item .menu_hl { border: 1px solid gray;  border-radius:5px; background-color: #d7e1c3; }
 .edit-form .addfile { width: 98%; }
 .show-detail pre { background-color: #d7e1c3;  border: 1px solid gray; padding: 5px; border-radius:5px; }
 
