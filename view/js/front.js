@@ -357,12 +357,16 @@ $(document).ready( function() {
 	function show_img () {
 		$('.show-detail img').css('cursor', 'pointer');
 		$('.show-detail img').click(function () {
-			if ($(this).css('width') == '100%') {
-				$(this).css('width', '50%');
+
+			if ($(this).attr('org_width')) {
+				$(this).css('width', $(this).attr('org_width'));
+				$(this).removeAttr('org_width');
 			} else {
+				$(this).attr('org_width', $(this).width());
 				$(this).css('width', '100%');
+				console.log($(this).width());
 			}
-			//console.log($(this).css('width'));
+
 		});
 	}
 
