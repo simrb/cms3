@@ -172,12 +172,12 @@ $(document).ready( function() {
 	});
 
 	// useful view
-	$(".show-detail-body ").hover(function () {
-		$(this).find(".useful_view").css('color', 'gray');
+	$(".show-detail-body").hover(function () {
+		$(this).find(".useful_no").css('color', 'gray');
 		$(this).find(".re_btn").css('color', 'gray');
 		$(this).find(".adm_btn label").css('color', 'gray');
 	}, function () {
-		$(this).find(".useful_view").css('color', '');
+		$(this).find(".useful_no").css('color', '');
 		$(this).find(".re_btn").css('color', '');
 		$(this).find(".adm_btn label").css('color', '');
 	});
@@ -215,13 +215,13 @@ $(document).ready( function() {
 		//console.log(re_val);
 	});
 	$('.re_btn').hover(function () {
-		$(this).parent().next('pre').css('background', '#d7e1c3');
+		$(this).parent().next('pre').css({'background':'#d7e1c3', 'border':'1px solid gray'});
 	}, function(){
-		$(this).parent().next('pre').css('background', '');
+		$(this).parent().next('pre').css({'background':'', 'border':''});
 	});
 
 
-	// interpret pre-txt event
+	// interpret event for pre element
 	$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
@@ -239,7 +239,7 @@ $(document).ready( function() {
 			}
 		});
 
-		//console.log(uj.selector); // .show-user
+		//console.log(uj.selector); // return .show-user
 		$(uj).on('click', function(){
 			if ($('.tip_box').length) {
 				$('.tip_box').remove();
@@ -310,11 +310,13 @@ $(document).ready( function() {
 
 	function show_bbcode (txt) {
 		var regs = [
-		//	{ reg : /b#(.*)#/g, rep : "<b>$1</b>"},
+			{ reg : /b#(.*?)#/g, rep : "<b>$1</b>"},
+			{ reg : /i#(.*?)#/g, rep : "<i>$1</i>"},
 			{ reg : /r#([0-9]+)/g, rep : "<a href='#r$1' class='show-pre' >r#$1</a>"},
 			{ reg : /u#([0-9]+)/g, rep : "<a href='#u$1' class='show-user' >u#$1</a>"},
 			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<img src='$1' />"},
 			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
+			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$2' target='_blank' >$1</a>"},
 			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
 			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
 		];

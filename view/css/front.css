@@ -11,9 +11,10 @@ body { background-color: #e8ede0; }
 // #header { margin-bottom: 3px;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
-textarea { width: 98%; background-color: #eee; }
+textarea { width: 98%; background-color: #eee;border: 1px solid gray;  border-radius:8px;}
 textarea.ui-input-text { min-height: 60px; }
-input { background-color: #eee; }
+input { background-color: #eeeeee;  border: 1px solid gray; border-radius:8px; }
+textarea.reply_txt { margin-top: 20px;}
 
 #footer a, .top-bar a { margin-left: 5px; }
 #header h1 { margin: 10px 0; }
@@ -22,20 +23,18 @@ input { background-color: #eee; }
 #msg { --background-color: #9dc7de; }
 
 .menu_item li {  margin: 0 10px 15px 0; }
-.menu_item .menu_hl { background-color: #b4bdb4; padding: 0 3px; }
-// .menu_item .menu_hl { border: 1px solid gray; }
+// .menu_item .menu_hl { background-color: #b4bdb4; padding: 0 3px;  }
+.menu_item .menu_hl { background-color: #d7e1c3; padding: 0 3px;  }
+.menu_item .menu_hl { border: 1px solid gray;  border-radius:8px;}
 .edit-form .addfile { width: 98%; }
+.show-detail pre { background-color: #d7e1c3;  border: 1px solid gray; padding: 5px; border-radius:8px; }
 
 
 .show-pagination span { margin-right: 5px; }
 
 
 .upload_form { margin-top: 10px; }
-.show-list-body p.list-body {
-	word-wrap: break-word; /* Internet Explorer 5.5+ */ 
-	white-space : normal ; /* Internet Explorer 5.5+ */ 
-}
-
+.show-list-body {  background-color: #d7e1c3;  border: 1px solid gray; padding: 5px; border-radius:8px; }
 .show-list img, .show-list embed, .show-list video { width: 200px; height: 150px; }
 .show-list, .show-detail { clear: both; margin-bottom: 15px; }
 .show-list h3 { margin: 0; padding: 0; }
@@ -55,7 +54,7 @@ input { background-color: #eee; }
 
 .show-detail-title { color: gray; height: 100%; }
 .show-detail-title label { margin-bottom: 15px; }
-.show-detail-title label.useful_hl { color: #f24e48; margin-left:5px; }
+.show-detail-title label.useful_hl { color: #f24e48; margin-left:5px; cursor: pointer; }
 .show-detail-title label.useful_no { color: #ced5c8; margin-left:5px; cursor: pointer; }
 .adm_btn label, .re_btn { color: #ced5c8; }
 // .show-detail-title label.useful_no:hover { color: #b5bdae; }
