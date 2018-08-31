@@ -12,7 +12,7 @@ $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 if ($t['_a'] == "ajax_movepost") {
 	if (user_level() > 4 and isset($_GET['cid']) and isset($_GET['rid'])) {
 		sql_query("UPDATE record SET cid = '".$_GET['cid']."' WHERE rid = '".$_GET['rid']."';");
-		exit(l('operated successfully'));
+		exit(l('post has been moved'));
 	} else {
 		exit(l('failure'));
 	}
@@ -93,19 +93,19 @@ if ($t['_a'] == "useful") {
 
 // act: delpost
 // just modify the category id as 0, don`t delete it really
-if ($t['_a'] == "delpost") {
-	if (user_level() > 4 and isset($_GET['rid'])) {
-		if (isset($_GET['cmt'])) {
-			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
-			$t['_v'] = 'detail';
-		} else {
-			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
-			$t['_v'] = 'show';
-			$t['msg'] = l('deleted successfully');
-			// $t['cid'] = ;
-		}
-	}
-}
+// if ($t['_a'] == "delpost") {
+// 	if (user_level() > 4 and isset($_GET['rid'])) {
+// 		if (isset($_GET['cmt'])) {
+// 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
+// 			$t['_v'] = 'detail';
+// 		} else {
+// 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
+// 			$t['_v'] = 'show';
+// 			$t['msg'] = l('deleted successfully');
+// 			// $t['cid'] = ;
+// 		}
+// 	}
+// }
 
 
 // act: settings

@@ -30,8 +30,8 @@
 				echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 
 				// rm btn
-				echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
-						"'><label class='right'>". l('delete') . "</label></a>";
+				//echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
+				//		"'><label class='right'>". l('delete') . "</label></a>";
 
 				// edit btn
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
@@ -72,11 +72,11 @@
 							"'><label class='right useful_btn' rid=".$row['rid'].">". l('useful'). "</label></a>";
 
 					// move btn
-					//echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
+					echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 
 					// rm btn
-					echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
-							"'><label class='right'>". l('delete') . "</label></a>";
+					//echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
+					//		"'><label class='right'>". l('delete') . "</label></a>";
 
 					// edit btn
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].

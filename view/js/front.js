@@ -10,14 +10,14 @@ $(document).ready( function() {
 
 	$('.adm_btn').mouseover(function(){
 		$(this).parent().find('.edit_btn').show();
-		$(this).parent().find('.del_btn').show();
+		//$(this).parent().find('.del_btn').show();
 		$(this).parent().find('.mv_btn').show();
 		$(this).parent().find('.useful_btn').show();
 	});
 
 	$('.adm_btn').click(function(){
 		$(this).parent().find('.edit_btn').toggle();
-		$(this).parent().find('.del_btn').toggle();
+		//$(this).parent().find('.del_btn').toggle();
 		$(this).parent().find('.mv_btn').toggle();
 		$(this).parent().find('.useful_btn').toggle();
 	});
@@ -143,12 +143,14 @@ $(document).ready( function() {
 
 
 	// deleted event
+	/*
 	$(".del_btn").click(function(e) {
 		var reval = confirm('Are you sure ?');
 		if (!reval) {
 			e.preventDefault();
 		}
 	});
+	*/
 
 
 	// useful event
@@ -349,7 +351,7 @@ $(document).ready( function() {
 
 	function hide_btn () {
 		$('.edit_btn').hide();
-		$('.del_btn').hide();
+		//$('.del_btn').hide();
 		$('.mv_btn').hide();
 		$('.useful_btn').hide();
 	}
