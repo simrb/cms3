@@ -8,6 +8,7 @@ Uhost="localhost"
 Udata="cms_db"$RANDOM
 Uname="cms_u"$RANDOM
 Upawd="cms_p"$RANDOM
+Umysn="sn_"$RANDOM$RANDOM
 Uinitpj="no"
 Uinitdb="no"
 Uinitht="no"
@@ -44,7 +45,7 @@ do
 done
 
 
-Urepstr="s/localost/$Uhost/g;s/cms_db/$Udata/g;s/cms_user/$Uname/g;s/cms_pawd/$Upawd/g"
+Urepstr="s/localost/$Uhost/g;s/cms_db/$Udata/g;s/cms_user/$Uname/g;s/cms_pawd/$Upawd/g;s/sn_code/$Umysn/g"
 
 
 function getdir(){
