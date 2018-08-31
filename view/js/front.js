@@ -191,7 +191,7 @@ $(document).ready( function() {
 	var v_val = $(".menu_item").attr('_v');
 	if (v_val == 'detail') {
 		$(".menu_item").find('.menu_no').hide();
-		$(".menu_item").css('padding-bottom', '15px');
+		//$(".menu_item").css('padding-bottom', '15px');
 		//$(".addpost").css('float', 'right');
 		//$(".addpost").hide();
 		var menu_title 	= $(".show-detail-body").first().find('pre').text();
