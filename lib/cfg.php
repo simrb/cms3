@@ -39,7 +39,7 @@ $t['rid_aboutpost'] 	=	3;
 $t['rid_comment'] 		=	4;
 
 
-// user
+// user function
 $t['user_reg_open'] 	=	'on';	// allow user register
 $t['user_msg_open'] 	=	'on';	// allow message using
 
