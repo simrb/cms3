@@ -219,7 +219,7 @@ function show_bbcode($text) {
 
 	$text = htmlspecialchars($text);
 
-	// BBcode array
+/*
 	$find = array(
 		'~\[b\](.*?)\[/b\]~s',
 		'~\[i\](.*?)\[/i\]~s',
@@ -235,7 +235,6 @@ function show_bbcode($text) {
 		'~\[video\]((?:ftp|https?)://.*?)\[/video\]~s',
 	);
 
-	// HTML tags to replace BBcode
 	$replace = array(
 		'<b>$1</b>',
 		'<i>$1</i>',
@@ -250,8 +249,7 @@ function show_bbcode($text) {
 		'<embed src="$1" autostart="false" />',
 		'<video controls="" src="$1" ></video>',
 	);
-
-	// Replacing the BBcodes with corresponding HTML tags
+*/
 // 	return preg_replace($find, $replace, $text);
 	return $text;
 }
