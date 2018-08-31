@@ -452,6 +452,39 @@ function userkv ($uid, $ukey, $uval = '') {
 }
 
 
+/*	user message, 
+	send message to user in post with sign like u#2, u#5
+
+	for example, set value
+	usermsg(1, 'r#22');
+	usermsg(2, 'r#23');
+	usermsg(2, 'r#25');
+
+	for example, get value, that will return the 10 last messages.
+	usermsg(1);		#=> array('r#22')
+	usermsg(2);		#=> array('r#23', 'r#25')
+*/
+function usermsg ($uid, $msg = '') {
+	$reval	= array();
+
+	// get value
+	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = 'msg' LIMIT 10");
+	if ($res) {
+		while ($row = mysql_fetch_row($res)) {
+			$reval[] 	= $row[0];
+		}
+	}
+
+	// set value
+	if ($msg != '') {
+		$reval = $msg;
+		sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES ('". $uid ."','msg', '". $reval ."')");
+	}
+
+	return $reval;
+}
+
+
 /*	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
 
 	for example, set value
