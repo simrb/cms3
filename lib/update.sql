@@ -14,11 +14,9 @@
 -- ALTER TABLE `category` ADD `uid` INT(11) NOT NULL default '0';
 -- ALTER TABLE `category` MODIFY COLUMN `name` VARCHAR(20);
 
-
+-- =======================================================
 -- version v1.0.1 --> v1.0.2
---
--- `tag`, for record
---
+-- =======================================================
 -- DROP TABLE IF EXISTS `tag`;
 CREATE TABLE IF NOT EXISTS  `tag` (
   `tid` int(11) NOT NULL auto_increment,
@@ -26,10 +24,6 @@ CREATE TABLE IF NOT EXISTS  `tag` (
   PRIMARY KEY  (`tid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
---
--- `tag_assoc`, for associating record and tag
---
 -- DROP TABLE IF EXISTS `tag_assoc`;
 CREATE TABLE IF NOT EXISTS  `tag_assoc` (
   `taid` int(11) NOT NULL auto_increment,
@@ -38,11 +32,9 @@ CREATE TABLE IF NOT EXISTS  `tag_assoc` (
   PRIMARY KEY  (`taid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
+-- =======================================================
 -- version v1.0.3 --> v1.0.3.1
---
--- `userkv`, for user, a key-val piece 
---
+-- =======================================================
 -- DROP TABLE IF EXISTS `userkv`;
 CREATE TABLE IF NOT EXISTS `userkv` (
   `ukid` int(11) NOT NULL auto_increment,
@@ -52,8 +44,7 @@ CREATE TABLE IF NOT EXISTS `userkv` (
   PRIMARY KEY  (`ukid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
-DROP TABLE IF EXISTS `recordkv`;
+-- DROP TABLE IF EXISTS `recordkv`;
 CREATE TABLE IF NOT EXISTS `recordkv` (
   `rkid` int(11) NOT NULL auto_increment,
   `rid` int(11) NOT NULL default '0',
@@ -63,5 +54,21 @@ CREATE TABLE IF NOT EXISTS `recordkv` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
-ALTER TABLE `category` CHANGE `uid` `descript` VARCHAR(60);
+-- ALTER TABLE `category` CHANGE `uid` `descript` VARCHAR(60);
+
+-- =======================================================
+-- version v1.0.2 --> v1.0.3.3
+-- =======================================================
+CREATE TABLE IF NOT EXISTS `usermsg` (
+  `umid` int(11) NOT NULL auto_increment,
+  `fromuid` int(11) NOT NULL,
+  `touid` int(11) NOT NULL,
+  `msg` varchar(50) NOT NULL,
+  `created` varchar(10) NOT NULL,
+  `msg_type` tinyint(10) NOT NULL default '1',
+  PRIMARY KEY  (`umid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
 

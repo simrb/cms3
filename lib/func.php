@@ -464,11 +464,11 @@ function userkv ($uid, $ukey, $uval = '') {
 	usermsg(1);		#=> array('r#22')
 	usermsg(2);		#=> array('r#23', 'r#25')
 */
-function usermsg ($uid, $msg = '') {
-	$reval	= array();
+function usermsg ($touid, $msg = '') {
+	$reval		= array();
 
 	// get value
-	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = 'msg' LIMIT 10");
+	$res = sql_query("SELECT msg FROM usermsg WHERE touid = '". $touid ."' LIMIT 20");
 	if ($res) {
 		while ($row = mysql_fetch_row($res)) {
 			$reval[] 	= $row[0];
@@ -477,8 +477,10 @@ function usermsg ($uid, $msg = '') {
 
 	// set value
 	if ($msg != '') {
-		$reval = $msg;
-		sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES ('". $uid ."','msg', '". $reval ."')");
+		$fromuid 	= user_id();
+		$reval 		= $msg;
+		sql_query("INSERT INTO usermsg (fromuid, touid, msg, created, msg_type) VALUES ('". 
+			$fromuid ."','". $touid ."', '". $reval ."', '". time() ."', 1)");
 	}
 
 	return $reval;

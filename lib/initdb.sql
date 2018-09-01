@@ -172,4 +172,18 @@ CREATE TABLE `sess` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+--
+-- `usermsg`, for user,  keep saving the messages that has been send to user
+--
+CREATE TABLE `usermsg` (
+  `umid` int(11) NOT NULL auto_increment,
+  `fromuid` int(11) NOT NULL,
+  `touid` int(11) NOT NULL,
+  `msg` varchar(50) NOT NULL,
+  `created` varchar(10) NOT NULL,
+  `msg_type` tinyint(10) NOT NULL default '1',
+  PRIMARY KEY  (`umid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
 
