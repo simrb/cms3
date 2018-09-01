@@ -23,7 +23,7 @@ if ($t['_a'] == "ajax_movepost") {
 if ($t['_a'] == "ajax_addpost") {
 	if (user_level() > 4 and isset($_GET['pre_txt']) and isset($_GET['rid'])) {
 		sql_query("UPDATE record SET content = '".$_GET['pre_txt']."' WHERE rid = '".$_GET['rid']."';");
-		//exit('success -- '. $_GET['rid'] . ' '. $_GET['pre_txt']);
+		user_remind($_GET['pre_txt'], $_GET['rid']);
 		exit(l('operated successfully'));
 	} else {
 		exit(l('failure'));
@@ -129,19 +129,21 @@ if ($t['_a'] == "settings") {
 }
 
 
-// act: add
+// act: addcomment
 if ($t['_a'] == "addcomment") {
 	if (isset($_POST['rid']) and isset($_POST['content'])) {
 		
 		$t["msg"] = user_allow_submit();
 		if ($t["msg"] == '') {
-			sql_query(
+			$insert_id = sql_query(
 				"INSERT INTO record (
 				uid, cid, follow, content, created
 				) VALUES (
 				'". $uid ."', '". $_POST["cid"] ."', '". $_POST["rid"] ."',
-				'". $_POST["content"] ."', '". time() ."')"
+				'". $_POST["content"] ."', '". time() ."')", 'insert_id'
 			);
+
+			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
 		}
 
@@ -169,6 +171,8 @@ if ($t['_a'] == "addpost") {
 				'". $uid ."', '". $_POST["cid"] ."', 0,
 				'". $_POST["content"] ."', '". time() ."')", 'insert_id'
 			);
+
+			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
 		}
 

@@ -491,6 +491,10 @@ function usermsg ($touid, $rid = 0) {
 }
 
 
+function user_remind($content, $rid) {
+}
+
+
 /*	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
 
 	for example, set value

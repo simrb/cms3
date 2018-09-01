@@ -12,6 +12,7 @@ if ($t['_a'] == "add") {
 			'". $_POST["useful"] ."', '". $_POST["content"] ."', '". time() ."')", 'insert_id'
 		);
 		tag_add_by($insert_id, $_POST['tag']);
+		user_remind($_POST['content'], $insert_id);
 		$t["msg"] = l('added successfully');
 	}
 }
@@ -29,12 +30,14 @@ if ($t['_a'] == "update") {
 			 WHERE rid = '". $_POST["rid"] ."';"
 		);
 
+		user_remind($_POST['content'], $_POST["rid"]);
+
 		// fetch data for showing later, and make sure this operating is successful
-		$res = sql_query("SELECT uid,cid,follow,useful,content,created FROM record WHERE rid = '". $_POST["rid"] ."';");
-		if ($res) {
+		//$res = sql_query("SELECT uid,cid,follow,useful,content,created FROM record WHERE rid = '". $_POST["rid"] ."';");
+		//if ($res) {
 			tag_update_by($_POST["rid"], $_POST['tag']);
 			$t["msg"] = l('updated successfully');
-		}
+		//}
 	}
 }
 
