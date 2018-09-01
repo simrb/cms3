@@ -147,7 +147,7 @@ if ($t['_v'] == 'edit') { ?>
 			</ul>
 
 			</br>
-			<label class="showorhide"><a href="#"><?= l('more'); ?> >>> </a></label>
+			<label class="showorhide"><a href="#"> >> >> >> >> >> >> </a></label>
 			<div>
 				</br>
 				
