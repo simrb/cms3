@@ -63,11 +63,12 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
   `umid` int(11) NOT NULL auto_increment,
   `fromuid` int(11) NOT NULL,
   `touid` int(11) NOT NULL,
-  `msg` varchar(50) NOT NULL,
-  `created` varchar(10) NOT NULL,
+  `rid` int(11) NOT NULL,
   `msg_type` tinyint(10) NOT NULL default '1',
   PRIMARY KEY  (`umid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
 
 
 

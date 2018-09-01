@@ -456,34 +456,35 @@ function userkv ($uid, $ukey, $uval = '') {
 	send message to user in post with sign like u#2, u#5
 
 	for example, set value
-	usermsg(1, 'r#22');
-	usermsg(2, 'r#23');
-	usermsg(2, 'r#25');
+	usermsg(1, 22);
+	usermsg($uid, $rid);	// assume the $uid is 2, $rid is 23
+	usermsg(2, 25);
 
 	for example, get value, that will return the 10 last messages.
-	usermsg(1);		#=> array('r#22')
-	usermsg(2);		#=> array('r#23', 'r#25')
+	usermsg(1);		#=> array(22)
+	usermsg(2);		#=> array(23, 25)
 */
-function usermsg ($touid, $msg = '') {
+function usermsg ($touid, $rid = 0) {
 	$reval		= array();
 
-	// get value
-	$res = sql_query("SELECT msg FROM usermsg WHERE touid = '". $touid ."' LIMIT 20");
-	if ($res) {
-		while ($row = mysql_fetch_row($res)) {
-			$reval[] 	= $row[0];
-		}
-	}
-
 	// set value
-	if ($msg != '') {
+	if ($rid > 0) {
+		$reval 		= $rid;
 		$fromuid 	= user_id();
-		$reval 		= $msg;
-		sql_query("INSERT INTO usermsg (fromuid, touid, msg, created, msg_type) VALUES ('". 
-			$fromuid ."','". $touid ."', '". $reval ."', '". time() ."', 1)");
+		sql_query("INSERT INTO usermsg (fromuid, touid, rid, msg_type) VALUES ('". 
+			$fromuid ."','". $touid ."', '". $reval ."', 1)");
 
 		// remind user
 		userkv($touid, 'has_msg', 1);
+
+	// get value
+	} else {
+		$res = sql_query("SELECT rid FROM usermsg WHERE touid = '". $touid ."' LIMIT 20");
+		if ($res) {
+			while ($row = mysql_fetch_row($res)) {
+				$reval[] 	= $row[0];
+			}
+		}
 	}
 
 	return $reval;
