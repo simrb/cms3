@@ -59,7 +59,7 @@ if ($t['_a'] == "login") {
 	if (isset($_POST["username"]) and isset($_POST["password"])) {
 
 		// user register
-		if (isset($_POST["firstime"])) {
+		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
 
 			// the invited code is month, day, hour, like 071509
 			if (isset($_POST["invitecode"]) and ($_POST["invitecode"] == invitecode()) ) {

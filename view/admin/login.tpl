@@ -2,7 +2,7 @@
 	<form action="<?=url_c('_a=login');?>" method="post">
 		<ul>
 
-			<?php if (isset($_GET['firstime'])) { ?>
+			<?php if (isset($_GET['firstime']) AND $t['user_reg_open'] == 'on') { ?>
 				<input type="hidden" name="firstime" />
 
 				<li><h3><?= l('user register'); ?></h3></li>
@@ -35,10 +35,13 @@
 
 				<li><input type="submit" value="<?= l('confirm'); ?>" /></li>
 
-				<li><br />
-					<a href="<?=$t['link_login']?>&firstime=yes" >
-						<?= l('register account, please check here') ?></a>
-				</li>
+				<?php if($t['user_reg_open'] == 'on') { ?>
+					<li><br />
+						<a href="<?=$t['link_login']?>&firstime=yes" >
+							<?= l('register account, please check here') ?></a>
+					</li>
+
+				<?php } ?>
 
 			<?php } ?>
 
