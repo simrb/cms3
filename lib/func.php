@@ -481,6 +481,9 @@ function usermsg ($touid, $msg = '') {
 		$reval 		= $msg;
 		sql_query("INSERT INTO usermsg (fromuid, touid, msg, created, msg_type) VALUES ('". 
 			$fromuid ."','". $touid ."', '". $reval ."', '". time() ."', 1)");
+
+		// remind user
+		userkv($touid, 'has_msg', 1);
 	}
 
 	return $reval;
