@@ -6,7 +6,15 @@
 
 	} ?>
 	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
-	<a href="?_v=settings" ><?= l('menber'); ?></a>
+	<a href="?_v=settings" ><?= l('menber'); ?>
+	<?php
+		if ($t['user_msg_open'] == 'on') {
+			$uid = user_id();
+			if (userkv($uid, 'msg') != '') {
+				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
+			}
+		}
+	?></a>
 </div>
 
 <div class='header_title' >

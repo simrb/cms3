@@ -460,9 +460,9 @@ function userkv ($uid, $ukey, $uval = '') {
 	usermsg($uid, $rid);	// assume the $uid is 2, $rid is 23
 	usermsg(2, 25);
 
-	for example, get value, that will return the 10 last messages.
-	usermsg(1);		#=> array(22)
-	usermsg(2);		#=> array(23, 25)
+	for example, get value, that will return the 20 last messages.
+	usermsg(1);				// array(array('rid', 'content', 'created',,))
+	usermsg(2);				// array(array('23',,,), array('25',,,)) the array as record field values
 */
 function usermsg ($touid, $rid = 0) {
 	$reval		= array();
@@ -479,12 +479,9 @@ function usermsg ($touid, $rid = 0) {
 
 	// get value
 	} else {
-		$res = sql_query("SELECT rid FROM usermsg WHERE touid = '". $touid ."' LIMIT 20");
-		if ($res) {
-			while ($row = mysql_fetch_row($res)) {
-				$reval[] 	= $row[0];
-			}
-		}
+		$reval = sql_query("SELECT * FROM record WHERE rid IN
+			(SELECT rid FROM usermsg WHERE touid = '". $touid ."' LIMIT 20)
+		");
 	}
 
 	return $reval;
@@ -492,6 +489,21 @@ function usermsg ($touid, $rid = 0) {
 
 
 function user_remind($content, $rid) {
+	if ($GLOBALS['t']['user_msg_open'] == 'on') {
+		$reg = '/u#([0-9]{0,11})/m';
+		preg_match_all($reg, $content, $matches, PREG_SET_ORDER, 0);	
+		if (count($matches) > 0) {
+			foreach($matches as $key => $val) {
+				$uid = $val[1];
+
+				// save msg
+				usermsg($uid, $rid);
+
+				// mark it for new msg
+				userkv($uid, 'msg', 'has');
+			}
+		}
+	}
 }
 
 
