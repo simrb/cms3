@@ -119,12 +119,14 @@ if ($t['_a'] == "settings") {
 		);
 	}
 
+	// update others
 	foreach($user_setting as $key => $val) {
 		if (isset($_POST[$key]) and isset($_POST[$key."_old"]) 
 		and ($_POST[$key] != $_POST[$key."_old"])) {
 			userkv($uid, $key, $_POST[$key]);
 		}
 	}
+	$t["msg"] = l('operated successfully');
 
 }
 
@@ -287,6 +289,21 @@ if ($t['_v'] == "settings") {
 	}
 
 	tpl($t, $t['tpl_dir']."settings");
+}
+
+
+// view: message
+if ($t['_v'] == "message") {
+	user_is_login ();
+	userkv($uid, 'msg', 'null');
+
+	$t["url_after"] 	=	"";
+	$t['_a'] 			=	"message";
+	$t["cid"]			=	0 ;
+
+	$t["msg_res"]		=	usermsg($uid);
+
+	tpl($t, $t['tpl_dir']."message");
 }
 
 

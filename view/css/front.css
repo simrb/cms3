@@ -60,6 +60,13 @@ textarea.reply_txt { margin-top: 20px;}
 // .show-detail-title label.useful_no:hover { color: #b5bdae; }
 .show-detail-body { margin-bottom: 15px; }
 
+.show-user ul h3 { float:left; margin-top: 0; }
+.show-user .user-msg { margin-right: 10px; }
+.user-msg-body p { margin-bottom: 5px; }
+.black { color: black; }
+.gray1 { color: #ced5c8; }
+.mt0 { margin-top: 0; }
+
 
 // 	.show-list-body h3 { background: #bbc8bb; height: 100%;}
 // 	.show-list-body { border: 1px solid gray; }

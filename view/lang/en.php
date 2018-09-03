@@ -1,5 +1,8 @@
 <?php $lang = array(
 
+
+'user message'	=>  '' ,
+'user info'	=>  '' ,
 'post has been moved' => '',
 'guest' => '',
 'backup' => '',
@@ -118,12 +121,11 @@
 'settings'	=>  '' ,
 'save'	=>  '' ,
 'register account, please check here'	=>  '' ,
-'user info'	=>  '' ,
 'logout'	=>  '' ,
 'nickname'	=>  '' ,
 'contact'	=>  '' ,
 'introduction'	=>  '' ,
-'menber'	=>  '' ,
+'member'	=>  '' ,
 'register have to know'	=>  '' ,
 'update'	=>  '' ,
 'confirm'	=>  '' ,

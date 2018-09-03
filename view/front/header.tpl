@@ -6,11 +6,11 @@
 
 	} ?>
 	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
-	<a href="?_v=settings" ><?= l('menber'); ?>
+	<a href="?_v=message" ><?= l('member'); ?>
 	<?php
 		if ($t['user_msg_open'] == 'on') {
 			$uid = user_id();
-			if (userkv($uid, 'msg') != '') {
+			if (userkv($uid, 'msg') == 'has') {
 				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
 			}
 		}

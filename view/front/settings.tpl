@@ -1,12 +1,12 @@
-<div class="edit-form edit-form-login">
+<div class="edit-form edit-form-login show-user">
 	<form action="?_v=settings&_a=settings" method="post">
-
 		<ul>
 			<li>
-				<h3><?= l('base info'); ?></h3>
+				<a href="?_v=message"><h3 class="user-msg gray1"><?= l('user message'); ?></h3></a>
+				<a href="?_v=settings"><h3 class="user-info black"><?= l('user info'); ?></h3></a>
 			</li>
 
-			<li><label><?= l('user id'); ?></label></li>
+			<li class='clear'><label><?= l('user id'); ?></label></li>
 			<li>
 				<input type="text" value="#<?= user_id(); ?>" disabled="disabled" />
 			</li>
@@ -42,7 +42,6 @@
 			<li>
 				<input type="submit" value="<?= l('save'); ?>" class="" />
 			</li>
-
 		</ul>
 
 	</form>

@@ -1,7 +1,8 @@
 <?php $lang = array(
 
 
-
+'user message'	=>  '会员留言' ,
+'user info'	=>  '会员资料' ,
 'post has been moved' => '帖子已被移动',
 'guest' => '游客',
 'backup' => '备份',
@@ -124,12 +125,11 @@
 'settings'	=>  '设置' ,
 'save'	=>  '保存' ,
 'register account, please check here'	=>  '注册一个新用户帐号' ,
-'base info'	=>  '基本信息' ,
 'logout'	=>  '退出' ,
 'nickname'	=>  '显示昵称' ,
 'contact'	=>  '联系方式' ,
 'introduction'	=>  '个人简述' ,
-'menber'	=>  '会员' ,
+'member'	=>  '会员' ,
 'register have to know'	=>  '如果你是新注册会员，请点这里查看会员公约' ,
 'update'	=>  '更新' ,
 'confirm'	=>  '确认' ,

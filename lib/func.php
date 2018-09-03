@@ -460,9 +460,9 @@ function userkv ($uid, $ukey, $uval = '') {
 	usermsg($uid, $rid);	// assume the $uid is 2, $rid is 23
 	usermsg(2, 25);
 
-	for example, get value, that will return the 20 last messages.
+	for example, get value, that will return the messages.
 	usermsg(1);				// array(array('rid', 'content', 'created',,))
-	usermsg(2);				// array(array('23',,,), array('25',,,)) the array as record field values
+	usermsg(2);				// array(array('23',,,), array('25',,,)) the mysql result of record table
 */
 function usermsg ($touid, $rid = 0) {
 	$reval		= array();
@@ -480,7 +480,7 @@ function usermsg ($touid, $rid = 0) {
 	// get value
 	} else {
 		$reval = sql_query("SELECT * FROM record WHERE rid IN
-			(SELECT rid FROM usermsg WHERE touid = '". $touid ."' LIMIT 20)
+			(SELECT rid FROM usermsg WHERE touid = '". $touid ."') ORDER BY rid DESC
 		");
 	}
 
