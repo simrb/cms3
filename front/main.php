@@ -1,7 +1,7 @@
 <?php access();
 
 // commom
-$uid				= user_id();
+$t['uid'] 			= $uid	= user_id();
 $t["category_kv"] 	= data_fetch_category("category", "cid", "name");
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
@@ -295,13 +295,19 @@ if ($t['_v'] == "settings") {
 // view: message
 if ($t['_v'] == "message") {
 	user_is_login ();
-	userkv($uid, 'msg', 'null');
 
+	$t["msg_res"]		=	'';
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"message";
 	$t["cid"]			=	0 ;
 
-	$t["msg_res"]		=	usermsg($uid);
+	if ($t['user_msg_open'] == 'on') {
+		if (isset($_GET['usermsg'])) {
+			userkv($uid, 'msg', 'null');
+		}
+
+		$t["msg_res"]		=	usermsg($uid);
+	}
 
 	tpl($t, $t['tpl_dir']."message");
 }

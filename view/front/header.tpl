@@ -1,20 +1,28 @@
 <div class="top-bar right">
-	<?php if (user_level() > 0) {
+
+	<?php 
+		// addpost link
+		if (user_level() > 0) {
 			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
 			echo '<a class=" '. $hl .' " href="?_v=addpost&cid='.
 				$t['cid'] .'">'.l('add post').'</a>';
-
-	} ?>
-	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
-	<a href="?_v=message" ><?= l('member'); ?>
-	<?php
-		if ($t['user_msg_open'] == 'on') {
-			$uid = user_id();
-			if (userkv($uid, 'msg') == 'has') {
-				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
-			}
 		}
-	?></a>
+	?>
+
+	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
+
+	<?php
+		// message link
+		if ($t['user_msg_open'] == 'on' AND userkv($t['uid'], 'msg') == 'has') {
+				echo '<a href="?_v=message&usermsg=has" >'. l('member') .'</a>';
+				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
+
+		// settings link
+		} else {
+			echo '<a href="?_v=settings" >'. l('member') .'</a>';
+		}
+	?>
+
 </div>
 
 <div class='header_title' >
