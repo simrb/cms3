@@ -44,7 +44,7 @@ if ($t['_m'] == 'admin') {
 
 		case 'user':
 			// user login
-			if (($t['_v'] == "login") or ($t['_a'] == "login") or ($t['_a'] == "logout")) {
+			if (($t['_v'] == "login") or ($t['_a'] == "login") or ($t['_a'] == "logout") or ($t['_v'] == "getvcode") ) {
 				// pass
 
 			} else {

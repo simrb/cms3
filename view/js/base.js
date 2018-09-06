@@ -52,6 +52,13 @@ $(document).ready( function() {
 		$("#msg").remove();
 	}, 5000);
 
+	// validate code
+	var vcode_img = $('.vcode_img');
+	if (vcode_img.length > 0) {
+		vcode_img.css("cursor", "pointer");
+		vcode_img.attr("src", "?_m=admin&_f=user&_v=getvcode");
+	}
+
 
 });
 

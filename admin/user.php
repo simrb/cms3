@@ -53,37 +53,106 @@ if ($t['_a'] == "logout") {
 }
 
 
+//act: get_vcode_img of ajax
+if ($t['_v'] == "getvcode") {
+	$shotcode = validcode();
+	$longcode = validcode($shotcode);
+
+	// size
+	$im = imagecreatetruecolor(60, 20);
+	// color
+	$text_color = imagecolorallocate($im, 198, 228, 212);
+	imagestring($im, 5, 5, 2,  $shotcode, $text_color);
+
+	setcookie("long_vcode", $longcode, time()+60*2);
+
+	// set the content type header
+	header('Content-Type: image/jpeg');
+
+	imagejpeg($im, NULL, 75);
+// 	$reval = array('longcode' => $longcode);
+
+	// Free up memory
+	imagedestroy($im);
+
+// 	exit(json_encode(array('longcode' => $longcode)));
+	exit;
+}
+
+
+function validcode($shot_code = '') {
+	$reval = '';
+	// shot code
+	if ($shot_code == '') {
+		$reval = rand(1000, 99999);
+
+	// long code
+	} else {
+		$reval = md5($shot_code . date('dh'));
+	}
+	return $reval;
+}
+
+
 //act: login and register
 if ($t['_a'] == "login") {
-	$t['msg'] = l('login successfully');
-	if (isset($_POST["username"]) and isset($_POST["password"])) {
+	$valid_error = 0;
+	$t['msg'] = '';
+	
+	// check username, password
+	if (isset($_POST["username"]) AND isset($_POST["password"])) {
+		// pass
+	} else {
+		$valid_error = 1;
+	}
 
+	// check the invide code
+	if ( $t['user_icode_open'] == 'on' ) {
+		if (isset($_POST["invitecode"]) AND ($_POST["invitecode"] == invitecode())) {
+			// pass
+		} else {
+			$valid_error = 1;
+			$t['msg'] .= l('the invite code is wrong');
+		}
+	}
+
+	// check the validate code
+	if ( $t['user_vcode_open'] == 'on' ) {
+		if (isset($_POST["shot_vcode"]) AND isset($_COOKIE["long_vcode"])) {
+			if ($_COOKIE["long_vcode"] != validcode($_POST["shot_vcode"])) {
+				$valid_error = 1;
+				$t['msg'] .= l('the validate code is wrong');
+			}
+		} else {
+			$valid_error = 1;
+			$t['msg'] .= l('the validate code is wrong');
+		}
+
+		// remove validate code
+		unset($_COOKIE["long_vcode"]);
+		setcookie("long_vcode", '', -1);
+	}
+
+	// validate pass
+	if ($valid_error == 0) {
 		// user register
 		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
-
-			// the invited code is month, day, hour, like 071509
-			if (isset($_POST["invitecode"]) and ($_POST["invitecode"] == invitecode()) ) {
 				$arr = $_POST;
 				$arr['level'] = 1;
 				$t['msg'] = user_add($arr);
-			} else {
-				$t['msg'] = l('the invite code is wrong');
-				$t['msg'].= " <a href='".$GLOBALS["t"]["link_login"].
-							"&firstime=yes'>". l('return') ."</a>";
-			}
 
 		// user login
 		} else {
 			if (user_login($_POST['username'], $_POST['password'])) {
+				$t['msg'] = l('login successfully');
 				url_to(url_referer());
 			} else {
-				$t['msg'] = l('failed to login, the username and password is not matched');
-				$t['msg'].= " <a href='".$GLOBALS["t"]["link_login"]."'>". l('return') ."</a>";
+				$t['msg'] .= l('failed to login, the username and password is not matched');
 			}
 		}
-
 	}
 
+	$t['msg'] .= " <a href='".$t["link_login"]."'>". l('return') ."</a>";
 	$t['tpl_dir'] = VIEW_DIR;
 	out($t['msg'], $t);
 }
@@ -98,6 +167,8 @@ if ($t['_v'] == "login") {
 	} else {
 		$t['aboutuser'] = record_get_content($t['rid_aboutuser']);
 		url_referer('?');
+// 		$t['shot_code'] = validcode();
+// 		$t['long_code'] = validcode($t['shot_code']);
 		tpl($t, $t['tpl_dir']."login", VIEW_DIR.'layout');
 	}
 }

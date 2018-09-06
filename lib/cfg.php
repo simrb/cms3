@@ -42,6 +42,8 @@ $t['rid_comment'] 		=	4;
 // user function
 $t['user_reg_open'] 	=	'on';	// allow user register
 $t['user_msg_open'] 	=	'on';	// allow message using
+$t['user_vcode_open'] 	=	'on';	// user validate code for login and register
+$t['user_icode_open'] 	=	'on';	// user invide code for register
 
 
 
