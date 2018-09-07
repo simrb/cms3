@@ -154,7 +154,6 @@ function url_referer ($url = '') {
 	} else {
 		return (isset($_COOKIE["http_referer"]) ? $_COOKIE["http_referer"] : '/');
 	}
-
 }
 
 
@@ -399,8 +398,9 @@ function user_allow_submit () {
 }
 
 function user_add ($arr) {
-	$reval = l('failed to add');
-	if (isset($arr["username"])) {
+// 	$reval = l('failed to add');
+	$reval = '';
+	if (isset($arr["username"]) AND isset($arr["password"])) {
 		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
 		if (mysql_num_rows($res) > 0) {
 			$reval = l('the user is existed');
@@ -410,7 +410,7 @@ function user_add ($arr) {
 				VALUES ('". $arr["username"] ."','". $arr["password"] .
 				"','". $arr["level"] ."', '". time() ."');"
 			);
-			$reval = l('created user successfully');
+// 			$reval = l('created user successfully');
 		}
 	}
 	return $reval;

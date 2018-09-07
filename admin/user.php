@@ -103,8 +103,7 @@ if ($t['_a'] == "login") {
 		}
 	}
 
-	// check the validate code
-	// val22 is the long vcode
+	// check the validate code, val22 is the long vcode
 	if ( $t['user_vcode_open'] == 'on' ) {
 		if (isset($_POST["shot_vcode"]) AND isset($_COOKIE["val22"])) {
 			if ($_COOKIE["val22"] != validcode($_POST["shot_vcode"])) {
@@ -121,19 +120,21 @@ if ($t['_a'] == "login") {
 		setcookie("val22", '', -1);
 	}
 
-	// validate pass
+	// pass validation
 	if ($valid_error == 0) {
 		// user register
 		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
 				$arr = $_POST;
 				$arr['level'] = 1;
 				$t['msg'] = user_add($arr);
+				url_to($t["link_login"]);
 
 		// user login
 		} else {
 			if (user_login($_POST['username'], $_POST['password'])) {
-				$t['msg'] = l('login successfully');
-				url_to(url_referer());
+// 				$t['msg'] = l('login successfully');
+// 				url_to(url_referer());
+				url_to();
 			} else {
 				$t['msg'] .= l('failed to login, the username and password is not matched');
 			}
