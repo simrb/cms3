@@ -84,6 +84,7 @@ if ($t['_v'] == "getvcode") {
 //act: login and register
 if ($t['_a'] == "login") {
 	$valid_error = 0;
+	$invite_error = 0;
 	$t['msg'] = '';
 	
 	// check username, password
@@ -93,12 +94,12 @@ if ($t['_a'] == "login") {
 		$valid_error = 1;
 	}
 
-	// check the invide code
+	// check the invite code
 	if ( $t['user_icode_open'] == 'on' ) {
 		if (isset($_POST["invitecode"]) AND ($_POST["invitecode"] == invitecode())) {
 			// pass
 		} else {
-			$valid_error = 1;
+			$invite_error = 1;
 			$t['msg'] .= l('the invite code is wrong');
 		}
 	}
@@ -116,18 +117,22 @@ if ($t['_a'] == "login") {
 		}
 
 		// remove validate code
-		unset($_COOKIE["val11"]);
+		unset($_COOKIE["val22"]);
 		setcookie("val22", '', -1);
 	}
 
 	// pass validation
 	if ($valid_error == 0) {
 		// user register
-		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
-				$arr = $_POST;
-				$arr['level'] = 1;
-				$t['msg'] = user_add($arr);
-				url_to($t["link_login"]);
+		if (isset($_POST["firstime"])) {
+			if ( $t['user_reg_open'] == 'on' ) {
+				if ($invite_error == 0) {
+					$arr = $_POST;
+					$arr['level'] = 1;
+					$t['msg'] = user_add($arr);
+					url_to($t["link_login"]);
+				}
+			}
 
 		// user login
 		} else {
