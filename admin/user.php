@@ -60,37 +60,24 @@ if ($t['_v'] == "getvcode") {
 
 	// size
 	$im = imagecreatetruecolor(60, 20);
-	// color
-	$text_color = imagecolorallocate($im, 198, 228, 212);
-	imagestring($im, 5, 5, 2,  $shotcode, $text_color);
 
-	setcookie("long_vcode", $longcode, time()+60*2);
+	// draw font
+	$text_color = imagecolorallocate($im, 255, 255, 255);
+	imagestring($im, 5, 5, 2, $shotcode, $text_color);
 
-	// set the content type header
+	// draw line
+	imageline($im, rand(1,9), rand(1,20), rand(30,50), rand(1,10), $text_color);
+
+
+	// set cookie, header type, image
+	setcookie("val22", $longcode, time()+60*2);
 	header('Content-Type: image/jpeg');
-
 	imagejpeg($im, NULL, 75);
-// 	$reval = array('longcode' => $longcode);
 
-	// Free up memory
+	// free up memory
 	imagedestroy($im);
 
-// 	exit(json_encode(array('longcode' => $longcode)));
 	exit;
-}
-
-
-function validcode($shot_code = '') {
-	$reval = '';
-	// shot code
-	if ($shot_code == '') {
-		$reval = rand(1000, 99999);
-
-	// long code
-	} else {
-		$reval = md5($shot_code . date('dh'));
-	}
-	return $reval;
 }
 
 
@@ -117,9 +104,10 @@ if ($t['_a'] == "login") {
 	}
 
 	// check the validate code
+	// val22 is the long vcode
 	if ( $t['user_vcode_open'] == 'on' ) {
-		if (isset($_POST["shot_vcode"]) AND isset($_COOKIE["long_vcode"])) {
-			if ($_COOKIE["long_vcode"] != validcode($_POST["shot_vcode"])) {
+		if (isset($_POST["shot_vcode"]) AND isset($_COOKIE["val22"])) {
+			if ($_COOKIE["val22"] != validcode($_POST["shot_vcode"])) {
 				$valid_error = 1;
 				$t['msg'] .= l('the validate code is wrong');
 			}
@@ -129,8 +117,8 @@ if ($t['_a'] == "login") {
 		}
 
 		// remove validate code
-		unset($_COOKIE["long_vcode"]);
-		setcookie("long_vcode", '', -1);
+		unset($_COOKIE["val11"]);
+		setcookie("val22", '', -1);
 	}
 
 	// validate pass
@@ -168,7 +156,7 @@ if ($t['_v'] == "login") {
 		$t['aboutuser'] = record_get_content($t['rid_aboutuser']);
 		url_referer('?');
 // 		$t['shot_code'] = validcode();
-// 		$t['long_code'] = validcode($t['shot_code']);
+// 		$t['val22'] = validcode($t['shot_code']);
 		tpl($t, $t['tpl_dir']."login", VIEW_DIR.'layout');
 	}
 }

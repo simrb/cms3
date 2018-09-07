@@ -618,6 +618,27 @@ function invitecode () {
 	return substr(md5(date('mHd')), -6);
 }
 
+/* return validation code
+
+	example 1, get the shot valid code
+	$shotcode = validcode();			// return a rand number like 21312
+
+	example 2, return the long valid code
+	$longcode = validcode($shotcode);	// that is a md5 number return
+
+*/
+function validcode($shot_code = '') {
+	$reval = '';
+	// shot code
+	if ($shot_code == '') {
+		$reval = rand(1000, 99999);
+
+	// long code
+	} else {
+		$reval = md5($shot_code . date('dh'));
+	}
+	return $reval;
+}
 
 /* change date to timeago
 
