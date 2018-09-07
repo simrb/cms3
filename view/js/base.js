@@ -50,7 +50,7 @@ $(document).ready( function() {
 	setTimeout(function () {
 		//$("#msg").css('margin', '15px 0');
 		$("#msg").remove();
-	}, 5000);
+	}, 6000);
 
 	// validate code
 	var vcode_img = $('.vcode_img');
