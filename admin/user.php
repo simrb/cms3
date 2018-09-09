@@ -37,10 +37,10 @@ if ($t['_a'] == "del") {
 //act: delsess
 if ($t['_a'] == "delsess") {
 	if (isset($_GET['exp'])) {
-		sql_query("DELETE FROM sess WHERE exptime < ". time());
+		sql_query("DELETE FROM usersess WHERE exptime < ". time());
 		$t["msg"] = l('deleted successfully');
 	} else {
-		sql_query("TRUNCATE TABLE sess;");
+		sql_query("TRUNCATE TABLE usersess;");
 		$t["msg"] = l('deleted successfully, you will quit soon');
 	}
 }
@@ -187,7 +187,7 @@ if ($t['_v'] == "show") {
 
 //view: status
 if ($t['_v'] == "status") {
-	$t["user_res"] = sql_query("SELECT * FROM sess ORDER BY sid DESC LIMIT 20;");
+	$t["user_res"] = sql_query("SELECT * FROM usersess ORDER BY usid DESC LIMIT 20;");
 	tpl($t, $t['tpl_dir']."sess");
 }
 

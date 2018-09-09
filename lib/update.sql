@@ -68,8 +68,16 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
   PRIMARY KEY  (`umid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+RENAME TABLE `userkv` TO `userinfo`;
+RENAME TABLE `sess` TO `usersess`;
 
-
-
+CREATE TABLE `useract` (
+  `uaid` int(11) NOT NULL auto_increment,
+  `uid` int(11) NOT NULL,
+  `ukey` varchar(20) NOT NULL,
+  `uval` varchar(20) NOT NULL,
+  PRIMARY KEY  (`uaid`),
+  KEY `uid_key_val` (`uid`, `ukey`, `uval`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 

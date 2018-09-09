@@ -48,8 +48,8 @@ if ($t['_a'] == "ajax_getuser") {
 	$reval = '';
 	// return user nickname and intro
 	if (isset($_GET['uid']) AND $_GET['uid'] > 0) {
-		$reval 		= userkv($_GET['uid'], 'nickname');
-		$intro 		= userkv($_GET['uid'], 'intro');
+		$reval 		= userinfo($_GET['uid'], 'nickname');
+		$intro 		= userinfo($_GET['uid'], 'intro');
 // 		$res = sql_query("SELECT username FROM user WHERE uid = '".$_GET['uid']."';");
 // 		if ($row = mysql_fetch_row($res)) {
 // 			exit($row[0]);
@@ -123,7 +123,7 @@ if ($t['_a'] == "settings") {
 	foreach($user_setting as $key => $val) {
 		if (isset($_POST[$key]) and isset($_POST[$key."_old"]) 
 		and ($_POST[$key] != $_POST[$key."_old"])) {
-			userkv($uid, $key, $_POST[$key]);
+			userinfo($uid, $key, $_POST[$key]);
 		}
 	}
 	$t["msg"] = l('operated successfully');
@@ -276,7 +276,7 @@ if ($t['_v'] == "settings") {
 		$t[$key] = '';
 	}
 
-	$res = sql_query("SELECT * FROM userkv WHERE uid = ". $uid);
+	$res = sql_query("SELECT * FROM userinfo WHERE uid = ". $uid);
 
 	if ($res) {
 		while ($row = mysql_fetch_row($res)) {	
@@ -303,7 +303,7 @@ if ($t['_v'] == "message") {
 
 	if ($t['user_msg_open'] == 'on') {
 		if (isset($_GET['usermsg'])) {
-			userkv($uid, 'msg', 'null');
+			userinfo($uid, 'msg', 'null');
 		}
 
 		$t["msg_res"]		=	usermsg($uid);

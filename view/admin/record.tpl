@@ -46,8 +46,6 @@
 						while($row = mysql_fetch_array($t["record_res"])) {
 
 							$category = isset($t['category_kv'][$row['cid']]) ? $t['category_kv'][$row['cid']] : " -- ";
-						//$status = isset($t['status_kv'][$row['sid']]) ? $t['status_kv'][$row['sid']] : "";
-
 
 							echo "<tr>";
 

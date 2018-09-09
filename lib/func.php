@@ -305,7 +305,7 @@ function user_login ($name, $pawd) {
 		setcookie("token", $token, $time);
 
 		// save a token
-		sql_query("INSERT INTO sess (uid, token, created, exptime) VALUES (
+		sql_query("INSERT INTO usersess (uid, token, created, exptime) VALUES (
 			'".$row[0]."', '$token', '".time()."', '".$time."')");
 
 		$reval 	= true;
@@ -320,25 +320,25 @@ function user_logout () {
 
 	// remove from db
 	if(!empty($token)) {
-		sql_query("DELETE FROM sess WHERE token = '$token'");
+		sql_query("DELETE FROM usersess WHERE token = '$token'");
 	}
 }
 
 // return the user id current he logined
 function user_id () {
-	$info = user_info();
+	$info = userbase();
 	return (isset($info[0]) ? $info[0] : 0);
 }
 
 // return the user name 
 function user_name () {
-	$info = user_info();
+	$info = userbase();
 	return (isset($info[1]) ? $info[1] : 'default');
 }
 
 // return the user level
 function user_level () {
-	$info = user_info();
+	$info = userbase();
 	return (isset($info[3]) ? $info[3] : 0);
 }
 
@@ -351,24 +351,23 @@ function user_is_login () {
 }
 
 function user_level_need ($level) {
-	$info = user_info();
+	$info = userbase();
 	return ($info[3] == $level ? true : false);
 }
 
-// remove at new version
-function user_role_need ($role) {
-	$info = user_info();
-	return ($info[3] == $role ? true : false);
-}
+// function user_role_need ($role) {
+// 	$info = userbase();
+// 	return ($info[3] == $role ? true : false);
+// }
 
-// return an array of user info
-function user_info () {
+// return user table values by current uid 
+function userbase () {
 	$reval = array();
 	$token = isset($_COOKIE["token"]) ? $_COOKIE["token"] : '';
 
 	if(!empty($token)) {
 		$res = sql_query("SELECT * FROM user WHERE uid = 
-			(SELECT uid FROM sess WHERE token = '". $token ."' LIMIT 1)");
+			(SELECT uid FROM usersess WHERE token = '". $token ."' LIMIT 1)");
 		if (mysql_num_rows($res) > 0) {
 			$reval = mysql_fetch_row($res);
 		}
@@ -417,20 +416,56 @@ function user_add ($arr) {
 }
 
 
-/*	user key-val
+
+/*	user action, mark down current user action, like the web server logs
+	the first argument is an action, the second is some value what you want to mark down.
+
+	for example 01, a user hits the useful action for rid 25 of record, 
+	useract('useful', 25);		// success, return null value
+	useract('useful', 25);		// failure, return 1
+
+	for example 02, a user when he has been logined
+	useract('login', time());	// return null value
+	useract('login', time());	// return null value
+
+	for example 03, a user when he updated the created time of record for rid 25
+	useract('updated25', date('ymd'));
+
+*/
+function useract ($ukey, $uval) {
+	$reval	= 1;
+	$uid 	= user_id();
+
+	$res = sql_query("SELECT uaid FROM useract WHERE uid = '$uid' AND ukey = '$ukey' AND uval = '$uval';");
+
+	// mark down if not exists the action
+	if ($res) {
+		if (mysql_num_rows($res) == 0) {
+			sql_query("INSERT INTO useract (uid, ukey, uval) VALUES ('". 
+				$uid ."','". $ukey ."', '". $uval ."')");
+
+			$reval = '';
+		}
+	}
+
+	return $reval;
+}
+
+
+/*	user key-val for storing the user detail information
 
 	for example, set value
-	userkv(1, 'nickname', 'linyu')
+	userinfo(1, 'nickname', 'linyu')
 
 	for example, get value
-	userkv(1, 'nickname')	#=> 'linyu'
+	userinfo(1, 'nickname')	#=> 'linyu'
 */
-function userkv ($uid, $ukey, $uval = '') {
+function userinfo ($uid, $ukey, $uval = '') {
 	$reval	= '';
 // 	$uid 	= user_id();
 
 	// get value
-	$res = sql_query("SELECT uval FROM userkv WHERE uid = '". $uid ."' AND ukey = '". $ukey ."' LIMIT 1");
+	$res = sql_query("SELECT uval FROM userinfo WHERE uid = '". $uid ."' AND ukey = '". $ukey ."' LIMIT 1");
 	$num = mysql_num_rows($res);
 	if ($num > 0) {
 		$res 	= mysql_fetch_row($res);
@@ -441,9 +476,9 @@ function userkv ($uid, $ukey, $uval = '') {
 	if ($uval != '') {
 		$reval = $uval;
 		if ($num > 0) {
-			sql_query("UPDATE userkv SET uval = '". $uval ."' WHERE uid = '". $uid ."' AND ukey = '". $ukey ."'");
+			sql_query("UPDATE userinfo SET uval = '". $uval ."' WHERE uid = '". $uid ."' AND ukey = '". $ukey ."'");
 		} else {
-			sql_query("INSERT INTO userkv (uid, ukey, uval) VALUES (
+			sql_query("INSERT INTO userinfo (uid, ukey, uval) VALUES (
 				'". $uid ."','". $ukey ."', '". $reval ."')");
 		}
 	}
@@ -475,7 +510,7 @@ function usermsg ($touid, $rid = 0) {
 			$fromuid ."','". $touid ."', '". $reval ."', 1)");
 
 		// remind user
-		userkv($touid, 'has_msg', 1);
+		userinfo($touid, 'has_msg', 1);
 
 	// get value
 	} else {
@@ -488,6 +523,8 @@ function usermsg ($touid, $rid = 0) {
 }
 
 
+// remind the user if the post body has the sign of calling user
+// $content is record content, or something message words that could be including user sign like u#11, u#22
 function user_remind($content, $rid) {
 	if ($GLOBALS['t']['user_msg_open'] == 'on') {
 		$reg = '/u#([0-9]{0,11})/m';
@@ -500,7 +537,7 @@ function user_remind($content, $rid) {
 				usermsg($uid, $rid);
 
 				// mark it for new msg
-				userkv($uid, 'msg', 'has');
+				userinfo($uid, 'msg', 'has');
 			}
 		}
 	}

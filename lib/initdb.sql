@@ -148,27 +148,27 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`, `created`) VALUES
 
 
 --
--- `userkv`, for user, a key-val piece 
+-- `userinfo`, for user, about the detail information 
 --
-CREATE TABLE `userkv` (
-  `ukid` int(11) NOT NULL auto_increment,
+CREATE TABLE `userinfo` (
+  `uiid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL default '0',
   `ukey` varchar(50) NOT NULL,
   `uval` varchar(100) NOT NULL,
-  PRIMARY KEY  (`ukid`)
+  PRIMARY KEY  (`uiid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
 --
--- `sess`, for user,  session for marking the user login status
+-- `usersess`, for user,  session for marking the user login status
 --
-CREATE TABLE `sess` (
-  `sid` int(11) NOT NULL auto_increment,
+CREATE TABLE `usersess` (
+  `usid` int(11) NOT NULL auto_increment,
   `uid` int(11) NOT NULL,
   `created` varchar(10) NOT NULL,
   `exptime` varchar(10) NOT NULL,
   `token` varchar(50) NOT NULL,
-  PRIMARY KEY  (`sid`)
+  PRIMARY KEY  (`usid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -184,5 +184,17 @@ CREATE TABLE `usermsg` (
   PRIMARY KEY  (`umid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+--
+-- `useract`, for user, mark down the user actions
+--
+CREATE TABLE `useract` (
+  `uaid` int(11) NOT NULL auto_increment,
+  `uid` int(11) NOT NULL,
+  `ukey` varchar(20) NOT NULL,
+  `uval` varchar(20) NOT NULL,
+  PRIMARY KEY  (`uaid`),
+  KEY `uid_key_val` (`uid`, `ukey`, `uval`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
