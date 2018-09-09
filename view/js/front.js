@@ -142,38 +142,7 @@ $(document).ready( function() {
 	});
 
 
-	// deleted event
-	/*
-	$(".del_btn").click(function(e) {
-		var reval = confirm('Are you sure ?');
-		if (!reval) {
-			e.preventDefault();
-		}
-	});
-	*/
-
-
-	// useful event
-	$(".useful_btn").click(function(e) {
-		e.preventDefault();
-		var useful_btn = $(this);
-		var reval = prompt('set to : ');
-		var rid	= useful_btn.attr('rid');
-
-		// post to server
-		if (reval != null && reval != '') {
-			$.ajax({
-				url: "?_a=ajax_useful&rid=" + rid,
-				data: {'useful_val': reval},
-			}).done(function(msg) {
-				//useful_btn.find('span').text(reval);
-				//console.log(msg);
-				show_msg(msg, useful_btn);
-			});
-		}
-	});
-
-	// useful view
+	// useful style
 	$(".show-detail-body").hover(function () {
 		$(this).find(".useful_no").css('color', 'gray');
 		$(this).find(".re_btn").css('color', 'gray');
@@ -184,8 +153,20 @@ $(document).ready( function() {
 		$(this).find(".adm_btn label").css('color', '');
 	});
 
-	// useful plus one
+	// useful event
 	$(".useful_view").click(function () {
+		var use_btn = $(this);
+		var use_num	= use_btn.find('span').text();
+		$.ajax({
+			url: use_btn.attr('use_url'),
+		}).done(function(msg) {
+			if (msg != 0) {
+				use_btn.find('span').text(msg);
+				use_btn.removeClass('useful_no');
+				use_btn.addClass('useful_hl');
+				use_btn.css('color', '');
+			}
+		});
 	});
 
 

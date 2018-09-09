@@ -13,7 +13,9 @@
 
 			// useful
 			$useful_class = $t['record_res']['useful'] > 0 ? 'useful_hl' : 'useful_no';
-			echo "<label class='left useful_view ".$useful_class."'>". l('useful') ."</label>";
+			$useful_number = $t['record_res']['useful'] > 0 ? $t['record_res']['useful'] : '';
+			echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$t['rid']."'>".
+				l('useful') ." <span>". $useful_number ."</span></label>";
 
 			// reply
 			echo "<label class='right re_btn' reply_sign='r#".$t['rid']." u#".$t['record_res']['uid']."'>". l('reply') . "</label>";
@@ -22,16 +24,8 @@
 				// admin btn
 				echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
 
-				// useful btn
-				echo "<a href='?_a=useful&rid=".$t['rid'].
-						"'><label class='right useful_btn' rid=".$t['rid']." >". l('useful') . "</label></a>";
-
 				// move btn
 				echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
-
-				// rm btn
-				//echo "<a class='del_btn' href='?_a=delpost&rid=".$t['rid'].
-				//		"'><label class='right'>". l('delete') . "</label></a>";
 
 				// edit btn
 				echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$t['rid'].
@@ -58,7 +52,9 @@
 
 				// useful
 				$useful_class = $row['useful'] > 0 ? 'useful_hl' : 'useful_no';
-				echo "<label class='left useful_view ".$useful_class."'>". l('useful') ."</label>";
+				$useful_number = $row['useful'] > 0 ? $row['useful'] : '';
+				echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$row['rid']."'>".
+					l('useful') ." <span>". $useful_number ."</span></label>";
 
 				// reply
 				echo "<label class='right re_btn' reply_sign='r#".$row['rid']." u#".$row['uid']."'>". l('reply') . "</label>";
@@ -67,16 +63,8 @@
 					// admin btn
 					echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
 
-					// useful btn
-					echo "<a href='?_a=useful&cmt=".$row['rid']. "&rid=". $t['rid'].
-							"'><label class='right useful_btn' rid=".$row['rid'].">". l('useful'). "</label></a>";
-
 					// move btn
 					echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
-
-					// rm btn
-					//echo "<a class='del_btn' href='?_a=delpost&cmt=".$row['rid']. "&rid=". $t['rid'].
-					//		"'><label class='right'>". l('delete') . "</label></a>";
 
 					// edit btn
 					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].

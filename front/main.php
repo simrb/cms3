@@ -70,42 +70,19 @@ if ($t['_a'] == "ajax_getuser") {
 
 // act: ajax_useful
 if ($t['_a'] == "ajax_useful") {
-	if (user_level() > 4 and isset($_GET['rid']) and isset($_GET['useful_val'])) {
-		sql_query("UPDATE record SET useful = ".$_GET['useful_val']." WHERE rid = '".$_GET['rid']."';");
-		exit(l('operated successfully'));
-	}
-	exit(l('failure'));
-}
-
-
-// act: useful
-if ($t['_a'] == "useful") {
-	if (user_level() > 4 and isset($_GET['rid'])) {
-		if (isset($_GET['cmt'])) {
-			sql_query("UPDATE record SET useful = 1 WHERE rid = '".$_GET['cmt']."';");
-		} else {
-			sql_query("UPDATE record SET useful = 1 WHERE rid = '".$_GET['rid']."';");
+	$reval = '0';
+	if (user_level() > 0 AND isset($_GET['rid']) ) {
+		$res = useract('useful', $_GET['rid']);
+		if (empty($res)) {
+			$use_num = record_get_field($_GET['rid'], 'useful');
+			$use_num = $use_num != '' ? $use_num + 1 : 0;
+			sql_query("UPDATE record SET useful = ".$use_num." WHERE rid = '".$_GET['rid']."';");
+			$reval = "$use_num";
 		}
 	}
-	$t['_v'] = 'detail';
+	exit($reval);
 }
 
-
-// act: delpost
-// just modify the category id as 0, don`t delete it really
-// if ($t['_a'] == "delpost") {
-// 	if (user_level() > 4 and isset($_GET['rid'])) {
-// 		if (isset($_GET['cmt'])) {
-// 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['cmt']."';");
-// 			$t['_v'] = 'detail';
-// 		} else {
-// 			sql_query("UPDATE record SET cid = 0 WHERE rid = '".$_GET['rid']."';");
-// 			$t['_v'] = 'show';
-// 			$t['msg'] = l('deleted successfully');
-// 			// $t['cid'] = ;
-// 		}
-// 	}
-// }
 
 
 // act: settings
@@ -249,7 +226,7 @@ if ($t['_v'] == "detail") {
 if ($t['_v'] == "addpost") {
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"addpost";
-	$t['aboutpost'] 	= record_get_content($t['rid_aboutpost']);
+	$t['aboutpost'] 	= record_get_field($t['rid_aboutpost'], 'content');
 
 	tpl($t, $t['tpl_dir']."addpost");
 }

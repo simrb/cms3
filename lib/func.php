@@ -639,12 +639,13 @@ function recordkv ($rid, $rkey = '', $rval = '') {
 	return $reval;
 }
 
-function record_get_content ($rid = 0) {
-	$reval = l('nothing');
+// return given field value of record table, others is null value
+function record_get_field ($rid = 0, $key) {
+	$reval = '';
 	if ($rid != 0) {
-		$res = sql_query('SELECT content FROM record WHERE rid = '. $rid);
+		$res = sql_query('SELECT '. $key .' FROM record WHERE rid = '. $rid);
 		if ($row = mysql_fetch_assoc($res)) {
-			$reval = $row['content'];
+			$reval = $row[$key];
 		}
 	}
 	return $reval;

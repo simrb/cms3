@@ -159,7 +159,7 @@ if ($t['_v'] == "login") {
 		$t['tpl_dir'] = VIEW_DIR;
 		out(l('you have login yet'), $t);
 	} else {
-		$t['aboutuser'] = record_get_content($t['rid_aboutuser']);
+		$t['aboutuser'] = record_get_field($t['rid_aboutuser'], 'content');
 		url_referer('?');
 // 		$t['shot_code'] = validcode();
 // 		$t['val22'] = validcode($t['shot_code']);
