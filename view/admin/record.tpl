@@ -154,12 +154,10 @@ if ($t['_v'] == 'edit') { ?>
 						<label><?= l('tag'); ?></label>
 						<input type="text" name="tag" class="w100" value="<?= $t['tag'] ?>" />
 					</li>
-
 					<li>
 						<label><?= l('picture'); ?></label>
 						<div class="file_list"></div>
 					</li>
-
 					<li>
 						<label><?= l('parent'); ?></label>
 						<input type="text" name="follow" class="w50" value="<?= $t['follow'] ?>" />
@@ -171,7 +169,7 @@ if ($t['_v'] == 'edit') { ?>
 					<li>
 						<?php if ($t['rid'] != 0) { ?>
 							<a href="<?= url_c('_a=del&rid='. $t['rid']); ?>">
-								<button > <?= l('trash'); ?> </button>
+								<input type="button" value="<?= l('trash'); ?>" />
 							</a>
 						<?php } ?>
 					</li>
