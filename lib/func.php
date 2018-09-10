@@ -380,22 +380,7 @@ function user_ip () {
 	return $_SERVER['REMOTE_ADDR'];
 }
 
-function user_allow_submit () {
-	$reval = '';
-
-	if (optionkv('last_post_ip') == user_ip()) {
-		// time
-		if (abs(intval(date("i")) - intval(optionkv('last_post_time'))) < 2) {
-			$reval = l('you cannot post twice in a short time');
-		}
-	} else {
-		optionkv('last_post_ip', user_ip());
-	}
-	optionkv('last_post_time', date("i"));
-
-	return $reval;
-}
-
+// add new user
 function user_add ($arr) {
 // 	$reval = l('failed to add');
 	$reval = '';
@@ -416,17 +401,17 @@ function user_add ($arr) {
 }
 
 
-
 /*	user action, mark down current user action, like the web server logs
-	the first argument is an action, the second is some value what you want to mark down.
+	the first argument is an action name, the second is certain value what you want to mark down.
+	if it has been not marked yet, return null value, others is un-null value
 
 	for example 01, a user hits the useful action for rid 25 of record, 
 	useract('useful', 25);		// success, return null value
 	useract('useful', 25);		// failure, return 1
 
 	for example 02, a user when he has been logined
-	useract('login', time());	// return null value
-	useract('login', time());	// return null value
+	useract('login', time() + 1);	// return null value
+	useract('login', time() + 2);	// return null value
 
 	for example 03, a user when he updated the created time of record for rid 25
 	useract('updated25', date('ymd'));

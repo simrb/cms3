@@ -2,7 +2,7 @@
 
 // commom
 $t['uid'] 			= $uid	= user_id();
-$t["category_kv"] 	= data_fetch_category("category", "cid", "name");
+$t["category_kv"] 	= header_menu();
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
@@ -10,7 +10,7 @@ $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
 // act: ajax_movepost
 if ($t['_a'] == "ajax_movepost") {
-	if (user_level() > 4 and isset($_GET['cid']) and isset($_GET['rid'])) {
+	if (user_level() > 4 AND isset($_GET['cid']) AND isset($_GET['rid'])) {
 		sql_query("UPDATE record SET cid = '".$_GET['cid']."' WHERE rid = '".$_GET['rid']."';");
 		exit(l('post has been moved'));
 	} else {
@@ -21,7 +21,7 @@ if ($t['_a'] == "ajax_movepost") {
 
 // act: ajax_addpost
 if ($t['_a'] == "ajax_addpost") {
-	if (user_level() > 4 and isset($_GET['pre_txt']) and isset($_GET['rid'])) {
+	if (user_level() > 4 AND isset($_GET['pre_txt']) AND isset($_GET['rid'])) {
 		sql_query("UPDATE record SET content = '".$_GET['pre_txt']."' WHERE rid = '".$_GET['rid']."';");
 		user_remind($_GET['pre_txt'], $_GET['rid']);
 		exit(l('operated successfully'));
@@ -46,7 +46,7 @@ if ($t['_a'] == "ajax_getpost") {
 // act: ajax_getuser
 if ($t['_a'] == "ajax_getuser") {
 	$reval = '';
-	// return user nickname and intro
+	// return user nickname AND intro
 	if (isset($_GET['uid']) AND $_GET['uid'] > 0) {
 		$reval 		= userinfo($_GET['uid'], 'nickname');
 		$intro 		= userinfo($_GET['uid'], 'intro');
@@ -84,12 +84,11 @@ if ($t['_a'] == "ajax_useful") {
 }
 
 
-
 // act: settings
 if ($t['_a'] == "settings") {
 
 	// update password
-	if (isset($_POST['password']) and $_POST['password'] != '**') {
+	if (isset($_POST['password']) AND $_POST['password'] != '**') {
 		sql_query("UPDATE user SET 
 			password = '". $_POST["password"] ."' 
 			WHERE uid = '".$uid."';"
@@ -98,8 +97,8 @@ if ($t['_a'] == "settings") {
 
 	// update others
 	foreach($user_setting as $key => $val) {
-		if (isset($_POST[$key]) and isset($_POST[$key."_old"]) 
-		and ($_POST[$key] != $_POST[$key."_old"])) {
+		if (isset($_POST[$key]) AND isset($_POST[$key."_old"]) 
+		AND ($_POST[$key] != $_POST[$key."_old"])) {
 			userinfo($uid, $key, $_POST[$key]);
 		}
 	}
@@ -110,9 +109,9 @@ if ($t['_a'] == "settings") {
 
 // act: addcomment
 if ($t['_a'] == "addcomment") {
-	if (isset($_POST['rid']) and isset($_POST['content'])) {
-		
-		$t["msg"] = user_allow_submit();
+	if (isset($_POST['rid']) AND isset($_POST['content'])) {
+		$t["msg"] = useract('addcmt', user_ip().date('i'));
+
 		if ($t["msg"] == '') {
 			$insert_id = sql_query(
 				"INSERT INTO record (
@@ -124,18 +123,17 @@ if ($t['_a'] == "addcomment") {
 
 			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
+		} else {
+			$t["msg"] = l('you cannot post twice in a short time');
 		}
-
 	}
 }
 
 
 // act: addpost
 if ($t['_a'] == "addpost") {
-	if (isset($_POST['cid']) and isset($_POST['content'])) {
-
-		$t['msg'] = '';
- 		$t["msg"] = user_allow_submit();
+	if (isset($_POST['cid']) AND isset($_POST['content'])) {
+		$t["msg"] = useract('addpost', user_ip().date('h'));
 
 		if (user_level() < 1 ) {
 			$t['msg'] = l('no level to post');
@@ -153,6 +151,8 @@ if ($t['_a'] == "addpost") {
 
 			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
+		} else {
+			$t["msg"] = l('you cannot post twice in a short time');
 		}
 
 	}
@@ -166,14 +166,14 @@ if ($t['_v'] == "show") {
 
 	// pagination
 	$t["url_after"] 	=	"";
-	$pagecurr			=	(isset($_GET["pagecurr"]) and $_GET["pagecurr"]>1) ? $_GET["pagecurr"] : 1 ;
+	$pagecurr			=	(isset($_GET["pagecurr"]) AND $_GET["pagecurr"]>1) ? $_GET["pagecurr"] : 1 ;
 	$pagesize			=	$c['def_pagesize'] ;
 	$pagenums			=	0 ;
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
 	$filenums			=	0;
 
 	$sql_str			= 	"SELECT * FROM record WHERE cid != 0 AND follow = 0";
-	$sql_str			.=	$t["cid"] > 0 ? (" and cid = ". $t["cid"]) : "";
+	$sql_str			.=	$t["cid"] > 0 ? (" AND cid = ". $t["cid"]) : "";
 	$res 				= 	sql_query($sql_str);
 	$filenums 			= 	mysql_num_rows($res);
 
@@ -290,11 +290,11 @@ if ($t['_v'] == "message") {
 }
 
 
-function data_fetch_category($tablename, $key, $val) {
+function header_menu() {
 	$rows = array();
-	if ($res = sql_query("SELECT * FROM ". $tablename . " WHERE number > 0 ORDER BY number")) {
+	if ($res = sql_query("SELECT * FROM category WHERE number > 0 ORDER BY number")) {
 		while ($row = mysql_fetch_assoc($res)) {
-			$rows[$row[$key]]  = $row;
+			$rows[$row['cid']]  = $row;
 		}
 	}
 	return $rows;
