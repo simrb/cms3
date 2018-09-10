@@ -36,8 +36,10 @@ $(document).ready( function() {
 
 		// set the editor
 		var display_txt = "<div class='clear display_btn'><textarea></textarea>";
-		display_txt += "<input type='button' value='update' class='update_btn right' />";
-		display_txt += "<input type='button' value='cancel' class='cancel_btn' /></div>";
+		//display_txt += "<input type='button' value='update' class='update_btn right' />";
+		//display_txt += "<input type='button' value='cancel' class='cancel_btn' /></div>";
+		display_txt += "<img src='view/img/10.png' class='update_btn right' />";
+		display_txt += "<img src='view/img/9.png' class='cancel_btn' /></div>";
 
 		$(this).after(display_txt);
 		var display_btn = edit_btn.next('.display_btn');
@@ -50,6 +52,8 @@ $(document).ready( function() {
 		display_btn.find('textarea').css({'height': display_height});
 		display_btn.find('textarea').css({'margin-bottom': '10px'});
 		display_btn.css({'margin-bottom': '20px'});
+		$('.update_btn').css({'width':'20px', 'height':'20px', 'margin-right':'5px'});
+		$('.cancel_btn').css({'width':'20px', 'height':'20px'});
 
 		// set editor value
 		var pre_txt = pre_btn.attr('org_val');

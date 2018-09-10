@@ -10,7 +10,7 @@ body { background-color: #e8ede0; }
 #header a, #bodyer a, #footer a { color: #374b37; }
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
-textarea { width: 98%; background-color: #eee;border: 1px solid gray;  border-radius:5px;}
+textarea { width: 99%; background-color: #eee;border: 1px solid gray;  border-radius:5px;}
 textarea.ui-input-text { min-height: 60px; }
 input { background-color: #eeeeee;  border: 1px solid gray; border-radius:5px; }
 textarea.reply_txt { margin-top: 20px;}
