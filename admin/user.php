@@ -84,7 +84,6 @@ if ($t['_v'] == "getvcode") {
 //act: login and register
 if ($t['_a'] == "login") {
 	$valid_error = 0;
-	$invite_error = 0;
 	$t['msg'] = '';
 	
 	// check username, password
@@ -95,11 +94,11 @@ if ($t['_a'] == "login") {
 	}
 
 	// check the invite code
-	if ( $t['user_icode_open'] == 'on' ) {
+	if ( $t['user_icode_open'] == 'on' AND isset($_POST["firstime"]) ) {
 		if (isset($_POST["invitecode"]) AND ($_POST["invitecode"] == invitecode())) {
 			// pass
 		} else {
-			$invite_error = 1;
+			$valid_error = 1;
 			$t['msg'] .= l('the invite code is wrong');
 		}
 	}
@@ -121,34 +120,31 @@ if ($t['_a'] == "login") {
 		setcookie("val22", '', -1);
 	}
 
-	// pass validation
+	// if pass all of validations
 	if ($valid_error == 0) {
 		// user register
-		if (isset($_POST["firstime"])) {
-			if ( $t['user_reg_open'] == 'on' ) {
-				if ($invite_error == 0) {
-					$arr = $_POST;
-					$arr['level'] = 1;
-					$t['msg'] = user_add($arr);
-					url_to($t["link_login"]);
-				}
-			}
+		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
+			$t['msg'] .= user_add($_POST);
+// 			$t['action_url'] = $t['link_register'];
+		}
 
 		// user login
-		} else {
+		if ($t['msg'] == '') {
 			if (user_login($_POST['username'], $_POST['password'])) {
-// 				$t['msg'] = l('login successfully');
-// 				url_to(url_referer());
-				url_to();
 			} else {
 				$t['msg'] .= l('failed to login, the username and password is not matched');
 			}
 		}
 	}
 
-	$t['msg'] .= " <a href='".$t["link_login"]."'>". l('return') ."</a>";
-	$t['tpl_dir'] = VIEW_DIR;
-	out($t['msg'], $t);
+	// success
+	if ($t['msg'] == '') {
+// 		$t['msg'] = l('login successfully');
+// 		url_to(url_referer());
+		url_to();
+	} else {
+		$t['_v'] = 'login';
+	}
 }
 
 
@@ -159,8 +155,10 @@ if ($t['_v'] == "login") {
 		$t['tpl_dir'] = VIEW_DIR;
 		out(l('you have login yet'), $t);
 	} else {
+		$t['action_url'] = isset($_GET["firstime"]) ? $t['link_register'] : $t['link_login'];
+		$t['action_url'] .= '&_a=login';
 		$t['aboutuser'] = record_get_field($t['rid_aboutuser'], 'content');
-		url_referer('?');
+// 		url_referer('?');
 // 		$t['shot_code'] = validcode();
 // 		$t['val22'] = validcode($t['shot_code']);
 		tpl($t, $t['tpl_dir']."login", VIEW_DIR.'layout');

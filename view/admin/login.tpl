@@ -1,5 +1,5 @@
 <div class="edit-form edit-form-login vaild-form">
-	<form action="<?=url_c('_a=login');?>" method="post">
+	<form action="<?=$t['action_url'];?>" method="post">
 		<ul>
 
 			<?php if (isset($_GET['firstime']) AND $t['user_reg_open'] == 'on') { ?>
@@ -54,7 +54,7 @@
 
 				<?php if($t['user_reg_open'] == 'on') { ?>
 					<li><br />
-						<a href="<?=$t['link_login']?>&firstime=yes" >
+						<a href="<?=$t['link_register']?>" >
 							<?= l('register account, please check here') ?></a>
 					</li>
 

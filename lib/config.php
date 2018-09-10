@@ -22,6 +22,7 @@ $t['tpl_layout'] 		=	'layout';
 
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
 $t['link_logout'] 		=	'?_m=admin&_f=user&_a=logout';
+$t['link_register'] 	=	'?_m=admin&_f=user&_v=login&firstime=yes';
 
 
 $t['user_level'] 		=	array(

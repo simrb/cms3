@@ -381,6 +381,7 @@ function user_ip () {
 }
 
 // add new user
+// success return null value, failure return msg
 function user_add ($arr) {
 // 	$reval = l('failed to add');
 	$reval = '';
@@ -390,6 +391,7 @@ function user_add ($arr) {
 			$reval = l('the user is existed');
 
 		} else {
+			$arr["level"] = isset($arr["level"]) ? $arr["level"] : 1;
 			sql_query("INSERT INTO user(username, password, level, created) 
 				VALUES ('". $arr["username"] ."','". $arr["password"] .
 				"','". $arr["level"] ."', '". time() ."');"
