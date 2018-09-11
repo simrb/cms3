@@ -152,9 +152,8 @@ if ($t['_a'] == "addpost") {
 			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
 		} else {
-			$t["msg"] = l('you cannot post twice in a short time');
+			$t["msg"] = l('you cannot post twice');
 		}
-
 	}
 
 	url_to( '?cid='. $_POST["cid"]);

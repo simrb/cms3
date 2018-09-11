@@ -55,7 +55,7 @@
 				<?php if($t['user_reg_open'] == 'on') { ?>
 					<li><br />
 						<a href="<?=$t['link_register']?>" >
-							<?= l('register account, please check here') ?></a>
+							<?= l('register account') ?></a>
 					</li>
 
 				<?php } ?>

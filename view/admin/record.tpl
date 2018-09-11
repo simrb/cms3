@@ -191,11 +191,14 @@ if ($t['_v'] == 'optimize') { ?>
 
 			<select name="select_condition" class="selectmenu">
 				<option selected> <?= l('condition'); ?> </option>
-				<option value="clean_trash" ><?= l('clean trash'); ?></option>
-				<option value="clean_guest" ><?= l('clean guest records three months ago'); ?></option>
-				<option value="clean_useless" ><?= l('clean useless records three months ago'); ?></option>
-				<option value="clean_guest_and_useless" ><?= l('clean guest and useless three months ago'); ?></option>
-				<option value="clean_guest_and_useless_days" ><?= l('clean guest and useless in three days'); ?></option>
+				<option value="clear00" ><?= l('clear00'); ?></option>
+				<option value="clear01" ><?= l('clear01'); ?></option>
+				<option value="clear02" ><?= l('clear02'); ?></option>
+				<option value="clear03" ><?= l('clear03'); ?></option>
+				<option value="clear04" ><?= l('clear04'); ?></option>
+				<option value="clear05" ><?= l('clear05'); ?></option>
+				<option value="clear06" ><?= l('clear06'); ?></option>
+				<option value="clear07" ><?= l('clear07'); ?></option>
 			</select>
 
 			<input type="submit" value="<?= l('execute'); ?>" />

@@ -41,7 +41,7 @@ if ($t['_a'] == "delsess") {
 		$t["msg"] = l('deleted successfully');
 	} else {
 		sql_query("TRUNCATE TABLE usersess;");
-		$t["msg"] = l('deleted successfully, you will quit soon');
+		$t["msg"] = l('you will quit soon');
 	}
 }
 
@@ -132,7 +132,7 @@ if ($t['_a'] == "login") {
 		if ($t['msg'] == '') {
 			if (user_login($_POST['username'], $_POST['password'])) {
 			} else {
-				$t['msg'] .= l('failed to login, the username and password is not matched');
+				$t['msg'] .= l('failed to login');
 			}
 		}
 	}
