@@ -62,31 +62,46 @@ if ($t['_a'] == "optimize") {
 	switch ($cdt) {
 
 		// delete records in trash
-		case 'clean_trash' :
+		case 'clear00' :
 			$num = sql_query("DELETE FROM record WHERE cid=0;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest records three months ago
-		case 'clean_guest' :
+		case 'clear01' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete uesless records three months ago
-		case 'clean_useless' :
+		case 'clear02' :
 			$num = sql_query("DELETE FROM record WHERE useful=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest and useless three months ago
-		case 'clean_guest_and_useless' :
+		case 'clear03' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created < $three_month;", 'affect_num');
 		break;
 
 		// delete guest and useless in three days
-		case 'clean_guest_and_useless_days' :
+		case 'clear04' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
+		break;
+
+		// delete action logs of adding post
+		case 'clear05' :
+			$num = sql_query("DELETE FROM useract WHERE ukey='addpost'", 'affect_num');
+		break;
+
+		// delete action logs of adding comment
+		case 'clear06' :
+			$num = sql_query("DELETE FROM useract WHERE ukey='addcmt'", 'affect_num');
+		break;
+
+		// delete action logs of clicking useful btton
+		case 'clear07' :
+			$num = sql_query("DELETE FROM useract WHERE ukey='useful'", 'affect_num');
 		break;
 	}
 
