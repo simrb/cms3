@@ -626,13 +626,27 @@ function recordkv ($rid, $rkey = '', $rval = '') {
 	return $reval;
 }
 
-// return given field value of record table, others is null value
-function record_get_field ($rid = 0, $key) {
+/* return given field value of record table, others is null value
+	
+	example 01, get a field
+	record_get_field(1, 'uid')		// maybe return 1, or other uid number
+
+	example 02, return all of fields
+	record_get_field(1)				// return array('uid' => 1, 'content' => 'some thing', 'created' => 111222,,,)
+*/
+function record_get_field ($rid, $key = '') {
 	$reval = '';
-	if ($rid != 0) {
-		$res = sql_query('SELECT '. $key .' FROM record WHERE rid = '. $rid);
-		if ($row = mysql_fetch_assoc($res)) {
-			$reval = $row[$key];
+	if ($rid > 0) {
+		$res = sql_query('SELECT * FROM record WHERE rid = '. $rid);
+		if ($key == '') {
+			$reval = array();
+			while($row = mysql_fetch_assoc($res)) {
+				$reval[] = $row;
+			}
+		} else {
+			if ($row = mysql_fetch_assoc($res)) {
+				$reval = $row[$key];
+			}
 		}
 	}
 	return $reval;
