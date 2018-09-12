@@ -8,9 +8,12 @@
 
 			<li class='clear user-msg-body'>
 				<?php
+					$msg_type = array(0 => l('reply'), 1 => l('reply'), 2 => l('like'));
 					if ($t['msg_res']) {
 						while($row = mysql_fetch_assoc($t['msg_res'])) {
-							echo '<p>'. timeago($row['created']) .' , '. $row['content'];
+							echo '<p>'. 'u#'.$row['fromuid']. ' '. $msg_type[$row['msg_type']] .',  '. $row['content'];
+
+							// jump to
 							if ($row['follow'] == 0) {
 								echo '<a target="_blank" href="?_v=detail&rid='. $row['rid'] .'"> >> </a></p>';
 							} else {

@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'like'	=>  '喜欢' ,
 'user message'	=>  '会员留言' ,
 'user info'	=>  '会员资料' ,
 'post has been moved' => '帖子已被移动',

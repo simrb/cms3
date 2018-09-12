@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'like'	=>  '' ,
 'user message'	=>  '' ,
 'user info'	=>  '' ,
 'post has been moved' => '',

@@ -486,23 +486,30 @@ function userinfo ($uid, $ukey, $uval = '') {
 	usermsg(1);				// array(array('rid', 'content', 'created',,))
 	usermsg(2);				// array(array('23',,,), array('25',,,)) the mysql result of record table
 */
-function usermsg ($touid, $rid = 0) {
+function usermsg ($touid, $rid = 0, $msg_type = 1) {
 	$reval		= array();
 
 	// set value
 	if ($rid > 0) {
 		$reval 		= $rid;
 		$fromuid 	= user_id();
-		sql_query("INSERT INTO usermsg (fromuid, touid, rid, msg_type) VALUES ('". 
-			$fromuid ."','". $touid ."', '". $reval ."', 1)");
+		sql_query("INSERT INTO usermsg (fromuid, touid, rid, msg_type, created) VALUES ('". 
+			$fromuid ."','". $touid ."', '". $reval ."', '". $msg_type ."', '". time() ."')");
 
-		// remind user
-		userinfo($touid, 'has_msg', 1);
+		// set msg number
+		userinfo($touid, 'new_msg', 1);
 
 	// get value
 	} else {
-		$reval = sql_query("SELECT * FROM record WHERE rid IN
-			(SELECT rid FROM usermsg WHERE touid = '". $touid ."') ORDER BY rid DESC
+// 		$reval = sql_query("SELECT * FROM record WHERE rid IN
+// 			(SELECT rid FROM usermsg WHERE touid = '". $touid ."') ORDER BY rid DESC
+// 		");
+		$reval = sql_query("
+			select distinct record.rid, record.content,record.follow, record.created, 
+				usermsg.fromuid, usermsg.msg_type from record 
+			right join usermsg on (record.rid=usermsg.rid) 
+			where record.rid in (select distinct usermsg.rid from usermsg where usermsg.touid = 1)
+			order by usermsg.created desc
 		");
 	}
 
@@ -522,9 +529,6 @@ function user_remind($content, $rid) {
 
 				// save msg
 				usermsg($uid, $rid);
-
-				// mark it for new msg
-				userinfo($uid, 'msg', 'has');
 			}
 		}
 	}
@@ -638,13 +642,10 @@ function record_get_field ($rid, $key = '') {
 	$reval = '';
 	if ($rid > 0) {
 		$res = sql_query('SELECT * FROM record WHERE rid = '. $rid);
-		if ($key == '') {
-			$reval = array();
-			while($row = mysql_fetch_assoc($res)) {
-				$reval[] = $row;
-			}
-		} else {
-			if ($row = mysql_fetch_assoc($res)) {
+		if ($row = mysql_fetch_assoc($res)) {
+			if ($key == '') {
+				$reval = $row;
+			} else {
 				$reval = $row[$key];
 			}
 		}

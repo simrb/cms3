@@ -68,6 +68,9 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
   PRIMARY KEY  (`umid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
+
+ALTER TABLE `usermsg` ADD `created` varchar(10) NOT NULL;
+
 RENAME TABLE `userkv` TO `userinfo`;
 ALTER TABLE `userinfo` CHANGE `ukid` `uiid` INT(11) NOT NULL auto_increment;
 

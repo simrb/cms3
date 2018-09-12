@@ -179,6 +179,7 @@ CREATE TABLE `usermsg` (
   `touid` int(11) NOT NULL,
   `rid` int(11) NOT NULL,
   `msg_type` tinyint(10) NOT NULL default '1',
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`umid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 

@@ -74,10 +74,15 @@ if ($t['_a'] == "ajax_useful") {
 	if (user_level() > 0 AND isset($_GET['rid']) ) {
 		$res = useract('useful', $_GET['rid']);
 		if (empty($res)) {
-			$use_num = record_get_field($_GET['rid'], 'useful');
+			$rec_field = record_get_field($_GET['rid']);
+			$use_num = $rec_field['useful'];
+			$use_uid = $rec_field['uid'];
 			$use_num = $use_num != '' ? $use_num + 1 : 0;
 			sql_query("UPDATE record SET useful = ".$use_num." WHERE rid = '".$_GET['rid']."';");
 			$reval = "$use_num";
+
+			// send msg to author
+			usermsg($use_uid, $_GET['rid'], 2);
 		}
 	}
 	exit($reval);
@@ -278,11 +283,12 @@ if ($t['_v'] == "message") {
 	$t["cid"]			=	0 ;
 
 	if ($t['user_msg_open'] == 'on') {
+		// clear msg that has readed
 		if (isset($_GET['usermsg'])) {
-			userinfo($uid, 'msg', 'null');
+			userinfo($uid, 'new_msg', 'null');
 		}
 
-		$t["msg_res"]		=	usermsg($uid);
+		$t["msg_res"]	=	usermsg($uid);
 	}
 
 	tpl($t, $t['tpl_dir']."message");
