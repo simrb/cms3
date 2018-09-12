@@ -99,8 +99,9 @@ fi
 
 # backup db
 if [ $Ubackup = "yes" ] ; then
+# 	my_tables='category file optionkv record recordkv tag tag_assoc user userinfo usermsg'
 	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
-	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] > '$my_bk_dir'/db.'$my_dd'";' > t.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] category file optionkv record recordkv tag tag_assoc user userinfo usermsg > '$my_bk_dir'/db.'$my_dd'";' > t.t
 	sh t.t
 	rm t.t tt.t 
 fi
@@ -112,7 +113,7 @@ if [ $Uupdate = "yes" ] ; then
 	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
 	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysql -u$a[0] -p$a[1] $a[2] < lib/update.sql";' > t.t
 	sh t.t
-	rm t.t tt.t 
+	rm t.t tt.t
 fi
 
 
