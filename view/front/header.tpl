@@ -13,7 +13,7 @@
 
 	<?php
 		// message link
-		if ($t['user_msg_open'] == 'on' AND userinfo($t['uid'], 'new_msg') != 'null') {
+		if ($t['user_msg_open'] == 'on' AND $t['uid'] > 0 AND userinfo($t['uid'], 'new_msg') != 'null') {
 				echo '<a href="?_v=message&usermsg=has" >'. l('member') .'</a>';
 				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
 
