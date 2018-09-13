@@ -497,7 +497,7 @@ function usermsg ($touid, $rid = 0, $msg_type = 1) {
 			$fromuid ."','". $touid ."', '". $reval ."', '". $msg_type ."', '". time() ."')");
 
 		// set msg number
-		userinfo($touid, 'new_msg', 1);
+		userinfo($touid, 'new_msg', 'has');
 
 	// get value
 	} else {
@@ -505,11 +505,11 @@ function usermsg ($touid, $rid = 0, $msg_type = 1) {
 // 			(SELECT rid FROM usermsg WHERE touid = '". $touid ."') ORDER BY rid DESC
 // 		");
 		$reval = sql_query("
-			select distinct record.rid, record.content,record.follow, record.created, 
-				usermsg.fromuid, usermsg.msg_type from record 
-			right join usermsg on (record.rid=usermsg.rid) 
-			where record.rid in (select distinct usermsg.rid from usermsg where usermsg.touid = 1)
-			order by usermsg.created desc
+			SELECT DISTINCT record.rid, record.content, record.follow, usermsg.created, 
+				usermsg.fromuid, usermsg.msg_type FROM record 
+			RIGHT JOIN usermsg ON (record.rid=usermsg.rid) 
+			WHERE record.rid IN (SELECT DISTINCT usermsg.rid FROM usermsg WHERE usermsg.touid = $touid)
+			ORDER BY usermsg.created DESC
 		");
 	}
 

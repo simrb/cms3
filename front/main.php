@@ -129,7 +129,7 @@ if ($t['_a'] == "addcomment") {
 			user_remind($_POST['content'], $insert_id);
 			$t["msg"] = l('submitted successfully');
 		} else {
-			$t["msg"] = l('you cannot post twice in a short time');
+			$t["msg"] = l('you cannot post twice');
 		}
 	}
 }
@@ -285,7 +285,7 @@ if ($t['_v'] == "message") {
 	if ($t['user_msg_open'] == 'on') {
 		// clear msg that has readed
 		if (isset($_GET['usermsg'])) {
-			userinfo($uid, 'new_msg', 'null');
+			userinfo($uid, 'new_msg', '0');
 		}
 
 		$t["msg_res"]	=	usermsg($uid);
