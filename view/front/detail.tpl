@@ -12,10 +12,16 @@
 				timeago($t['record_res']['created']) .", by ". $t['record_res']['uid']. ",</label>";
 
 			// useful
-			$useful_class = $t['record_res']['useful'] > 0 ? 'useful_hl' : 'useful_no';
-			$useful_number = $t['record_res']['useful'] > 0 ? $t['record_res']['useful'] : '';
+			$useful_class 	= 'useful_no';
+			$useful_number 	= '';
+			$useful_img 	= '13.png';
+			if ($t['record_res']['useful'] > 0 ) {
+				$useful_class 	= 'useful_hl';
+				$useful_number 	= $t['record_res']['useful'];
+				$useful_img 	= '12.png';
+			}
 			echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$t['rid']."'>".
-				l('useful') ." <span>". $useful_number ."</span></label>";
+				"<span>". $useful_number ."</span><img class='left' src='view/img/". $useful_img ."' /></label>";
 
 			// reply
 			echo "<label class='right re_btn' reply_sign='r#".$t['rid']." u#".$t['record_res']['uid']."'>". l('reply') . "</label>";
@@ -51,10 +57,16 @@
 					timeago($row['created']) .", by ". $row['uid']. ",</label>";
 
 				// useful
-				$useful_class = $row['useful'] > 0 ? 'useful_hl' : 'useful_no';
-				$useful_number = $row['useful'] > 0 ? $row['useful'] : '';
+				$useful_class 	= 'useful_no';
+				$useful_number 	= '';
+				$useful_img 	= '13.png';
+				if ($row['useful'] > 0 ) {
+					$useful_class 	= 'useful_hl';
+					$useful_number 	= $row['useful'];
+					$useful_img 	= '12.png';
+				}
 				echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$row['rid']."'>".
-					l('useful') ." <span>". $useful_number ."</span></label>";
+					"<span>". $useful_number ."</span><img class='left' src='view/img/". $useful_img ."' /></label>";
 
 				// reply
 				echo "<label class='right re_btn' reply_sign='r#".$row['rid']." u#".$row['uid']."'>". l('reply') . "</label>";

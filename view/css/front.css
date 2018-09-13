@@ -46,7 +46,7 @@ textarea.reply_txt { margin-top: 20px;}
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
 
-.show-detail img { width: 50%; }
+.show-detail pre img { width: 50%; }
 .show-detail label.right { margin-left: 10px;  }
 .show-detail pre a { text-decoration: underline; }
 .show-detail a, .show-detail a label { cursor: pointer; }
@@ -54,8 +54,9 @@ textarea.reply_txt { margin-top: 20px;}
 
 .show-detail-title { color: gray; height: 100%; }
 .show-detail-title label { margin-bottom: 15px; }
-.show-detail-title label.useful_hl { color: #f24e48; margin-left:5px; cursor: pointer; }
-.show-detail-title label.useful_no { color: #ced5c8; margin-left:5px; cursor: pointer; }
+.show-detail-title label.useful_view { color: #f24e48; margin-left:2px;  cursor: pointer; }
+.show-detail-title label.useful_view span { margin-left: 3px;}
+.show-detail-title label.useful_view img { width:20px; height:18px;}
 .adm_btn label, .re_btn { color: #ced5c8; }
 // .show-detail-title label.useful_no:hover { color: #b5bdae; }
 .show-detail-body { margin-bottom: 15px; }

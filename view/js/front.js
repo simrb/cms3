@@ -169,6 +169,7 @@ $(document).ready( function() {
 				use_btn.removeClass('useful_no');
 				use_btn.addClass('useful_hl');
 				use_btn.css('color', '');
+				use_btn.find('img').attr('src', 'view/img/12.png');
 			}
 		});
 	});
@@ -342,8 +343,8 @@ $(document).ready( function() {
 	}
 	
 	function show_img () {
-		$('.show-detail img').css('cursor', 'pointer');
-		$('.show-detail img').click(function () {
+		$('.show-detail pre img').css('cursor', 'pointer');
+		$('.show-detail pre img').click(function () {
 
 			if ($(this).attr('org_width')) {
 				$(this).css('width', $(this).attr('org_width'));
