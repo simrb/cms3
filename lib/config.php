@@ -5,7 +5,7 @@ $c = array();	// global config
 $t = array();	// template var
 
 
-$c['version'] 			=	'v1.0.3.2';
+$c['version'] 			=	'v1.0.3.3';
 $c['def_view'] 			=	'view';		// default theme
 
 
