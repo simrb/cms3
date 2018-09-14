@@ -13,7 +13,7 @@
 						while($row = mysql_fetch_assoc($t['msg_res'])) {
 							echo '<p>'. timeago($row['created']) .', '.
 								'<a class="show-user" href="#u'.$row['fromuid']. '" >u#'.$row['fromuid']. '</a> '. 
-								$msg_type[$row['msg_type']] .',  '. $row['content'];
+								$msg_type[$row['msg_type']] .', '. $row['content'];
 
 							// link of jumping
 							if ($row['follow'] == 0) {
