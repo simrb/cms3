@@ -509,7 +509,7 @@ function usermsg ($touid, $rid = 0, $msg_type = 1) {
 				usermsg.fromuid, usermsg.msg_type FROM record 
 			RIGHT JOIN usermsg ON (record.rid=usermsg.rid) 
 			WHERE record.rid IN (SELECT DISTINCT usermsg.rid FROM usermsg WHERE usermsg.touid = $touid)
-			ORDER BY usermsg.created DESC
+			ORDER BY usermsg.created DESC LIMIT 50
 		");
 	}
 
