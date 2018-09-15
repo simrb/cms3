@@ -19,6 +19,8 @@ $filter_str = array(
 	','			=> 'rp16',
 	'_'			=> 'rp17',
 	'$'			=> 'rp18',
+	'!'			=> 'rp19',
+	'?'			=> 'rp20',
 );
 
 // return the dir path, if it is`t existed, just creates it
