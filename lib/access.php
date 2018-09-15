@@ -6,6 +6,7 @@ $_GET 		= sql_filter($_GET);
 $_POST		= sql_filter($_POST);
 $_REQUEST	= sql_filter($_REQUEST);
 $_COOKIE	= sql_filter($_COOKIE);
+$_SERVER	= sql_filter($_SERVER);
 
 
 // set module, file, action, view
