@@ -12,7 +12,7 @@ if ($t['_a'] == "update") {
 	if (isset($_POST["uid"]) and isset($_POST["username"])) {
 		sql_query("UPDATE user SET 
 			username = '". $_POST["username"] ."',
-			password = '". $_POST["password"] ."',
+			password = '". user_encode_pwd($_POST["password"]) ."',
 			level = '". $_POST["level"] ."' 
 			WHERE uid = '".$_POST["uid"]."';"
 		);
@@ -206,7 +206,7 @@ if ($t['_v'] == "edit") {
 			$row = mysql_fetch_assoc($res);
 			$t["uid"]			=	$row['uid'];
 			$t["username"]		=	$row['username'];
-			$t["password"]		=	$row['password'];
+			//$t["password"]		=	$row['password'];
 			$t["level"]			=	$row['level'];
 			$t['_a']			=	"update";
 		}

@@ -298,7 +298,7 @@ function utf8_substr2($str, $from, $len) {
 function user_login ($name, $pawd) {
 	$reval 		= false;
 	$res 		= sql_query("SELECT * FROM user WHERE 
-					username = '". $name ."' AND password ='". $pawd ."' ;");
+					username = '". $name ."' AND password ='". user_encode_pwd($pawd) ."' ;");
 
 	if (mysql_num_rows($res) > 0) {
 		$row 	= mysql_fetch_row($res);
@@ -326,6 +326,11 @@ function user_logout () {
 	if(!empty($token)) {
 		sql_query("DELETE FROM usersess WHERE token = '$token'");
 	}
+}
+
+
+function user_encode_pwd ($pawd) {
+	return md5($pawd. 'sn_code');
 }
 
 // return the user id current he logined
@@ -397,7 +402,7 @@ function user_add ($arr) {
 		} else {
 			$arr["level"] = isset($arr["level"]) ? $arr["level"] : 1;
 			sql_query("INSERT INTO user(username, password, level, created) 
-				VALUES ('". $arr["username"] ."','". $arr["password"] .
+				VALUES ('". $arr["username"] ."','". user_encode_pwd($arr["password"]) .
 				"','". $arr["level"] ."', '". time() ."');"
 			);
 // 			$reval = l('created user successfully');
