@@ -198,14 +198,23 @@ function data_fetch_kv($tablename, $key, $val) {
 // fetch a data collection from db
 function sql_query($sql, $op = NULL) {
 
-	$conn = mysql_connect($GLOBALS['c']['sql_server'], $GLOBALS['c']['sql_user'], $GLOBALS['c']['sql_pawd']) 
-		or die("Could not connect: " . mysql_error());
+	$conn = mysql_connect($GLOBALS['c']['sql_server'], $GLOBALS['c']['sql_user'], $GLOBALS['c']['sql_pawd']);
+	if (!$conn) {
+		$error = $GLOBALS['c']['def_mode'] == 'test' ? "Could not connect: " . mysql_error() : '';
+		die($error);
+	}
 
-	mysql_select_db($GLOBALS['c']['sql_dbname'], $conn) 
-		or die ("Can't use db ". $GLOBALS['c']['sql_dbname'] . mysql_error());
+	$res = mysql_select_db($GLOBALS['c']['sql_dbname'], $conn);
+	if (!$res) {
+		$error = $GLOBALS['c']['def_mode'] == 'test' ? "Can't use db ". $GLOBALS['c']['sql_dbname'] . mysql_error() : '';
+		die($error);
+	}
 
-	$result = mysql_query($sql) 
-		or die("Could not query: " . mysql_error());	
+	$result = mysql_query($sql);
+	if (!$result) {
+		$error = $GLOBALS['c']['def_mode'] == 'test' ? "Could not query: " . mysql_error() : '';
+		die($error);
+	}
 
 	if ($op == 'insert_id') {
 		$result = mysql_insert_id();
@@ -250,7 +259,7 @@ function show_bbcode($str) {
 // 		$text = stripslashes($text);
 	}
 
-	$str = strip_tags($str);
+// 	$str = strip_tags($str);
 
 	foreach($GLOBALS['filter_str'] as $key => $val) {
 		$str = str_replace($val, $key, $str);
@@ -260,9 +269,8 @@ function show_bbcode($str) {
 }
 
 function tohtml($str) {
-   	$str = mysql_real_escape_string($str);
 //   	$str = htmlspecialchars_decode($str);
-//    	$str =  htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+    	$str =  htmlspecialchars($str);
 //  	$str = htmlentities($str);
 //   	$str = html_entity_decode($str);
 // 	$str = str_replace('<', '&lt;', $str);

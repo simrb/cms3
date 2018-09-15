@@ -1,6 +1,6 @@
 <?php
 
-//error_reporting(0);
+// error_reporting(0);
 
 define("ACCESS", "ALLOW");
 function access(){ defined('ACCESS') or die('Access denied'); }
@@ -23,6 +23,8 @@ date_default_timezone_set($c['timezone']);
 if ($c['def_mode'] == 'test') {
 	ini_set("display_errors", "On");
 	error_reporting(E_ALL | E_STRICT);
+} else {
+	error_reporting(0);
 }
 require_once(MODULE_PATH	."lib/func.php");
 require_once(MODULE_PATH	."lib/access.php");
