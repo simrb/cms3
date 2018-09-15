@@ -16,20 +16,9 @@ $filter_str = array(
 	"\\"		=> 'rp13',
 	'/'			=> 'rp14',
 	'.'			=> 'rp15',
-// 	'select'	=> 'rp16',
-// 	'insert'	=> 'rp17',
-// 	'update'	=> 'rp18',
-// 	'delete'	=> 'rp19',
-// 	'drop'		=> 'rp20',
-// 	'show'		=> 'rp21',
-// 	'desc'		=> 'rp22',
-// 	'SELECT'	=> 'rp23',
-// 	'INSERT'	=> 'rp24',
-// 	'UPDATE'	=> 'rp25',
-// 	'DELETE'	=> 'rp26',
-// 	'DROP'		=> 'rp27',
-// 	'SHOW'		=> 'rp28',
-// 	'DESC'		=> 'rp29',
+	','			=> 'rp16',
+	'_'			=> 'rp17',
+	'$'			=> 'rp18',
 );
 
 // return the dir path, if it is`t existed, just creates it
@@ -239,7 +228,7 @@ function sql_filter($arr) {
 }
 
 function sql_filter_str($str) {
-	$str = mysql_real_escape_string($str);
+// 	$str = mysql_real_escape_string($str);
 
 	if (!get_magic_quotes_gpc()) {
 // 		$str = addslashes($str);
