@@ -400,10 +400,10 @@ function user_add ($arr) {
 			$reval = l('the user is existed');
 
 		} else {
-			$arr["level"] = isset($arr["level"]) ? $arr["level"] : 1;
+// 			$arr["level"] = isset($arr["level"]) ? $arr["level"] : 1;
 			sql_query("INSERT INTO user(username, password, level, created) 
 				VALUES ('". $arr["username"] ."','". user_encode_pwd($arr["password"]) .
-				"','". $arr["level"] ."', '". time() ."');"
+				"','1', '". time() ."');"
 			);
 // 			$reval = l('created user successfully');
 		}

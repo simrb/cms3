@@ -9,6 +9,11 @@ if ($t['_a'] == "add") {
 
 //act: update
 if ($t['_a'] == "update") {
+	if ( $_POST["level"] > 4 ) {
+		if (user_level() < 9 ) {
+			$_POST["level"] = 1;
+		}
+	}
 	if (isset($_POST["uid"]) and isset($_POST["username"])) {
 		sql_query("UPDATE user SET 
 			username = '". $_POST["username"] ."',
