@@ -1,6 +1,36 @@
 <?php access();
 
-
+$filter_str = array(
+	'='			=> 'rp01',
+	'%'			=> 'rp02',
+	';'			=> 'rp03',
+	'"'			=> 'rp04',
+	"'"			=> 'rp05',
+	"("			=> 'rp06',
+	")"			=> 'rp07',
+	"*"			=> 'rp08',
+	">"			=> 'rp09',
+	"<"			=> 'rp10',
+	"{"			=> 'rp11',
+	"}"			=> 'rp12',
+	"\\"		=> 'rp13',
+	'/'			=> 'rp14',
+	'.'			=> 'rp15',
+// 	'select'	=> 'rp16',
+// 	'insert'	=> 'rp17',
+// 	'update'	=> 'rp18',
+// 	'delete'	=> 'rp19',
+// 	'drop'		=> 'rp20',
+// 	'show'		=> 'rp21',
+// 	'desc'		=> 'rp22',
+// 	'SELECT'	=> 'rp23',
+// 	'INSERT'	=> 'rp24',
+// 	'UPDATE'	=> 'rp25',
+// 	'DELETE'	=> 'rp26',
+// 	'DROP'		=> 'rp27',
+// 	'SHOW'		=> 'rp28',
+// 	'DESC'		=> 'rp29',
+);
 
 // return the dir path, if it is`t existed, just creates it
 function path_dir ($path) {
@@ -197,24 +227,6 @@ function sql_query($sql, $op = NULL) {
 	return $result;
 }
 
-function sql_filter_str($str) {
-	$str = mysql_real_escape_string($str);
-	
-    //$str = str_replace(array("'", '"'), array("&apos;","&quot;"), $str);
-
-	if (!get_magic_quotes_gpc()) {
-// 		$str = addslashes($str);
-	}
-
-	$str = str_replace('=', 'akaka', $str);
-	$str = str_replace("%", "akakb", $str);
-	$str = str_replace(";", "akakc", $str);
-	$str = str_replace("'", "akakd", $str);
-	$str = str_replace('"', "akake", $str);
-
-    return $str;
-}
-
 function sql_filter($arr) {
     if (is_array($arr)) {
         foreach($arr as $k => $v) {
@@ -226,6 +238,20 @@ function sql_filter($arr) {
     return $arr;
 }
 
+function sql_filter_str($str) {
+	$str = mysql_real_escape_string($str);
+
+	if (!get_magic_quotes_gpc()) {
+// 		$str = addslashes($str);
+	}
+
+	foreach($GLOBALS['filter_str'] as $key => $val) {
+		$str = str_replace($key, $val, $str);
+	}
+
+    return trim($str);
+}
+
 //a simple bbcode Parser function
 function show_bbcode($str) {
 
@@ -233,47 +259,12 @@ function show_bbcode($str) {
 // 		$text = stripslashes($text);
 	}
 
-// 	$text = htmlspecialchars($text);
 	$str = strip_tags($str);
 
-	$str = str_replace('akaka', '=', $str);
-	$str = str_replace("akakb", "%", $str);
-	$str = str_replace("akakc", ";", $str);
-	$str = str_replace("akakd", "'",  $str);
-	$str = str_replace("akake", '"',  $str);
+	foreach($GLOBALS['filter_str'] as $key => $val) {
+		$str = str_replace($val, $key, $str);
+	}
 
-/*
-	$find = array(
-		'~\[b\](.*?)\[/b\]~s',
-		'~\[i\](.*?)\[/i\]~s',
-		'~\[u\](.*?)\[/u\]~s',
-		'~\[quote\](.*?)\[/quote\]~s',
-		'~\[size=(.*?)\](.*?)\[/size\]~s',
-		'~\[color=(.*?)\](.*?)\[/color\]~s',
-		'~\[url\]((?:ftp|https?)://.*?)\[/url\]~s',
-		'/\[url\=(.*?)\](.*?)\[\/url\]/is',
-		'/\[img\=(\d*?)x(\d*?)\](.*?)\[\/img\]/is',
-		'~\[img\](.*?\.(?:jpg|jpeg|gif|png|bmp))\[/img\]~s',
-		'~\[embed\]((?:ftp|https?)://.*?)\[/embed\]~s',
-		'~\[video\]((?:ftp|https?)://.*?)\[/video\]~s',
-	);
-
-	$replace = array(
-		'<b>$1</b>',
-		'<i>$1</i>',
-		'<span style="text-decoration:underline;">$1</span>',
-		'<pre>$1</pre>',
-		'<span style="font-size:$1px;">$2</span>',
-		'<span style="color:$1;">$2</span>',
-		'<a href="$1" target="_blank" >$1</a>',
-		'<a href="$2" target="_blank" >$1</a>',
-		'<img height="$2" width="$1" src="$3" />',
-		'<img src="$1" />',
-		'<embed src="$1" autostart="false" />',
-		'<video controls="" src="$1" ></video>',
-	);
-*/
-// 	return preg_replace($find, $replace, $text);
 	return $str;
 }
 
