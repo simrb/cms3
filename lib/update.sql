@@ -69,13 +69,13 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
-ALTER TABLE `usermsg` ADD `created` varchar(10) NOT NULL;
-
-RENAME TABLE `userkv` TO `userinfo`;
-ALTER TABLE `userinfo` CHANGE `ukid` `uiid` INT(11) NOT NULL auto_increment;
-
-RENAME TABLE `sess` TO `usersess`;
-ALTER TABLE `usersess` CHANGE `sid` `usid` INT(11) NOT NULL auto_increment;
+-- ALTER TABLE `usermsg` ADD `created` varchar(10) NOT NULL;
+-- 
+-- RENAME TABLE `userkv` TO `userinfo`;
+-- ALTER TABLE `userinfo` CHANGE `ukid` `uiid` INT(11) NOT NULL auto_increment;
+-- 
+-- RENAME TABLE `sess` TO `usersess`;
+-- ALTER TABLE `usersess` CHANGE `sid` `usid` INT(11) NOT NULL auto_increment;
 
 CREATE TABLE IF NOT EXISTS `useract` (
   `uaid` int(11) NOT NULL auto_increment,
