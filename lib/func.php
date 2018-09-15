@@ -219,7 +219,8 @@ function sql_filter($arr) {
 //a simple bbcode Parser function
 function show_bbcode($text) {
 
-	$text = htmlspecialchars($text);
+// 	$text = htmlspecialchars($text);
+	$text = strip_tags($text);
 
 /*
 	$find = array(
