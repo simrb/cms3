@@ -202,6 +202,16 @@ function sql_filter_str($str) {
 	
     //$str = str_replace(array("'", '"'), array("&apos;","&quot;"), $str);
 
+	if (!get_magic_quotes_gpc()) {
+// 		$str = addslashes($str);
+	}
+
+	$str = str_replace('=', 'akaka', $str);
+	$str = str_replace("%", "akakb", $str);
+	$str = str_replace(";", "akakc", $str);
+	$str = str_replace("'", "akakd", $str);
+	$str = str_replace('"', "akake", $str);
+
     return $str;
 }
 
@@ -217,10 +227,20 @@ function sql_filter($arr) {
 }
 
 //a simple bbcode Parser function
-function show_bbcode($text) {
+function show_bbcode($str) {
+
+	if (!get_magic_quotes_gpc()) {
+// 		$text = stripslashes($text);
+	}
 
 // 	$text = htmlspecialchars($text);
-	$text = strip_tags($text);
+	$str = strip_tags($str);
+
+	$str = str_replace('akaka', '=', $str);
+	$str = str_replace("akakb", "%", $str);
+	$str = str_replace("akakc", ";", $str);
+	$str = str_replace("akakd", "'",  $str);
+	$str = str_replace("akake", '"',  $str);
 
 /*
 	$find = array(
@@ -254,7 +274,7 @@ function show_bbcode($text) {
 	);
 */
 // 	return preg_replace($find, $replace, $text);
-	return $text;
+	return $str;
 }
 
 // cut string with utf8
