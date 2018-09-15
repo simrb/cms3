@@ -217,7 +217,7 @@ if ($t['_v'] == "detail") {
 
 			// set comment
 			$sql_str			= "SELECT rid, uid, content, useful, created FROM record 
-									WHERE cid != 0 AND follow = ". $t["rid"];
+									WHERE cid != 0 AND follow = ". $t["rid"] ." ORDER BY created";
 			$t['record_cmt'] 	= sql_query($sql_str);
 		}
 
