@@ -260,14 +260,17 @@ function show_bbcode($str) {
 }
 
 function tohtml($str) {
-	
+   	$str = mysql_real_escape_string($str);
+//   	$str = htmlspecialchars_decode($str);
+//    	$str =  htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
 //  	$str = htmlentities($str);
-//  	$str = html_entity_decode($str);
-//  	$str = htmlspecialchars($str);
+//   	$str = html_entity_decode($str);
 // 	$str = str_replace('<', '&lt;', $str);
 //  $str = str_replace('>', '&gt;', $str);
+// 	$str = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;"), array(">", "<", "\"", "&"), $str);
 	return $str;
 }
+
 
 
 // cut string with utf8

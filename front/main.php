@@ -36,7 +36,7 @@ if ($t['_a'] == "ajax_getpost") {
 	if (isset($_GET['rid'])) {
 		$res = sql_query("SELECT content FROM record WHERE rid = '".$_GET['rid']."';");
 		if ($row = mysql_fetch_row($res)) {
-			exit($row[0]);
+			exit(show_bbcode($row[0]));
 		}
 	}
 	exit('');
