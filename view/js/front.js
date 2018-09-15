@@ -210,7 +210,8 @@ $(document).ready( function() {
 
 
 	// interpret event for pre element
-	$('pre, .list-body').each(function(i){
+	$('pres, .list-body').each(function(i){
+	//$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
 		$(this).html(show_bbcode(pre_txt));
