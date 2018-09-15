@@ -198,7 +198,10 @@ function sql_query($sql, $op = NULL) {
 }
 
 function sql_filter_str($str) {
-    $str = str_replace(array("'", '"'), array("&apos;","&quot;"), $str);
+	$str = mysql_real_escape_string($str);
+	
+    //$str = str_replace(array("'", '"'), array("&apos;","&quot;"), $str);
+
     return $str;
 }
 
