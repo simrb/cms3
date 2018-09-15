@@ -259,6 +259,17 @@ function show_bbcode($str) {
 	return $str;
 }
 
+function tohtml($str) {
+	
+//  	$str = htmlentities($str);
+//  	$str = html_entity_decode($str);
+//  	$str = htmlspecialchars($str);
+// 	$str = str_replace('<', '&lt;', $str);
+//  $str = str_replace('>', '&gt;', $str);
+	return $str;
+}
+
+
 // cut string with utf8
 function utf8_substr($str, $from, $len) {
 	return preg_replace('#^(?:[\x00-\x7F]|[\xC0-\xFF][\x80-\xBF]+){0,'.$from.'}'.

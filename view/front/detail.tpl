@@ -83,7 +83,8 @@
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				}
 
-				echo "</div><pre class='clear' rid='". $row['rid'] ."'>" . show_bbcode($row['content']) . "</pre>";
+				echo "</div><pre class='clear' rid='". $row['rid'] ."'>" . 
+						tohtml(show_bbcode($row['content'])) . "</pre>";
 				echo '</div>';
 			}
 		}

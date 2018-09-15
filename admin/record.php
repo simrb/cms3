@@ -232,7 +232,8 @@ if ($t['_v'] == "edit") {
 			$t["cid"]			=	$row['cid'];
 			$t["follow"]		=	$row['follow'];
 			$t["useful"]		=	$row['useful'];
-			$t["content"]		=	show_bbcode($row['content']);
+// 			$t["content"]		=	show_bbcode($row['content']);
+			$t["content"]		=	$row['content'];
 			$t["created"]		=	$row['created'];
 
 			$t["tag"]			=	tag_view_by($t['rid']);
