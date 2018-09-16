@@ -61,7 +61,7 @@ if ($t['_a'] == "ajax_getuser") {
 		if (empty($reval)) {
 			$reval = l('nothing');
 		}
-		exit($reval);
+		exit(parse_text($reval));
 	}
 
 	exit(l('guest'));
