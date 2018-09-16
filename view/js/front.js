@@ -184,7 +184,7 @@ $(document).ready( function() {
 		//$(".addpost").hide();
 		var menu_title 	= $(".show-detail-body").first().find('pre').text();
 		var menu_leng	= ($(window).width() < 400) ? 12 : 30;
-		menu_title = '<span class="menu_title"> >> ' + parse_html(menu_title.substring(0,menu_leng)) + '...</span>';
+		menu_title = '<span class="menu_title"> >> ' + parse_menu(menu_title.substring(0,menu_leng)) + '...</span>';
 		$(".menu_hl").after(menu_title);
 		// console.log(menu_title);
 	}
@@ -311,6 +311,20 @@ $(document).ready( function() {
 			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$2' target='_blank' >$1</a>"},
 			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
 			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
+		];
+
+		var rev = txt;
+		$.each(regs, function(i, val){
+			rev = rev.replace(val.reg, val.rep);
+		});
+
+		return rev;
+	}
+
+	function parse_menu (txt) {
+		var regs = [
+			{ reg : /</g, rep : "&lt;"},
+			{ reg : />/g, rep : "&gt;"},
 		];
 
 		var rev = txt;
