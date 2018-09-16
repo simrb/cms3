@@ -1,5 +1,7 @@
 <?php access();
 
+$_FILES	= sql_filter($_FILES);
+
 
 // initialing upload folder if it hasn`t existed
 if(!is_dir(UPLOAD_PATH)) {

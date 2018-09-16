@@ -76,7 +76,7 @@ $(document).ready( function() {
 			// update value
 			if (pre_txt != pre_txt_new) {
 				// update local
-				pre_btn.html(show_bbcode(pre_txt_new));
+				pre_btn.html(parse_html(pre_txt_new));
 				pre_btn.attr('org_val', pre_txt_new);
 				show_tip(pre_btn.find('.show-pre'), pre_btn.find('.show-user'));
 				show_img();
@@ -184,7 +184,7 @@ $(document).ready( function() {
 		//$(".addpost").hide();
 		var menu_title 	= $(".show-detail-body").first().find('pre').text();
 		var menu_leng	= ($(window).width() < 400) ? 12 : 30;
-		menu_title = '<span class="menu_title"> >> ' + menu_title.substring(0,menu_leng) + '...</span>';
+		menu_title = '<span class="menu_title"> >> ' + parse_html(menu_title.substring(0,menu_leng)) + '...</span>';
 		$(".menu_hl").after(menu_title);
 		// console.log(menu_title);
 	}
@@ -210,11 +210,10 @@ $(document).ready( function() {
 
 
 	// interpret event for pre element
-	$('pres, .list-body').each(function(i){
-	//$('pre, .list-body').each(function(i){
+	$('pre, .list-body').each(function(i){
 		var pre_txt = $(this).text();
 		$(this).attr('org_val', pre_txt);
-		$(this).html(show_bbcode(pre_txt));
+		$(this).html(parse_html(pre_txt));
 	});
 	show_tip($('.show-pre'), $('.show-user'));
 	show_img();
@@ -297,8 +296,12 @@ $(document).ready( function() {
 		}
 	}
 
-	function show_bbcode (txt) {
+	function parse_html (txt) {
 		var regs = [
+			{ reg : /</g, rep : "&lt;"},
+			{ reg : />/g, rep : "&gt;"},
+			//{ reg : /&/g, rep : "amp"},
+			//{ reg : /"/g, rep : "quot"},
 			{ reg : /b#(.*?)#/g, rep : "<b>$1</b>"},
 			{ reg : /i#(.*?)#/g, rep : "<i>$1</i>"},
 			{ reg : /r#([0-9]+)/g, rep : "<a href='#r$1' class='show-pre' >r#$1</a>"},

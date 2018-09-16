@@ -17,7 +17,7 @@
 			<li><input type="submit" value="<?= l('submit'); ?>"></li>
 
 			<li><br />
-					<pre><?=show_bbcode($t['aboutpost']); ?></pre>
+					<pre><?=parse_html($t['aboutpost']); ?></pre>
 			</li>
 		</ul>
 	</form>

@@ -22,7 +22,7 @@ v1.0.3.2, updated by linyu deng
 
 v1.0.3.1, updated by linyu deng
 
-	add js function show_bbcode
+	add js function show_bbcode (change to parse_html at v1.0.3.4)
 	add userkv db table
 	change view dir
 

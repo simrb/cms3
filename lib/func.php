@@ -253,8 +253,8 @@ function sql_filter_str($str) {
     return trim($str);
 }
 
-//a simple bbcode Parser function
-function show_bbcode($str) {
+// parse encode text to normal text
+function parse_text($str) {
 
 	if (!get_magic_quotes_gpc()) {
 // 		$text = stripslashes($text);
@@ -269,14 +269,15 @@ function show_bbcode($str) {
 	return $str;
 }
 
-function tohtml($str) {
+// parse text to html
+function parse_html($str) {
 //   	$str = htmlspecialchars_decode($str);
-    	$str =  htmlspecialchars($str);
 //  	$str = htmlentities($str);
 //   	$str = html_entity_decode($str);
 // 	$str = str_replace('<', '&lt;', $str);
 //  $str = str_replace('>', '&gt;', $str);
 // 	$str = str_replace(array("&gt;", "&lt;", "&quot;", "&amp;"), array(">", "<", "\"", "&"), $str);
+    $str =  htmlspecialchars(parse_text($str));
 	return $str;
 }
 

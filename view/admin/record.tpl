@@ -109,7 +109,7 @@ if ($t['_v'] == 'edit') { ?>
 		<form action="<?=url_c('_a='.$t['_a']);?>" method="post" >
 			<ul>
 				<li><label><?= l('content'); ?></label></li>
-				<li><textarea name="content" class="record_text file_input" ><?= show_bbcode($t['content']); ?></textarea></li>
+				<li><textarea name="content" class="record_text file_input" ><?= parse_text($t['content']); ?></textarea></li>
 				<li>
 
 					<?php

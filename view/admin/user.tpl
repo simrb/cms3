@@ -34,7 +34,7 @@
 							echo "<tr>";
 	  						echo "<td>". $row["uid"] ."</td>";
 	  						echo "<td><a href='". url_c("_v=edit&_a=edit&uid=".
-	  							$row["uid"]). "'>". $row["username"] ."</a></td>";
+	  							$row["uid"]). "'>". parse_html($row["username"]) ."</a></td>";
 	  						echo "<td>" . $row['level'] . "</td>";
 	  						echo "<td>" .  date('Y-m-d', $row['created']) . "</td>";
 	  						echo "</tr>";
@@ -61,7 +61,7 @@
 
 				<li><label><?= l('username'); ?></label></li>
 				<li>
-					<input type="text" name="username" value="<?= $t["username"] ?>" />
+					<input type="text" name="username" value="<?= parse_html($t["username"]) ?>" />
 					<input type="hidden" name="uid" value="<?= $t["uid"] ?>" />
 				</li>
 
