@@ -49,8 +49,13 @@
 
 							echo "<tr>";
 
-	  						echo "<td><a href='?_v=detail&rid=". $row["rid"]. 
-								"' target='_blank'>";
+							if ($row['follow'] == 0) {
+	  							echo "<td><a href='?_v=detail&rid=". $row["rid"];
+							} else {
+	  							echo "<td><a href='?_v=detail&rid=". $row["follow"] . "#r". $row['rid'];
+							}
+
+							echo "' target='_blank'>";
 	  						echo "<span>". $row["rid"] ."</span>";
 	  						echo " > </a></td>";
 
