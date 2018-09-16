@@ -412,7 +412,7 @@ function userbase () {
 
 // return current user ip
 function user_ip () {
-	return $_SERVER['REMOTE_ADDR'];
+	return sql_filter($_SERVER['REMOTE_ADDR']);
 }
 
 // add new user
