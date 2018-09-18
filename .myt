@@ -2,7 +2,7 @@
 
 my_bk_dir="others"
 my_cfg_dir="others/cfg.php"
-my_dd=$(date +"%y%m%d")
+my_dd=$(date +"%y%m%d")$"-"$RANDOM
 
 Uhost="localhost"
 Udata="cms_db"$RANDOM

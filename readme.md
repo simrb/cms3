@@ -79,6 +79,8 @@ Notice, all of files of the system created that will be stored in directory `oth
 such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.
 just backup the others dir is enough.
 
+if you want to clear the backup in admin-end, you need to set the `others` dir with `chmod -R 777 others`
+
 
 
 License
