@@ -6,13 +6,10 @@
 
 
 -- DROP TABLE IF EXISTS `record_log`;
-
-
---
--- modify field
 --
 -- ALTER TABLE `category` ADD `uid` INT(11) NOT NULL default '0';
--- ALTER TABLE `category` MODIFY COLUMN `name` VARCHAR(20);
+--
+-- ALTER TABLE `category` MODIFY COLUMN `name` VARCHAR(20) NOT NULL;
 
 -- =======================================================
 -- version v1.0.1 --> v1.0.2
@@ -65,7 +62,18 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
   `touid` int(11) NOT NULL,
   `rid` int(11) NOT NULL,
   `msg_type` tinyint(10) NOT NULL default '1',
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`umid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+CREATE TABLE IF NOT EXISTS `useract` (
+  `uaid` int(11) NOT NULL auto_increment,
+  `uid` int(11) NOT NULL,
+  `ukey` varchar(20) NOT NULL,
+  `uval` varchar(20) NOT NULL,
+  `created` varchar(10) NOT NULL,
+  PRIMARY KEY  (`uaid`),
+  KEY `uid_key_val` (`uid`, `ukey`, `uval`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
@@ -77,13 +85,9 @@ CREATE TABLE IF NOT EXISTS `usermsg` (
 -- RENAME TABLE `sess` TO `usersess`;
 -- ALTER TABLE `usersess` CHANGE `sid` `usid` INT(11) NOT NULL auto_increment;
 
-CREATE TABLE IF NOT EXISTS `useract` (
-  `uaid` int(11) NOT NULL auto_increment,
-  `uid` int(11) NOT NULL,
-  `ukey` varchar(20) NOT NULL,
-  `uval` varchar(20) NOT NULL,
-  PRIMARY KEY  (`uaid`),
-  KEY `uid_key_val` (`uid`, `ukey`, `uval`)
-) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
-
+-- =======================================================
+-- version v1.0.3.3 --> v1.0.3.4
+-- =======================================================
+ALTER TABLE `useract` ADD `created` varchar(10) NOT NULL;
+ALTER TABLE `recordkv` ADD `created` varchar(10) NOT NULL;

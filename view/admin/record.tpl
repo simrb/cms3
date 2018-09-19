@@ -195,14 +195,16 @@ if ($t['_v'] == 'optimize') { ?>
 
 			<select name="select_condition" class="selectmenu">
 				<option selected> <?= l('condition'); ?> </option>
-				<option value="clear00" ><?= l('clear00'); ?></option>
-				<option value="clear01" ><?= l('clear01'); ?></option>
-				<option value="clear02" ><?= l('clear02'); ?></option>
-				<option value="clear03" ><?= l('clear03'); ?></option>
-				<option value="clear04" ><?= l('clear04'); ?></option>
-				<option value="clear05" ><?= l('clear05'); ?></option>
-				<option value="clear06" ><?= l('clear06'); ?></option>
-				<option value="clear07" ><?= l('clear07'); ?></option>
+				<option value="clear10" ><?= l('clear10'); ?></option>
+				<option value="clear11" ><?= l('clear11'); ?></option>
+				<option value="clear12" ><?= l('clear12'); ?></option>
+				<option value="clear13" ><?= l('clear13'); ?></option>
+				<option value="clear14" ><?= l('clear14'); ?></option>
+				<option value="clear30" ><?= l('clear30'); ?></option>
+				<option value="clear31" ><?= l('clear31'); ?></option>
+				<option value="clear32" ><?= l('clear32'); ?></option>
+				<option value="clear33" ><?= l('clear33'); ?></option>
+				<option value="clear34" ><?= l('clear34'); ?></option>
 			</select>
 
 			<input type="submit" value="<?= l('execute'); ?>" />

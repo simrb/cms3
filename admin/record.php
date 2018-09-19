@@ -62,47 +62,58 @@ if ($t['_a'] == "optimize") {
 	switch ($cdt) {
 
 		// delete records in trash
-		case 'clear00' :
+		case 'clear10' :
 			$num = sql_query("DELETE FROM record WHERE cid=0;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest records three months ago
-		case 'clear01' :
+		case 'clear11' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete uesless records three months ago
-		case 'clear02' :
+		case 'clear12' :
 			$num = sql_query("DELETE FROM record WHERE useful=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest and useless three months ago
-		case 'clear03' :
+		case 'clear13' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created < $three_month;", 'affect_num');
 		break;
 
 		// delete guest and useless in three days
-		case 'clear04' :
+		case 'clear14' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
 		break;
 
 		// delete action logs of adding post
-		case 'clear05' :
+		case 'clear30' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addpost'", 'affect_num');
 		break;
 
 		// delete action logs of adding comment
-		case 'clear06' :
+		case 'clear31' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addcmt'", 'affect_num');
 		break;
 
 		// delete action logs of clicking useful btton
-		case 'clear07' :
+		case 'clear32' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='useful'", 'affect_num');
 		break;
+
+		// delete all of user actions
+		case 'clear33' :
+			$num = sql_query("DELETE FROM useract WHERE created > $three_day;", 'affect_num');
+		break;
+
+		// delete all of user actions
+		case 'clear34' :
+			$num = sql_query("DELETE FROM useract", 'affect_num');
+		break;
+
 	}
 
 	$t["msg"] = l('deleted successfully') . ' for '. $num;

@@ -43,6 +43,7 @@ CREATE TABLE `recordkv` (
   `rid` int(11) NOT NULL default '0',
   `rkey` varchar(50) NOT NULL,
   `rval` varchar(100) NOT NULL,
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`rkid`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -192,6 +193,7 @@ CREATE TABLE `useract` (
   `uid` int(11) NOT NULL,
   `ukey` varchar(20) NOT NULL,
   `uval` varchar(20) NOT NULL,
+  `created` varchar(10) NOT NULL,
   PRIMARY KEY  (`uaid`),
   KEY `uid_key_val` (`uid`, `ukey`, `uval`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
