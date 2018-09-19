@@ -573,10 +573,10 @@ function user_remind($content, $rid) {
 /*	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
 
 	for example, set value
-	optionkv('last_login', '2018-01-01');
+	optionkv('user_register_allow', 'yes');
 
 	for example, get value
-	optionkv('last_login');		#=> '2018-01-01'
+	optionkv('user_register_allow');	#=> 'yes'
 */
 function optionkv ($okey, $oval = '') {
 	$reval	= '';
@@ -609,24 +609,28 @@ function optionkv ($okey, $oval = '') {
 }
 
 
-/*	a key-val for storing the record increased fields
+/*	record logs by a key-val piece
 
-	for example, get value, 
-	recordkv(1);	#=> array('mobile number' => '212-2221993', 'address' => '32, A zone')
+	for example 01, set value, 
+	recordlog(1, 'editor', 'linyu');
+	recordlog(1, 'editor', 'guest');
+	recordlog(1, 'replies', '111');
+	recordlog(1, 'votes', '555');
 
-	for example, get value,
-	recordkv(1, 'mobile number'); 	#=> array('212-2221993'), or maybe array('212-2221993', '333-322233')
+	for example 02, get value, 
+	recordlog(1);	#=> array('replies' => '111', 'votes' => '555', 'editor' => 'guest')
 
-	for example, set value, 
-	recordkv(1, 'mobile number', '331-233234');
+	for example 03, get value,
+	recordlog(1, 'editor'); 	#=> array('linyu', 'guest'), or array('linyu')
 
-	for example, remove value by a key
-	recordkv(1, 'mobile number', null);
+	for example 04, remove value by a key
+	recordlog(1, 'hot', null);
 
-	for example, remove all values by no key
-	recordkv(1, '', null);
+	for example 05, remove all values by no key
+	recordlog(1, null, null);
+
 */
-function recordkv ($rid, $rkey = '', $rval = '') {
+function recordlog ($rid, $rkey = '', $rval = '') {
 	$reval	= array();
 
 	// get value
