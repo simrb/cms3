@@ -31,7 +31,8 @@
 				echo "<h3><a href='?_v=detail&rid=" . $row['rid'];
 				echo "' target='_self'>" . parse_html(utf8_substr($row['content'], 0 , $len)) . "</a></h3>";
 
-				echo "<p class='list-body'>" . parse_html(utf8_substr($row['content'], $len, 102))  . "</p>";
+				echo "<p><span class='list-body'>" . parse_html(utf8_substr($row['content'], $len, 102))  .
+						"</span>  <a href='?_v=detail&rid=" . $row['rid']. "' > >> </a></p>";
 				echo "</div>";
 			}
 		}

@@ -41,7 +41,7 @@ textarea.reply_txt { margin-top: 20px;}
 .show-list p { margin-top: 7px; }
 .show-list h3 a { color: black; }
 
-.show-list-body p a { text-decoration: underline; }
+.show-list-body .list-body a { text-decoration: underline; }
 .show-list-body { margin-bottom: 15px; }
 // .show-list-body h3, .show-list-body p, .show-detail-title, .show-detail pre { padding: 3px;}
 
