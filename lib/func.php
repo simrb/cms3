@@ -612,21 +612,19 @@ function optionkv ($okey, $oval = '') {
 /*	record logs by a key-val piece
 
 	for example 01, set value, 
-	recordlog(1, 'editor', 'linyu');
 	recordlog(1, 'editor', 'guest');
+	recordlog(1, 'editor', 'linyu');
 	recordlog(1, 'replies', '111');
 	recordlog(1, 'votes', '555');
 
 	for example 02, get value, 
-	recordlog(1);	#=> array('replies' => '111', 'votes' => '555', 'editor' => 'guest')
+	recordlog(1);				#=> array('replies' => '111', 'votes' => '555', 'editor' => 'linyu')
+	recordlog(1, 'editor'); 	#=> linyu
 
-	for example 03, get value,
-	recordlog(1, 'editor'); 	#=> array('linyu', 'guest'), or array('linyu')
-
-	for example 04, remove value by a key
+	for example 03, remove value by a key
 	recordlog(1, 'hot', null);
 
-	for example 05, remove all values by no key
+	for example 04, remove all values by no key
 	recordlog(1, null, null);
 
 */
@@ -635,6 +633,7 @@ function recordlog ($rid, $rkey = '', $rval = '') {
 
 	// get value
 	if ($rval == '') {
+		// get all
 		if ($rkey == '') {
 			$res = sql_query("SELECT rkey, rval FROM recordkv WHERE rid = '$rid'");
 			if ($res) {
@@ -642,11 +641,12 @@ function recordlog ($rid, $rkey = '', $rval = '') {
 					$reval[$row[0]] = $row[1];
 				}
 			}
+		// get by key
 		} else {
 			$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid' AND rkey = '$rkey'");
 			if ($res) {
 				while($row = mysql_fetch_row($res)) {
-					$reval[] = $row[0];
+					$reval = $row[0];
 				}
 			}
 		}
@@ -654,7 +654,21 @@ function recordlog ($rid, $rkey = '', $rval = '') {
 
 	// set value
 	if ($rkey != '' AND $rval != '') {
-		sql_query("INSERT INTO recordkv (rid, rkey, rval) VALUES ('$rid','$rkey','$rval')");
+		$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid' AND rkey = '$rkey'");
+		// update
+		if (mysql_num_rows($res) > 0) {
+			$row = mysql_fetch_array($res);
+			$val = $row[0];
+			if ($rval[0] == '+') {
+				$rval = $val + intval(substr($rval, 1));
+			} elseif($rval[0] == '-') {
+				$rval = $val - intval(substr($rval, 1));
+			}
+			sql_query("UPDATE recordkv SET rval = '$rval', created = '".time()."' WHERE rid = $rid AND rkey='$rkey'");
+		// insert
+		} else {
+			sql_query("INSERT INTO recordkv (rid, rkey, rval, created) VALUES ('$rid','$rkey','$rval', '".time()."')");
+		}
 	}
 
 	// remove
@@ -668,6 +682,7 @@ function recordlog ($rid, $rkey = '', $rval = '') {
 
 	return $reval;
 }
+
 
 /* return given field value of record table, others is null value
 	
@@ -692,10 +707,12 @@ function record_get_field ($rid, $key = '') {
 	return $reval;
 }
 
+
 // return a invited code
 function invitecode () {
 	return substr(md5(date('mHd')), -6);
 }
+
 
 /* return validation code
 
@@ -718,6 +735,7 @@ function validcode($shot_code = '') {
 	}
 	return $reval;
 }
+
 
 /* change date to timeago
 

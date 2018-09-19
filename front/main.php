@@ -126,7 +126,12 @@ if ($t['_a'] == "addcomment") {
 				'". $_POST["content"] ."', '". time() ."')", 'insert_id'
 			);
 
+			// remind user if the post content has memtioned him with a sign
 			user_remind($_POST['content'], $insert_id);
+
+			// comment number plus one
+			recordlog($_POST['rid'], 'replies', '+1');
+
 			$t["msg"] = l('submitted successfully');
 		} else {
 			$t["msg"] = l('you cannot post twice');
