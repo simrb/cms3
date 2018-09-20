@@ -31,7 +31,8 @@ input { background-color: #eeeeee;  border: 1px solid #98a584; border-radius:5px
 
 /* *************** width, height ************ */
 video, embed { height: 230px; width: 100%; }
-#footer a, .top-bar a { margin: 5px 0 0 5px; }
+.top-bar { margin-top: 7px; }
+#footer a, .top-bar a { margin-right:5px; }
 #header h1 { margin: 5px 0; }
 #header, #bodyer, #footer { clear: both; }
 #footer { margin: 40px 0; }
@@ -80,7 +81,6 @@ textarea.ui-input-text { min-height: 60px; }
 // 	.show-detail img { width: 95%;  }
 // 	#bodyer { min-height: 600px; }
 	video, embed { height: 400px; }
-
 
 	#header h1 { margin: 2px 0 26px 0; }
 
