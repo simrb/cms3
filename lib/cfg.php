@@ -29,7 +29,7 @@ $t['web_name'] 			=	'scms';
 $t['web_des'] 			=	'NEW SITE';
 $t['web_kw'] 			=	'NEW SITE';
 $t['web_logo'] 			=	'';
-$t['web_footer'] 		=	'Powered by linyu, 2016-';
+$t['web_footer'] 		=	'Initialize by linyu, 2016-';
 
 
 // record id
