@@ -32,8 +32,14 @@
 				echo "' target='_self'>" . parse_html(utf8_substr($row['content'], 0 , $len)) . "</a></h3>";
 
 				echo "<p><span class='list-body'>" . parse_html(utf8_substr($row['content'], $len, 102))  .
-						"</span>  <a href='?_v=detail&rid=" . $row['rid']. "' > >> </a></p>";
-				echo "</div>";
+						"</span> <a  href='?_v=detail&rid=" . $row['rid']. "' > >> </a>";
+
+				$cmt_tip = recordlog($row['rid'], 'replies');
+				if (intval($cmt_tip) > 0) {
+					echo "<span class='list-cmt-tip'>". $cmt_tip ."</span>";
+				}
+
+				echo "</p><div class='clear'></div></div>";
 			}
 		}
 	?>
