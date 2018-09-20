@@ -195,16 +195,13 @@ if ($t['_v'] == 'optimize') { ?>
 
 			<select name="select_condition" class="selectmenu">
 				<option selected> <?= l('condition'); ?> </option>
-				<option value="clear10" ><?= l('clear10'); ?></option>
-				<option value="clear11" ><?= l('clear11'); ?></option>
-				<option value="clear12" ><?= l('clear12'); ?></option>
-				<option value="clear13" ><?= l('clear13'); ?></option>
-				<option value="clear14" ><?= l('clear14'); ?></option>
-				<option value="clear30" ><?= l('clear30'); ?></option>
-				<option value="clear31" ><?= l('clear31'); ?></option>
-				<option value="clear32" ><?= l('clear32'); ?></option>
-				<option value="clear33" ><?= l('clear33'); ?></option>
-				<option value="clear34" ><?= l('clear34'); ?></option>
+				<?php
+					$arr = array(10,11,12,13,14,15,30,31,32,33,34);
+					foreach($arr as $i => $j) {
+						echo '<option value="clear'.$j.'" >'. l('clear'.$j); '.</option>';
+					}
+				
+				?>
 			</select>
 
 			<input type="submit" value="<?= l('execute'); ?>" />

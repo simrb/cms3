@@ -89,6 +89,11 @@ if ($t['_a'] == "optimize") {
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
 		break;
 
+		// delete comment tips in three ago
+		case 'clear15' :
+			$num = sql_query("DELETE FROM recordkv WHERE rkey='replies' AND created < $three_month;", 'affect_num');
+		break;
+
 		// delete action logs of adding post
 		case 'clear30' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addpost'", 'affect_num');
@@ -104,9 +109,9 @@ if ($t['_a'] == "optimize") {
 			$num = sql_query("DELETE FROM useract WHERE ukey='useful'", 'affect_num');
 		break;
 
-		// delete all of user actions
+		// delete all of user actions there month ago
 		case 'clear33' :
-			$num = sql_query("DELETE FROM useract WHERE created > $three_day;", 'affect_num');
+			$num = sql_query("DELETE FROM useract WHERE created < $three_month;", 'affect_num');
 		break;
 
 		// delete all of user actions
