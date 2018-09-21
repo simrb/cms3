@@ -31,7 +31,7 @@ input { background-color: #eeeeee;  border: 1px solid #98a584; border-radius:5px
 
 /* *************** width, height ************ */
 video, embed { height: 230px; width: 100%; }
-.top-bar { margin-top: 7px; }
+.top-bar { margin-top: 3px; }
 #footer a, .top-bar a { margin-right:5px; }
 #header h1 { margin: 5px 0; }
 #header, #bodyer, #footer { clear: both; }
