@@ -613,12 +613,12 @@ function optionkv ($okey, $oval = '') {
 
 	for example 01, set value, 
 	recordlog(1, 'editor', 'guest');
-	recordlog(1, 'editor', 'linyu');
-	recordlog(1, 'replies', '111');
-	recordlog(1, 'votes', '555');
+	recordlog(1, 'editor', 'linyu');		// cover old value 'guest'
+	recordlog(1, 'replies', 1);
+	recordlog(1, 'votes', 1, true);			// auto increment by 1
 
 	for example 02, get value, 
-	recordlog(1);				#=> array('replies' => '111', 'votes' => '555', 'editor' => 'linyu')
+	recordlog(1);				#=> array('replies' => '1', 'votes' => '2', 'editor' => 'linyu')
 	recordlog(1, 'editor'); 	#=> linyu
 
 	for example 03, remove value by a key
@@ -628,7 +628,7 @@ function optionkv ($okey, $oval = '') {
 	recordlog(1, null, null);
 
 */
-function recordlog ($rid, $rkey = '', $rval = '') {
+function recordlog ($rid, $rkey = '', $rval = '', $increment = null) {
 	$reval	= array();
 
 	// get value
@@ -656,13 +656,9 @@ function recordlog ($rid, $rkey = '', $rval = '') {
 	if ($rkey != '' AND $rval != '') {
 		$res = sql_query("SELECT rval FROM recordkv WHERE rid = '$rid' AND rkey = '$rkey'");
 		// update
-		if (mysql_num_rows($res) > 0) {
-			$row = mysql_fetch_array($res);
-			$val = $row[0];
-			if ($rval[0] == '+') {
-				$rval = $val + intval(substr($rval, 1));
-			} elseif($rval[0] == '-') {
-				$rval = $val - intval(substr($rval, 1));
+		if ($row = mysql_fetch_array($res)) {
+			if ($increment !== null) {
+				$rval = intval($row[0]) + intval($rval);
 			}
 			sql_query("UPDATE recordkv SET rval = '$rval', created = '".time()."' WHERE rid = $rid AND rkey='$rkey'");
 		// insert

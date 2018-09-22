@@ -130,7 +130,7 @@ if ($t['_a'] == "addcomment") {
 			user_remind($_POST['content'], $insert_id);
 
 			// comment number plus one
-			recordlog($_POST['rid'], 'replies', '+1');
+			recordlog($_POST['rid'], 'replies', 1, true);
 
 			$t["msg"] = l('submitted successfully');
 		} else {
