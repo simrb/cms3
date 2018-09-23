@@ -1,6 +1,18 @@
 <?php access();
 
 
+// act: run
+/*
+	do it like cmd --->  $ php index.php _m=admin _f=main _a=run cdt=clear32
+*/
+if ($t['_a'] == "run") {
+	$cdt 	= isset($_GET['cdt']) ? $_GET['cdt'] : '';
+	$num	= db_optimize($cdt);
+	exit;
+// 	exit('back-end running, affect num : '. $num);
+}
+
+
 // act: clean_bak
 if ($t['_a'] == "clean_bak") {
 	
