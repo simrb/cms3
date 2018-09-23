@@ -1,6 +1,7 @@
 <?php access();
 
 $_FILES	= sql_filter($_FILES);
+$t['tpl_name'] = 'afile';
 
 
 // initialing upload folder if it hasn`t existed

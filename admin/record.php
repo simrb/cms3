@@ -1,5 +1,6 @@
 <?php access();
 
+$t['tpl_name'] = 'arecord';
 
 // act: add
 if ($t['_a'] == "add") {

@@ -1,5 +1,7 @@
 <?php access();
 
+$t['tpl_name'] = 'acategory';
+
 // act: add
 if ($t['_a'] == "add") {
 	if (isset($_POST["category_name"])) {
@@ -53,7 +55,7 @@ if ($t['_v'] == "show") {
 
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
-
+	
 	tpl($t);
 }
 

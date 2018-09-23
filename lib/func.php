@@ -57,33 +57,28 @@ function view_path ($path) {
 */
 
 function tpl_path ($path) {
-	return MODULE_PATH.$path.'.tpl';
+	return MODULE_PATH.VIEW_DIR.$path.'.tpl';
 }
 
 
 /*	load the template
 
-	for example, load with default tpl_name, default tpl_layout
-	tpl($t);
+	for example, specified tpl_name and default layout
+	tpl($t, 'mytpl');
 
-	for example, specified tpl_name, default layout
-	tpl($t, 'view/front/mytpl');
-
-	for example, specified tpl_name, specified layout
-	tpl($t, 'view/front/mytpl', 'view/front/mylayout');
+	for example, specified tpl_name and specified layout
+	tpl($t, 'mytpl', 'mylayout');
 
 	for example, no layout
-	tpl($t, 'view/front/mytpl', 'unlayout');
+	tpl($t, 'mytpl', 'unlayout');
 
 */
 function tpl($t, $tpl_name = '', $layout = '') {
 	$t['web_logo']		=	optionkv('web_logo');
 	$t['web_header']	=	optionkv('web_header');
-
 	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." ".$t["msg"] : "";
-
-	$t["tpl_name"]		=	$tpl_name != '' ? $tpl_name : $t["tpl_dir"].$t["tpl_name"];
-	$t["tpl_layout"]	=	$layout != '' ? $layout : $t["tpl_dir"].$t["tpl_layout"];
+	$t["tpl_name"]		=	$tpl_name != '' ? $tpl_name : $t["tpl_name"];
+	$t["tpl_layout"]	=	$layout != '' ? $layout : $t["tpl_layout"];
 
 	if ($layout == 'unlayout') {
 		include_once(tpl_path($t['tpl_name']));
@@ -98,14 +93,12 @@ function tpl($t, $tpl_name = '', $layout = '') {
 	out('occured an error', $t);
 
 	for example, with specified layout
-	out('occured an error', $t, 'view/front/layout');
+	out('occured an error', $t, 'layout');
 */
-function out($str, $t, $layout = '') {
+function out($str, $t, $layout = 'layout') {
 	$t["msg"] = $str;
 	//$t["blank"] = $str;
-	$t['tpl_dir'] = VIEW_DIR;
-	$t["tpl_layout"] = 	$layout != '' ? $layout : (VIEW_DIR.'layout');
-	tpl($t, $t['tpl_dir'].'blank', $t["tpl_layout"]);
+	tpl($t, 'blank', $layout);
 	exit;
 }
 

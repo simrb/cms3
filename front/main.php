@@ -193,7 +193,7 @@ if ($t['_v'] == "show") {
 	$t["pagecurr"]		=	$pagecurr;
 	$t["pagenums"]		=	$pagenums;
 	
-	tpl($t, $t['tpl_dir']."list");
+	tpl($t, "flist");
 }
 
 
@@ -226,7 +226,7 @@ if ($t['_v'] == "detail") {
 			$t['record_cmt'] 	= sql_query($sql_str);
 		}
 
-		tpl($t, $t['tpl_dir']."detail");
+		tpl($t, "fdetail");
 	}
 }
 
@@ -237,7 +237,7 @@ if ($t['_v'] == "addpost") {
 	$t['_a'] 			=	"addpost";
 	$t['aboutpost'] 	= record_get_field($t['rid_aboutpost'], 'content');
 
-	tpl($t, $t['tpl_dir']."addpost");
+	tpl($t, "faddpost");
 }
 
 
@@ -245,7 +245,7 @@ if ($t['_v'] == "addpost") {
 if ($t['_v'] == "upload") {
 	$t['_a'] 			=	"upload";
 
-	tpl($t, $t['tpl_dir']."upload");
+	tpl($t, "fupload");
 }
 
 
@@ -274,7 +274,7 @@ if ($t['_v'] == "settings") {
 		}
 	}
 
-	tpl($t, $t['tpl_dir']."settings");
+	tpl($t, "fsettings");
 }
 
 
@@ -296,7 +296,7 @@ if ($t['_v'] == "message") {
 		$t["msg_res"]	=	usermsg($uid);
 	}
 
-	tpl($t, $t['tpl_dir']."message");
+	tpl($t, "fmessage");
 }
 
 

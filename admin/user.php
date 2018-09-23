@@ -1,6 +1,9 @@
 <?php access();
 
 
+$t['tpl_name'] = 'auser';
+
+
 //act: add
 if ($t['_a'] == "add") {
 	$t["msg"] = user_add($_POST);
@@ -166,7 +169,7 @@ if ($t['_v'] == "login") {
 // 		url_referer('?');
 // 		$t['shot_code'] = validcode();
 // 		$t['val22'] = validcode($t['shot_code']);
-		tpl($t, $t['tpl_dir']."login", VIEW_DIR.'layout');
+		tpl($t, "alogin", 'layout');
 	}
 }
 
@@ -191,7 +194,7 @@ if ($t['_v'] == "show") {
 //view: status
 if ($t['_v'] == "status") {
 	$t["user_res"] = sql_query("SELECT * FROM usersess ORDER BY usid DESC LIMIT 20;");
-	tpl($t, $t['tpl_dir']."sess");
+	tpl($t, "asess");
 }
 
 

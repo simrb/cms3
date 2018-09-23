@@ -15,7 +15,7 @@ define('UPLOAD_PATH', 	PROJECT_PATH . UPLOAD_DIR);
 require_once(MODULE_PATH	."lib/config.php");
 require_once(PROJECT_PATH	."others/cfg.php");
 
-define("VIEW_DIR",		$c['def_view'] . '/');
+define("VIEW_DIR",		$t['tpl_dir']);
 
 // set time
 date_default_timezone_set($c['timezone']);

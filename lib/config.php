@@ -16,7 +16,7 @@ $t['_a'] 				=	'';
 $t['_v'] 				=	'show';
 
 $t['tpl_name'] 			=	'index';
-$t['tpl_dir'] 			=	'view/front/';
+$t['tpl_dir'] 			=	$c['def_view'].'/';
 $t['tpl_layout'] 		=	'layout';
 
 

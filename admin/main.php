@@ -1,5 +1,6 @@
 <?php access();
 
+$t['tpl_name'] = 'amain';
 
 // act: run
 /*
@@ -52,14 +53,14 @@ if ($t['_v'] == "info") {
 	$t['web_des']		= optionkv('web_des');
 	$t['web_style']		= optionkv('web_style');
 
-	tpl($t, $t['tpl_dir']."info");
+	tpl($t, "ainfo");
 }
 
 
 // view: show
 if ($t['_v'] == "show") {
 	$t['welcome'] = l('welcome, dear ');
-	tpl($t, $t['tpl_dir']."index");
+	tpl($t, "aindex");
 }
 
 
@@ -71,7 +72,7 @@ if ($t['_v'] == "backup") {
 		$t['bak_res'][] = $filename;
 	}
 
-	tpl($t, $t['tpl_dir']."backup");
+	tpl($t, "abackup");
 }
 
 
