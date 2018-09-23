@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="us">
 <head>
-	<?php include_once(tpl_path(VIEW_DIR.'head')); ?>
+	<?php include_once(tpl_path('head')); ?>
 	<link href="<?= view_path('css/admin.css') ?>" rel="stylesheet">
 	<script src="<?= view_path('js/admin.js') ?>"></script>
 </head>
@@ -18,7 +18,7 @@
 		<div id="bodyer"  class="ui-grid-layout" >
 			<div id="lefter" class="ui-block-a">
 				<div class="show-menu">
-					<?php include_once(tpl_path(VIEW_DIR.'admin/menu')); ?>
+					<?php include_once(tpl_path('amenu')); ?>
 				</div>
 			</div>
 

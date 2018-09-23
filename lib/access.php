@@ -25,11 +25,10 @@ foreach (array('_m', '_f', '_a', '_v') as $val) {
 
 // set auth in access entrance
 if ($t['_m'] == 'admin') {
-	
-	$def_layout = $user_level > 5 ? 'alayout' : 'flayout';
 
-// 	$t['tpl_dir'] 		= VIEW_DIR.$t['_m'].'/';
-// 	$t['tpl_name'] 		= $t['_f'];
+	// set default layout
+	$def_layout 		= $user_level > 5 ? 'alayout' : 'flayout';
+ 	$t['tpl_layout'] 	= $def_layout;
 
 	// remove user menu
 	if ($user_level < 9) {
