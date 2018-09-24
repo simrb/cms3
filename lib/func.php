@@ -349,7 +349,7 @@ function user_logout () {
 
 
 function user_encode_pwd ($pawd) {
-	return md5($pawd. 'sn_code');
+	return md5($pawd. $GLOBALS["c"]['sn']);
 }
 
 // return the user id current he logined
