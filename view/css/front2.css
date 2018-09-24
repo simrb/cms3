@@ -2,22 +2,22 @@
 
 
 /* *************** style, color ************ */
-body { background-color: #e8ede0; }
-#header a, #bodyer a, #footer a { color: #374b37; }
+body { background-color: #f5f5f5; }
+#header a, #bodyer a, #footer a { color: #EF1313; }
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
-textarea { width: 99%; background-color: #eee; border: 1px solid #98a584; border-radius:5px; }
-input { background-color: #eeeeee;  border: 1px solid #98a584; border-radius:5px; }
+textarea { width: 99%; background-color: white; border: 1px solid #98a584; border-radius:5px; }
+input { background-color: white;  border: 1px solid #98a584; border-radius:5px; }
 .menu_item .menu_no { border: 1px solid #e8ede0;  border-radius:5px; }
-.menu_item .menu_hl { border: 1px solid #98a584;  border-radius:5px; background-color: #d7e1c3; }
-.show-detail pre { background-color: #d7e1c3;  border: 1px solid #98a584; border-radius:5px; }
+.menu_item .menu_hl { border: 1px solid #98a584;  border-radius:5px; background-color: white; }
+.show-detail pre { background-color: white;  border: 1px solid #98a584; border-radius:10px; }
 .black { color: black; }
 .gray1 { color: #ced5c8; }
 
 .show-list h3 a { color: black; }
-.show-list-body {  background-color: #d7e1c3; border: 1px solid #98a584; border-radius:5px; }
+.show-list-body {  background-color: white; border: 1px solid #98a584; border-radius:10px; }
 .show-list-body .list-body a { text-decoration: underline; }
-.list-cmt-tip { background-color: #aeb4a2; border-radius: 10px;} //#98a584
+.list-cmt-tip { background-color: #dbe1c8; border-radius: 10px;} //#98a584
 .show-detail-title label.useful_view {}
 .show-detail-title label.useful_view { cursor: pointer; color: #f24e48;  margin-left:2px;}
 .show-detail-title { color: gray; }
@@ -44,7 +44,7 @@ textarea.ui-input-text { min-height: 60px; }
 #bodyer { padding-top: 7px; }
 .menu_item li { padding: 1px 3px; margin: 0 2px 5px 0; }
 .edit-form .addfile { width: 98%; }
-.show-detail pre { padding: 5px 10px;  margin: 0; min-height: 50px; }
+.show-detail pre { padding: 5px 10px; margin: 0; min-height:50px;}
 
 .show-pagination span { margin-right: 5px; }
 
