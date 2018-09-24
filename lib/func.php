@@ -51,7 +51,7 @@ function view_path ($path) {
 
 /* 	return absolute path
 	
-	for example
+	example
 	tpl_path('view/front/mytpl');		#=> /var/www/html/demo/view/front/mytpl.tpl
 
 */
@@ -63,13 +63,13 @@ function tpl_path ($path) {
 
 /*	load the template
 
-	for example, specified tpl_name and default layout
+	example 01, specified tpl_name and default layout
 	tpl($t, 'mytpl');
 
-	for example, specified tpl_name and specified layout
+	example 02, specified tpl_name and specified layout
 	tpl($t, 'mytpl', 'mylayout');
 
-	for example, no layout
+	example 03, no layout
 	tpl($t, 'mytpl', 'unlayout');
 
 */
@@ -89,10 +89,10 @@ function tpl($t, $tpl_name = '', $layout = '') {
 
 /*	show error page, and exit current proccessing
 
-	for example,
+	example 01,
 	out('occured an error', $t);
 
-	for example, with specified layout
+	example 02, with specified layout
 	out('occured an error', $t, 'layout');
 */
 function out($str, $t, $layout = 'layout') {
@@ -105,7 +105,7 @@ function out($str, $t, $layout = 'layout') {
 
 /*	change the language from en to what you want
 
-	for example,
+	example,
 	l('myname');		#=>	'myname'
 */
 function l ($str) {
@@ -138,7 +138,7 @@ function url ($arr) {
 
 /*	complete the url with _m, _f
 
-	for example, when your default module is front and file is main.php
+	example, when your default module is front and file is main.php
 	url_c('_x=sss');		#=>	'?_m=front&_f=main&_x=sss&'
 	url_c('_x=sss&_v=vv');	#=>	'?_m=front&_f=main&_x=sss&_v=vv&'
 
@@ -174,7 +174,7 @@ function url_referer ($url = '') {
 
 /*	return a key-val result that getting from database by a table and two fields given
 	
-	for example,
+	example,
 	data_fetch_kv('user', 'username', 'password');	#=> array('linyu' => '8888', 'viewer' => '8888')
 
 */
@@ -435,15 +435,15 @@ function user_add ($arr) {
 	the first argument is an action name, the second is certain value what you want to mark down.
 	if it has been not marked yet, return null value, others is un-null value
 
-	for example 01, a user hits the useful action for rid 25 of record, 
+	example 01, a user hits the useful action for rid 25 of record, 
 	useract('useful', 25);		// success, return null value
 	useract('useful', 25);		// failure, return 1
 
-	for example 02, a user when he has been logined
+	example 02, a user when he has been logined
 	useract('login', time() + 1);	// return null value
 	useract('login', time() + 2);	// return null value
 
-	for example 03, a user when he updated the created time of record for rid 25
+	example 03, a user when he updated the created time of record for rid 25
 	useract('updated25', date('ymd'));
 
 */
@@ -469,10 +469,10 @@ function useract ($ukey, $uval) {
 
 /*	user key-val for storing the user detail information
 
-	for example, set value
+	example, set value
 	userinfo(1, 'nickname', 'linyu')
 
-	for example, get value
+	example, get value
 	userinfo(1, 'nickname')	#=> 'linyu'
 */
 function userinfo ($uid, $ukey, $uval = '') {
@@ -505,12 +505,12 @@ function userinfo ($uid, $ukey, $uval = '') {
 /*	user message, 
 	send message to user in post with sign like u#2, u#5
 
-	for example, set value
+	example, set value
 	usermsg(1, 22);
 	usermsg($uid, $rid);	// assume the $uid is 2, $rid is 23
 	usermsg(2, 25);
 
-	for example, get value, that will return the messages.
+	example, get value, that will return the messages.
 	usermsg(1);				// array(array('rid', 'content', 'created',,))
 	usermsg(2);				// array(array('23',,,), array('25',,,)) the mysql result of record table
 */
@@ -565,10 +565,10 @@ function user_remind($content, $rid) {
 
 /*	a copy of global config vars in config.php file, an alisa name of config vars call optionkv
 
-	for example, set value
+	example, set value
 	optionkv('user_register_allow', 'yes');
 
-	for example, get value
+	example, get value
 	optionkv('user_register_allow');	#=> 'yes'
 */
 function optionkv ($okey, $oval = '') {
@@ -604,20 +604,20 @@ function optionkv ($okey, $oval = '') {
 
 /*	record logs by a key-val piece
 
-	for example 01, set value, 
+	example 01, set value, 
 	recordlog(1, 'editor', 'guest');
 	recordlog(1, 'editor', 'linyu');		// cover old value 'guest'
 	recordlog(1, 'replies', 1);
 	recordlog(1, 'votes', 1, true);			// auto increment by 1
 
-	for example 02, get value, 
+	example 02, get value, 
 	recordlog(1);				#=> array('replies' => '1', 'votes' => '2', 'editor' => 'linyu')
 	recordlog(1, 'editor'); 	#=> linyu
 
-	for example 03, remove value by a key
+	example 03, remove value by a key
 	recordlog(1, 'hot', null);
 
-	for example 04, remove all values by no key
+	example 04, remove all values by no key
 	recordlog(1, null, null);
 
 */
@@ -728,7 +728,7 @@ function validcode($shot_code = '') {
 
 /* change date to timeago
 
-	for example
+	example
 
 	$ptime = time();
 	timeago($ptime)		#=> 0.01 hour ago 
