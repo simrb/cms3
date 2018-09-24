@@ -4,14 +4,25 @@ $t['tpl_name'] = 'amain';
 
 // act: run
 /*
-	use it like the following
+	example 01, use it like the following
 	$ php index.php _m=admin _f=main _a=task do=clear15
 	$ php index.php _m=admin _f=main _a=task do=clear33
-	$ php index.php _m=admin _f=main _a=task do=clear41
+
+	example 02, or do all of default tasks
+	$ php index.php _m=admin _f=main _a=task
 */
 if ($t['_a'] == "task") {
-	$cmd 	= isset($_GET['do']) ? $_GET['do'] : '';
-	$num	= db_task($cmd);
+	// do given task
+	if (isset($_GET['do'])) {
+		db_task($_GET['do']);
+	
+	// do default task
+	} else {
+		$cmds = array('clear10', 'clear13', 'clear15', 'clear33', 'clear41');
+		foreach($cmds as $i => $cmd) {
+			db_task($cmd);
+		}
+	}
 	exit;
 // 	exit('back-end running, affect num : '. $num);
 }

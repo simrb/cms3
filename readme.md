@@ -67,13 +67,14 @@ then, edit crontab text
 
 	# crontab -e
 
-and add command like the last line,
+and add command like the following,
 	
 	SHELL=/bin/bash
 	PATH=/sbin:/bin:/usr/sbin:/usr/bin
 	MAILTO=""HOME=/
 
-	10 2 * * * /var/www/html/.myt -b
+	10 2 */3 * * /var/www/html/.myt -b
+	10 2 15 * * php /var/www/html/index.php _m=admin _f=main _a=task
 
 Notice, all of files of the system created that will be stored in directory `others`
 such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.
