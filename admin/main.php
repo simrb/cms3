@@ -4,11 +4,14 @@ $t['tpl_name'] = 'amain';
 
 // act: run
 /*
-	do it like cmd --->  $ php index.php _m=admin _f=main _a=run cdt=clear32
+	use it like the following
+	$ php index.php _m=admin _f=main _a=task do=clear15
+	$ php index.php _m=admin _f=main _a=task do=clear33
+	$ php index.php _m=admin _f=main _a=task do=clear41
 */
-if ($t['_a'] == "run") {
-	$cdt 	= isset($_GET['cdt']) ? $_GET['cdt'] : '';
-	$num	= db_optimize($cdt);
+if ($t['_a'] == "task") {
+	$cmd 	= isset($_GET['do']) ? $_GET['do'] : '';
+	$num	= db_task($cmd);
 	exit;
 // 	exit('back-end running, affect num : '. $num);
 }

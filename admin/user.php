@@ -45,10 +45,10 @@ if ($t['_a'] == "del") {
 //act: delsess
 if ($t['_a'] == "delsess") {
 	if (isset($_GET['exp'])) {
-		sql_query("DELETE FROM usersess WHERE exptime < ". time());
+		db_task('clear41');
 		$t["msg"] = l('deleted successfully');
 	} else {
-		sql_query("TRUNCATE TABLE usersess;");
+		db_task('clear40');
 		$t["msg"] = l('you will quit soon');
 	}
 }
@@ -75,7 +75,6 @@ if ($t['_v'] == "getvcode") {
 
 	// draw line
 	imageline($im, rand(1,9), rand(1,20), rand(30,50), rand(1,10), $text_color);
-
 
 	// set cookie, header type, image
 	setcookie("val22", $longcode, time()+60*2);
@@ -160,7 +159,6 @@ if ($t['_a'] == "login") {
 if ($t['_v'] == "login") {
 	// has login yet
 	if(user_id() > 0){
-		$t['tpl_dir'] = VIEW_DIR;
 		out(l('you have login yet'), $t);
 	} else {
 		$t['action_url'] = isset($_GET["firstime"]) ? $t['link_register'] : $t['link_login'];

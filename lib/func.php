@@ -754,16 +754,19 @@ function timeago($mytime) {
 
 /* database optimized
 
-	for example, i want to clear records of trash
-	db_optimize('clear10');
+	example 01, i want to clear records of trash
+	db_task('clear10');
+
+	example 02, clear all of user actions
+	db_task('clear34');
 
 */
-function db_optimize($cdt) {
+function db_task($cmd) {
 	$three_month 	= time() - 60*60*24*30*3;
 	$three_day 		= time() - 60*60*24*3;
 	$num			= 0;
 
-	switch ($cdt) {
+	switch ($cmd) {
 		// delete records in trash
 		case 'clear10' :
 			$num = sql_query("DELETE FROM record WHERE cid=0;", 'affect_num');
@@ -792,7 +795,7 @@ function db_optimize($cdt) {
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
 		break;
 
-		// delete comment tips in three ago
+		// delete comment tips three months ago
 		case 'clear15' :
 			$num = sql_query("DELETE FROM recordkv WHERE rkey='replies' AND created < $three_month;", 'affect_num');
 		break;
@@ -820,6 +823,16 @@ function db_optimize($cdt) {
 		// delete all of user actions
 		case 'clear34' :
 			$num = sql_query("DELETE FROM useract", 'affect_num');
+		break;
+
+		// delete all of user session
+		case 'clear40' :
+			$num = sql_query("TRUNCATE TABLE usersess", 'affect_num');
+		break;
+
+		// delete exp session of user
+		case 'clear41' :
+			$num = sql_query("DELETE FROM usersess WHERE exptime < ". time(), 'affect_num');
 		break;
 	}
 

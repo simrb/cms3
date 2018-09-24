@@ -56,7 +56,7 @@ if ($t['_a'] == "del") {
 // act: optimize
 if ($t['_a'] == "optimize") {
 	$cdt 			= isset($_POST['select_condition']) ? $_POST['select_condition'] : '';
-	$num			= db_optimize($cdt);
+	$num			= db_task($cdt);
 
 	$t["msg"] = l('deleted successfully') . ' for '. $num;
 	$t['_v'] = "optimize";
