@@ -202,11 +202,13 @@ $(document).ready( function() {
 		re_txt.focus();
 		//console.log(re_val);
 	});
+	/*
 	$('.re_btn').hover(function () {
 		$(this).parent().next('pre').css({'background':'#d7e1c3', 'border':'1px solid gray'});
 	}, function(){
 		$(this).parent().next('pre').css({'background':'', 'border':''});
 	});
+	*/
 
 
 	// interpret event for pre element
