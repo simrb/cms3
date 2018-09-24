@@ -122,7 +122,8 @@ INSERT INTO `optionkv` (`oid`, `uid`, `okey`, `oval`) VALUES
 (7, 1, 'allow_register', 'on'),
 (8, 1, 'allow_guest_post_num', '50'),
 (9, 1, 'allow_user_post_num', '50'),
-(10, 1, 'allow_register_num', '50');
+(10, 1, 'allow_register_num', '50'),
+(11, 1, 'web_style', 'front');
 
 
 --
