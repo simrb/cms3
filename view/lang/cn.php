@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'fresh'	=>  '刷新' ,
 'like'	=>  '喜欢' ,
 'user message'	=>  '会员留言' ,
 'user info'	=>  '会员资料' ,
@@ -125,7 +126,8 @@
 'say someing ...'      =>  '说些什么吗 ...' ,
 'you have login yet'     =>  '你已经成功登录' ,
 'no privilege to access'     =>  '没有权限访问' ,
-'you cannot post twice' => '在短时间内你不能连接发两次',
+'you cannot post twice' => '在短时间内你不能连发两次',
+'you cannot fresh twice' => '在日内你不能刷新两次',
 'category name'      =>  '分类名称' ,
 'number'      =>  '数量' ,
 'add post'      =>  '发帖' ,

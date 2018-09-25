@@ -1,6 +1,6 @@
 <?php $lang = array(
 
-
+'fresh'	=>  '' ,
 'like'	=>  '' ,
 'user message'	=>  '' ,
 'user info'	=>  '' ,
@@ -122,6 +122,7 @@
 'you have login yet'     =>  '' ,
 'no privilege to access'     =>  '' ,
 'you cannot post twice' => 'you cannot post twice in a short time',
+'you cannot fresh twice' => 'you cannot fresh twice in one day',
 'category name'      =>  '' ,
 'number'      =>  '' ,
 'add post'      =>  '' ,

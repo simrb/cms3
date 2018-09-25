@@ -3,7 +3,7 @@
 
 /* *************** style, color ************ */
 body { background-color: #e8ede0; }
-#header a, #bodyer a, #footer a { color: #374b37; }
+#header a, #bodyer a, #footer a { color: #374b37; cursor: pointer;}
 a:hover { text-decoration: underline; }
 .header_title a:hover { text-decoration: none; }
 textarea { width: 99%; background-color: #eee; border: 1px solid #98a584; border-radius:5px; }
@@ -23,9 +23,9 @@ input { background-color: #eeeeee;  border: 1px solid #98a584; border-radius:5px
 .show-detail-title { color: gray; }
 
 .show-detail pre a { text-decoration: underline; }
-.show-detail a, .show-detail a label { cursor: pointer; }
+.show-detail a, .show-detail a label {  }
 
-.adm_btn label, .re_btn { color: #ced5c8; }
+.adm_btn label, .re_btn, .top_btn { color: #ced5c8; }
 
 
 

@@ -6,6 +6,7 @@ v1.0.3.4, updated by linyu deng
 	add comment tip in list page
 	change view dirs
 	add db_task()
+	add fresh created function
 
 v1.0.3.3, updated by linyu deng
 

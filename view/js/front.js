@@ -148,12 +148,10 @@ $(document).ready( function() {
 
 	// useful style
 	$(".show-detail-body").hover(function () {
-		$(this).find(".useful_no").css('color', 'gray');
-		$(this).find(".re_btn").css('color', 'gray');
+		$(this).find(".useful_no, .re_btn, .top_btn").css('color', 'gray');
 		$(this).find(".adm_btn label").css('color', 'gray');
 	}, function () {
-		$(this).find(".useful_no").css('color', '');
-		$(this).find(".re_btn").css('color', '');
+		$(this).find(".useful_no, .re_btn, .top_btn").css('color', '');
 		$(this).find(".adm_btn label").css('color', '');
 	});
 
@@ -175,6 +173,21 @@ $(document).ready( function() {
 	});
 
 
+	// top event
+	$(".top_btn").click(function () {
+		var top_btn = $(this);
+		var rid = top_btn.attr('rid');
+		var uid = top_btn.attr('uid');
+		$.ajax({
+			url: "?_a=ajax_totop&rid=" + rid + "&uid=" + uid,
+		}).done(function(msg) {
+			if (msg != 0) {
+				show_msg(msg, top_btn);
+			}
+		});
+	});
+
+
 	// menu event
 	var v_val = $(".menu_item").attr('_v');
 	if (v_val == 'detail') {
@@ -191,7 +204,7 @@ $(document).ready( function() {
 
 
 	// reply event
-	$('.re_btn').css('cursor', 'pointer');
+	$('.re_btn, .top_btn, .adm_btn').css('cursor', 'pointer');
 	$('.re_btn').click(function () {
 		var re_val = $(this).attr('reply_sign');
 		var re_txt = $('.reply_txt');

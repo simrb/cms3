@@ -1,7 +1,5 @@
 <div class="show-detail">
 	<?php
-		$user_level	= user_level();
-
 		// record
 		if (isset($t['record_res'])) {
 			echo '<div class="show-detail-body clear">';
@@ -26,7 +24,11 @@
 			// reply
 			echo "<label class='right re_btn' reply_sign='r#".$t['rid']." u#".$t['record_res']['uid']."'>". l('reply') . "</label>";
 
-			if ($user_level > 4) {
+			if ($t['ulevel'] > 4 or $t['record_res']['uid'] == $t['uid']) {
+				echo "<label class='right top_btn' rid=".$t['rid']." uid=".$t['record_res']['uid'].">". l('fresh') . "</label>";
+			}
+
+			if ($t['ulevel'] > 4) {
 				// admin btn
 				echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
 
@@ -71,7 +73,7 @@
 				// reply
 				echo "<label class='right re_btn' reply_sign='r#".$row['rid']." u#".$row['uid']."'>". l('reply') . "</label>";
 
-				if ($user_level > 4) {
+				if ($t['ulevel'] > 4) {
 					// admin btn
 					echo "<a class='adm_btn' href='#'><label class='right'>". l('admin') . "</label></a>";
 

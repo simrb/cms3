@@ -2,15 +2,35 @@
 
 // commom
 $t['uid'] 			= $uid	= user_id();
+$t['ulevel'] 		= user_level();
 $t["category_kv"] 	= header_menu();
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
+
+// act: ajax_totop
+if ($t['_a'] == "ajax_totop") {
+	$reval = l('failure');
+	if (isset($_GET['uid']) AND isset($_GET['rid'])) {
+		if ($t['uid'] == $_GET['uid'] OR $t['ulevel'] > 4) {
+			$t["msg"] = useract('totop', $_GET['uid'].date('d'));
+			if ($t['msg'] == '' OR $t['ulevel'] > 4) {
+				sql_query("UPDATE record SET created = '".time()."' WHERE rid = '".$_GET['rid']."' AND follow=0;");
+				$reval = l('operated successfully');
+			} else {
+				$reval = l('you cannot fresh twice');
+			}
+		}
+	}
+	exit($reval);
+}
+
+
 // act: ajax_movepost
 if ($t['_a'] == "ajax_movepost") {
-	if (user_level() > 4 AND isset($_GET['cid']) AND isset($_GET['rid'])) {
+	if ($t['ulevel'] > 4 AND isset($_GET['cid']) AND isset($_GET['rid'])) {
 		sql_query("UPDATE record SET cid = '".$_GET['cid']."' WHERE rid = '".$_GET['rid']."';");
 		exit(l('post has been moved'));
 	} else {
@@ -21,7 +41,7 @@ if ($t['_a'] == "ajax_movepost") {
 
 // act: ajax_addpost
 if ($t['_a'] == "ajax_addpost") {
-	if (user_level() > 4 AND isset($_GET['pre_txt']) AND isset($_GET['rid'])) {
+	if ($t['ulevel'] > 4 AND isset($_GET['pre_txt']) AND isset($_GET['rid'])) {
 		sql_query("UPDATE record SET content = '".$_GET['pre_txt']."' WHERE rid = '".$_GET['rid']."';");
 		user_remind($_GET['pre_txt'], $_GET['rid']);
 		exit(l('operated successfully'));
@@ -71,7 +91,7 @@ if ($t['_a'] == "ajax_getuser") {
 // act: ajax_useful
 if ($t['_a'] == "ajax_useful") {
 	$reval = '0';
-	if (user_level() > 0 AND isset($_GET['rid']) ) {
+	if ($t['ulevel'] > 0 AND isset($_GET['rid']) ) {
 		$res = useract('useful', $_GET['rid']);
 		if (empty($res)) {
 			$rec_field = record_get_field($_GET['rid']);
@@ -145,7 +165,7 @@ if ($t['_a'] == "addpost") {
 	if (isset($_POST['cid']) AND isset($_POST['content'])) {
 		$t["msg"] = useract('addpost', user_ip().date('h'));
 
-		if (user_level() < 1 ) {
+		if ($t['ulevel'] < 1 ) {
 			$t['msg'] = l('no level to post');
 		}
 
@@ -187,7 +207,7 @@ if ($t['_v'] == "show") {
 	$filenums 			= 	mysql_num_rows($res);
 
 	$pagenums		 	= 	ceil($filenums/$pagesize);
-	$sql_str 			.=	" ORDER BY rid DESC LIMIT $pagestart, $pagesize";
+	$sql_str 			.=	" ORDER BY created DESC LIMIT $pagestart, $pagesize";
 
 	$t["record_res"] 	= 	sql_query($sql_str);
 	$t["pagecurr"]		=	$pagecurr;
