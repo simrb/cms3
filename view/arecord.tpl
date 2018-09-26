@@ -74,7 +74,7 @@
 							//	"' target='_blank'>". l('see') ."</a>";
 
 	  						echo "<td><a href='". url_c("_a=del&rid=".
-	  							$row["rid"]). "'>". l('trash') ."</a></td>";
+	  							$row["rid"]. "&pagecurr=".$t['pagecurr']). "'>". l('trash') ."</a></td>";
 
 	  						echo "</tr>";
 	  					}
