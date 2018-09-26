@@ -14,10 +14,11 @@ It is a simple cms by creating with php language, the base functions as follows,
 Setup
 ============
 
-initialing the project environment and database by default database, username, userpawd
+1,initialing the project environment and database by default database, username, userpawd
 
 	# su
-	# sh .myt -ed
+	# sh .myt -e
+	# sh .myt -d
 
 or, set your custom by options `-h, -n, -u, -p`
 
@@ -27,33 +28,7 @@ if you have an existed database, just configure the file `cfg.php` for connectin
 
 btw, you better to reboot server agint.
 
-
-
-Backup
-============
-
-1 backup your db, output data with the `first command`, and then, 
-copy your data file to your new path like `/others` , and execute the `second command`
-
-	# mysqldump -uroot -p cms_db > others/db.xxx
-
-	# mysql -ucms_uxxx -pcms_pxxx cms_dbname < others/db.xxx
-
-2 backup upload file, such as
-
-	# tar -cvf others.tar others/
-
-untar
-
-	# tar -xvf others.tar
-
-3 backup the database with `.myt` file
-
-enter your project root dir and typing the under command, that will be created a file called like `others/db.xxxxxx`
-
-	# sh .myt -b
-
-or use the `crontab`, 
+2, start the back-end task with `crontab`, 
 
 	# cp .myt .myti
 	# vi .myti
@@ -75,6 +50,32 @@ and add command like the following,
 
 	10 2 */3 * * /var/www/html/.myt -b
 	10 2 15 * * php /var/www/html/index.php _m=admin _f=main _a=task
+
+
+
+Backup
+============
+
+1, backup your db, output data with the `first command`, and then, 
+copy your data file to your new path like `/others` , and execute the `second command`
+
+	# mysqldump -uroot -p cms_db > others/db.xxx
+
+	# mysql -ucms_uxxx -pcms_pxxx cms_dbname < others/db.xxx
+
+1.1, backup the database with `.myt` file
+
+enter your project root dir and typing the under command, that will be created a file called like `others/db.xxxxxx`
+
+	# sh .myt -b
+
+2, backup upload file, such as
+
+	# tar -cvf others.tar others/
+
+untar
+
+	# tar -xvf others.tar
 
 Notice, all of files of the system created that will be stored in directory `others`
 such as the `others/upload/*`, `cfg.php`, `access.php`. e.g.

@@ -101,7 +101,7 @@ fi
 if [ $Ubackup = "yes" ] ; then
 # 	my_tables='category file optionkv record recordkv tag tag_assoc user userinfo'
 	grep -oP cms_.+[0-9]+ $my_cfg_dir >> tt.t
-	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] category file optionkv record recordkv tag tag_assoc user userinfo > '$my_bk_dir'/db.'$my_dd'";' > t.t
+	php -r '$v = file_get_contents("tt.t"); $a = explode("\n",$v); echo $s ="mysqldump -u$a[0] -p$a[1] $a[2] category file optionkv record tag tag_assoc user userinfo > '$my_bk_dir'/db.'$my_dd'";' > t.t
 	sh t.t
 	rm t.t tt.t 
 fi
@@ -144,6 +144,7 @@ if [ $Uinitpj = "yes" ] ; then
 	my_file="/usr/sbin/httpd"
 	if [ ! -f "$my_file" ] ; then
 		yum -y install httpd
+		/etc/init.d/httpd start
 		service httpd start
 		chkconfig httpd on
 	fi
@@ -152,6 +153,7 @@ if [ $Uinitpj = "yes" ] ; then
 	if [ ! -f "$my_file" ] ; then
 		yum -y install mysql mysql-server
 # 		yum -y install mysql mysql-server mysql-devel
+		/etc/init.d/mysqld start
 		service mysqld start
 		chkconfig mysqld on
 	fi
