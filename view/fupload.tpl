@@ -36,9 +36,10 @@ $("#upfile").click(function(event){
 					$("#upload_res").append(insert_txt);
 
 					// style
-					$('.upload_path').css('margin', '5px 0');
-					$('.upload_path').css('width', '250px');
-					$('.upload_img').css('width', '30px');
+					$('.upload_path').css({
+						'margin':'5px 0', 'width':'250px', 'cursor':'pointer'
+					});
+					$('.upload_img').css({'width':'30px', 'height':'20px', 'margin-left':'5px'});
 
 					// copy event
 					$('.upload_path').click(function(){
@@ -46,6 +47,7 @@ $("#upfile").click(function(event){
 						// window.clipboardData.setData('Text',upload_path_txt);
 						// console.log(upload_path_txt);
 						$(this).CopyToClipboard();
+						$(this).css('background-color', '#d8decf');
 					});
 
 				} else {
