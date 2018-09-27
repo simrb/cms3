@@ -18,7 +18,7 @@
 				$useful_number 	= $t['record_res']['useful'];
 				$useful_img 	= '12.png';
 			}
-			echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$t['rid']."'>".
+			echo "<label class='left useful_view ".$useful_class."' use_url='index.php?_a=ajax_useful&rid=".$t['rid']."'>".
 				"<span>". $useful_number ."</span><img class='left' src='view/img/". $useful_img ."' /></label>";
 
 			// reply
@@ -67,7 +67,7 @@
 					$useful_number 	= $row['useful'];
 					$useful_img 	= '12.png';
 				}
-				echo "<label class='left useful_view ".$useful_class."' use_url='?_a=ajax_useful&rid=".$row['rid']."'>".
+				echo "<label class='left useful_view ".$useful_class."' use_url='index.php?_a=ajax_useful&rid=".$row['rid']."'>".
 					"<span>". $useful_number ."</span><img class='left' src='view/img/". $useful_img ."' /></label>";
 
 				// reply

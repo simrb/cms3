@@ -187,7 +187,7 @@ if ($t['_a'] == "addpost") {
 		}
 	}
 
-	url_to( '?cid='. $_POST["cid"]);
+	url_to( 'index.php?cid='. $_POST["cid"]);
 }
 
 
@@ -223,7 +223,7 @@ if ($t['_v'] == "detail") {
 	if (isset($_GET['rid'])) {
 
 		$t["rid"]			= $_GET['rid'];
-		$t['url']			= '?_v=detail&rid=' . $t['rid'] . '&_a=addcomment';
+		$t['url']			= 'index.php?_v=detail&rid=' . $t['rid'] . '&_a=addcomment';
 
 		$res = sql_query("SELECT content, cid, created, useful, uid FROM record 
 							WHERE rid = ". $t["rid"] . " LIMIT 1");

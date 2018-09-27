@@ -42,7 +42,7 @@
 					$hl .= ' hide';
 				}
 				echo '<li class="left '. $hl .'"><a href="'. front_link('list', $cid, $t['pagecurr'])
-					.'" title="' .  $row['descript']. '" >'. $row['name'] .'</a></li>';
+					.'" title="' .  $row['descript']. '" cid='. $cid .' >'. $row['name'] .'</a></li>';
 			}
 	//	} 
 

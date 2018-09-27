@@ -83,7 +83,7 @@ $(document).ready( function() {
 
 				// update remote
 				$.ajax({
-					url: "?_a=ajax_addpost&rid=" + rid,
+					url: "index.php?_a=ajax_addpost&rid=" + rid,
 					data: {'pre_txt': pre_txt_new},
 				}).done(function(msg) {
 					//console.log(msg);
@@ -102,11 +102,11 @@ $(document).ready( function() {
 		var mv_btn = $(this);
 		var pre_btn = mv_btn.parent().next('pre');
 		var rid = pre_btn.attr('rid');
-		var hl_val = $('.menu_hl').find('a').attr('href');
+		var hl_val = $('.menu_hl').find('a').attr('cid');
 
 		var menu_txt = '<option value=""> -- </option>';
 		$('.menu_item').find('a').each(function(i) {
-			var c_val = $(this).attr('href');
+			var c_val = $(this).attr('cid');
 			if (c_val == hl_val) {
 				menu_txt +=  '<option selected=selected value="' + c_val + '">' + $(this).text() + '</option>';
 			} else {
@@ -135,8 +135,7 @@ $(document).ready( function() {
 			// send change to server
 			if (valueSelected != '' && valueSelected != hl_val) {
 				$.ajax({
-					url: valueSelected + "&_a=ajax_movepost",
-					data: {'rid': rid},
+					url: "index.php?cid=" + valueSelected + "&_a=ajax_movepost&rid=" + rid,
 				}).done(function(msg) {
 					//console.log(msg);
 					show_msg(msg, mv_btn);
@@ -179,7 +178,7 @@ $(document).ready( function() {
 		var rid = top_btn.attr('rid');
 		var uid = top_btn.attr('uid');
 		$.ajax({
-			url: "?_a=ajax_totop&rid=" + rid + "&uid=" + uid,
+			url: "index.php?_a=ajax_totop&rid=" + rid + "&uid=" + uid,
 		}).done(function(msg) {
 			if (msg != 0) {
 				show_msg(msg, top_btn);
@@ -269,7 +268,7 @@ $(document).ready( function() {
 		// if not, from remote
 		} else {
 			$.ajax({
-				url: "?_a=ajax_getpost&rid=" + rid_sign.substr(2),
+				url: "index.php?_a=ajax_getpost&rid=" + rid_sign.substr(2),
 			}).done(function(msg) {
 				rid_txt = msg;
 				draw_box(msg, oj);
@@ -280,7 +279,7 @@ $(document).ready( function() {
 	function draw_user (oj) {
 		var uid_sign = oj.attr('href');
 		$.ajax({
-			url: "?_a=ajax_getuser&uid=" + uid_sign.substr(2),
+			url: "index.php?_a=ajax_getuser&uid=" + uid_sign.substr(2),
 		}).done(function(msg) {
 			//console.log(msg);
 			draw_box(msg, oj);
@@ -385,7 +384,7 @@ $(document).ready( function() {
 			} else {
 				$(this).attr('org_width', $(this).width());
 				$(this).css('width', '100%');
-				console.log($(this).width());
+				//console.log($(this).width());
 			}
 
 		});
