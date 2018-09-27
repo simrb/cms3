@@ -17,8 +17,7 @@ Setup
 1,initialing the project environment and database by default database, username, userpawd
 
 	# su
-	# sh .myt -e
-	# sh .myt -d
+	# sh .myt -ed
 
 or, set your custom by options `-h, -n, -u, -p`
 
