@@ -29,9 +29,10 @@
 	<a href="index.php" ><h1><?= $t['web_header'] ?></h1></a>
 </div>
 
+<div class="show-menu">
 
-<div class="show-menu"> <?php if (isset($t["category_kv"])) {
-		echo '<div class="menu_item" _v="'. $t['_v'] .'"><ul>';
+	<?php if (isset($t["category_kv"])) {
+			echo '<div class="menu_item" _v="'. $t['_v'] .'"><ul>';
 
 	//	if ($t['_v'] == 'list' or $t['_v'] == 'show' or $t['_v'] == 'addpost' or $t['_v'] == 'detail') {
 			echo '<li class="left hide"><a href="?cid=0" >'. l('trash') .'</a></li>';
@@ -45,8 +46,8 @@
 					.'" title="' .  $row['descript']. '" cid='. $cid .' >'. $row['name'] .'</a></li>';
 			}
 	//	} 
-
-
 		echo '</ul></div>';
-} ?> </div>
+	} ?>
+
+</div>
 

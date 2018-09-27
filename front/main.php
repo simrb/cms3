@@ -5,7 +5,8 @@ $t['uid'] 			= $uid	= user_id();
 $t['ulevel'] 		= user_level();
 $t["category_kv"] 	= header_menu();
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
-$t['web_title'] 	= optionkv('web_title');
+$t['web_title'] 	= $t["cid"] == 1 ? parse_text(optionkv('web_title')) : parse_text($t["category_kv"][$t["cid"]]['name']) .
+						' - '. parse_text($t["category_kv"][$t["cid"]]['descript']) . ' - ' . parse_text(optionkv('web_header'));
 $t["pagecurr"]		= 1;
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
@@ -230,8 +231,8 @@ if ($t['_v'] == "detail") {
 		if ($res = mysql_fetch_row($res)) {
 
 			// set head
-			$t['web_title'] = utf8_substr($res[0], 0, 30) . ' -- ' . optionkv('web_header');
-			$t['web_des'] 	= utf8_substr($res[0], 0, 70);
+			$t['web_title'] = parse_text(utf8_substr($res[0], 0, 30)) . ' - ' .  parse_text(optionkv('web_header'));
+			$t['web_des'] 	= parse_text(utf8_substr($res[0], 0, 70));
 			$t['cid'] 		= $res[1];
 
 			// set body

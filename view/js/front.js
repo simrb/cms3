@@ -187,7 +187,7 @@ $(document).ready( function() {
 	});
 
 
-	// menu event
+	// menu bar for detail page
 	var v_val = $(".menu_item").attr('_v');
 	if (v_val == 'detail') {
 		$(".menu_item").find('.menu_no').hide();
@@ -200,6 +200,12 @@ $(document).ready( function() {
 		$(".menu_hl").after(menu_title);
 		// console.log(menu_title);
 	}
+
+
+	// menu title
+	$('.menu_no, .menu_hl').each(function (i) {
+		$(this).find('a').attr('title', '');
+	});
 
 
 	// reply event
