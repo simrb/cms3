@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+
+	RewriteEngine On
+	RewriteRule ^cid-([0-9]+)-([0-9]+)\.html$ index\.php?cid=$1&pagecurr=$2
+	RewriteRule ^detail-([0-9]+)\.html$ index\.php?rid=$1&_v=detail
+
+</IfModule>

@@ -4,29 +4,29 @@
 		// addpost link
 		if (user_level() > 0) {
 			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
-			echo '<a class=" '. $hl .' " href="?_v=addpost&cid='.
+			echo '<a class=" '. $hl .' " href="index.php?_v=addpost&cid='.
 				$t['cid'] .'">'.l('add post').'</a>';
 		}
 	?>
 
-	<a href="?_v=detail&rid=1" ><?= l('about us'); ?></a>
+	<a href="index.php?_v=detail&rid=1" ><?= l('about us'); ?></a>
 
 	<?php
 		// message link
 		if ($t['user_msg_open'] == 'on' AND $t['uid'] > 0 AND userinfo($t['uid'], 'new_msg') == 'has') {
-				echo '<a href="?_v=message&usermsg=has" >'. l('member') .'</a>';
+				echo '<a href="index.php?_v=message&usermsg=has" >'. l('member') .'</a>';
 				echo '<img src="'. $GLOBALS['c']['def_view'] .'/img/11.png">';
 
 		// settings link
 		} else {
-			echo '<a href="?_v=settings" >'. l('member') .'</a>';
+			echo '<a href="index.php?_v=settings" >'. l('member') .'</a>';
 		}
 	?>
 
 </div>
 
 <div class='header_title' >
-	<a href="?" ><h1><?= $t['web_header'] ?></h1></a>
+	<a href="index.php" ><h1><?= $t['web_header'] ?></h1></a>
 </div>
 
 
@@ -41,8 +41,8 @@
 				if ($row['number'] == 0) {
 					$hl .= ' hide';
 				}
-				echo '<li class="left '. $hl .'"><a href="?cid='. 
-					$cid .'" title="' .  $row['descript']. '" >'. $row['name'] .'</a></li>';
+				echo '<li class="left '. $hl .'"><a href="'. front_link('list', $cid, $t['pagecurr'])
+					.'" title="' .  $row['descript']. '" >'. $row['name'] .'</a></li>';
 			}
 	//	} 
 

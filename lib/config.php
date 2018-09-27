@@ -8,6 +8,17 @@ $t = array();	// template var
 $c['version'] 			=	'v1.0.3.3';
 $c['def_view'] 			=	'view';		// default theme
 
+// open file
+//		vi /etc/httpd/conf/httpd.conf
+// change 
+// 		<Directory "/var/www/html">
+//			AllowOverride None
+// to 
+// 		<Directory "/var/www/html">
+//			AllowOverride All
+// end, restart server
+//		/etc/init.d/httpd restart
+$c['seo_open'] 			=	'off';
 
 // default module, file, action, view
 $t['_m'] 				=	'front';

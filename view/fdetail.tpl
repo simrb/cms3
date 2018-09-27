@@ -81,7 +81,7 @@
 					echo "<a class='mv_btn' href='#'><label class='right'>". l('move') . "</label></a>";
 
 					// edit btn
-					echo "<a class='edit_btn' href='?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
+					echo "<a class='edit_btn' href='index.php?_m=admin&_f=record&_v=edit&rid=".$row['rid'].
 							"' target='_blank'><label class='right'>". l('edit') . "</label></a>";
 				}
 
@@ -104,7 +104,7 @@
 				<input type="submit" value="<?= l('submit'); ?>" class="" />
 				<input type="hidden" name="rid" value="<?= $t["rid"] ?>" />
 				<input type="hidden" name="cid" value="<?= $t["cid"] ?>" />
-				<a class="right upload_img" href="?_v=upload" target="_blank"><?= l('upload') ?></a>
+				<a class="right upload_img" href="index.php?_v=upload" target="_blank"><?= l('upload') ?></a>
 			</li>
 		</ul>
 	</form>

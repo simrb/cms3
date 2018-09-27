@@ -13,7 +13,7 @@
 
 
 			<div id="header">
-				<a href="?"><h1><?= $t['web_header'] ?></h1></a>
+				<a href="index.php"><h1><?= $t['web_header'] ?></h1></a>
 			</div>
 
 			<div id="bodyer">
@@ -26,7 +26,7 @@
 			<div id="footer">
 				<i>
 					<?= $t['web_footer'].date('Y') ?> <?= $t['web_name'] ?> <?= $GLOBALS['c']['version'] ?>
-					<a href="?_v=detail&rid=1" target="_blank"><?= l('about us'); ?></a>
+					<a href="index.php?_v=detail&rid=1" target="_blank"><?= l('about us'); ?></a>
 				</i>
 			</div>
 

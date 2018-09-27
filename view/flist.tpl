@@ -28,11 +28,11 @@
 				//var_dump($len);
 
 				//echo "<label>" . date('Y-m-d H:i:s', $row['created']) . "</label>";
-				echo "<h3><a href='?_v=detail&rid=" . $row['rid'];
+				echo "<h3><a href='" . front_link('detail', $row['rid']);
 				echo "' target='_self'>" . parse_html(utf8_substr($row['content'], 0 , $len)) . "</a></h3>";
 
 				echo "<p><span class='list-body'>" . parse_html(utf8_substr($row['content'], $len, 102))  .
-						"</span> <a  href='?_v=detail&rid=" . $row['rid']. "' > >> </a>";
+						"</span> <a  href='" .front_link('detail', $row['rid']). "' > >> </a>";
 
 				$cmt_tip = recordlog($row['rid'], 'replies');
 				if (intval($cmt_tip) > 0) {
@@ -54,7 +54,7 @@
 		if ($t["pagenums"] > 0) {
 			for ($i=0; $i < $t["pagenums"]; $i++) {
 				$j = $i + 1;
-				echo '<span> <a href="?pagecurr='.$j.'&cid='.$t['cid'];
+				echo '<span> <a href="'. front_link('list', $t['cid'], $j);
 				echo '">'.$j.'</a> </span>';
 			}
 		}

@@ -25,9 +25,9 @@
 
 				<div class="right" >
 					<?php if (user_level() > 5) { ?>
-						<a href="?_m=admin" target="_blank"><?= l('back end') ?></a>	
+						<a href="index.php?_m=admin" target="_blank"><?= l('back end') ?></a>	
 					<?php }  if (user_level() > 0) { ?>
-						<a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
+						<a href="index.php<?=$t['link_logout'];?>" ><?= l('logout'); ?></a>
 					<?php } ?>
 
 				</div>

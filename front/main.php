@@ -6,6 +6,7 @@ $t['ulevel'] 		= user_level();
 $t["category_kv"] 	= header_menu();
 $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= optionkv('web_title');
+$t["pagecurr"]		= 1;
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
@@ -330,6 +331,25 @@ function header_menu() {
 	return $rows;
 }
 
+
+function front_link($type, $id, $pageid = 0) {
+	$reval = '';
+	if ($GLOBALS['c']['seo_open'] == 'off') {
+		if ($type == 'list') {
+			$reval = "index.php?cid=$id&pagecurr=$pageid";
+		} elseif ($type == 'detail') {
+			$reval = "index.php?_v=detail&rid=$id";
+		}
+	} else {
+		if ($type == 'list') {
+			$reval = "cid-$id-$pageid.html";
+		} elseif ($type == 'detail') {
+			$reval = "detail-$id.html";
+		}
+	}
+
+	return $reval;
+}
 
 
 ?>
