@@ -32,22 +32,22 @@ btw, you better to reboot server agint.
 	# cp .myt .myti
 	# vi .myti
 
-and, set the `my_bk_dir` for backup dir, set the `my_cfg_dir` for project `cfg.php` file dir, maybe like under,
+and modify the path `my_bk_dir`, `my_cfg_dir` as you want, maybe like the following,
 
 	my_bk_dir=/home/db
 	my_cfg_dir=/var/www/html/others/cfg.php
 
-then, edit crontab text
+then edit crontab text,
 
 	# crontab -e
 
-and add command like the following,
+add command like the following,
 	
 	SHELL=/bin/bash
 	PATH=/sbin:/bin:/usr/sbin:/usr/bin
 	MAILTO=""HOME=/
 
-	10 2 */3 * * /var/www/html/.myt -b
+	10 2 */3 * * /var/www/html/.myti -b
 	10 2 15 * * php /var/www/html/index.php _m=admin _f=main _a=task
 
 
