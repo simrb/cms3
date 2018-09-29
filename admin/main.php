@@ -61,11 +61,11 @@ if ($t['_a'] == 'edit') {
 
 // view: info
 if ($t['_v'] == "info") {
-	$t['web_logo']		= optionkv('web_logo');
-	$t['web_title']		= optionkv('web_title');
-	$t['web_header']	= optionkv('web_header');
-	$t['web_des']		= optionkv('web_des');
-	$t['web_style']		= optionkv('web_style');
+	$t['web_logo']		= parse_text(optionkv('web_logo'));
+	$t['web_header']	= parse_text(optionkv('web_header'));
+	$t['web_title']		= parse_text(optionkv('web_title'));
+	$t['web_des']		= parse_text(optionkv('web_des'));
+	$t['web_style']		= parse_text(optionkv('web_style'));
 
 	tpl($t, "ainfo");
 }

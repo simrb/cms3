@@ -74,7 +74,7 @@ function tpl_path ($path) {
 
 */
 function tpl($t, $tpl_name = '', $layout = '') {
-	$t['web_logo']		=	optionkv('web_logo');
+	$t['web_logo']		=	parse_text(optionkv('web_logo'));
 	$t['web_header']	=	parse_text(optionkv('web_header'));
 	$t["msg"]			=	isset($t["msg"]) ? date("Y-m-d H:i:s")." ".$t["msg"] : "";
 	$t["tpl_name"]		=	$tpl_name != '' ? $tpl_name : $t["tpl_name"];
