@@ -32,7 +32,8 @@
 				echo "' target='_self'>" . parse_html(utf8_substr($row['content'], 0 , $len)) . "</a></h3>";
 
 				echo "<p><span class='list-body'>" . parse_html(utf8_substr($row['content'], $len, 102))  .
-						"</span> <a  href='" .front_link('detail', $row['rid']). "' > >> </a>";
+				//		"</span> <a  href='" .front_link('detail', $row['rid']). "' > >> </a>";
+						"</span> <a  href='" .front_link('detail', $row['rid']). "' ><img src='view/img/14.png' /></a>";
 
 				$cmt_tip = recordlog($row['rid'], 'replies');
 				if (intval($cmt_tip) > 0) {
