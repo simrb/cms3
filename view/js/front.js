@@ -330,7 +330,7 @@ $(document).ready( function() {
 			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
 			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$2' target='_blank' >$1</a>"},
 			//{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
-			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
+			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' type='application/x-shockwave-flash'></embed>"},
 			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
 		];
 
