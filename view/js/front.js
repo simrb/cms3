@@ -329,7 +329,8 @@ $(document).ready( function() {
 			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<img src='$1' />"},
 			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
 			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$2' target='_blank' >$1</a>"},
-			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
+			//{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<embed src='$1' />"},
+			{ reg : /emb#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
 			{ reg : /vid#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<video src='$1' controls=''></video>"},
 		];
 
