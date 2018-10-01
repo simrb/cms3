@@ -137,7 +137,8 @@ if ($t['_a'] == "settings") {
 // act: addcomment
 if ($t['_a'] == "addcomment") {
 	if (isset($_POST['rid']) AND isset($_POST['content'])) {
-		$t["msg"] = useract('addcmt', user_ip().date('i'));
+		$cdt = $t['ulevel'] > 0 ? 'i' : 'H'; 
+		$t["msg"] = useract('addcmt', user_ip().date($cdt));
 
 		if ($t["msg"] == '') {
 			$insert_id = sql_query(
@@ -165,11 +166,10 @@ if ($t['_a'] == "addcomment") {
 // act: addpost
 if ($t['_a'] == "addpost") {
 	if (isset($_POST['cid']) AND isset($_POST['content'])) {
-		$t["msg"] = useract('addpost', user_ip().date('h'));
-
 		if ($t['ulevel'] < 1 ) {
 			$t['msg'] = l('no level to post');
 		}
+		$t["msg"] = useract('addpost', user_ip().date('H'));
 
 		if ($t["msg"] == '') {
 			// add record
