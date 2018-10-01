@@ -192,20 +192,26 @@ if ($t['_v'] == 'edit') { ?>
 if ($t['_v'] == 'optimize') { ?>
 
 		<form action="<?=url_c('_a=optimize');?>" method="post">
+			<ul class="clear-menu">
 
-			<select name="select_condition" class="selectmenu">
-				<option selected> <?= l('condition'); ?> </option>
 				<?php
 					$arr = array(10,11,12,13,14,15,30,31,32,33,34);
 					foreach($arr as $i => $j) {
-						echo '<option value="clear'.$j.'" >'. l('clear'.$j); '.</option>';
+						echo '<li>'.
+							'<input type="checkbox" id='.$j.' name="cmds[]" value="'.$j.'" />'.
+							'<label for='.$j.' >'. l('clear'.$j). '.</label>'.
+							'</li>';
 					}
-				
+
+					echo '<li><br/>'.
+						'<label >'. l('clear user by ids'). ' : </label>'.
+						'<input type="text" name="clear_uids" value="" class="w50" />'.
+						'</li>';
 				?>
-			</select>
 
-			<input type="submit" value="<?= l('execute'); ?>" />
-
+				
+				<li><br/><input type="submit" value="<?= l('execute'); ?>" /></li>
+			</ul>
 		</form>
 
 <?php } ?>

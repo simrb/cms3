@@ -55,8 +55,21 @@ if ($t['_a'] == "del") {
 
 // act: optimize
 if ($t['_a'] == "optimize") {
-	$cdt 			= isset($_POST['select_condition']) ? $_POST['select_condition'] : '';
-	$num			= db_task($cdt);
+	$num = '';
+	if (count($_POST['cmds']) > 0) {
+		foreach($_POST['cmds'] as $i => $v) {
+			$num .= db_task($v). ', ';
+		}
+	}
+
+	if (isset($_POST['clear_uids'])) {
+		$arr = explode(' ', $_POST['clear_uids']);
+		if (count($arr) > 0) {
+			foreach($arr as $i => $v) {
+				$num .= db_task('16', $v). ', ';
+			}
+		}
+	}
 
 	$t["msg"] = l('deleted successfully') . ' for '. $num;
 	$t['_v'] = "optimize";

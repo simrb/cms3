@@ -761,77 +761,82 @@ function timeago($mytime) {
 	db_task('clear34');
 
 */
-function db_task($cmd) {
+function db_task($cmd, $uid = 0) {
 	$three_month 	= time() - 60*60*24*30*3;
 	$three_day 		= time() - 60*60*24*3;
 	$num			= 0;
 
 	switch ($cmd) {
 		// delete records in trash
-		case 'clear10' :
+		case '10' :
 			$num = sql_query("DELETE FROM record WHERE cid=0;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest records three months ago
-		case 'clear11' :
+		case '11' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete uesless records three months ago
-		case 'clear12' :
+		case '12' :
 			$num = sql_query("DELETE FROM record WHERE useful=0 AND created < $three_month;", 'affect_num');
 			$t["msg"] = l('deleted successfully') . ' for '. $num;
 		break;
 
 		// delete guest and useless three months ago
-		case 'clear13' :
+		case '13' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created < $three_month;", 'affect_num');
 		break;
 
 		// delete guest and useless in three days
-		case 'clear14' :
+		case '14' :
 			$num = sql_query("DELETE FROM record WHERE uid=0 AND useful=0 AND created > $three_day;", 'affect_num');
 		break;
 
 		// delete comment tips three months ago
-		case 'clear15' :
+		case '15' :
 			$num = sql_query("DELETE FROM recordkv WHERE rkey='replies' AND created < $three_month;", 'affect_num');
 		break;
 
+		// delete all of records by uid
+		case '16' :
+			$num = sql_query("DELETE FROM record WHERE uid=$uid;", 'affect_num');
+		break;
+
 		// delete action logs of adding post
-		case 'clear30' :
+		case '30' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addpost'", 'affect_num');
 		break;
 
 		// delete action logs of adding comment
-		case 'clear31' :
+		case '31' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addcmt'", 'affect_num');
 		break;
 
 		// delete action logs of clicking useful btton
-		case 'clear32' :
+		case '32' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='useful'", 'affect_num');
 		break;
 
 		// delete all of user actions there month ago
-		case 'clear33' :
+		case '33' :
 			$num = sql_query("DELETE FROM useract WHERE created < $three_month;", 'affect_num');
 		break;
 
 		// delete all of user actions
-		case 'clear34' :
+		case '34' :
 			$num = sql_query("DELETE FROM useract", 'affect_num');
 		break;
 
 		// delete all of user session
-		case 'clear40' :
+		case '40' :
 			$num = sql_query("TRUNCATE TABLE usersess", 'affect_num');
 		break;
 
 		// delete exp session of user
-		case 'clear41' :
+		case '41' :
 			$num = sql_query("DELETE FROM usersess WHERE exptime < ". time(), 'affect_num');
 		break;
 	}

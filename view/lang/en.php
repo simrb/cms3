@@ -1,5 +1,6 @@
 <?php $lang = array(
 
+'clear user by ids'	=>  '' ,
 'fresh'	=>  '' ,
 'like'	=>  '' ,
 'user message'	=>  '' ,

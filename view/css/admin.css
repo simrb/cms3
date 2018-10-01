@@ -56,7 +56,9 @@ input, select { width: 200px; height: 23px; }
 textarea { width: 95%; }
 input[type="submit"] { width: 150px; height: 23px; }
 input[type="button"] { width: 150px; height: 23px; }
+input[type="checkbox"] { width: 5px; float:left;}
 .edit-form-login input[type="submit"] {width: 200px; height: 23px;}
+.clear-menu li { clear: both; }
 
 .show-query, .show-bar, .show-table { margin-bottom: 15px; clear: both;}
 .show-table { text-align: center; }

@@ -2,6 +2,7 @@
 
 
 $t['tpl_name'] = 'auser';
+$t["uid"] =	isset($t["uid"]) ? $t["uid"] : 0;
 
 
 //act: add
@@ -198,7 +199,6 @@ if ($t['_v'] == "status") {
 
 //view: edit
 if ($t['_v'] == "edit") {
-	$t["uid"]			=	isset($t["uid"]) ? $t["uid"] : 0;
 	$t["username"]		=	isset($t["username"]) ? $t["username"] : "";
 	$t["password"]		=	isset($t["password"]) ? $t["password"] : "";
 	$t["level"]			=	isset($t["level"]) ? $t["level"] : "";

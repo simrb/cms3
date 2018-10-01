@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'clear user by ids'	=>  '清空这用户id的所有记录' ,
 'fresh'	=>  '刷新' ,
 'like'	=>  '喜欢' ,
 'user message'	=>  '会员留言' ,

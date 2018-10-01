@@ -5,8 +5,8 @@ $t['tpl_name'] = 'amain';
 // act: run
 /*
 	example 01, use it like the following
-	$ php index.php _m=admin _f=main _a=task do=clear15
-	$ php index.php _m=admin _f=main _a=task do=clear33
+	$ php index.php _m=admin _f=main _a=task do=15
+	$ php index.php _m=admin _f=main _a=task do=33
 
 	example 02, or do all of default tasks
 	$ php index.php _m=admin _f=main _a=task
@@ -18,7 +18,7 @@ if ($t['_a'] == "task") {
 	
 	// do default task
 	} else {
-		$cmds = array('clear10', 'clear13', 'clear15', 'clear33', 'clear41');
+		$cmds = array('10', '13', '15', '33', '41');
 		foreach($cmds as $i => $cmd) {
 			db_task($cmd);
 		}
