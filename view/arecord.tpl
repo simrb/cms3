@@ -195,7 +195,7 @@ if ($t['_v'] == 'optimize') { ?>
 			<ul class="clear-menu">
 
 				<?php
-					$arr = array(10,11,12,13,14,15,30,31,32,33,34);
+					$arr = array(10,11,12,13,14,15,17,30,31,32,33,34);
 					foreach($arr as $i => $j) {
 						echo '<li>'.
 							'<input type="checkbox" id='.$j.' name="cmds[]" value="'.$j.'" />'.

@@ -64,7 +64,7 @@ if ($t['_a'] == "optimize") {
 
 	if (isset($_POST['clear_uids'])) {
 		$arr = explode(' ', $_POST['clear_uids']);
-		if (count($arr) > 0) {
+		if (count($arr) > 1) {
 			foreach($arr as $i => $v) {
 				$num .= db_task('16', $v). ', ';
 			}

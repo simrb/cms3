@@ -805,6 +805,11 @@ function db_task($cmd, $uid = 0) {
 			$num = sql_query("DELETE FROM record WHERE uid=$uid;", 'affect_num');
 		break;
 
+		// delete all of comment tips 
+		case '17' :
+			$num = sql_query("DELETE FROM recordkv WHERE rkey='replies'", 'affect_num');
+		break;
+
 		// delete action logs of adding post
 		case '30' :
 			$num = sql_query("DELETE FROM useract WHERE ukey='addpost'", 'affect_num');

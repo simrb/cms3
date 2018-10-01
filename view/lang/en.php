@@ -31,6 +31,7 @@
 'clear13'      =>  'clear guest and useless three months ago' ,
 'clear14'      =>  'clear guest and useless in three days' ,
 'clear15'      =>  'clear comment tips three months ago' ,
+'clear17'      =>  'clear all of comment tips' ,
 'clear30'      =>  'clear action logs of adding post' ,
 'clear31'      =>  'clear action logs of adding comment' ,
 'clear32'      =>  'clear action logs of clicking useful button' ,
