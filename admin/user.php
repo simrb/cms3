@@ -136,7 +136,7 @@ if ($t['_a'] == "login") {
 		}
 
 		// user login
-		if ($t['msg'] == '') {
+		if ($t['msg'] == ''AND $t['user_login_open'] == 'on') {
 			if (user_login($_POST['username'], $_POST['password'])) {
 			} else {
 				$t['msg'] .= l('failed to login');

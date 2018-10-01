@@ -77,6 +77,21 @@ $t['admin_menu'] 		=	array(
 						);
 
 
+// record id
+$t['rid_aboutme'] 		=	1;
+$t['rid_aboutuser'] 	=	2;
+$t['rid_aboutpost'] 	=	3;
+$t['rid_comment'] 		=	4;
+
+
+// user function
+$t['user_msg_open'] 	=	'on';	// allow message using
+$t['user_reg_open'] 	=	'on';	// allow user register
+$t['user_login_open'] 	=	'on';	// allow user login
+$t['user_vcode_open'] 	=	'on';	// user validate code for login and register
+$t['user_icode_open'] 	=	'off';	// user invide code for register
+
+
 
 
 ?>
