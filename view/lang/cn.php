@@ -1,6 +1,6 @@
 <?php $lang = array(
 
-
+'failed to register'      =>  '注册失败' ,
 'clear user by ids'	=>  '清空这用户id的所有记录' ,
 'fresh'	=>  '刷新' ,
 'like'	=>  '喜欢' ,

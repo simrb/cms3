@@ -1,5 +1,7 @@
 <?php $lang = array(
 
+
+'failed to register'      =>  '' ,
 'clear user by ids'	=>  '' ,
 'fresh'	=>  '' ,
 'like'	=>  '' ,

@@ -132,12 +132,17 @@ if ($t['_a'] == "login") {
 	if ($valid_error == 0) {
 		// user register
 		if (isset($_POST["firstime"]) AND $t['user_reg_open'] == 'on') {
-			$t['msg'] .= user_add($_POST);
+			$remsg = useract('userreg', user_ip().date('d'));
+			if ($remsg == '') {
+				$t['msg'] .= user_add($_POST);
+			} else {
+				$t['msg'] .= l('failed to register');
+			}
 // 			$t['action_url'] = $t['link_register'];
 		}
 
 		// user login
-		if ($t['msg'] == ''AND $t['user_login_open'] == 'on') {
+		if ($t['msg'] == '' AND $t['user_login_open'] == 'on') {
 			if (user_login($_POST['username'], $_POST['password'])) {
 			} else {
 				$t['msg'] .= l('failed to login');
