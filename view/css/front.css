@@ -13,6 +13,7 @@ input { background-color: #eeeeee;  border: 1px solid #98a584; border-radius:5px
 .show-detail pre { background-color: #d7e1c3;  border: 1px solid #98a584; border-radius:5px; }
 .black { color: black; }
 .gray1 { color: #ced5c8; }
+.pg_hl { background-color: #d7e1c3; border: 1px solid #98a584;}
 
 .show-list h3 a { color: black; }
 .show-list-body {  background-color: #d7e1c3; border: 1px solid #98a584; border-radius:5px; }
@@ -46,7 +47,7 @@ textarea.ui-input-text { min-height: 60px; }
 .edit-form .addfile { width: 98%; }
 .show-detail pre { padding: 5px 10px;  margin: 0; min-height: 50px; }
 
-.show-pagination span { margin-right: 5px; }
+.show-pagination span { margin-right: 10px; padding: 2px; }
 
 .upload_form { margin-top: 10px; }
 .show-list-body {   padding: 5px;  }

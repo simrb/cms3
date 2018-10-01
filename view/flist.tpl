@@ -55,8 +55,9 @@
 		if ($t["pagenums"] > 0) {
 			for ($i=0; $i < $t["pagenums"]; $i++) {
 				$j = $i + 1;
-				echo '<span> <a href="'. front_link('list', $t['cid'], $j);
-				echo '">'.$j.'</a> </span>';
+				$pg_hl = $j == $t['pagecurr'] ? 'pg_hl' : '';
+				echo '<span class="'.$pg_hl.'"><a href="'. front_link('list', $t['cid'], $j).
+					'">'.$j.'</a></span>';
 			}
 		}
 
