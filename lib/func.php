@@ -405,7 +405,8 @@ function userbase () {
 
 // return current user ip
 function user_ip () {
-	return sql_filter($_SERVER['REMOTE_ADDR']);
+// 	return sql_filter($_SERVER['REMOTE_ADDR']);
+	return $_SERVER['REMOTE_ADDR'];
 }
 
 // add new user
@@ -456,8 +457,8 @@ function useract ($ukey, $uval) {
 	// mark down if not exists the action
 	if ($res) {
 		if (mysql_num_rows($res) == 0) {
-			sql_query("INSERT INTO useract (uid, ukey, uval) VALUES ('". 
-				$uid ."','". $ukey ."', '". $uval ."')");
+			sql_query("INSERT INTO useract (uid, ukey, uval, created) VALUES ('". 
+				$uid ."','". $ukey ."', '". $uval ."', '". time() ."')");
 
 			$reval = '';
 		}
