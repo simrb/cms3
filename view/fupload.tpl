@@ -27,7 +27,7 @@ $("#upfile").click(function(event){
 
 				//console.log(data);
 				if (data.code == "success") {
-					var path_txt = "img#" + data.data['url'];
+					var path_txt = "img#" + data.data['url'] + "#";
 					var insert_txt = "<p><input type='text' class='upload_path' data-clipboard-text='";
 					insert_txt += path_txt + "' value='" + path_txt + "' />";
 					insert_txt += "<img class='upload_img' src='" + data.data['url'] + "' />";
