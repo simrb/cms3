@@ -327,8 +327,8 @@ $(document).ready( function() {
 			{ reg : /r#([0-9]+)/g, rep : "<a href='#r$1' class='show-pre' >r#$1</a>"},
 			{ reg : /u#([0-9]+)/g, rep : "<a href='#u$1' class='show-user' >u#$1</a>"},
 			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)#/g, rep : "<img src='$1' />"},
-			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$1' target='_blank' >$1</a>"},
-			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : "<a href='$2' target='_blank' >$1</a>"},
+			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)#/g, rep : "<a href='$1' target='_blank' >$1</a>"},
+			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)#/g, rep : "<a href='$2' target='_blank' >$1</a>"},
 			{ reg : /vid#(https:\/\/www\.fantasy\.tv\/)([^\s]*)#/g, rep : "<embed src='$1$2' ></embed>"},
 			{ reg : /vid2#([a-zA-Z]+:\/\/[^\s]*)#/g, rep : "<video src='$1' controls=''></video>"},
 		];
