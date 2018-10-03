@@ -35,7 +35,8 @@
 			<span><a href="?" target="_blank" ><?= l('front end'); ?></a></span> |
 			<span><a href="?_m=admin" ><?= l('back end'); ?></a></span> |
 			<span><a href="<?=$t['link_logout'];?>" ><?= l('logout'); ?></a></span> |
-			<span><?= invitecode(); ?></span>
+			<span><?= invitecode(); ?></span> |
+			<span><?= user_ip(); ?></span>
 		</div>
 
 	</div>

@@ -753,6 +753,22 @@ function timeago($mytime) {
 }
 
 
+function defence_ip($ip = '') {
+	if ($ip == '') {
+		$ip = user_ip();
+	}
+
+	$res = sql_query("SELECT uiid FROM userip WHERE ip='$ip' LIMIT 1;");
+	if ($res) {
+		if (mysql_num_rows($res) > 0) {
+			header('Location: http://www.baidu.com/');
+// 			header("HTTP/1.0 404 Not Found");
+			exit('404');
+		}
+	}
+}
+
+
 /* database optimized
 
 	example 01, i want to clear records of trash

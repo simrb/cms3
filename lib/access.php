@@ -1,5 +1,8 @@
 <?php access();
 
+// defence bad ip
+defence_ip();
+
 // filter sql injections
 $_GET 		= sql_filter($_GET);
 $_POST		= sql_filter($_POST);

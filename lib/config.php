@@ -4,7 +4,6 @@
 $c = array();	// global config
 $t = array();	// template var
 
-
 $c['version'] 			=	'v1.0.3.3';
 $c['def_view'] 			=	'view';		// default theme
 
@@ -32,19 +31,21 @@ $t['tpl_layout'] 		=	'flayout';
 
 $t['web_style'] 		=	'front';
 
-
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
 $t['link_logout'] 		=	'?_m=admin&_f=user&_a=logout';
 $t['link_register'] 	=	'?_m=admin&_f=user&_v=login&firstime=yes';
-
 
 $t['user_level'] 		=	array(
 								1 => 'front add',
 								5 => 'front add, edit',
 								6 => 'front edit, admin edit',
 								9 => 'front edit, admin edit, user edit',
-						);
+);
 
+$t['ip_type'] 		=	array(
+								1 => 'block ip',
+								2 => 'allow ip',
+);
 
 $t['admin_menu'] 		=	array(
 								array(
@@ -53,6 +54,7 @@ $t['admin_menu'] 		=	array(
 										'record list'	=>	'?_m=admin&_f=record',
 	// 									'add'			=>	'?_m=admin&_f=record&_v=edit',
 										'optimize'		=>	'?_m=admin&_f=record&_v=optimize',
+										'defence'		=>	'?_m=admin&_f=main&_v=defence',
 									),
 								),
 
@@ -73,9 +75,7 @@ $t['admin_menu'] 		=	array(
 										'backup'		=>	'?_m=admin&_f=main&_v=backup',
 									),
 								),
-
-						);
-
+);
 
 // record id
 $t['rid_aboutme'] 		=	1;
@@ -83,15 +83,13 @@ $t['rid_aboutuser'] 	=	2;
 $t['rid_aboutpost'] 	=	3;
 $t['rid_comment'] 		=	4;
 
-
 // user function
-$t['user_msg_open'] 	=	'on';	// allow message using
-$t['user_reg_open'] 	=	'on';	// allow user register
-$t['user_login_open'] 	=	'on';	// allow user login
-$t['user_vcode_open'] 	=	'on';	// user validate code for login and register
-$t['user_icode_open'] 	=	'off';	// user invide code for register
-
-
+$t['user_defence'] 		=	'on';		// open the defence mode
+$t['user_msg_open'] 	=	'on';		// allow message using
+$t['user_reg_open'] 	=	'on';		// allow user register
+$t['user_login_open'] 	=	'on';		// allow user login
+$t['user_vcode_open'] 	=	'on';		// user validate code for login and register
+$t['user_icode_open'] 	=	'off';		// user invide code for register
 
 
 ?>

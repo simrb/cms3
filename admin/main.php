@@ -59,6 +59,21 @@ if ($t['_a'] == 'edit') {
 }
 
 
+// act: addip
+if ($t['_a'] == 'addip') {
+	if (isset($_POST['ip_name']) and isset($_POST['ip_type']) and !empty($_POST['ip_name']) ) {
+		sql_query("INSERT INTO userip (ip, ip_type) VALUES (
+				'". parse_text($_POST['ip_name']) ."','". $_POST['ip_type'] ."')");
+		$t['msg'] = l('added successfully');
+	}
+
+	if (isset($_POST['word_name']) AND !empty($_POST['word_name'])) {
+		sql_query("INSERT INTO userword (word) VALUES ('". $_POST['word_name'] ."')");
+		$t['msg'] = l('added successfully');
+	}
+}
+
+
 // view: info
 if ($t['_v'] == "info") {
 	$t['web_logo']		= parse_text(optionkv('web_logo'));
@@ -88,6 +103,27 @@ if ($t['_v'] == "backup") {
 
 	tpl($t, "abackup");
 }
+
+
+// view: defence
+if ($t['_v'] == "defence") {
+	$t['ip_num'] = $t['wd_num'] = 0;
+
+	$res = sql_query('SELECT COUNT(uiid) AS ip_num FROM userip');
+	if ($res) {
+		$row = mysql_fetch_assoc($res);
+		$t['ip_num'] = $row['ip_num'];
+	}
+
+	$res = sql_query('SELECT COUNT(uwid) AS wd_num FROM userword');
+	if ($res) {
+		$row = mysql_fetch_assoc($res);
+		$t['wd_num'] = $row['wd_num'];
+	}
+
+	tpl($t, "adefence");
+}
+
 
 
 ?>

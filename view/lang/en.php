@@ -1,6 +1,11 @@
 <?php $lang = array(
 
 
+'block ip'      =>  '' ,
+'allow ip'      =>  '' ,
+'add ip'      	=>  '' ,
+'add word'      =>  '' ,
+'defence'      	=>  '' ,
 'failed to register'      =>  '' ,
 'clear user by ids'	=>  '' ,
 'fresh'	=>  '' ,

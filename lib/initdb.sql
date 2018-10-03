@@ -200,3 +200,26 @@ CREATE TABLE `useract` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 
+--
+-- `userip`, user ip library
+--
+CREATE TABLE IF NOT EXISTS `userip` (
+  `uiid` int(11) NOT NULL auto_increment,
+  `ip` varchar(20) NOT NULL,
+  `ip_type` tinyint(10) NOT NULL default '1',
+  PRIMARY KEY  (`uiid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+--
+-- `userword`, user word library
+--
+CREATE TABLE IF NOT EXISTS `userword` (
+  `uwid` int(11) NOT NULL auto_increment,
+  `word` varchar(20) NOT NULL,
+  PRIMARY KEY  (`uwid`)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+
+
+
