@@ -22,6 +22,7 @@ a:focus{ outline: none; }
 	white-space: -o-pre-wrap; 
 	word-wrap:	break-word;
 	word-break: break-all;
+	overflow: hidden;
 }
 
 // * html pre { 
