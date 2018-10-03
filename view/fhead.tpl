@@ -38,11 +38,18 @@
 			echo '<li class="left hide"><a href="?cid=0" >'. l('trash') .'</a></li>';
 
 			foreach ($t["category_kv"] as $cid => $row) {
-				$hl = ($cid == $t['cid']) ? 'menu_hl' : 'menu_no';
+				if ($cid == $t['cid']) {
+					$hl = 'menu_hl';
+					$pagenum = $t['pagecurr'];
+				} else {
+					$hl = 'menu_no';
+					$pagenum = 1;
+				}
+
 				if ($row['number'] == 0) {
 					$hl .= ' hide';
 				}
-				echo '<li class="left '. $hl .'"><a href="'. front_link('list', $cid, $t['pagecurr'])
+				echo '<li class="left '. $hl .'"><a href="'. front_link('list', $cid, $pagenum)
 					.'" title="' .  $row['descript']. '" cid='. $cid .' >'. $row['name'] .'</a></li>';
 			}
 	//	} 
