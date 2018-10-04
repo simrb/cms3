@@ -141,6 +141,8 @@ if ($t['_a'] == "addcomment") {
 		$t["msg"] = useract('addcmt', user_ip().date($cdt));
 
 		if ($t["msg"] == '') {
+			$t['msg'] = check_bad_word($_POST["content"]);
+
 			$insert_id = sql_query(
 				"INSERT INTO record (
 				uid, cid, follow, content, created
@@ -155,7 +157,7 @@ if ($t['_a'] == "addcomment") {
 			// comment number plus one
 			recordlog($_POST['rid'], 'replies', 1, true);
 
-			$t["msg"] = l('submitted successfully');
+			$t["msg"] .= l('submitted successfully');
 		} else {
 			$t["msg"] = l('you cannot post twice');
 		}
@@ -172,6 +174,8 @@ if ($t['_a'] == "addpost") {
 		$t["msg"] = useract('addpost', user_ip().date('H'));
 
 		if ($t["msg"] == '') {
+			$t['msg'] = check_bad_word($_POST["content"]);
+
 			// add record
 			$insert_id = sql_query(
 				"INSERT INTO record (
@@ -182,7 +186,8 @@ if ($t['_a'] == "addpost") {
 			);
 
 			user_remind($_POST['content'], $insert_id);
-			$t["msg"] = l('submitted successfully');
+
+			$t["msg"] .= l('submitted successfully');
 		} else {
 			$t["msg"] = l('you cannot post twice');
 		}

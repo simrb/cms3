@@ -753,7 +753,13 @@ function timeago($mytime) {
 }
 
 
-function defence_ip($ip = '') {
+function check_bad_word($word = '') {
+	$reval = '';
+	return $reval;
+}
+
+
+function check_bad_ip($ip = '') {
 	if ($ip == '') {
 		$ip = user_ip();
 	}
