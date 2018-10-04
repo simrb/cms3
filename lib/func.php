@@ -316,7 +316,7 @@ function utf8_substr2($str, $from, $len) {
 // user login, success return true.
 function user_login ($name, $pawd) {
 	$reval 		= false;
-	$res 		= sql_query("SELECT * FROM user WHERE 
+	$res 		= sql_query("SELECT * FROM user WHERE level > 0 AND 
 					username = '". $name ."' AND password ='". user_encode_pwd($pawd) ."' ;");
 
 	if (mysql_num_rows($res) > 0) {
