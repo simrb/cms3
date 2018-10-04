@@ -38,6 +38,7 @@ if ($t['_a'] == "update") {
 if ($t['_a'] == "del") {
 	if (isset($_GET["uid"])) {
 		sql_query("DELETE FROM user WHERE uid='". $_GET["uid"] ."';");
+		sql_query("DELETE FROM userinfo WHERE uid='". $_GET["uid"] ."';");
 		$t["msg"] = l('deleted successfully');
 	}
 }
