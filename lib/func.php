@@ -434,15 +434,15 @@ function user_add ($arr) {
 
 /*	user action, mark down current user action, like the web server logs
 	the first argument is an action name, the second is certain value what you want to mark down.
-	if it has been not marked yet, return null value, others is un-null value
+	if it has been not marked yet, return empty value, others is not empty
 
 	example 01, a user hits the useful action for rid 25 of record, 
-	useract('useful', 25);		// success, return null value
-	useract('useful', 25);		// failure, return 1
+	useract('useful', 25);		// no useful in db, return empty
+	useract('useful', 25);		// because the useful value is exsit, so return unempty value
 
 	example 02, a user when he has been logined
-	useract('login', time() + 1);	// return null value
-	useract('login', time() + 2);	// return null value
+	useract('login', time() + 1);	// return empty
+	useract('login', time() + 2);	// return empty
 
 	example 03, a user when he updated the created time of record for rid 25
 	useract('updated25', date('ymd'));
@@ -753,18 +753,42 @@ function timeago($mytime) {
 }
 
 
-function check_bad_word($word = '') {
+function check_bad_word($str = '') {
 	$reval = '';
+	$words = data_fetch_kv('userword', 'uwid', 'word');
+
+	foreach($words as $uwid => $word) {
+		if (mb_strstr($str, $word)) {
+			$reval = l('you have bad word') . " : $word";
+
+			// mark down the ip
+			//useract('warnip', user_ip()."_$uwid");
+			$ip = user_ip();
+			userip($ip, 3);
+			if (scan_ip($ip) > 2) {
+				userip($ip, 1);
+			}
+
+			break;
+		}
+	}
+
 	return $reval;
 }
 
 
-function check_bad_ip($ip = '') {
+// check how many records of the ip in db
+function scan_ip($ip) {
+	return sql_query("SELECT uiid FROM userip WHERE ip='$ip';", 'affect_num');
+}
+
+
+function defence_ip($ip = '') {
 	if ($ip == '') {
 		$ip = user_ip();
 	}
 
-	$res = sql_query("SELECT uiid FROM userip WHERE ip='$ip' LIMIT 1;");
+	$res = sql_query("SELECT uiid FROM userip WHERE ip='$ip' AND ip_type=1 LIMIT 1;");
 	if ($res) {
 		if (mysql_num_rows($res) > 0) {
 			header('Location: http://www.baidu.com/');
@@ -772,6 +796,21 @@ function check_bad_ip($ip = '') {
 			exit('404');
 		}
 	}
+}
+
+
+/*	userip, add ip to ip library
+
+	about the $ip_type value, 
+
+	1, it will be deny access.
+	2, that ip will be allow to access.
+	3, unkonw ip, that just be mark down, maybe for other usage.
+
+*/
+function userip($ip, $ip_type) {
+	sql_query("INSERT INTO userip (ip, ip_type) VALUES (
+		'". $ip ."','". $ip_type ."')");
 }
 
 

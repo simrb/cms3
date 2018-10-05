@@ -62,8 +62,7 @@ if ($t['_a'] == 'edit') {
 // act: addip
 if ($t['_a'] == 'addip') {
 	if (isset($_POST['ip_name']) and isset($_POST['ip_type']) and !empty($_POST['ip_name']) ) {
-		sql_query("INSERT INTO userip (ip, ip_type) VALUES (
-				'". parse_text($_POST['ip_name']) ."','". $_POST['ip_type'] ."')");
+		userip(parse_text($_POST['ip_name']), $_POST['ip_type']);
 		$t['msg'] = l('added successfully');
 	}
 

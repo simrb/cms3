@@ -1,6 +1,6 @@
 <?php $lang = array(
 
-
+'you have bad word'      =>  '存在敏感词语' ,
 'block ip'      =>  '屏蔽的ip' ,
 'allow ip'      =>  '允许的ip' ,
 'add ip'      =>  '添加 ip' ,
@@ -134,8 +134,8 @@
 'say someing ...'      =>  '说些什么吗 ...' ,
 'you have login yet'     =>  '你已经成功登录' ,
 'no privilege to access'     =>  '没有权限访问' ,
-'you cannot post twice' => '在短时间内你不能连发两次',
-'you cannot fresh twice' => '在日内你不能刷新两次',
+'you cannot post twice' => '在短时间内你不能连发两次.',
+'you cannot fresh twice' => '在一天内你不能刷新两次.',
 'category name'      =>  '分类名称' ,
 'number'      =>  '数量' ,
 'add post'      =>  '发帖' ,
@@ -149,7 +149,6 @@
 'contact'	=>  '联系方式' ,
 'introduction'	=>  '个人简述' ,
 'member'	=>  '会员' ,
-'register have to know'	=>  '如果你是新注册会员，请点这里查看会员公约' ,
 'update'	=>  '更新' ,
 'confirm'	=>  '确认' ,
 'return to login'	=>  '返回登录界面' ,

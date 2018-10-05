@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'you have bad word'      =>  'you have bad word.' ,
 'block ip'      =>  '' ,
 'allow ip'      =>  '' ,
 'add ip'      	=>  '' ,
@@ -130,8 +131,8 @@
 'say someing ...'      =>  '' ,
 'you have login yet'     =>  '' ,
 'no privilege to access'     =>  '' ,
-'you cannot post twice' => 'you cannot post twice in a short time',
-'you cannot fresh twice' => 'you cannot fresh twice in one day',
+'you cannot post twice' => 'you cannot post twice in a short time.',
+'you cannot fresh twice' => 'you cannot fresh twice in one day.',
 'category name'      =>  '' ,
 'number'      =>  '' ,
 'add post'      =>  '' ,
@@ -139,13 +140,12 @@
 'see'		=>  '' ,
 'settings'	=>  '' ,
 'save'	=>  '' ,
-'register account'	=>  'register account, please check here' ,
+'register account'	=>  'register account, please check here.' ,
 'logout'	=>  '' ,
 'nickname'	=>  '' ,
 'contact'	=>  '' ,
 'introduction'	=>  '' ,
 'member'	=>  '' ,
-'register have to know'	=>  '' ,
 'update'	=>  '' ,
 'confirm'	=>  '' ,
 'return to login'	=>  '' ,

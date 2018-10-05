@@ -137,12 +137,16 @@ if ($t['_a'] == "settings") {
 // act: addcomment
 if ($t['_a'] == "addcomment") {
 	if (isset($_POST['rid']) AND isset($_POST['content'])) {
+		$t['msg'] = '';
+
 		$cdt = $t['ulevel'] > 0 ? 'i' : 'H'; 
-		$t["msg"] = useract('addcmt', user_ip().date($cdt));
+		if (useract('addcmt', user_ip().date($cdt)) != '') {
+			$t["msg"] = l('you cannot post twice');
+		};
+
+		$t['msg'] .= check_bad_word($_POST["content"]);
 
 		if ($t["msg"] == '') {
-			$t['msg'] = check_bad_word($_POST["content"]);
-
 			$insert_id = sql_query(
 				"INSERT INTO record (
 				uid, cid, follow, content, created
@@ -157,10 +161,8 @@ if ($t['_a'] == "addcomment") {
 			// comment number plus one
 			recordlog($_POST['rid'], 'replies', 1, true);
 
-			$t["msg"] .= l('submitted successfully');
-		} else {
-			$t["msg"] = l('you cannot post twice');
-		}
+			$t["msg"] = l('submitted successfully');
+		}	
 	}
 }
 
@@ -168,14 +170,22 @@ if ($t['_a'] == "addcomment") {
 // act: addpost
 if ($t['_a'] == "addpost") {
 	if (isset($_POST['cid']) AND isset($_POST['content'])) {
+		$t['msg'] = '';
+
+		// check the user level
 		if ($t['ulevel'] < 1 ) {
 			$t['msg'] = l('no level to post');
 		}
-		$t["msg"] = useract('addpost', user_ip().date('H'));
+
+		// check whether adding two posts in one minute
+		if (useract('addpost', user_ip().date('i')) != '') {
+			$t["msg"] .= l('you cannot post twice');
+		}
+
+		// check whether the bad words
+		$t['msg'] .= check_bad_word($_POST["content"]);
 
 		if ($t["msg"] == '') {
-			$t['msg'] = check_bad_word($_POST["content"]);
-
 			// add record
 			$insert_id = sql_query(
 				"INSERT INTO record (
@@ -187,9 +197,7 @@ if ($t['_a'] == "addpost") {
 
 			user_remind($_POST['content'], $insert_id);
 
-			$t["msg"] .= l('submitted successfully');
-		} else {
-			$t["msg"] = l('you cannot post twice');
+			$t["msg"] = l('submitted successfully');
 		}
 	}
 
