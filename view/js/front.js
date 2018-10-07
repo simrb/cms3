@@ -317,6 +317,8 @@ $(document).ready( function() {
 	}
 
 	function parse_html (txt) {
+		var rev = txt;
+
 		var regs = [
 			{ reg : /</g, rep : "&lt;"},
 			{ reg : />/g, rep : "&gt;"},
@@ -333,8 +335,20 @@ $(document).ready( function() {
 			{ reg : /vid2#([a-zA-Z]+:\/\/[^\s]*)#/g, rep : "<video src='$1' controls=''></video>"},
 		];
 
-		var rev = txt;
+		// bad tag
+		var regs2 = [
+			{ reg : /img#([a-zA-Z]+:\/\/[^\s]*)/g, rep : ""},
+			{ reg : /url#([a-zA-Z]+:\/\/[^\s]*)/g, rep : ""},
+			{ reg : /url#(.*?)@([a-zA-Z]+:\/\/[^\s]*)/g, rep : ""},
+			{ reg : /vid#(https:\/\/www\.fantasy\.tv\/)([^\s]*)/g, rep : ""},
+			{ reg : /vid2#([a-zA-Z]+:\/\/[^\s]*)/g, rep : ""},
+		];
+
 		$.each(regs, function(i, val){
+			rev = rev.replace(val.reg, val.rep);
+		});
+
+		$.each(regs2, function(i, val){
 			rev = rev.replace(val.reg, val.rep);
 		});
 
