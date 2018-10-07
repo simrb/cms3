@@ -29,7 +29,7 @@ $t['web_name'] 			=	'scms';
 $t['web_des'] 			=	'NEW SITE';
 $t['web_kw'] 			=	'NEW SITE';
 $t['web_logo'] 			=	'';
-$t['web_style'] 		=	'front';
+$t['web_style'] 		=	'fwhite';
 $t['web_footer'] 		=	'Initialize by linyu, 2016-';
 
 

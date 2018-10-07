@@ -1,0 +1,30 @@
+
+
+
+/* *************** style, color ************ */
+body { background-color: #f5f5f5; }
+#header a, #bodyer a, #footer a { color:black;  cursor: pointer;}
+a:hover { text-decoration: underline; }
+.header_title a:hover { text-decoration: none; }
+textarea { width: 99%; background-color: #fefefe; border: 1px solid #c0c8b5; border-radius:5px; }
+input { background-color: #fefefe;  border: 1px solid #c0c8b5; border-radius:5px; }
+.menu_item .menu_no { border: 1px solid #f5f5f5;  border-radius:5px; }
+.menu_item .menu_hl { border: 1px solid #c0c8b5;  border-radius:5px; background-color: #ffffff; }
+.black { color: black; }
+.gray1 { color: #ced5c8; }
+.pg_hl { background-color: #ffffff; border: 1px solid #c0c8b5;}
+
+.show-list h3 a { color: black; }
+.show-list-body {  background-color: #fefefe; border: 1px solid #c0c8b5; border-radius:5px; }
+.show-list-body .list-body a { text-decoration: underline; }
+.list-cmt-tip { background-color: #e2e7d7; border-radius: 10px;}
+
+.show-detail-title label.useful_view {}
+.show-detail-title label.useful_view { cursor: pointer; color: #f24e48;  margin-left:2px;}
+.show-detail-title { color: gray; }
+.show-detail pre { background-color: #fefefe;  border: 1px solid #c0c8b5; border-radius:5px; }
+.show-detail pre a { text-decoration: underline; }
+
+.adm_btn label, .re_btn, .top_btn { color: #ced5c8; }
+
+

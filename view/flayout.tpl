@@ -3,6 +3,7 @@
 <head>
 	<?php include_once(tpl_path('head')); ?>
 	<link href="<?= view_path('css/'.$t['web_style'].'.css') ?>" rel="stylesheet">
+	<link href="<?= view_path('css/fpos.css') ?>" rel="stylesheet">
 	<script src="<?= view_path('js/front.js') ?>"></script>
 </head>
 

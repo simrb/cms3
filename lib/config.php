@@ -29,7 +29,7 @@ $t['tpl_name'] 			=	'index';
 $t['tpl_dir'] 			=	$c['def_view'].'/';
 $t['tpl_layout'] 		=	'flayout';
 
-$t['web_style'] 		=	'front';
+$t['web_style'] 		=	'fwhite';
 
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
 $t['link_logout'] 		=	'?_m=admin&_f=user&_a=logout';

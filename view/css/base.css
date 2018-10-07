@@ -1,4 +1,6 @@
-/* ------------- common */
+
+
+/*  common  */
 body { font-family: "Trebuchet MS", sans-serif; font-size:15px; }
 .left { float: left; }
 .right { float: right; }
@@ -9,7 +11,7 @@ body, div, p, form, ul  { margin: 0; padding: 0; }
 .mb10 { margin-bottom: 10px; }
 .hide { display: none; }
 
-/* ------------- styles */
+/*  styles  */
 ul li { list-style-type: none; margin-bottom: 5px; }
 a { text-decoration: none; }
 a:focus{ outline: none; }
