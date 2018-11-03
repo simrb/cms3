@@ -406,24 +406,26 @@ function userbase () {
 // return current user ip
 function user_ip () {
 // 	return sql_filter($_SERVER['REMOTE_ADDR']);
-	return $_SERVER['REMOTE_ADDR'];
+	return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '0.0.0.0';
 }
 
 // add new user
 // success return null value, failure return msg
-function user_add ($arr) {
+function user_add ($arr, $level = 1) {
 // 	$reval = l('failed to add');
 	$reval = '';
 	if (isset($arr["username"]) AND isset($arr["password"])) {
 		$res = sql_query("SELECT uid FROM user WHERE username = '".$arr['username']."'");
+		// user existed
 		if (mysql_num_rows($res) > 0) {
 			$reval = l('the user is existed');
 
+		// user created
 		} else {
 // 			$arr["level"] = isset($arr["level"]) ? $arr["level"] : 1;
 			sql_query("INSERT INTO user(username, password, level, created) 
 				VALUES ('". $arr["username"] ."','". user_encode_pwd($arr["password"]) .
-				"','1', '". time() ."');"
+				"','". $level ."', '". time() ."');"
 			);
 // 			$reval = l('created user successfully');
 		}
@@ -816,11 +818,11 @@ function userip($ip, $ip_type) {
 
 /* database optimized
 
-	example 01, i want to clear records of trash
-	db_task('clear10');
+	example 1, i want to clear records of trash
+	db_task('10');
 
-	example 02, clear all of user actions
-	db_task('clear34');
+	example 2, clear all of user actions
+	db_task('34');
 
 */
 function db_task($cmd, $uid = 0) {
@@ -905,6 +907,12 @@ function db_task($cmd, $uid = 0) {
 		// delete exp session of user
 		case '41' :
 			$num = sql_query("DELETE FROM usersess WHERE exptime < ". time(), 'affect_num');
+		break;
+
+		// create an administrator account
+		case '42' :
+			$arr = array('username' => 'admin', 'password' => 'admin');
+			user_add($arr, 9);
 		break;
 	}
 

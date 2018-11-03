@@ -4,11 +4,11 @@ $t['tpl_name'] = 'amain';
 
 // act: run
 /*
-	example 01, use it like the following
+	example 1, use it like the following
 	$ php index.php _m=admin _f=main _a=task do=15
 	$ php index.php _m=admin _f=main _a=task do=33
 
-	example 02, or do all of default tasks
+	example 2, or do all of default tasks
 	$ php index.php _m=admin _f=main _a=task
 */
 if ($t['_a'] == "task") {

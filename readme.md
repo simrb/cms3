@@ -25,7 +25,12 @@ or, set your custom by options `-h, -n, -u, -p`
 
 if you have an existed database, just configure the file `cfg.php` for connecting
 
-btw, you better to reboot server agint.
+btw, you better to reboot server again.
+
+and then create an administrator account like under command, the default username and password both of called admin.
+
+	# sh .myt -a
+
 
 2, start the back-end task with `crontab`, 
 

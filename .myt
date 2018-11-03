@@ -15,9 +15,11 @@ Uinitht="no"
 Ubackup="no"
 Uupdate="no"
 
-while getopts "bmh:n:u:p:edi" opt
+while getopts "abmh:n:u:p:edi" opt
 do
 	case $opt in
+		 a)
+		 	Uadmin="yes";;
 		 b)
 		 	Ubackup="yes";;
 		 m)
@@ -77,6 +79,7 @@ if [ ! $1 ]; then
 cat << EOF
 ================================================================
 Options
+  -a, create an administrator account by username=admin, password=admin.
   -e, initialling the project environment.
   -d, initialling the database.
     -h, hostname
@@ -94,6 +97,12 @@ if you want to initial the project.
    # sh .myt -ed
 
 EOF
+fi
+
+
+# create admin
+if [ $Uadmin = "yes" ] ; then
+	php index.php _m=admin _f=main _a=task do=42
 fi
 
 
