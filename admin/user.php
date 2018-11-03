@@ -206,7 +206,7 @@ if ($t['_v'] == "status") {
 //view: edit
 if ($t['_v'] == "edit") {
 	$t["username"]		=	isset($t["username"]) ? $t["username"] : "";
-	$t["password"]		=	isset($t["password"]) ? $t["password"] : "";
+	$t["password"]		=	isset($t["password"]) ? $t["password"] : "8888";
 	$t["level"]			=	isset($t["level"]) ? $t["level"] : "";
 	$t['_a']			=	$t['_a'] == "" ? "add" : $t['_a'];
 	$t["user_level"]	=	$t['user_level'];
