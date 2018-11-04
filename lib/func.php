@@ -307,10 +307,6 @@ function utf8_substr2($str, $from, $len) {
     return $tmpstr;
 }
 
-/*function is_gbk($str) {
-	return preg_match("/[\x7f-\xff]/", $str) ? true : false;
-}
-*/
 
 /**************** user func libs ******************/
 // user login, success return true.

@@ -31,6 +31,9 @@ $t['tpl_layout'] 		=	'flayout';
 
 $t['web_style'] 		=	'fwhite';
 
+// title length of list page
+$t['til_len'] 			=	40;
+
 $t['link_login'] 		=	'?_m=admin&_f=user&_v=login';
 $t['link_logout'] 		=	'?_m=admin&_f=user&_a=logout';
 $t['link_register'] 	=	'?_m=admin&_f=user&_v=login&firstime=yes';
