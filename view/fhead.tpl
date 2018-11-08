@@ -1,14 +1,18 @@
 <div class="top-bar right">
 
 	<?php 
-		// addpost link
 		if (user_level() > 0) {
+			// search link
+			//echo '<a href="index.php?_v=search&cid='. $t['cid']. '" >'. l("search") . '</a>';
+
+			// addpost link
 			$hl = ('addpost' == $t['_v']) ? 'menu_hl' : '';
 			echo '<a class=" '. $hl .' " href="index.php?_v=addpost&cid='.
 				$t['cid'] .'">'.l('add post').'</a>';
 		}
 	?>
 
+	<a href="index.php?_v=search&cid=<?=$t['cid']?>" ><?= l('search'); ?></a>
 	<a href="index.php?_v=detail&rid=1" ><?= l('about us'); ?></a>
 
 	<?php

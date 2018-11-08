@@ -8,6 +8,7 @@ $t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
 $t['web_title'] 	= $t["cid"] == 1 ? parse_text(optionkv('web_title')) : parse_text($t["category_kv"][$t["cid"]]['name']) .
 						' - '. parse_text($t["category_kv"][$t["cid"]]['descript']) . ' - ' . parse_text(optionkv('web_header'));
 $t["pagecurr"]		= 1;
+$t["kw"]			=	isset($_REQUEST["kw"]) ? $_REQUEST["kw"] : "";
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
 
@@ -218,6 +219,8 @@ if ($t['_v'] == "show") {
 
 	$sql_str			= 	"SELECT * FROM record WHERE cid != 0 AND follow = 0";
 	$sql_str			.=	$t["cid"] > 0 ? (" AND cid = ". $t["cid"]) : "";
+	$sql_str			.=	$t['kw'] != "" ? (" AND content LIKE '%". $t["kw"]) . "%'" : "";
+
 	$res 				= 	sql_query($sql_str);
 	$filenums 			= 	mysql_num_rows($res);
 
@@ -263,6 +266,15 @@ if ($t['_v'] == "detail") {
 
 		tpl($t, "fdetail");
 	}
+}
+
+
+// view: search
+if ($t['_v'] == "search") {
+	$t["url_after"] 	=	"";
+	$t['_a'] 			=	"";
+
+	tpl($t, "fsearch");
 }
 
 
@@ -351,6 +363,9 @@ function front_link($type, $id, $pageid = 0) {
 	if ($GLOBALS['c']['seo_open'] == 'off') {
 		if ($type == 'list') {
 			$reval = "index.php?cid=$id&pagecurr=$pageid";
+			if ($GLOBALS['t']['kw'] != "") {
+				$reval .= "&kw=".$GLOBALS['t']['kw'];
+			}
 		} elseif ($type == 'detail') {
 			$reval = "index.php?_v=detail&rid=$id";
 		}

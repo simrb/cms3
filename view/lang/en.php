@@ -1,6 +1,7 @@
 <?php $lang = array(
 
 
+'search'      =>  '' ,
 'you have bad word'      =>  'you have bad word.' ,
 'block ip'      =>  '' ,
 'allow ip'      =>  '' ,

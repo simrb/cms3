@@ -1,5 +1,6 @@
 <?php $lang = array(
 
+'search'      =>  '搜索' ,
 'you have bad word'      =>  '存在敏感词语' ,
 'block ip'      =>  '屏蔽的ip' ,
 'allow ip'      =>  '允许的ip' ,
