@@ -274,7 +274,7 @@ if ($t['_v'] == "search") {
 	$t["url_after"] 	=	"";
 	$t['_a'] 			=	"";
 
-	tpl($t, "fsearch");
+	tpl($t, "fsearch", 'layout');
 }
 
 
@@ -358,9 +358,12 @@ function header_menu() {
 }
 
 
+// set the link as static link
 function front_link($type, $id, $pageid = 0) {
 	$reval = '';
-	if ($GLOBALS['c']['seo_open'] == 'off') {
+
+	// open seo
+	if ($GLOBALS['c']['seo_open'] == 'off' OR (isset($GLOBALS['t']['kw']) AND $GLOBALS['t']['kw'] != '')) {
 		if ($type == 'list') {
 			$reval = "index.php?cid=$id&pagecurr=$pageid";
 			if ($GLOBALS['t']['kw'] != "") {
@@ -369,6 +372,8 @@ function front_link($type, $id, $pageid = 0) {
 		} elseif ($type == 'detail') {
 			$reval = "index.php?_v=detail&rid=$id";
 		}
+
+	// close seo
 	} else {
 		if ($type == 'list') {
 			$reval = "cid-$id-$pageid.html";

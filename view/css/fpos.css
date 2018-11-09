@@ -46,6 +46,8 @@ textarea.ui-input-text { min-height: 60px; }
 
 .list-cmt-tip { float:right; }
 
+.search_menu p { margin-bottom: 10px; }
+
 
 /* First breakpoint at 500px */
 @media all and (min-width: 400px){
