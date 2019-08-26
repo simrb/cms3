@@ -897,7 +897,8 @@ function db_task($cmd, $uid = 0) {
 
 		// delete all of user session
 		case '40' :
-			$num = sql_query("TRUNCATE TABLE usersess", 'affect_num');
+// 			$num = sql_query("TRUNCATE TABLE usersess", 'affect_num');
+			$num = sql_query("DELETE FROM usersess", 'affect_num');
 		break;
 
 		// delete exp session of user
