@@ -14,12 +14,36 @@ It is a simple cms by creating with php language, the base functions as follows,
 Setup
 ============
 
-1,initialing the project environment and database by default database, username, userpawd
+copy from github
+
+	# git clone https://github.com/simrb/cms3.git
+
+firstly, make sure your server environment, ip, port are fine.
 
 	# su
+	# cd cms3
+	# sh .myt -e
+
+	# service httpd status
+	# service mysqld status
+
+and test with  `http://your_ip_address` in web browser. they are good when you can open the page link.
+
+
+1. let`s install the web application,
+
+copy to your web root directory before installing
+
+	# cp -R cms3/. /var/www/html/
+	# cd /var/www/html/
+
+initial by default database, username, userpawd
+
 	# sh .myt -ed
 
-or, set your custom by options `-h, -n, -u, -p`
+	# sh .myt -ed
+
+or, set yourself by options `-h, -n, -u, -p`
 
 	# sh .myt -ed -n db_name -u username -p password
 
