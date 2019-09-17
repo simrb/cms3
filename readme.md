@@ -27,7 +27,7 @@ firstly, make sure your server environment, ip, port are fine.
 	# service httpd status
 	# service mysqld status
 
-and test with  `http://your_ip_address` in web browser. they are good when you can open the page link.
+and test with  `http://your_ip_address` in web browser, they are good when you can open the page link.
 
 
 1. let`s install the web application,
@@ -38,8 +38,6 @@ copy to your web root directory before installing
 	# cd /var/www/html/
 
 initial by default database, username, userpawd
-
-	# sh .myt -ed
 
 	# sh .myt -ed
 
