@@ -36,7 +36,7 @@ INSERT INTO `record` (`rid`, `uid`, `cid`, `follow`, `useful`, `content`, `creat
 
 
 --
--- `recordkv`, for record, a key-val piece 
+-- `recordkv`, add more detail for record as a key-val piece 
 --
 CREATE TABLE `recordkv` (
   `rkid` int(11) NOT NULL auto_increment,
@@ -49,7 +49,7 @@ CREATE TABLE `recordkv` (
 
 
 --
--- `category`, for record
+-- `category`, record category
 --
 CREATE TABLE `category` (
   `cid` int(11) NOT NULL auto_increment,
@@ -66,7 +66,7 @@ INSERT INTO `category` (`cid`, `follow`, `number`, `name`, `descript`) VALUES
 
 
 --
--- `file`, for record, upload image
+-- `file`, attachment, such as the upload image
 --
 CREATE TABLE `file` (
   `fid` int(11) NOT NULL auto_increment,
@@ -80,7 +80,7 @@ CREATE TABLE `file` (
 
 
 --
--- `tag`, for record, like category
+-- `tag`, record tags
 --
 CREATE TABLE `tag` (
   `tid` int(11) NOT NULL auto_increment,
@@ -90,7 +90,7 @@ CREATE TABLE `tag` (
 
 
 --
--- `tag_assoc`, for associating record and tag
+-- `tag_assoc`, associated table of record and tag
 --
 CREATE TABLE `tag_assoc` (
   `taid` int(11) NOT NULL auto_increment,
@@ -102,7 +102,7 @@ CREATE TABLE `tag_assoc` (
 
 --
 -- ----------------------------------------
--- `optionkv`, for whole project, a key-val piece 
+-- `optionkv`, website options as a key-val piece 
 -- ----------------------------------------
 --
 CREATE TABLE `optionkv` (
@@ -131,6 +131,8 @@ INSERT INTO `optionkv` (`oid`, `uid`, `okey`, `oval`) VALUES
 -- `user`
 -- ----------------------------------------
 --
+-- user base info
+--
 CREATE TABLE `user` (
   `uid` int(11) NOT NULL auto_increment,
   `username` varchar(20) NOT NULL,
@@ -148,7 +150,7 @@ INSERT INTO `user` (`uid`, `username`, `password`, `level`, `created`) VALUES
 
 
 --
--- `userinfo`, for user, about the detail information 
+-- `userinfo`, user details 
 --
 CREATE TABLE `userinfo` (
   `uiid` int(11) NOT NULL auto_increment,
@@ -160,7 +162,7 @@ CREATE TABLE `userinfo` (
 
 
 --
--- `usersess`, for user,  session for marking the user login status
+-- `usersess`, user session for marking login status
 --
 CREATE TABLE `usersess` (
   `usid` int(11) NOT NULL auto_increment,
@@ -173,7 +175,7 @@ CREATE TABLE `usersess` (
 
 
 --
--- `usermsg`, for user,  keep saving the messages that has been send to user
+-- `usermsg`, save the messages of user that would be sent it each together
 --
 CREATE TABLE `usermsg` (
   `umid` int(11) NOT NULL auto_increment,
@@ -187,7 +189,7 @@ CREATE TABLE `usermsg` (
 
 
 --
--- `useract`, for user, mark down the user actions
+-- `useract`, mark down the user actions
 --
 CREATE TABLE `useract` (
   `uaid` int(11) NOT NULL auto_increment,
@@ -201,7 +203,7 @@ CREATE TABLE `useract` (
 
 
 --
--- `userip`, user ip library
+-- `userip`, block the client ip
 --
 CREATE TABLE IF NOT EXISTS `userip` (
   `uiid` int(11) NOT NULL auto_increment,
@@ -212,7 +214,7 @@ CREATE TABLE IF NOT EXISTS `userip` (
 
 
 --
--- `userword`, user word library
+-- `userword`, block the bad words that the user typed it
 --
 CREATE TABLE IF NOT EXISTS `userword` (
   `uwid` int(11) NOT NULL auto_increment,
