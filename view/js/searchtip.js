@@ -6,6 +6,7 @@
 */
 
 var highlightindex = -1;
+var sajaxReData = '';		// store the json value that responses from server
 
 function mySearchTip(auto_id, search_id, url_str, dropmenu_class) {
     
@@ -94,6 +95,8 @@ function mySearchTip_AutoComplete(auto_id, search_id, url_str) {
             success: function(data) {
                 if (data.error == "0") {
                     //console.log('test 3 ------ ');
+
+					sajaxReData = data;
                     mylist = data.info;
 
                     if (mylist == null) {
