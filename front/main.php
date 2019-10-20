@@ -4,13 +4,43 @@
 $t['uid'] 			= $uid	= user_id();
 $t['ulevel'] 		= user_level();
 $t["category_kv"] 	= header_menu();
-$t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 1 ;
-$t['web_title'] 	= $t["cid"] == 1 ? parse_text(optionkv('web_title')) : parse_text($t["category_kv"][$t["cid"]]['name']) .
-						' - '. parse_text($t["category_kv"][$t["cid"]]['descript']) . ' - ' . parse_text(optionkv('web_header'));
+$t["cid"]			= isset($_GET["cid"]) ? $_GET["cid"] : 0 ;
+$t['web_title'] 	= $t["cid"] > 0 ? parse_text($t["category_kv"][$t["cid"]]['name']) .
+						' - '. parse_text($t["category_kv"][$t["cid"]]['descript']) . ' - ' . parse_text(optionkv('web_header'))
+						: parse_text(optionkv('web_title')) ;
 $t["pagecurr"]		= 1;
-$t["kw"]			=	isset($_REQUEST["kw"]) ? $_REQUEST["kw"] : "";
+$t["kw"]			= isset($_REQUEST["kw"]) ? $_REQUEST["kw"] : "";
+$t["tag"]			= isset($_GET["tid"]) ? $_GET["tid"] : "";
 
 $user_setting 		= array('nickname' => '', 'contact' => '', 'intro' => '');
+
+
+// act: ajax_tagname
+if ($t['_a'] == "ajax_tagname") {
+
+	$reval = 0;
+	$arr = array('info'=> array(), 'tid' => array(), 'error'=>0);
+	//$arr = array('info'=> array('a', 'bb'), 'error'=>0 );
+
+	if ($t["kw"] != '') {
+
+		$kw = $t['kw'];
+		//$kw = gbk_to_utf8($kw);
+		$res = sql_query("SELECT tid, name FROM tag WHERE name LIKE '%$kw%'");
+		$num = mysql_num_rows($res);
+		if ($num > 0) {
+			while ($row = mysql_fetch_assoc($res)) {
+				array_push($arr['info'], $row['name']);
+				$arr['tid'][$row['name']] = $row['tid'];
+			}
+		}
+
+	}
+
+	$arr['num'] = $num;
+	exit(ajax_json($arr));
+	//exit($arr);
+}
 
 
 // act: ajax_totop
@@ -217,9 +247,23 @@ if ($t['_v'] == "show") {
 	$pagestart			=	($pagecurr - 1)*$pagesize ;
 	$filenums			=	0;
 
-	$sql_str			= 	"SELECT * FROM record WHERE cid != 0 AND follow = 0";
-	$sql_str			.=	$t["cid"] > 0 ? (" AND cid = ". $t["cid"]) : "";
-	$sql_str			.=	$t['kw'] != "" ? (" AND content LIKE '%". $t["kw"]) . "%'" : "";
+	$sql_str			= 	"SELECT * FROM record";
+
+	// display record by tag searched
+	if ($t['tag'] != '') {
+		$sql_str .= " WHERE rid IN ( SELECT rid FROM tag_assoc WHERE tid = '". $t['tag'] ."')";
+	
+	// display record by text keyword
+	} elseif($t['kw'] != '') {
+		$sql_str .=	$t["cid"] > 0 ? " WHERE cid = " . $t["cid"] . " AND" : " WHERE";
+		$sql_str .=	" content LIKE '%". $t["kw"] . "%'";
+
+	// default
+	} else {
+		$sql_str .=	' WHERE follow = 0 AND cid = ';
+		$sql_str .=	$t["cid"] > 0 ? $t["cid"] : "1";
+	}
+
 
 	$res 				= 	sql_query($sql_str);
 	$filenums 			= 	mysql_num_rows($res);
@@ -384,6 +428,30 @@ function front_link($type, $id, $pageid = 0) {
 
 	return $reval;
 }
+
+
+function ajax_json ($data) {
+	return json_encode($data);
+// 	return json_encode(gbk_to_utf8($data));
+}
+
+
+function gbk_to_utf8($data) {
+        if( is_array($data) ) {
+            foreach ($data as $k => $v) {
+                if ( is_array($v) ) {
+                    $data[$k] = gbk_to_utf8($v);
+                } else {
+                    $data[$k] = iconv('gbk', 'utf-8', $v);
+                }
+            }
+            return $data;
+        } else {
+            $data = iconv('gbk', 'utf-8', $data);
+            return $data;
+        }
+}
+
 
 
 ?>
