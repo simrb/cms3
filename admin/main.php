@@ -124,5 +124,29 @@ if ($t['_v'] == "defence") {
 }
 
 
+// act: output_topic
+if ($t['_a'] == "output_topic") {
+
+	$head = array('rid', 'uid', 'cid', 'created', 'content');
+	$filename = 'records-'. date('Ymd') . '.csv';
+
+	header('Content-Type: text/csv; charset=utf-8');
+	header('Content-Disposition: attachment; filename='. $filename);
+	ob_clean();
+	flush();
+
+	$output = fopen("php://output", "w");
+	fputcsv($output, $head);
+
+	$res = sql_query("SELECT rid,uid,cid,created,content FROM record WHERE follow=0");
+	while($row = mysql_fetch_assoc($res)) {
+		fputcsv($output, $row);
+	}
+	fclose($output);
+
+	exit;
+ 	//$t['msg'] = l('operated successfully');
+
+}
 
 ?>

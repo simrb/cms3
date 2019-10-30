@@ -1,6 +1,8 @@
 <div class="show-bar">
 	<form class="edit-form">
 		<a href="<?=url_c('_v=backup&_a=clean_bak');?>"><input type="button" value="<?= l('clean all'); ?>" class="bgwt" /></a>
+
+		<a href="<?=url_c('_v=backup&_a=output_topic');?>"><input type="button" value="<?= l('output topic'); ?>" class="bgwt" /></a>
 	</form>
 </div>
 
